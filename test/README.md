@@ -34,4 +34,6 @@
 - `test-plan.md`：测试范围、观察指标、结果概览
 - `reviews.md`：每轮测试评价与结论
 - `final-evaluation.md`：本轮 Prompt 迭代的最终判断
+- `test-matrix.md`：后续跨章型测试矩阵与评分标准
+- `test-run-template.md`：单轮测试记录模板
 - `drafts/`：测试正文产物

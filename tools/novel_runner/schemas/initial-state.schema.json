@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "initial-state.schema.json",
+  "title": "Initial structured novel state",
+  "type": "object",
+  "required": ["schema_version", "cultivation", "resources", "knowledge"],
+  "properties": {
+    "schema_version": {"type": "string"},
+    "cultivation": {"type": "array", "items": {"type": "object"}},
+    "resources": {"type": "array", "items": {"type": "object"}},
+    "knowledge": {"type": "array", "items": {"type": "object"}}
+  },
+  "additionalProperties": true
+}

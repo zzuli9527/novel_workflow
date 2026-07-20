@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "progression.schema.json",
+  "title": "Cultivation progression",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "realms",
+    "resources",
+    "techniques",
+    "artifacts",
+    "injury_rules",
+    "breakthrough_rules",
+    "power_boundaries",
+    "exceptions"
+  ],
+  "properties": {
+    "schema_version": {"type": "string"},
+    "realms": {"type": "array"},
+    "resources": {"type": "array"},
+    "techniques": {"type": "array"},
+    "artifacts": {"type": "array"},
+    "injury_rules": {"type": "array"},
+    "breakthrough_rules": {"type": "array"},
+    "power_boundaries": {"type": "array"},
+    "exceptions": {"type": "array"}
+  },
+  "additionalProperties": true
+}

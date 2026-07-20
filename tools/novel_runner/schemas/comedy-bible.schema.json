@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "comedy-bible.schema.json",
+  "title": "Comedy bible",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "density",
+    "protagonist_role",
+    "character_contrasts",
+    "allowed_mechanisms",
+    "forbidden_humor",
+    "language_boundaries",
+    "callbacks",
+    "fatigued_mechanisms",
+    "serious_scene_limits"
+  ],
+  "properties": {
+    "schema_version": {"type": "string"},
+    "density": {"enum": ["low", "medium", "high"]},
+    "protagonist_role": {"type": "string"},
+    "character_contrasts": {"type": "array"},
+    "allowed_mechanisms": {"type": "array"},
+    "forbidden_humor": {"type": "array"},
+    "language_boundaries": {"type": "array"},
+    "callbacks": {"type": "array"},
+    "fatigued_mechanisms": {"type": "array"},
+    "serious_scene_limits": {"type": "array"}
+  },
+  "additionalProperties": true
+}

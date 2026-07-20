@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "state-event.schema.json",
+  "title": "Chapter state event",
+  "type": "object",
+  "required": [
+    "event_id",
+    "chapter",
+    "source_draft",
+    "source_sha256",
+    "entity_changes",
+    "relationship_changes",
+    "cultivation_changes",
+    "resource_changes",
+    "knowledge_changes",
+    "thread_changes",
+    "comedy_changes",
+    "new_constraints",
+    "resolved_constraints",
+    "next_chapter_inputs",
+    "deviations"
+  ],
+  "properties": {
+    "event_id": {"type": "string"},
+    "chapter": {"type": "integer", "minimum": 1},
+    "source_draft": {"type": "string"},
+    "source_sha256": {"type": "string"},
+    "entity_changes": {"type": "array"},
+    "relationship_changes": {"type": "array"},
+    "cultivation_changes": {"type": "array"},
+    "resource_changes": {"type": "array"},
+    "knowledge_changes": {"type": "array"},
+    "thread_changes": {"type": "array"},
+    "comedy_changes": {"type": "array"},
+    "new_constraints": {"type": "array"},
+    "resolved_constraints": {"type": "array"},
+    "next_chapter_inputs": {"type": "array"},
+    "deviations": {"type": "array"}
+  },
+  "additionalProperties": true
+}

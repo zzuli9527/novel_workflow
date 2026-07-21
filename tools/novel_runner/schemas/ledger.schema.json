@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ledger.schema.json",
+  "title": "Batch ledger",
+  "type": "object",
+  "required": [
+    "batch_id",
+    "chapter_range",
+    "must_read_next",
+    "active_progression",
+    "active_resources",
+    "active_relationships",
+    "active_knowledge_gaps",
+    "active_threads",
+    "comedy_callbacks",
+    "avoid_repeating",
+    "archived",
+    "next_batch_adjustments",
+    "source_snapshot",
+    "source_event_ids"
+  ],
+  "properties": {
+    "batch_id": {"type": "string"},
+    "chapter_range": {
+      "type": "array",
+      "prefixItems": [{"type": "integer"}, {"type": "integer"}],
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "must_read_next": {"type": "array"},
+    "source_event_ids": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}

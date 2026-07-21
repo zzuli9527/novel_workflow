@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "realms": [
+    {"id": "qi-1", "name": "炼气一层", "capabilities": ["稳定完成小周天", "驱动低阶生活术法"], "limits": ["不能持续外放灵力", "不能正面对抗炼气三层"]},
+    {"id": "qi-2", "name": "炼气二层", "capabilities": ["灵力可短时离体", "可连续使用两次低阶术法"], "limits": ["仍无法御器"]},
+    {"id": "qi-3", "name": "炼气三层", "capabilities": ["能稳定驱动低阶法器", "感知范围扩大"], "limits": ["不能辟谷", "不能御剑"]}
+  ],
+  "resources": [
+    {"id": "low-spirit-stone", "name": "下品灵石", "unit": "枚", "uses": ["吐纳辅助", "购买低阶物资"]},
+    {"id": "contribution-point", "name": "宗门贡献点", "unit": "点", "uses": ["兑换物资", "报名考核", "赔偿公物"]},
+    {"id": "rain-talisman", "name": "引雨符", "unit": "张", "uses": ["为灵田引导小范围灵雨"], "limits": ["批次错误会造成灵压紊乱"]}
+  ],
+  "techniques": [
+    {"id": "minor-circulation", "name": "小周天吐纳", "minimum_stage": "炼气一层", "effect": "缓慢炼化环境灵气", "limits": ["不能在灵压紊乱时强行运转"]},
+    {"id": "listen-pulse", "name": "残缺听脉术", "minimum_stage": "炼气一层", "effect": "短暂分辨土壤、经脉或器物中的灵气流向异常", "costs": ["耳鸣", "距离判断失真", "过度使用会鼻血或短暂失聪"], "limits": ["不能直接识别凶手", "不能读取记忆", "不能替代实物证据"]}
+  ],
+  "artifacts": [
+    {"id": "work-badge-xu", "name": "许观杂役工牌", "owner_id": "xu-guan", "effect": "用于库房登记和身份核验", "limits": ["编号可被抄录，工牌本体不能证明是谁填写登记"]}
+  ],
+  "injury_rules": [
+    {"id": "listen-pulse-overuse", "trigger": "短时间连续使用听脉术", "effects": ["耳鸣加重", "失去方向感", "鼻血", "严重时短暂失聪"], "recovery": ["停止施术", "休息", "使用基础疗伤药"], "cannot_ignore": true}
+  ],
+  "breakthrough_rules": [
+    {"from": "炼气一层", "to": "炼气二层", "prerequisites": ["完成至少一次稳定灵力外放", "经脉承载达到要求", "有足够灵气补充"], "costs": ["消耗修炼资源", "突破后需要稳固"], "forbidden_in_first_unit": true}
+  ],
+  "power_boundaries": [
+    "炼气一层的许观不能武力压制炼气二层或三层角色",
+    "听脉术只提供异常方向，结论必须由行动、记录或实物补足",
+    "引雨符不能治疗伤势，也不能凭空恢复已经坏死的灵苗",
+    "本故事单元内许观不得突破境界"
+  ],
+  "exceptions": []
+}

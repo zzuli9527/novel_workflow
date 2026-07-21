@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "cultivation": [
+    {
+      "subject_id": "lu-ning",
+      "stage": "炼气二层",
+      "abilities": [{"state_id": "beast-breath-listening", "description": "听息诀只能辨认基础兽息节奏，不能读心或追查投料者"}, "柔缰引导", "基础吐纳"],
+      "injuries": [{"state_id": "breath-echo-vertigo", "description": "连续听取多只灵兽呼吸会耳鸣、眩晕并错判方向"}],
+      "limits": [{"state_id": "solo-night-listening-ban", "description": "breath-echo-vertigo 解除前不得独自在夜间对整群灵兽使用听息诀"}]
+    },
+    {"subject_id": "qiao-sui", "stage": "炼气一层", "abilities": ["基础吐纳", "灵兽日常照看"], "injuries": [], "limits": ["不能独立处理冲栏兽群"]},
+    {"subject_id": "xu-ke", "stage": "炼气三层", "abilities": ["御兽苑考核", "食槽阵基础检修"], "injuries": [], "limits": ["必须依据铃序、份量和正式损坏记录裁定"]},
+    {"subject_id": "he-ming", "stage": "炼气二层", "abilities": ["柔缰引导", "饲料配比"], "injuries": [], "limits": ["不能正面对抗考核管事"]}
+  ],
+  "resources": [
+    {"owner_id": "lu-ning", "resource_id": "calm-mint-leaf", "amount": 3, "unit": "片"},
+    {"owner_id": "lu-ning", "resource_id": "contribution-point", "amount": 6, "unit": "点"},
+    {"owner_id": "lu-ning", "resource_id": "ear-seal-strip", "amount": 1, "unit": "条"},
+    {"owner_id": "beast-yard", "resource_id": "sweet-root-pouch", "amount": 4, "unit": "袋"}
+  ],
+  "knowledge": [
+    {"character_id": "lu-ning", "fact_id": "wrong-feed-route", "state": "investigating", "belief": "燥阳谷进入鹿栏不只涉及人工投放，食槽阵压力石和铃序也可能错路"},
+    {"character_id": "xu-ke", "fact_id": "lu-ning-secret-yang-feed", "state": "believes_false", "belief": "陆宁为让云蹄鹿快速恢复，私自给鹿栏添加了燥阳谷"},
+    {"character_id": "qiao-sui", "fact_id": "pig-pressure-stone", "state": "suspects", "belief": "贪食豚持续趴在错误压力石上与暖性饲料错路有关"},
+    {"character_id": "he-ming", "fact_id": "sweet-root-lure", "state": "conceals", "belief": "自己用甜根囊把贪食豚引到压力石附近，必须让核查停在陆宁的夜间违规上"},
+    {"character_id": "xu-ke", "fact_id": "trial-qualification-result", "state": "investigating", "belief": "陆宁的试用资格由饲料责任、兽栏后果、伤势处置和修复过程共同决定"}
+  ]
+}

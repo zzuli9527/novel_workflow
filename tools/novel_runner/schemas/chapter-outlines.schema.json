@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "chapter-outlines.schema.json",
+  "title": "Chapter outlines",
+  "type": "array",
+  "items": {"type": "object"}
+}

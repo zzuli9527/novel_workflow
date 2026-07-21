@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "audit_date": "2026-07-20",
+  "overall_status": "real_model_calibration",
+  "automated_tests_passed": 144,
+  "compileall_passed": true,
+  "diff_check_passed": true,
+  "matrix_coverage": {
+    "automated_flow_pass": 10,
+    "partial": 5,
+    "real_model_required_without_any_gate": 0
+  },
+  "remaining": [
+    "第二个真实 10 章效率校准单元",
+    "真实突破代价专项正文",
+    "状态 v1.1 的伤势解除与知识淘汰真实验证",
+    "40～60 章连续运行",
+    "配置真实价格后验证费用指标"
+  ],
+  "real_run_evidence": {
+    "case_id": "T12-real-xiuxian-10",
+    "chapters": 10,
+    "body_characters": 22366,
+    "length_pass_rate": 1.0,
+    "calls": 66,
+    "successful_calls": 59,
+    "failed_calls": 7,
+    "total_tokens": 1238694,
+    "verdict": "通过"
+  }
+}

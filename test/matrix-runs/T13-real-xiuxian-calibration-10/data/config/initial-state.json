@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "cultivation": [
+    {
+      "subject_id": "lu-chi",
+      "stage": "炼气二层",
+      "abilities": ["基础吐纳", "辨药术", "微量催芽诀"],
+      "injuries": [
+        {
+          "state_id": "wood-qi-spasm",
+          "description": "右臂木灵气逆冲，持续施术会手抖、气息中断并导致结印失稳"
+        }
+      ],
+      "limits": [
+        {
+          "state_id": "rapid-growth-ban",
+          "description": "wood-qi-spasm 解除前不得连续使用催芽诀"
+        }
+      ]
+    },
+    {"subject_id": "qiao-zhi", "stage": "炼气一层", "abilities": ["基础吐纳", "药园规章记忆"], "injuries": [], "limits": ["实战与独立施术经验不足"]},
+    {"subject_id": "wei-yuan", "stage": "炼气三层", "abilities": ["基础术法", "药材验收"], "injuries": [], "limits": ["必须服从可核验的正式记录"]},
+    {"subject_id": "lin-su", "stage": "炼气四层", "abilities": ["药性鉴别", "基础炼药"], "injuries": [], "limits": ["不能越过实作考核程序直接给资格"]},
+    {"subject_id": "han-xiao", "stage": "炼气二层", "abilities": ["基础吐纳", "熟悉药签与月露分配"], "injuries": [], "limits": ["不能正面对抗药庐巡验弟子"]}
+  ],
+  "resources": [
+    {"owner_id": "lu-chi", "resource_id": "low-spirit-stone", "amount": 4, "unit": "枚"},
+    {"owner_id": "lu-chi", "resource_id": "contribution-point", "amount": 9, "unit": "点"},
+    {"owner_id": "lu-chi", "resource_id": "healing-salve", "amount": 1, "unit": "份"},
+    {"owner_id": "baicao-garden", "resource_id": "moon-dew", "amount": 6, "unit": "瓶"}
+  ],
+  "knowledge": [
+    {"character_id": "lu-chi", "fact_id": "herb-overgrowth-cause", "state": "investigating", "belief": "笑面参疯长不只由自己试用催芽散造成，药签和月露用量也有异常"},
+    {"character_id": "qiao-zhi", "fact_id": "label-swap-culprit", "state": "believes_false", "belief": "陆迟为了掩盖违规催芽主动调换了笑面参药签"},
+    {"character_id": "wei-yuan", "fact_id": "lu-chi-liability", "state": "suspects", "belief": "陆迟违规催芽与药签错乱足以先冻结其考核资格"},
+    {"character_id": "han-xiao", "fact_id": "moon-dew-diversion", "state": "conceals", "belief": "自己挪用过一份月露并利用错签混乱掩盖用量差"},
+    {"character_id": "lin-su", "fact_id": "qualification-result", "state": "investigating", "belief": "陆迟是否具备药庐小考资格必须由实作过程和责任记录决定"}
+  ]
+}

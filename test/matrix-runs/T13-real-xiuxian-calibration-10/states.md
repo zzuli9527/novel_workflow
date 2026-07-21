@@ -1,0 +1,3778 @@
+# 逐章正式状态事件
+
+## 第 1 章
+
+```json
+{
+  "state_schema_version": "1.1",
+  "event_id": "chapter-0001",
+  "chapter": 1,
+  "source_draft": "chapters/0001/draft.final.md",
+  "source_sha256": "175438c878c165eec8e56358e66e3b3ed2928b7e799c9d5fa0a17bd7dffdd828",
+  "entity_changes": [
+    {
+      "change": "十二盆笑面参确认提前疯长、根须互缠，东侧两盆出现裂根并持续渗液，属于高风险损耗状态。",
+      "source_evidence": "盆一只没少，笑面参却全挤出了盆沿。肥厚叶片层层叠叠，白根从排水孔里钻出，沿木架彼此纠缠。靠东两盆最重，根颈已有细裂，淡黄汁液渗进湿土，笑纹一路咧到土面，像是赶在验收前先笑坏了。"
+    },
+    {
+      "change": "十二枚药签被夜露浸透，回收灵墨迁色造成看错或错挂条件，但不证明移动药签者。",
+      "source_evidence": "他以左手按住药签，施展辨药术。淡青灵气沿墨痕缓缓游过，夜露下浮起一层旧字。确是回收灵墨迁色：旧痕遇湿返出，新字便会偏移，足以让人看错，也可能造成错挂。\n\n但辨药术只能辨墨，不能辨手。\n\n陆迟拔起一枚药签查看底痕，随即放回原位：“迁色成立。只能说明具备看错、错挂的条件，不能证明谁动过。”"
+    },
+    {
+      "change": "告状藤提供一条完整命令复述，内容涉及把若干盆挂到后排并等露痕干掉，但来源、时辰、真假均不明，只能列为线索。",
+      "source_evidence": "乔枝正要再改，竹架上的告状藤忽然扬起藤梢，用一道陌生而含糊的嗓音说道：\n\n“先把那几盆挂到后排再说，露痕干了就看不出来。”\n\n两人的手同时停下。\n\n告状藤将整句话又复述一遍，字字不差，却没有再多一个字。\n\n乔枝望向药签：“有人说过这话。”\n\n“它只会复述听过的完整命令。”陆迟记下原句，“不知道说话者，不知道时辰，也不辨真假。”\n\n“至少说明有人提过挂到后排。”\n\n“所以是线索，不是证据。”"
+    }
+  ],
+  "relationship_changes": [
+    {
+      "change": "乔枝被流程留在现场参与核药签，并签下暂留时辰，但仍保留对陆迟调换药签的怀疑。",
+      "source_evidence": "魏远又指向乔枝：“你既签了暂留，就负责核药签。规章不能只从嘴里过。”\n\n乔枝沉默片刻，接过半叠湿药签：“我仍保留对陆迟调换药签的怀疑。”\n\n“可以。”陆迟在她名下添了一笔，“怀疑保留，核签照办。”"
+    }
+  ],
+  "cultivation_changes": [
+    {
+      "subject_id": "lu-chi",
+      "kind": "injury",
+      "change": "wood-qi-spasm 仍处于活动状态；陆迟施展微量催芽诀时右臂木灵气逆冲，导致指尖发抖、青光断开、呼吸中断。",
+      "state_id": "wood-qi-spasm",
+      "state_action": "set",
+      "stage_after": "炼气二层",
+      "from_stage": "",
+      "to_stage": "",
+      "prerequisites": [],
+      "costs": [],
+      "new_limits": [],
+      "source_evidence": "他右手结印，微量催芽诀刚凝出一线青光，小臂经脉便猛地逆抽。木灵气从腕间撞向肘侧，指尖一抖，青光当即断开，呼吸也在喉间噎了一下。"
+    },
+    {
+      "subject_id": "lu-chi",
+      "kind": "restriction",
+      "change": "rapid-growth-ban 继续生效；陆迟不得连续使用微量催芽诀，只能停手改用手工隔根。",
+      "state_id": "rapid-growth-ban",
+      "state_action": "set",
+      "stage_after": "炼气二层",
+      "from_stage": "",
+      "to_stage": "",
+      "prerequisites": [],
+      "costs": [],
+      "new_limits": [],
+      "source_evidence": "陆迟立刻散诀，改用竹片隔开根须。\n\n“木灵气逆冲仍在，不得连续催芽。”他在工牌背面记下一笔，“改手工，耗时另计。”"
+    }
+  ],
+  "resource_changes": [],
+  "knowledge_changes": [
+    {
+      "character_id": "lu-chi",
+      "fact_id": "recycled-ink-migration-condition",
+      "state": "knows",
+      "belief": "药签回收灵墨遇夜露迁色，只能造成看错或错挂条件，不能证明是谁动过药签。",
+      "supersedes_fact_ids": [],
+      "change": "陆迟通过辨药术确认回收灵墨迁色的证据边界。",
+      "source_evidence": "他以左手按住药签，施展辨药术。淡青灵气沿墨痕缓缓游过，夜露下浮起一层旧字。确是回收灵墨迁色：旧痕遇湿返出，新字便会偏移，足以让人看错，也可能造成错挂。\n\n但辨药术只能辨墨，不能辨手。\n\n陆迟拔起一枚药签查看底痕，随即放回原位：“迁色成立。只能说明具备看错、错挂的条件，不能证明谁动过。”"
+    },
+    {
+      "character_id": "lu-chi",
+      "fact_id": "lu-chi-illegal-sprout-powder-liability",
+      "state": "knows",
+      "belief": "自己上月曾违规试用便宜催芽散一小撮救西架三株受寒苗，违规属实，但影响范围仍待核。",
+      "supersedes_fact_ids": [],
+      "change": "陆迟承认违规试用便宜催芽散，并将其登记为待核责任。",
+      "source_evidence": "陆迟翻到工牌空白处，写下：待核责任一，陆迟违规试用便宜催芽散一小撮，地点西架，目的救受寒苗，影响范围待核。"
+    },
+    {
+      "character_id": "qiao-zhi",
+      "fact_id": "label-swap-culprit",
+      "state": "believes_false",
+      "belief": "陆迟为了遮掩违规使用催芽散而调换药签；她保留这一怀疑。",
+      "supersedes_fact_ids": [],
+      "change": "乔枝当面提出并继续保留对陆迟调换药签的误信。",
+      "source_evidence": "乔枝皱眉：“你承认得这么快，不代表这十二盆与你无关。你为了遮掩用散，调换药签，也说得通。”"
+    },
+    {
+      "character_id": "qiao-zhi",
+      "fact_id": "vine-command-clue-limited",
+      "state": "knows",
+      "belief": "告状藤复述的后排挂盆命令只能增加线索风险，不能单独证明责任，也不能免除陆迟催芽散责任。",
+      "supersedes_fact_ids": [],
+      "change": "乔枝知道藤语、工时牌和月露记录都不能单独定责或免责。",
+      "source_evidence": "乔枝跟来，照着规章念道：“工时牌仅作时辰参照。月露用量须与柜中刻度相合。藤语不得单独入证。三项加在一起，也不能免除你的催芽散责任。”"
+    },
+    {
+      "character_id": "wei-yuan",
+      "fact_id": "lu-chi-liability",
+      "state": "suspects",
+      "belief": "陆迟有违规催芽在前，药签错乱和笑面参异常必须按工时、月露、分盆记录核验；目前不正式冻结资格，但若下次验收仍不可核则按缺项处置。",
+      "supersedes_fact_ids": [],
+      "change": "魏远将陆迟药庐小考资格列入冻结风险，但没有立即冻结。",
+      "source_evidence": "魏远看向陆迟：“药庐小考资格列入冻结风险。现在不冻，下一次验收仍不可核，便按缺项处置。你有违规催芽在前，别指望一句藤话替你挡。”"
+    },
+    {
+      "character_id": "wei-yuan",
+      "fact_id": "recycled-ink-migration-condition",
+      "state": "knows",
+      "belief": "回收灵墨迁色能造成看错或错挂，但不能证明谁动过，也不能替任何人免责。",
+      "supersedes_fact_ids": [],
+      "change": "魏远确认药签灵墨迁色的证据边界。",
+      "source_evidence": "“回收灵墨迁色，能造成看错、错挂。”魏远道，“不能证明谁动过，也不能替谁免责。”"
+    },
+    {
+      "character_id": "lu-chi",
+      "fact_id": "vine-command-clue-limited",
+      "state": "investigating",
+      "belief": "告状藤复述的命令需与昨日后排工牌等记录核验，不能直接当证据。",
+      "supersedes_fact_ids": [],
+      "change": "陆迟把告状藤复述命令列入待核线索，并决定从昨日后排工牌查起。",
+      "source_evidence": "告状藤在棚里拖长声音：“先把那几盆挂到后排再说——”\n\n陆迟推开参棚木门：“这句话也核。先从昨日谁领过后排工牌查起。”"
+    }
+  ],
+  "thread_changes": [
+    {
+      "change": "陆迟需要在下一次验收前补齐工时牌领还记录、月露用量刻度、分盆抢救过程，并逐一重挂药签、单列旧墨迁色和裂根风险。",
+      "source_evidence": "“那就只列线索。”魏远把工牌拍回他手中，“下一次验收前，交齐工时牌领还记录、月露用量刻度、分盆抢救过程。十二盆逐一重挂药签，旧墨迁色单列。裂根的，不准写成已愈。”"
+    },
+    {
+      "change": "陆迟确定下一步抢救顺序：先救未裂盆，裂根两盆只隔离并计风险，每动一盆都记录时辰、药签旧痕和月露刻度。",
+      "source_evidence": "“先救未裂的。裂根两盆只隔离、计风险。每动一盆，记时辰、药签旧痕和月露刻度。”"
+    }
+  ],
+  "comedy_changes": [
+    {
+      "change": "告状藤学舌陆迟的流程用语并反向嘲讽，形成核账式笑点。",
+      "source_evidence": "竹架上的告状藤抖了抖叶：“耗时另计。”\n\n陆迟头也不抬：“你没有工时。”\n\n告状藤安静片刻，又道：“你没有工时。”\n\n陆迟决定不与一株藤核账。"
+    },
+    {
+      "change": "陆迟把乔枝的风险提示和暂留行为登记成核对协助，迫使乔枝被流程留在现场。",
+      "source_evidence": "“我是在提示风险。”\n\n“已记为核对提示。”\n\n乔枝刚要拒绝，廊下传来脚步声。"
+    }
+  ],
+  "new_constraints": [
+    {
+      "change": "陆迟药庐小考资格尚未冻结，但已列入冻结风险；若下一次验收仍不可核，将按缺项处置。",
+      "source_evidence": "魏远看向陆迟：“药庐小考资格列入冻结风险。现在不冻，下一次验收仍不可核，便按缺项处置。你有违规催芽在前，别指望一句藤话替你挡。”"
+    },
+    {
+      "change": "裂根的笑面参不得写成已愈，只能按风险和隔离处理。",
+      "source_evidence": "“那就只列线索。”魏远把工牌拍回他手中，“下一次验收前，交齐工时牌领还记录、月露用量刻度、分盆抢救过程。十二盆逐一重挂药签，旧墨迁色单列。裂根的，不准写成已愈。”"
+    },
+    {
+      "change": "乔枝因签下暂留时辰，被要求负责核药签。",
+      "source_evidence": "魏远又指向乔枝：“你既签了暂留，就负责核药签。规章不能只从嘴里过。”"
+    }
+  ],
+  "resolved_constraints": [],
+  "next_chapter_inputs": [
+    "十二盆笑面参已提前疯长并根须互缠，东侧两盆裂根持续渗液；陆迟决定先救未裂盆，裂根两盆只隔离并计风险。",
+    "陆迟仍为炼气二层，wood-qi-spasm 活动，rapid-growth-ban 继续生效，不能连续使用微量催芽诀。",
+    "药签回收灵墨被夜露浸后迁色，只能证明看错或错挂条件，不能证明谁动过药签。",
+    "陆迟已承认上月违规使用便宜催芽散一小撮救西架三株受寒苗，此事认责但波及范围待核。",
+    "告状藤复述命令“先把那几盆挂到后排再说，露痕干了就看不出来。”，来源、时辰、真假皆不明，只能作为待核线索。",
+    "魏远要求下一次验收前交齐工时牌领还记录、月露用量刻度、分盆抢救过程，并逐一重挂药签、旧墨迁色单列。",
+    "陆迟药庐小考资格尚未冻结，但已列入冻结风险；下次验收仍不可核则按缺项处置。",
+    "乔枝仍保留陆迟调换药签的怀疑，但已签下暂留时辰并负责核药签。"
+  ],
+  "deviations": []
+}
+```
+
+## 第 2 章
+
+```json
+{
+  "state_schema_version": "1.1",
+  "event_id": "chapter-0002",
+  "chapter": 2,
+  "source_draft": "chapters/0002/draft.final.md",
+  "source_sha256": "74b3a39e7ff335874eb92c788f8b58d6e32f7b954fbdbfd212b12330339c8bc1",
+  "entity_changes": [
+    {
+      "change": "甲一笑面参确认裂根且不可逆，被移入损耗观察。",
+      "source_evidence": "陆迟给甲一盆沿系上红绳，移到右侧空架：“甲一，裂根，停用月露，不施催芽，入损耗观察。”"
+    },
+    {
+      "change": "甲二笑面参确认裂根且不可逆，被计入损耗观察。",
+      "source_evidence": "陆迟停了手，也给甲二系上红绳。\n\n“甲二，裂根，不可逆。”"
+    },
+    {
+      "change": "乙三根须被陆迟强行施术暂时稳定，丙一裂缝未继续扩大。",
+      "source_evidence": "乙三的根须终于定住，丙一土面的裂缝也不再扩大。"
+    },
+    {
+      "change": "一只控露陶嘴被陆迟施术时的灵气冲裂，进入损耗记录，赔偿待核。",
+      "source_evidence": "魏远没有理会两人的争执，提笔填下损耗：控露陶嘴一只，陆迟强行施术所致，赔偿待核。"
+    },
+    {
+      "change": "陆迟保留了工时牌、月露初值拓纸和十二盆编号副记，作为后续核验材料。",
+      "source_evidence": "陆迟用左手收起工时牌、月露初值拓纸和十二盆编号副记。正表由魏远带走，副记则被他装进布袋。"
+    }
+  ],
+  "relationship_changes": [
+    {
+      "change": "乔枝仍不为陆迟担保，但她已签署自己在场确认的前置状态记录。",
+      "source_evidence": "“我签的是前置状态，不是替你担保。”\n\n“栏位名正是前置状态。”\n\n乔枝盯了他一息，还是签下名字。"
+    }
+  ],
+  "cultivation_changes": [
+    {
+      "subject_id": "lu-chi",
+      "kind": "injury",
+      "change": "wood-qi-spasm 加重，陆迟右臂木灵气逆冲更严重，已不能稳定结印。",
+      "state_id": "wood-qi-spasm",
+      "state_action": "set",
+      "stage_after": "炼气二层",
+      "from_stage": "",
+      "to_stage": "",
+      "prerequisites": [],
+      "costs": [],
+      "new_limits": [],
+      "source_evidence": "他试着松开右腕，五指立刻抖出一个残缺印势。乔枝按住他的手，把“木灵气逆冲加重，已不能稳定结印”添进旁注。"
+    },
+    {
+      "subject_id": "lu-chi",
+      "kind": "restriction",
+      "change": "rapid-growth-ban 继续有效；陆迟伤势限制未除，不能连续用催芽诀。",
+      "state_id": "rapid-growth-ban",
+      "state_action": "set",
+      "stage_after": "炼气二层",
+      "from_stage": "",
+      "to_stage": "",
+      "prerequisites": [],
+      "costs": [],
+      "new_limits": [],
+      "source_evidence": "乔枝脸色一沉：“你的木灵气逆冲还在。伤势限制未除，不能连续用催芽诀。”"
+    }
+  ],
+  "resource_changes": [
+    {
+      "owner_id": "lu-chi",
+      "resource_id": "contribution-point",
+      "operation": "consume",
+      "amount": 3,
+      "unit": "点",
+      "resulting_balance": 6,
+      "source_or_destination": "魏远验收表处罚扣减",
+      "change": "陆迟贡献点从九点扣三点，余额六点。",
+      "source_evidence": "贡献点栏随之落定：原有九点，扣三点，余六点。"
+    }
+  ],
+  "knowledge_changes": [
+    {
+      "character_id": "qiao-zhi",
+      "fact_id": "label-swap-culprit",
+      "state": "believes_false",
+      "belief": "乔枝仍怀疑陆迟调换过药签，但承认这不能写入事实栏。",
+      "supersedes_fact_ids": [],
+      "change": "乔枝的 label-swap-culprit 误信仍保持活跃。",
+      "source_evidence": "“我只降低风险。”乔枝立即划清边界，“且仍怀疑他调过药签。”\n\n陆迟道：“怀疑不入事实栏。”\n\n乔枝转头瞪他：“我知道！”"
+    },
+    {
+      "character_id": "qiao-zhi",
+      "fact_id": "pre-operation-abnormalities",
+      "state": "knows",
+      "belief": "乔枝亲眼确认陆迟本次施术前已存在甲一甲二裂根、根须互缠和药签回收灵墨迁色。",
+      "supersedes_fact_ids": [],
+      "change": "乔枝掌握并签署了施术前异常已存在的现场事实。",
+      "source_evidence": "乔枝沉默片刻，在抢救单上补了一行：“本人在场确认，甲一、甲二施术前已有根须互缠、笑纹裂开；各盆药签均见回收灵墨迁色。”"
+    },
+    {
+      "character_id": "wei-yuan",
+      "fact_id": "lu-chi-liability-confirmed",
+      "state": "knows",
+      "belief": "魏远确认陆迟连续施术、伤势加重和损坏控露陶嘴的责任，同时确认乙三未裂是抢救结果，两者不相抵。",
+      "supersedes_fact_ids": [
+        "lu-chi-liability"
+      ],
+      "change": "魏远对陆迟责任的状态从怀疑转为正式记录确认，并据此处罚。",
+      "source_evidence": "“乙三未裂，是抢救结果。”魏远收笔，“你连续施术、伤势加重、损坏陶嘴，也是结果。两者不相抵。”"
+    },
+    {
+      "character_id": "wei-yuan",
+      "fact_id": "pre-freeze-abnormalities",
+      "state": "knows",
+      "belief": "魏远知道资格冻结前现场已存在药签回收灵墨迁色、笑面参根须互缠、甲一甲二裂根、乔枝见证、月露初值未动和工时牌卯末领取等前置记录。",
+      "supersedes_fact_ids": [],
+      "change": "魏远在同一验收表上记录资格冻结前的前置异常和核验材料。",
+      "source_evidence": "片刻后，魏远在同一张表上补写：冻结前，现场已有药签回收灵墨迁色、笑面参根须互缠；甲一、甲二裂根，入损耗观察；乔枝在场见证；月露刻度初值未动，工时牌卯末领取，待核。"
+    },
+    {
+      "character_id": "lu-chi",
+      "fact_id": "qualification-frozen",
+      "state": "knows",
+      "belief": "陆迟知道自己的药庐小考资格已被临时冻结，后续需等抢救过程、工时牌与月露用量核验后复议。",
+      "supersedes_fact_ids": [],
+      "change": "陆迟明确知道资格已被冻结且复议依赖核验记录。",
+      "source_evidence": "最后是资格栏：药庐小考资格临时冻结，待抢救过程、工时牌与月露用量核验后复议。"
+    }
+  ],
+  "thread_changes": [
+    {
+      "change": "陆迟的资格线从冻结风险推进为临时冻结，复议条件被写进验收表。",
+      "source_evidence": "最后是资格栏：药庐小考资格临时冻结，待抢救过程、工时牌与月露用量核验后复议。"
+    },
+    {
+      "change": "同一验收表同时固定了陆迟责任和冻结前异常，为后续按记录反查留下依据。",
+      "source_evidence": "片刻后，魏远在同一张表上补写：冻结前，现场已有药签回收灵墨迁色、笑面参根须互缠；甲一、甲二裂根，入损耗观察；乔枝在场见证；月露刻度初值未动，工时牌卯末领取，待核。"
+    }
+  ],
+  "comedy_changes": [
+    {
+      "change": "陆迟把魏远的处罚拆成表格栏位，要求扣点、损耗和资格冻结分别入表。",
+      "source_evidence": "“是。”陆迟从台角抽出验收表，“请分别记入损耗栏、贡献点栏和资格栏。”\n\n魏远目光一沉：“你还替我备好了处罚？”"
+    },
+    {
+      "change": "陆迟用表格逻辑把怀疑和事实分栏，形成规章喜剧效果。",
+      "source_evidence": "“我只降低风险。”乔枝立即划清边界，“且仍怀疑他调过药签。”\n\n陆迟道：“怀疑不入事实栏。”\n\n乔枝转头瞪他：“我知道！”"
+    }
+  ],
+  "new_constraints": [
+    {
+      "change": "陆迟需要赔偿被其强行施术损坏的一只控露陶嘴，具体赔偿待核。",
+      "source_evidence": "魏远没有理会两人的争执，提笔填下损耗：控露陶嘴一只，陆迟强行施术所致，赔偿待核。"
+    },
+    {
+      "change": "陆迟药庐小考资格临时冻结，需待抢救过程、工时牌与月露用量核验后复议。",
+      "source_evidence": "最后是资格栏：药庐小考资格临时冻结，待抢救过程、工时牌与月露用量核验后复议。"
+    },
+    {
+      "change": "陆迟副记不得改动，否则临时冻结将升级为非临时状态。",
+      "source_evidence": "魏远临出棚前道：“资格已经冻结。若副记改动一笔，便不再是临时。”"
+    },
+    {
+      "change": "陆迟右臂逆冲加重，已不能稳定结印，不能继续声称自己还能正常抢救。",
+      "source_evidence": "他试着松开右腕，五指立刻抖出一个残缺印势。乔枝按住他的手，把“木灵气逆冲加重，已不能稳定结印”添进旁注。\n\n“这是防止你再说还能做。”她道。"
+    }
+  ],
+  "resolved_constraints": [],
+  "next_chapter_inputs": [
+    "甲一、甲二笑面参裂根已确认不可逆，并已入损耗观察。",
+    "乙三根须暂时定住，丙一裂缝没有继续扩大，但另外十盆笑面参仍在土下缓缓牵动根须。",
+    "陆迟仍为炼气二层，wood-qi-spasm 加重，右臂木灵气逆冲已不能稳定结印。",
+    "rapid-growth-ban 仍有效，陆迟伤势限制未除，不得连续使用微量催芽诀。",
+    "一只控露陶嘴由陆迟强行施术损坏，赔偿待核。",
+    "陆迟贡献点已从九点扣至六点。",
+    "陆迟药庐小考资格已被魏远临时冻结，待抢救过程、工时牌与月露用量核验后复议；副记若改动一笔，冻结将不再是临时。",
+    "验收表已记录冻结前存在药签回收灵墨迁色、笑面参根须互缠、甲一甲二裂根、乔枝在场见证、月露刻度初值未动和工时牌卯末领取待核。",
+    "乔枝仍怀疑陆迟调过药签，但已签署前置状态记录。",
+    "陆迟手中保留工时牌、月露初值拓纸和十二盆编号副记，正表由魏远带走。"
+  ],
+  "deviations": []
+}
+```
+
+## 第 3 章
+
+```json
+{
+  "state_schema_version": "1.1",
+  "event_id": "chapter-0003",
+  "chapter": 3,
+  "source_draft": "chapters/0003/draft.final.md",
+  "source_sha256": "e875780fa81ac4b3c665fa6835370adcb48d6bd4799c58f9d4173b6c91721c23",
+  "entity_changes": [
+    {
+      "change": "魏远在同一张验收表过程栏补入陆迟停术、疗伤膏使用、伤势部分恢复、月露初值抄本、分盆编号备注和乔枝见证签字等补交事实，并盖印接收。",
+      "source_evidence": "魏远看过她的签字，最终提笔填入过程栏，盖上小印：“接收，不作为免责。月露刻度有矛盾，只说明要继续核验，不说明谁清白。药签错乱仍未查明。”"
+    }
+  ],
+  "relationship_changes": [
+    {
+      "change": "乔枝因以降低共同损失为由留下，实际成为陆迟停术、疗伤和后续记录核验的见证人。",
+      "source_evidence": "乔枝退了半步：“我留下，只为降低共同损失。你若再抖坏一只陶嘴，本月公器损耗栏会很难看。”\n\n陆迟提笔添上一行：“乔枝因降低共同损失留下，任风险见证人。”"
+    }
+  ],
+  "cultivation_changes": [
+    {
+      "subject_id": "lu-chi",
+      "kind": "recovery",
+      "change": "陆迟停止施术、使用疗伤膏并进行基础吐纳后，wood-qi-spasm 从加重进入部分恢复。",
+      "state_id": "wood-qi-spasm",
+      "state_action": "set",
+      "stage_after": "炼气二层",
+      "from_stage": "",
+      "to_stage": "",
+      "prerequisites": [],
+      "costs": [],
+      "new_limits": [],
+      "source_evidence": "乔枝立刻落笔：“木灵气逆冲由加重转为部分恢复。可短时稳定结印，仍有手抖与气息中断，不得连续施术。”"
+    },
+    {
+      "subject_id": "lu-chi",
+      "kind": "injury",
+      "change": "wood-qi-spasm 仍未解除，陆迟仍有右臂手抖与气息中断，只能短时稳定结印。",
+      "state_id": "wood-qi-spasm",
+      "state_action": "set",
+      "stage_after": "炼气二层",
+      "from_stage": "",
+      "to_stage": "",
+      "prerequisites": [],
+      "costs": [],
+      "new_limits": [],
+      "source_evidence": "乔枝立刻落笔：“木灵气逆冲由加重转为部分恢复。可短时稳定结印，仍有手抖与气息中断，不得连续施术。”"
+    },
+    {
+      "subject_id": "lu-chi",
+      "kind": "restriction",
+      "change": "rapid-growth-ban 继续生效；陆迟伤势未除前不得连续施术，本章已停止施术并改用基础吐纳。",
+      "state_id": "rapid-growth-ban",
+      "state_action": "set",
+      "stage_after": "炼气二层",
+      "from_stage": "",
+      "to_stage": "",
+      "prerequisites": [],
+      "costs": [],
+      "new_limits": [],
+      "source_evidence": "乔枝把“余额零”写下，又补了一句：“伤势未除，不得连续施术。”\n\n陆迟不再看分盆区，依基础吐纳缓缓引气。"
+    }
+  ],
+  "resource_changes": [
+    {
+      "owner_id": "lu-chi",
+      "resource_id": "healing-salve",
+      "operation": "consume",
+      "amount": 1,
+      "unit": "份",
+      "resulting_balance": 0,
+      "source_or_destination": "陆迟疗伤使用",
+      "change": "陆迟消耗仅剩的1份疗伤膏，healing-salve 从1份变为0份。",
+      "source_evidence": "陆迟取出仅剩的一份疗伤膏。封纸揭开，辛涩木气散出，他右臂筋络骤然抽紧，五指不受控制地颤了几下。\n\n乔枝俯身记录：“停术时辰，辰初二刻。疗伤膏一份，全数使用。症状：右臂木灵气逆冲，指节颤，气息断续。”"
+    }
+  ],
+  "knowledge_changes": [
+    {
+      "character_id": "qiao-zhi",
+      "fact_id": "label-swap-culprit",
+      "state": "believes_false",
+      "belief": "乔枝仍怀疑陆迟调换过药签并有调签嫌疑，但已承认“陆迟主动调换全部药签”的单一说法尚不完整，不能只按该说法写事实。",
+      "supersedes_fact_ids": [],
+      "change": "乔枝的 label-swap-culprit 误信仍活跃，但被工时牌、月露初值和分盆编号的矛盾动摇。",
+      "source_evidence": "她一笔一画写道：“工时牌归还时辰、月露初值与分盆编号存在不合；不足以证明陆迟无责，足以说明其主动调换全部药签之说尚不完整。后续核验月露领取、用量、归还及药签迁色。”\n\n写完，她沉默片刻，又补上自己的名字。\n\n陆迟点头：“见证完整。”\n\n“我的怀疑仍在。”"
+    },
+    {
+      "character_id": "qiao-zhi",
+      "fact_id": "moon-dew-record-conflict",
+      "state": "investigating",
+      "belief": "工时牌归还时辰、月露初值与分盆编号存在不合，需要继续核验月露领取、用量、归还及药签迁色。",
+      "supersedes_fact_ids": [],
+      "change": "乔枝开始按证据补记录并将月露与药签迁色列为后续核验目标。",
+      "source_evidence": "她一笔一画写道：“工时牌归还时辰、月露初值与分盆编号存在不合；不足以证明陆迟无责，足以说明其主动调换全部药签之说尚不完整。后续核验月露领取、用量、归还及药签迁色。”"
+    },
+    {
+      "character_id": "lu-chi",
+      "fact_id": "moon-dew-record-conflict",
+      "state": "investigating",
+      "belief": "月露初值、工时牌时辰和分盆编号存在不合，下一步应核验月露领取簿。",
+      "supersedes_fact_ids": [],
+      "change": "陆迟把月露初值不合和领取簿待核写入副记末尾。",
+      "source_evidence": "最末一行墨迹尚湿：月露初值不合，领取簿待核。"
+    },
+    {
+      "character_id": "wei-yuan",
+      "fact_id": "moon-dew-record-conflict",
+      "state": "investigating",
+      "belief": "月露刻度存在矛盾，只能说明要继续核验，不能证明陆迟清白或确定责任人。",
+      "supersedes_fact_ids": [],
+      "change": "魏远接收月露矛盾记录，但只将其作为继续核验事项。",
+      "source_evidence": "魏远看过她的签字，最终提笔填入过程栏，盖上小印：“接收，不作为免责。月露刻度有矛盾，只说明要继续核验，不说明谁清白。药签错乱仍未查明。”"
+    },
+    {
+      "character_id": "wei-yuan",
+      "fact_id": "lu-chi-penalties-maintained",
+      "state": "knows",
+      "belief": "陆迟违规试用便宜催芽散责任栏保留，控露陶嘴赔偿待核，贡献点扣除三点已执行，药庐小考资格继续冻结。",
+      "supersedes_fact_ids": [],
+      "change": "魏远明确维持对陆迟的既有处罚和待赔责任。",
+      "source_evidence": "魏远逐页翻过停术记录、疗伤膏封纸和月露刻度抄本，先开口道：“补记录不能抵扣处罚。违规试用便宜催芽散，责任栏保留；控露陶嘴损坏，赔偿待核；贡献点扣除三点已执行；药庐小考资格继续冻结。”"
+    }
+  ],
+  "thread_changes": [
+    {
+      "change": "药签错乱责任仍未查明，告状藤本章没有提供新的可靠证词。",
+      "source_evidence": "告状藤缠在远处竹架上，今日没听到新的完整命令，只抖了两片叶。两人都未理会。"
+    },
+    {
+      "change": "甲一、甲二两盆笑面参仍不可复原，只能继续列入损耗观察。",
+      "source_evidence": "甲一、甲二盆沿挂着黑绳。两盆笑面参裂根处已经干白，笑纹开裂，不可能复原，只能继续列入损耗观察。陆迟没有碰它们。"
+    },
+    {
+      "change": "月露领取、用量、归还记录成为下一步核验方向。",
+      "source_evidence": "“先回去。”她说，“明日查月露领取簿。若你今晚再碰催芽诀，我就在风险备注里另开一页。”"
+    }
+  ],
+  "comedy_changes": [
+    {
+      "change": "乔枝用风险告知保持距离，却被陆迟把风险告知记录成处置建议和见证事项。",
+      "source_evidence": "陆迟用左手摊开副记：“处置建议，立即停术。请告知人签字。”\n\n“我是在告知风险，不是在替你开药方。”\n\n“告知改变了处置，效力相同。”"
+    },
+    {
+      "change": "乔枝反复强调自己只是为了降低共同损失，结果被陆迟不断写进记录。",
+      "source_evidence": "走出管事房，乔枝才低声道：“我同意继续核验，是为了降低共同损失。”\n\n陆迟在副记末尾写下：“乔枝同意核月露领取、用量及归还记录。”\n\n“后一句呢？”\n\n“理由不影响工作项。”"
+    }
+  ],
+  "new_constraints": [
+    {
+      "change": "陆迟疗伤膏余额为零，后续不能再从自己现有库存中使用 healing-salve。",
+      "source_evidence": "“再记余额为零。”\n\n“你连自己的药膏都防着多报？”\n\n“余量不清，后续会误领。”\n\n乔枝把“余额零”写下，又补了一句：“伤势未除，不得连续施术。”"
+    },
+    {
+      "change": "陆迟控露陶嘴损坏责任继续存在，需待核赔偿。",
+      "source_evidence": "陆迟睁眼：“陶嘴也记？”\n\n“免得赔偿时把一只算成两只。损坏责任不免，数目不能乱加。”\n\n“降低共同损失，有效。”\n\n乔枝笔锋一顿，仍在图旁写下：控露陶嘴一只，已碎，待赔。"
+    },
+    {
+      "change": "陆迟违规试用便宜催芽散责任栏保留，未被补记录抵扣或洗白。",
+      "source_evidence": "魏远逐页翻过停术记录、疗伤膏封纸和月露刻度抄本，先开口道：“补记录不能抵扣处罚。违规试用便宜催芽散，责任栏保留；控露陶嘴损坏，赔偿待核；贡献点扣除三点已执行；药庐小考资格继续冻结。”"
+    },
+    {
+      "change": "陆迟药庐小考资格继续冻结。",
+      "source_evidence": "魏远逐页翻过停术记录、疗伤膏封纸和月露刻度抄本，先开口道：“补记录不能抵扣处罚。违规试用便宜催芽散，责任栏保留；控露陶嘴损坏，赔偿待核；贡献点扣除三点已执行；药庐小考资格继续冻结。”"
+    }
+  ],
+  "resolved_constraints": [],
+  "next_chapter_inputs": [
+    "陆迟仍为炼气二层，wood-qi-spasm 已由加重转为部分恢复；右臂仍有手抖和气息中断，可短时稳定结印，但不得连续施术。",
+    "rapid-growth-ban 继续生效；陆迟伤势未除前不得连续使用微量催芽诀。",
+    "陆迟已消耗1份 healing-salve，当前 healing-salve 余额为0份。",
+    "甲一、甲二两盆笑面参仍列入损耗观察，不可能复原。",
+    "乔枝仍怀疑陆迟调过药签，但已承认工时牌归还时辰、月露初值与分盆编号存在不合，陆迟主动调换全部药签之说尚不完整。",
+    "乔枝已在停术疗伤记录和风险备注上签字，成为后续核验见证人。",
+    "魏远已接收停术疗伤记录、月露刻度抄本、分盆编号备注和乔枝见证签字，并写入同一张验收表过程栏。",
+    "魏远维持陆迟贡献点扣除三点后的6点余额、控露陶嘴赔偿待核、违规试用便宜催芽散责任栏保留和药庐小考资格继续冻结。",
+    "告状藤本章没有新增可靠证词，药签错乱仍未查明。",
+    "下一步明确核验月露领取簿，以及月露领取、用量、归还和药签迁色记录。"
+  ],
+  "deviations": []
+}
+```
+
+## 第 4 章
+
+```json
+{
+  "state_schema_version": "1.1",
+  "event_id": "chapter-0004",
+  "chapter": 4,
+  "source_draft": "chapters/0004/draft.final.md",
+  "source_sha256": "185da2ca8c9de7bb6ca5c87ace9baa99d4958ca400995fa48485b8547fba4aac",
+  "entity_changes": [
+    {
+      "change": "十二盆笑面参完成逐盆辨药核验：甲一、甲二仍为裂根损耗观察，其余十盆按叶脉、根纹与笑纹反应分成轻重两档，和账册相同月露用量记录矛盾。",
+      "source_evidence": "两人逐盆核验。甲一、甲二裂根另列，其余十盆的叶脉、根纹与笑纹反应，明显分成轻重两档。账册上却记着相同的月露用量。"
+    },
+    {
+      "change": "回收灵墨旧签经等量夜露复核，确认会发生迁色并造成错读、错挂条件，但不能定出移动药签者。",
+      "source_evidence": "两人转到旧药签清洗台。乔枝取三枚回收灵墨旧签，滴上等量夜露。半盏茶后，其中一枚“乙二”的旧刮痕洇开，下半笔画滑成近似“丙”；另一枚横画迁移，遮住小半编号。\n\n“迁色成立。”陆迟道，“足以造成错读，继而错挂。”\n\n乔枝把三枚签翻面比对：“迁色方向受刮痕和露量影响，不能倒推出谁拿过。只可记条件，不可定人。”"
+    },
+    {
+      "change": "庚七编号月露进入正式核验：领取人为韩笑工时牌，归还栏空缺。",
+      "source_evidence": "魏远翻开领取簿，指尖停在一行。\n\n“庚七瓶，昨日申时二刻，韩笑工时牌领取。用途，后排笑面参补露。归还栏空缺。”"
+    },
+    {
+      "change": "庚七编号月露实物余量比账面少一份。",
+      "source_evidence": "魏远取出庚七，置于刻度灯下。银蓝液面停在第三细刻下方。他再查账面应余，脸色沉了下来。\n\n“少一份。”"
+    }
+  ],
+  "relationship_changes": [
+    {
+      "change": "韩笑与陆迟在庚七月露复核事项上转为公开戒备，韩笑虽语气温和但眼神变冷。",
+      "source_evidence": "韩笑站在封存柜前，语气仍温和，眼神却已冷了：“那便一起量。只盼陆师弟的待核栏装得下所有人的误差。”"
+    },
+    {
+      "change": "乔枝继续以签字见证人身份推动核验，并明确愿意承担本次见证风险。",
+      "source_evidence": "乔枝递上自己的签字页：“我申请依公物流程开柜。若不核验，后续损耗扩大，我的见证记录也不完整。为降低共同损失，我承担本次见证风险。”"
+    }
+  ],
+  "cultivation_changes": [
+    {
+      "subject_id": "lu-chi",
+      "kind": "injury",
+      "change": "wood-qi-spasm 仍处于部分恢复状态；陆迟低负担辨药后右手轻抖，不能继续结印。",
+      "state_id": "wood-qi-spasm",
+      "state_action": "set",
+      "stage_after": "炼气二层",
+      "from_stage": "",
+      "to_stage": "",
+      "prerequisites": [],
+      "costs": [],
+      "new_limits": [],
+      "source_evidence": "查到最后一盆，陆迟收针时右手轻抖，针尖磕在木盘上。\n\n乔枝按住册页：“停。今日不得再结印。”\n\n“只是辨药术。”\n\n“所以我会写明低负担辨药，并非催芽。”乔枝看了一眼他的手臂，“伤势仍只是部分恢复，不代表可以拿剩下那部分去冒险。”"
+    },
+    {
+      "subject_id": "lu-chi",
+      "kind": "restriction",
+      "change": "rapid-growth-ban 继续生效；本章陆迟只能进行低负担辨药，不得连续催芽或继续结印。",
+      "state_id": "rapid-growth-ban",
+      "state_action": "set",
+      "stage_after": "炼气二层",
+      "from_stage": "",
+      "to_stage": "",
+      "prerequisites": [],
+      "costs": [],
+      "new_limits": [],
+      "source_evidence": "乔枝抱着册子道：“今日禁连续催芽。每查一盆，先报盆号、动作、反应。右臂若再抖，立即停。”"
+    },
+    {
+      "subject_id": "lu-chi",
+      "kind": "insight",
+      "change": "陆迟确认十二盆笑面参既往月露用量至少存在轻重两档反应，不能再按账册同一用量直接解释。",
+      "state_id": "",
+      "state_action": "",
+      "stage_after": "炼气二层",
+      "from_stage": "",
+      "to_stage": "",
+      "prerequisites": [],
+      "costs": [],
+      "new_limits": [],
+      "source_evidence": "两人逐盆核验。甲一、甲二裂根另列，其余十盆的叶脉、根纹与笑纹反应，明显分成轻重两档。账册上却记着相同的月露用量。"
+    }
+  ],
+  "resource_changes": [],
+  "knowledge_changes": [
+    {
+      "character_id": "qiao-zhi",
+      "fact_id": "label-swap-culprit",
+      "state": "believes_false",
+      "belief": "乔枝仍未正式撤销陆迟调换药签嫌疑，但因异常盆号不全处于陆迟当值时段，已将原判断降为更需核查的怀疑。",
+      "supersedes_fact_ids": [],
+      "change": "乔枝的 label-swap-culprit 误信进一步动摇，但仍未被正式淘汰。",
+      "source_evidence": "陆迟问：“原判断撤销？”\n\n“只能降为更需核查的怀疑。”乔枝合上半页册子，“时段不合，不能证明谁动了药签。你试用便宜催芽散的责任也还在。”"
+    },
+    {
+      "character_id": "qiao-zhi",
+      "fact_id": "moon-dew-usage-two-levels",
+      "state": "knows",
+      "belief": "十二盆笑面参中，除甲一、甲二裂根另列外，其余十盆对辨药检查呈现轻重两档月露反应，与账册同一用量记录矛盾。",
+      "supersedes_fact_ids": [],
+      "change": "乔枝掌握了盆株药性反应与月露账册记录不一致的事实。",
+      "source_evidence": "两人逐盆核验。甲一、甲二裂根另列，其余十盆的叶脉、根纹与笑纹反应，明显分成轻重两档。账册上却记着相同的月露用量。"
+    },
+    {
+      "character_id": "lu-chi",
+      "fact_id": "moon-dew-usage-two-levels",
+      "state": "knows",
+      "belief": "十二盆笑面参中，除甲一、甲二裂根另列外，其余十盆对辨药检查呈现轻重两档月露反应，与账册同一用量记录矛盾。",
+      "supersedes_fact_ids": [],
+      "change": "陆迟掌握了盆株药性反应与月露账册记录不一致的事实。",
+      "source_evidence": "两人逐盆核验。甲一、甲二裂根另列，其余十盆的叶脉、根纹与笑纹反应，明显分成轻重两档。账册上却记着相同的月露用量。"
+    },
+    {
+      "character_id": "qiao-zhi",
+      "fact_id": "ink-label-color-migration-limit",
+      "state": "knows",
+      "belief": "灵墨旧签迁色足以造成错读和错挂条件，但迁色方向不能倒推出谁拿过药签。",
+      "supersedes_fact_ids": [],
+      "change": "乔枝确认灵墨迁色的证据边界。",
+      "source_evidence": "“迁色成立。”陆迟道，“足以造成错读，继而错挂。”\n\n乔枝把三枚签翻面比对：“迁色方向受刮痕和露量影响，不能倒推出谁拿过。只可记条件，不可定人。”"
+    },
+    {
+      "character_id": "lu-chi",
+      "fact_id": "ink-label-color-migration-limit",
+      "state": "knows",
+      "belief": "灵墨旧签迁色足以造成错读和错挂条件，但迁色方向不能倒推出谁拿过药签。",
+      "supersedes_fact_ids": [],
+      "change": "陆迟确认灵墨迁色的证据边界。",
+      "source_evidence": "“迁色成立。”陆迟道，“足以造成错读，继而错挂。”\n\n乔枝把三枚签翻面比对：“迁色方向受刮痕和露量影响，不能倒推出谁拿过。只可记条件，不可定人。”"
+    },
+    {
+      "character_id": "wei-yuan",
+      "fact_id": "han-xiao-geng-seven-record",
+      "state": "knows",
+      "belief": "庚七瓶月露由韩笑工时牌领取，归还栏未按时登记，实物比账面少一份；这三项已确认，但不能裁定韩笑动过药签。",
+      "supersedes_fact_ids": [],
+      "change": "魏远正式确认庚七月露领取、归还登记缺失和余量短缺三项事实。",
+      "source_evidence": "“无人如此裁定。”魏远道，“现在只确认三项：庚七由你的工时牌领取；归还栏未按时登记；实物比账面少一份。”"
+    },
+    {
+      "character_id": "lu-chi",
+      "fact_id": "han-xiao-geng-seven-record",
+      "state": "knows",
+      "belief": "庚七瓶月露由韩笑工时牌领取，归还栏未按时登记，实物比账面少一份；这三项已确认，但不能裁定韩笑动过药签。",
+      "supersedes_fact_ids": [],
+      "change": "陆迟掌握庚七月露领取、归还登记缺失和余量短缺三项事实，并将其纳入待核。",
+      "source_evidence": "“无人如此裁定。”魏远道，“现在只确认三项：庚七由你的工时牌领取；归还栏未按时登记；实物比账面少一份。”"
+    },
+    {
+      "character_id": "qiao-zhi",
+      "fact_id": "han-xiao-geng-seven-record",
+      "state": "knows",
+      "belief": "庚七瓶月露由韩笑工时牌领取，归还栏未按时登记，实物比账面少一份；这三项已确认，但不能裁定韩笑动过药签。",
+      "supersedes_fact_ids": [],
+      "change": "乔枝掌握庚七月露领取、归还登记缺失和余量短缺三项事实。",
+      "source_evidence": "“无人如此裁定。”魏远道，“现在只确认三项：庚七由你的工时牌领取；归还栏未按时登记；实物比账面少一份。”"
+    },
+    {
+      "character_id": "han-xiao",
+      "fact_id": "han-xiao-geng-seven-explanation",
+      "state": "suspects",
+      "belief": "韩笑承认自己领取过庚七瓶月露，但将余量差额解释为可能的共同计量误差，并强调不能证明他动过药签。",
+      "supersedes_fact_ids": [],
+      "change": "韩笑公开承认经手庚七月露，同时继续否认药签移动责任并以共同计量误差辩解差额。",
+      "source_evidence": "韩笑看过工牌印记，笑意稍淡：“是我。昨日后排几盆蔫笑，我按例补露。归还时房里无人，便先放回柜中，原想稍后补记。”"
+    },
+    {
+      "character_id": "han-xiao",
+      "fact_id": "moon-dew-diversion",
+      "state": "conceals",
+      "belief": "自己挪用过一份月露并利用错签混乱掩盖用量差；本章仍未公开承认，只以共同计量误差解释差额。",
+      "supersedes_fact_ids": [],
+      "change": "韩笑继续隐瞒上一状态中的月露挪用事实。",
+      "source_evidence": "韩笑目光在瓶身与众人之间转了一圈：“月露沾瓶挂壁，又常经多人之手。昨日药棚忙乱，这点差额，或许是共同计量误差。”"
+    },
+    {
+      "character_id": "wei-yuan",
+      "fact_id": "lu-chi-penalties-active",
+      "state": "knows",
+      "belief": "陆迟资格继续冻结，三点贡献不退，陶嘴赔偿与催芽散责任保留；新增事实只入月露核验栏。",
+      "supersedes_fact_ids": [],
+      "change": "魏远继续维持对陆迟的既有处分和责任栏。",
+      "source_evidence": "魏远合拢验收表，“陆迟资格继续冻结，三点贡献不退，陶嘴赔偿与催芽散责任保留。今日新增，只入月露核验栏。”"
+    }
+  ],
+  "thread_changes": [
+    {
+      "change": "月露调查从刻度矛盾推进到庚七编号月露的领取、归还和余量短缺核验。",
+      "source_evidence": "“无人如此裁定。”魏远道，“现在只确认三项：庚七由你的工时牌领取；归还栏未按时登记；实物比账面少一份。”"
+    },
+    {
+      "change": "韩笑被正式列为下一轮庚七月露复核参与者，需参加复称、盆号核对和归还说明。",
+      "source_evidence": "魏远看过那行字，道：“公物流程中，共同误差须有共同复核人。韩笑，明日辰初，到柜前复称庚七余量，核对昨日实际用露盆号，补归还说明。”"
+    },
+    {
+      "change": "药签错乱案仍未裁定责任人；灵墨迁色和庚七月露事实均不能直接证明谁动过药签。",
+      "source_evidence": "韩笑没有接笔，只拱手道：“弟子遵。但此事不能证明我动过药签。”\n\n“无人如此裁定。”魏远道，“现在只确认三项：庚七由你的工时牌领取；归还栏未按时登记；实物比账面少一份。”"
+    }
+  ],
+  "comedy_changes": [
+    {
+      "change": "韩笑试图用“共同计量误差”圆场，反被陆迟登记成共同复核事项并指定韩笑为第一参与人。",
+      "source_evidence": "韩笑目光在瓶身与众人之间转了一圈：“月露沾瓶挂壁，又常经多人之手。昨日药棚忙乱，这点差额，或许是共同计量误差。”\n\n乔枝提笔：“共同人员有哪些？”\n\n“乔师妹，若每滴露都要认清经手人，药苗未必等得及。”\n\n陆迟已翻到待核栏，逐字写下：“庚七差额，韩笑提出共同计量误差。后续核验：实物称量、实际盆号、归还经过、共同人员列名。第一参与人，韩笑。”"
+    },
+    {
+      "change": "陆迟把韩笑的“所有人的误差”继续落成具体劳动安排，让韩笑负责第一轮盆号核对。",
+      "source_evidence": "韩笑站在封存柜前，语气仍温和，眼神却已冷了：“那便一起量。只盼陆师弟的待核栏装得下所有人的误差。”\n\n陆迟在末页添上一行：“若装不下，另起副册。韩笑负责第一轮盆号核对。”"
+    }
+  ],
+  "new_constraints": [
+    {
+      "change": "庚七编号月露被封存；药园后续可调用月露收紧，其余月露按紧缺公物领用，非抢救不得开新瓶。",
+      "source_evidence": "魏远给庚七贴上封条，移入侧柜：“此瓶封存。其余月露按紧缺公物领用，非抢救不得开新瓶。”"
+    },
+    {
+      "change": "韩笑必须在明日辰初参与庚七余量复称、昨日实际用露盆号核对和归还说明补记。",
+      "source_evidence": "魏远看过那行字，道：“公物流程中，共同误差须有共同复核人。韩笑，明日辰初，到柜前复称庚七余量，核对昨日实际用露盆号，补归还说明。”"
+    },
+    {
+      "change": "陆迟的药庐小考资格冻结、三点贡献扣减、控露陶嘴赔偿与催芽散责任继续有效。",
+      "source_evidence": "魏远合拢验收表，“陆迟资格继续冻结，三点贡献不退，陶嘴赔偿与催芽散责任保留。今日新增，只入月露核验栏。”"
+    },
+    {
+      "change": "陆迟本章检查结束后当日不得再结印。",
+      "source_evidence": "陆迟右手又开始轻抖，便换左手收起册子：“明日辰初复核。今日不再结印。”"
+    }
+  ],
+  "resolved_constraints": [],
+  "next_chapter_inputs": [
+    "陆迟仍为炼气二层，wood-qi-spasm 处于部分恢复状态；右手会轻抖，今日已停止结印，仍不得连续施术。",
+    "rapid-growth-ban 继续有效；陆迟本章只用了低负担辨药术，没有连续使用微量催芽诀。",
+    "十二盆笑面参已完成逐盆核验：甲一、甲二裂根不可恢复并继续列损耗观察；其余十盆药性反应分成轻重两档。",
+    "分盆编号、工时牌时辰、月露刻度初值和盆株药性反应已形成交叉核验记录；异常重的盆号不全处于陆迟当值时段。",
+    "灵墨旧签经夜露复核确认会迁色，足以造成错读、错挂条件，但不能证明具体是谁移动过药签。",
+    "乔枝的 label-swap-culprit 误信进一步动摇，已降为更需核查的怀疑，但仍未被正式淘汰。",
+    "庚七编号月露已确认由韩笑工时牌在昨日申时二刻领取，用途记为后排笑面参补露，归还栏空缺。",
+    "庚七编号月露实物余量比账面少一份；韩笑承认经手该瓶月露，但以共同计量误差辩解，未承认移动药签。",
+    "韩笑已被魏远按公物流程要求明日辰初参加庚七余量复称、昨日实际用露盆号核对和归还说明。",
+    "庚七月露被封存；其余月露按紧缺公物领用，非抢救不得开新瓶。",
+    "魏远继续维持陆迟资格冻结、三点贡献不退、陶嘴赔偿与催芽散责任保留；新增事实只入月露核验栏。",
+    "陆迟违规试用便宜催芽散的责任没有被月露短缺事实免除。"
+  ],
+  "deviations": []
+}
+```
+
+## 第 5 章
+
+```json
+{
+  "state_schema_version": "1.1",
+  "event_id": "chapter-0005",
+  "chapter": 5,
+  "source_draft": "chapters/0005/draft.final.md",
+  "source_sha256": "19fd553b3e8dd93bcbc63755b20a5eeb4c48fff00edaef4d8c3949734328be9c",
+  "entity_changes": [
+    {
+      "change": "庚七月露复称完成并正式记录为较账面短缺一份。",
+      "source_evidence": "第一遍复称，月露仍少一份。乔枝换上备用小砣，第二遍结果不变。魏远转动瓶身，将挂壁的三滴聚到底部，秤杆依旧停在原处。\n\n他提笔写入公物复称栏：“庚七余量较账面少一份，封存后复称无改。”"
+    },
+    {
+      "change": "庚七月露实际用露盆号待核记录新增后丙三与后丁六，且后丁六不在陆迟当值照料记录内。",
+      "source_evidence": "陆迟写下待核首行：庚七至少用于后丙三与后丁六；后丁六不在陆迟当值照料记录内。非抢救，不得再开新瓶。"
+    },
+    {
+      "change": "甲一、甲二笑面参仍列裂根损耗，未恢复。",
+      "source_evidence": "魏远合上验收表：“庚七三项事实有效，不代表陆迟原有责任取消。药庐小考资格继续冻结，三点贡献已经扣除；控露陶嘴赔偿待核，违规试用催芽散照旧入责任栏。甲一、甲二仍计裂根损耗。”"
+    }
+  ],
+  "relationship_changes": [
+    {
+      "change": "韩笑因提出共同计量误差，被魏远要求亲自参与庚七月露搬秤、对瓶、列共同经手人。",
+      "source_evidence": "魏远皱了皱眉，却只能依公物流程点名：“韩笑既提出共同误差，便亲自搬秤、对瓶，再列共同经手人。乔枝核砣见证。陆迟停术，不碰公物，只作副记。”"
+    },
+    {
+      "change": "乔枝成为庚七月露复称见证人，但她见证范围限于复称短缺，不证明药签责任。",
+      "source_evidence": "乔枝在复称记录末尾签名：“我只见证今日复称仍少一份，不证明谁移动药签。”"
+    },
+    {
+      "change": "韩笑被指定为庚七相关核盆责任人，后续必须补交归还说明并到场核盆。",
+      "source_evidence": "“所以补流程。”魏远道，“你补交庚七归还说明，列明实际用露时辰、盆号及共同经手人。庚七相关核盆，你必须到场。”\n\n陆迟随即记下：“韩笑，核盆责任人。”"
+    }
+  ],
+  "cultivation_changes": [
+    {
+      "subject_id": "lu-chi",
+      "kind": "injury",
+      "change": "wood-qi-spasm 仍未解除；陆迟右手仍轻抖，维持部分恢复但需停术的伤势状态。",
+      "state_id": "wood-qi-spasm",
+      "state_action": "set",
+      "stage_after": "炼气二层",
+      "from_stage": "",
+      "to_stage": "",
+      "prerequisites": [],
+      "costs": [],
+      "new_limits": [],
+      "source_evidence": "“明白。”陆迟收起副记，右手仍在轻抖，“今日未连续催芽。剩余十盆另拟分档稳定方案。”\n\n林素看了他的手一眼：“继续停术。守住，才可申请伤势确认。”"
+    },
+    {
+      "subject_id": "lu-chi",
+      "kind": "restriction",
+      "change": "rapid-growth-ban 继续有效；陆迟本章未连续催芽，仍需继续停术。",
+      "state_id": "rapid-growth-ban",
+      "state_action": "set",
+      "stage_after": "炼气二层",
+      "from_stage": "",
+      "to_stage": "",
+      "prerequisites": [],
+      "costs": [],
+      "new_limits": [],
+      "source_evidence": "“明白。”陆迟收起副记，右手仍在轻抖，“今日未连续催芽。剩余十盆另拟分档稳定方案。”\n\n林素看了他的手一眼：“继续停术。守住，才可申请伤势确认。”"
+    }
+  ],
+  "resource_changes": [],
+  "knowledge_changes": [
+    {
+      "character_id": "wei-yuan",
+      "fact_id": "geng-seven-recorded-shortage",
+      "state": "knows",
+      "belief": "庚七月露复称短缺一份、韩笑申时二刻领取后归还时辰空缺、陆迟申时一刻后停术疗伤记录有效，均已成为验收表有效记录。",
+      "supersedes_fact_ids": [],
+      "change": "魏远在月露核验栏正式补写庚七短缺、韩笑领取与归还空缺、陆迟停术疗伤记录有效三项事实。",
+      "source_evidence": "魏远提笔，在月露核验栏补写：“庚七复称短缺一份；韩笑申时二刻领取，归还时辰空缺；陆迟申时一刻后停术疗伤记录有效。”"
+    },
+    {
+      "character_id": "lin-su",
+      "fact_id": "lu-chi-stop-treatment-cannot-explain-han-return-blank",
+      "state": "knows",
+      "belief": "陆迟停术疗伤不能解释韩笑领取庚七月露后的归还时辰空栏。",
+      "supersedes_fact_ids": [],
+      "change": "林素明确裁定陆迟停术疗伤不能解释韩笑的归还空栏。",
+      "source_evidence": "林素打断他：“陆迟停术疗伤，不能解释你的归还空栏。”"
+    },
+    {
+      "character_id": "lu-chi",
+      "fact_id": "geng-seven-actual-use-pots",
+      "state": "knows",
+      "belief": "庚七月露至少用于后丙三与后丁六，其中后丁六不在陆迟当值照料记录内；非抢救不得再开新瓶。",
+      "supersedes_fact_ids": [
+        "moon-dew-record-conflict"
+      ],
+      "change": "陆迟将庚七至少用于后丙三与后丁六、后丁六不在自己当值照料记录内写入待核首行。",
+      "source_evidence": "陆迟写下待核首行：庚七至少用于后丙三与后丁六；后丁六不在陆迟当值照料记录内。非抢救，不得再开新瓶。"
+    },
+    {
+      "character_id": "qiao-zhi",
+      "fact_id": "label-swap-culprit",
+      "state": "suspects",
+      "belief": "乔枝认为现有记录不足以支持陆迟主动调换全部药签，但她尚未撤销怀疑，仍需核对药签迁色、盆位与用露时辰。",
+      "supersedes_fact_ids": [],
+      "change": "乔枝正式写明现有记录不足以支持陆迟主动调换全部药签，但口头说明只是证据不足，不是撤销怀疑。",
+      "source_evidence": "乔枝在复称见证页后添了一句：“现有记录不足以支持陆迟主动调换全部药签之判断；仍待药签迁色、盆位与用露时辰合核。”\n\n陆迟看向她。\n\n乔枝按住纸页：“只是证据不足，不是撤销怀疑。若后续有新证，我会修正。”\n\n“记为尚未撤销。”陆迟道。"
+    },
+    {
+      "character_id": "han-xiao",
+      "fact_id": "han-xiao-geng-seven-explanation",
+      "state": "suspects",
+      "belief": "韩笑继续主张庚七短缺只是流程缺漏或共同计量误差，不能证明挪用或药签移动。",
+      "supersedes_fact_ids": [],
+      "change": "韩笑在复称短缺后仍强调短缺不等于挪用或药签移动，之后又将记录结果解释为流程有缺。",
+      "source_evidence": "韩笑立刻道：“短缺不等于挪用，更不等于有人动过药签。”"
+    },
+    {
+      "character_id": "han-xiao",
+      "fact_id": "moon-dew-diversion",
+      "state": "conceals",
+      "belief": "韩笑仍未公开承认挪用月露或移动药签，只以共同误差、摆位混乱和流程缺漏解释异常。",
+      "supersedes_fact_ids": [],
+      "change": "韩笑未承认药签责任或挪用事实，并继续用共同误差、邻盆和流程缺漏作解释。",
+      "source_evidence": "韩笑接道：“所以我写或邻盆。昨日摆位混乱，可能有人共同读错。”"
+    }
+  ],
+  "thread_changes": [
+    {
+      "change": "庚七月露线索从余量矛盾推进为正式复称短缺、归还空栏和实际用露盆号待核。",
+      "source_evidence": "魏远提笔，在月露核验栏补写：“庚七复称短缺一份；韩笑申时二刻领取，归还时辰空缺；陆迟申时一刻后停术疗伤记录有效。”"
+    },
+    {
+      "change": "药签错乱调查下一步转向药签迁色和昨日盆位核验。",
+      "source_evidence": "乔枝将签牌压在记录页上：“下一项，核药签迁色和昨日盆位。”"
+    },
+    {
+      "change": "陆迟资格冻结与原处罚未撤销，庚七三项事实只改变后续核验边界。",
+      "source_evidence": "魏远合上验收表：“庚七三项事实有效，不代表陆迟原有责任取消。药庐小考资格继续冻结，三点贡献已经扣除；控露陶嘴赔偿待核，违规试用催芽散照旧入责任栏。甲一、甲二仍计裂根损耗。”"
+    }
+  ],
+  "comedy_changes": [
+    {
+      "change": "韩笑的“共同计量误差”被陆迟按字面拆成共同经手人员、实际用露盆号、归还经过、复称参与人四个正式工作项。",
+      "source_evidence": "“流程上更该列。”陆迟在纸上分出四项，“共同经手人员、实际用露盆号、归还经过、复称参与人。少一项，便不能叫共同。”"
+    },
+    {
+      "change": "乔枝把韩笑的共同误差说法反向变成签字风险和搬责任风险。",
+      "source_evidence": "乔枝收起笔：“界线不清，搬完秤还要搬责任。”"
+    },
+    {
+      "change": "陆迟用账目栏位冷幽默回应韩笑的人情试探。",
+      "source_evidence": "韩笑扫过那行字：“陆师弟记账从不留情面？”\n\n“情面没有对应栏。”"
+    }
+  ],
+  "new_constraints": [
+    {
+      "change": "韩笑必须补交庚七归还说明，列明实际用露时辰、盆号及共同经手人，并到场参与庚七相关核盆。",
+      "source_evidence": "“所以补流程。”魏远道，“你补交庚七归还说明，列明实际用露时辰、盆号及共同经手人。庚七相关核盆，你必须到场。”"
+    },
+    {
+      "change": "陆迟停术，不得碰公物，只能作副记参与公物复称流程。",
+      "source_evidence": "魏远皱了皱眉，却只能依公物流程点名：“韩笑既提出共同误差，便亲自搬秤、对瓶，再列共同经手人。乔枝核砣见证。陆迟停术，不碰公物，只作副记。”"
+    },
+    {
+      "change": "非抢救不得再开新瓶月露。",
+      "source_evidence": "陆迟写下待核首行：庚七至少用于后丙三与后丁六；后丁六不在陆迟当值照料记录内。非抢救，不得再开新瓶。"
+    },
+    {
+      "change": "陆迟药庐小考资格继续冻结，三点贡献扣除不退，控露陶嘴赔偿待核，违规试用催芽散仍入责任栏。",
+      "source_evidence": "魏远合上验收表：“庚七三项事实有效，不代表陆迟原有责任取消。药庐小考资格继续冻结，三点贡献已经扣除；控露陶嘴赔偿待核，违规试用催芽散照旧入责任栏。甲一、甲二仍计裂根损耗。”"
+    }
+  ],
+  "resolved_constraints": [],
+  "next_chapter_inputs": [
+    "庚七月露复称完成并入公物复称栏：实物余量较账面少一份，封存后复称无改。",
+    "魏远已在月露核验栏承认三项有效记录：庚七复称短缺一份；韩笑申时二刻领取，归还时辰空缺；陆迟申时一刻后停术疗伤记录有效。",
+    "韩笑必须补交庚七归还说明，列明实际用露时辰、盆号及共同经手人；庚七相关核盆必须到场。",
+    "庚七至少用于后丙三与后丁六；后丁六不在陆迟昨日当值照料记录内。",
+    "下一项调查已指向药签迁色和昨日盆位核验。",
+    "乔枝已签复称见证，并写明现有记录不足以支持陆迟主动调换全部药签，但她尚未撤销怀疑。",
+    "陆迟仍为炼气二层；wood-qi-spasm 仍处于部分恢复状态，右手轻抖；林素要求继续停术，守住后才可申请伤势确认。",
+    "rapid-growth-ban 继续有效；陆迟本章未连续催芽，只作低负担辨药和记录。",
+    "陆迟药庐小考资格继续冻结，三点贡献已经扣除，控露陶嘴赔偿待核，违规试用催芽散照旧入责任栏。",
+    "甲一、甲二仍计裂根损耗；剩余十盆需另拟分档稳定方案。",
+    "非抢救不得再开新瓶月露。"
+  ],
+  "deviations": []
+}
+```
+
+## 第 6 章
+
+```json
+{
+  "state_schema_version": "1.1",
+  "event_id": "chapter-0006",
+  "chapter": 6,
+  "source_draft": "chapters/0006/draft.final.md",
+  "source_sha256": "b43515f372e2c7cc4fcbcc399126c6586a1248cc50caaaad5957b846856d8330",
+  "entity_changes": [
+    {
+      "change": "韩笑补交庚七月露归还说明，承认庚七一份主要用于后丁六、余量沾用后丙三，未按时登记归还且无共同经手人，但仍否认移动药签。",
+      "source_evidence": "韩笑脸上的笑淡了：“归还说明：庚七一份，申时二刻领取，主要用于后丁六，余量沾用后丙三，未按时登记归还。共同经手人，无。”\n\n他停了一下，又补道：“我仍否认移动药签。”"
+    },
+    {
+      "change": "魏远将韩笑庚七月露未登记挪用写入公物责任栏，处分另定。",
+      "source_evidence": "魏远收起副记：“韩笑，庚七月露未登记挪用，入公物责任栏，处分另定。陆迟，药签责任边界变更，不影响你违规试用催芽散、损坏控露陶嘴、扣三点贡献和资格冻结。”"
+    },
+    {
+      "change": "十盆未裂根笑面参完成分组稳定方案：八盆列可验收生长区间观察，后丁六、乙五列降等候补观察；甲一、甲二仍为裂根损耗观察且不可恢复。",
+      "source_evidence": "陆迟在主册落笔：“十盆未裂根笑面参，八盆列可验收生长区间观察；后丁六、乙五笑纹开裂过深，列降等候补观察。甲一、甲二裂根损耗观察，不可恢复。”"
+    }
+  ],
+  "relationship_changes": [
+    {
+      "change": "乔枝因重新核签改变证词立场，韩笑当面指出旁人可能认为她偏帮，显示乔枝与韩笑关系转紧。",
+      "source_evidence": "韩笑望向乔枝：“这一签落下，旁人怕要说你偏帮。”\n\n乔枝洗去笔尖余墨：“我只替可核记录签字。它若日后反咬我，也有四项牙印。”"
+    }
+  ],
+  "cultivation_changes": [
+    {
+      "subject_id": "lu-chi",
+      "kind": "restriction",
+      "change": "陆迟本章遵守未连续催芽限制，rapid-growth-ban 继续有效，伤势解除前不得连续施术。",
+      "state_id": "rapid-growth-ban",
+      "state_action": "set",
+      "stage_after": "炼气二层",
+      "from_stage": "",
+      "to_stage": "",
+      "prerequisites": [],
+      "costs": [],
+      "new_limits": [],
+      "source_evidence": "“本章未连续催芽。wood-qi-spasm仍为部分恢复，未加重。”她松开手，“rapid-growth-ban继续有效，伤势解除前不得连续施术。”"
+    },
+    {
+      "subject_id": "lu-chi",
+      "kind": "injury",
+      "change": "wood-qi-spasm 仍为部分恢复状态且未加重，陆迟仍是炼气二层。",
+      "state_id": "wood-qi-spasm",
+      "state_action": "set",
+      "stage_after": "炼气二层",
+      "from_stage": "",
+      "to_stage": "",
+      "prerequisites": [],
+      "costs": [],
+      "new_limits": [],
+      "source_evidence": "“本章未连续催芽。wood-qi-spasm仍为部分恢复，未加重。”她松开手，“rapid-growth-ban继续有效，伤势解除前不得连续施术。”"
+    },
+    {
+      "subject_id": "lu-chi",
+      "kind": "insight",
+      "change": "陆迟获知解除 wood-qi-spasm 的下一步条件：连续二十四次稳定小周天、至少两枚下品灵石或等价灵气来源、全程监护记录。",
+      "state_id": "",
+      "state_action": "",
+      "stage_after": "炼气二层",
+      "from_stage": "",
+      "to_stage": "",
+      "prerequisites": [],
+      "costs": [],
+      "new_limits": [],
+      "source_evidence": "陆迟问：“解除需要什么？”\n\n“连续二十四次稳定小周天。至少两枚下品灵石，或等价灵气来源。全程须有监护记录。”"
+    }
+  ],
+  "resource_changes": [],
+  "knowledge_changes": [
+    {
+      "character_id": "qiao-zhi",
+      "fact_id": "label-swap-culprit-resolved",
+      "state": "knows",
+      "belief": "乔枝经复核确认，‘陆迟主动调换全部药签’的判断不成立；工时牌、月露刻度、灵墨迁色及韩笑行动记录共同说明药签错乱不能归为陆迟主动调换所致。",
+      "supersedes_fact_ids": [
+        "label-swap-culprit"
+      ],
+      "change": "乔枝正式淘汰自己此前对陆迟主动调换全部药签的核心怀疑。",
+      "source_evidence": "“经复核，‘陆迟主动调换全部药签’之判断不成立。工时牌、月露刻度、灵墨迁色及韩笑行动记录相互核验，药签错乱不能归为陆迟主动调换所致。”"
+    },
+    {
+      "character_id": "wei-yuan",
+      "fact_id": "han-xiao-moon-dew-unregistered-diversion",
+      "state": "knows",
+      "belief": "魏远知道韩笑庚七月露存在未登记挪用，并将其入公物责任栏，但该事实不影响陆迟催芽散违规、控露陶嘴赔偿、扣三点贡献和资格冻结。",
+      "supersedes_fact_ids": [
+        "moon-dew-record-conflict"
+      ],
+      "change": "魏远对月露记录矛盾作出阶段性裁定：韩笑承担庚七月露未登记挪用责任，但陆迟其他责任继续保留。",
+      "source_evidence": "魏远收起副记：“韩笑，庚七月露未登记挪用，入公物责任栏，处分另定。陆迟，药签责任边界变更，不影响你违规试用催芽散、损坏控露陶嘴、扣三点贡献和资格冻结。”"
+    },
+    {
+      "character_id": "han-xiao",
+      "fact_id": "han-xiao-moon-dew-unregistered-diversion",
+      "state": "knows",
+      "belief": "韩笑知道自己将庚七一份主要用于后丁六、余量沾用后丙三，且未按时登记归还，但仍否认移动药签。",
+      "supersedes_fact_ids": [
+        "han-xiao-geng-seven-explanation"
+      ],
+      "change": "韩笑不再以流程缺漏或共同计量误差解释庚七短缺，而是承认具体未登记补露去向。",
+      "source_evidence": "韩笑脸上的笑淡了：“归还说明：庚七一份，申时二刻领取，主要用于后丁六，余量沾用后丙三，未按时登记归还。共同经手人，无。”\n\n他停了一下，又补道：“我仍否认移动药签。”"
+    },
+    {
+      "character_id": "han-xiao",
+      "fact_id": "label-swap-involvement-denial",
+      "state": "conceals",
+      "belief": "韩笑仍否认自己移动药签；正文未确认他是否真的移动药签。",
+      "supersedes_fact_ids": [
+        "moon-dew-diversion"
+      ],
+      "change": "韩笑公开承认月露未登记挪用后，仍保留对药签移动的否认。",
+      "source_evidence": "韩笑脸上的笑淡了：“归还说明：庚七一份，申时二刻领取，主要用于后丁六，余量沾用后丙三，未按时登记归还。共同经手人，无。”\n\n他停了一下，又补道：“我仍否认移动药签。”"
+    },
+    {
+      "character_id": "lu-chi",
+      "fact_id": "wood-qi-spasm-release-requirements",
+      "state": "knows",
+      "belief": "陆迟知道解除 wood-qi-spasm 需要连续二十四次稳定小周天、至少两枚下品灵石或等价灵气来源、全程监护记录，且成功解除伤势也不恢复资格、不抵赔偿、不删违规。",
+      "supersedes_fact_ids": [],
+      "change": "陆迟获得明确的伤势解除入口和边界。",
+      "source_evidence": "“申请时带两枚。”林素道，“成功只解除伤势，不恢复资格，不抵陶嘴赔偿，不删催芽散违规。突破另算。”"
+    },
+    {
+      "character_id": "lin-su",
+      "fact_id": "lu-chi-ban-compliance-and-injury-status",
+      "state": "knows",
+      "belief": "林素确认陆迟本章未连续催芽，wood-qi-spasm 仍部分恢复且未加重，rapid-growth-ban 继续有效。",
+      "supersedes_fact_ids": [
+        "qualification-result"
+      ],
+      "change": "林素完成本章对陆迟守禁和伤势状态的确认，但未恢复资格。",
+      "source_evidence": "“本章未连续催芽。wood-qi-spasm仍为部分恢复，未加重。”她松开手，“rapid-growth-ban继续有效，伤势解除前不得连续施术。”"
+    }
+  ],
+  "thread_changes": [
+    {
+      "change": "药签错乱责任线推进：乔枝正式写明陆迟主动调换全部药签的判断不成立，但陆迟其他责任仍保留。",
+      "source_evidence": "魏远收起副记：“韩笑，庚七月露未登记挪用，入公物责任栏，处分另定。陆迟，药签责任边界变更，不影响你违规试用催芽散、损坏控露陶嘴、扣三点贡献和资格冻结。”"
+    },
+    {
+      "change": "笑面参抢救线推进到分组观察阶段：八盆可验收观察，两盆降等候补观察，甲一甲二不可恢复。",
+      "source_evidence": "陆迟在主册落笔：“十盆未裂根笑面参，八盆列可验收生长区间观察；后丁六、乙五笑纹开裂过深，列降等候补观察。甲一、甲二裂根损耗观察，不可恢复。”"
+    },
+    {
+      "change": "陆迟伤势解除线获得下一章行动入口：明日辰初带灵石申请监护吐纳。",
+      "source_evidence": "林素在监护申请栏划下一道细线：“明日辰初，带灵石来。”"
+    }
+  ],
+  "comedy_changes": [
+    {
+      "change": "乔枝原本强调风险边界，陆迟直接把风险边界登记成四项见证工作，形成证词成本笑点。",
+      "source_evidence": "乔枝铺开副记纸：“今日复核只为降低共同损失。先说明风险边界：药签迁色痕、停术时辰、庚七用露盆号、分盆位置，四项须逐一对应。中途若有一项不合，我保留退出见证的权利。”\n\n陆迟提笔便写：乔枝见证事项一，核签；二，核时；三，核露；四，核盆。"
+    },
+    {
+      "change": "乔枝签字太用力压弯药签，陆迟把这也记成见证成本，延续核表喜剧。",
+      "source_evidence": "乔枝签名时用力过重，纸角压住一枚薄木签。木签弯出轻响，险些折断。\n\n陆迟看了一眼：“见证成本，药签受压，未裂。”"
+    },
+    {
+      "change": "乔枝把压弯的药签夹进副记，并以签字人离药签远些收束本章标题笑点。",
+      "source_evidence": "乔枝把那枚压弯的药签夹进副记：“再添一条。签字人离药签远些，免得证词尚未压实，先把签压弯。”"
+    }
+  ],
+  "new_constraints": [
+    {
+      "change": "陆迟的违规试用催芽散、损坏控露陶嘴、扣三点贡献和资格冻结继续保留，不因药签责任边界变更而解除。",
+      "source_evidence": "魏远收起副记：“韩笑，庚七月露未登记挪用，入公物责任栏，处分另定。陆迟，药签责任边界变更，不影响你违规试用催芽散、损坏控露陶嘴、扣三点贡献和资格冻结。”"
+    },
+    {
+      "change": "陆迟伤势解除前不得连续施术，rapid-growth-ban 继续有效。",
+      "source_evidence": "“本章未连续催芽。wood-qi-spasm仍为部分恢复，未加重。”她松开手，“rapid-growth-ban继续有效，伤势解除前不得连续施术。”"
+    },
+    {
+      "change": "解除 wood-qi-spasm 的申请条件明确为连续二十四次稳定小周天、至少两枚下品灵石或等价灵气来源、全程监护记录。",
+      "source_evidence": "陆迟问：“解除需要什么？”\n\n“连续二十四次稳定小周天。至少两枚下品灵石，或等价灵气来源。全程须有监护记录。”"
+    },
+    {
+      "change": "即使成功解除伤势，也不恢复药庐小考资格、不抵控露陶嘴赔偿、不删除催芽散违规，突破另算。",
+      "source_evidence": "“申请时带两枚。”林素道，“成功只解除伤势，不恢复资格，不抵陶嘴赔偿，不删催芽散违规。突破另算。”"
+    }
+  ],
+  "resolved_constraints": [
+    {
+      "change": "乔枝对陆迟主动调换全部药签的核心怀疑被正式撤销。",
+      "source_evidence": "“经复核，‘陆迟主动调换全部药签’之判断不成立。工时牌、月露刻度、灵墨迁色及韩笑行动记录相互核验，药签错乱不能归为陆迟主动调换所致。”"
+    }
+  ],
+  "next_chapter_inputs": [
+    "乔枝已在副记写明：经复核，‘陆迟主动调换全部药签’之判断不成立；工时牌、月露刻度、灵墨迁色及韩笑行动记录相互核验，药签错乱不能归为陆迟主动调换所致。",
+    "韩笑已补交庚七归还说明：庚七一份申时二刻领取，主要用于后丁六，余量沾用后丙三，未按时登记归还，共同经手人无；他仍否认移动药签。",
+    "魏远已将韩笑庚七月露未登记挪用写入公物责任栏，处分另定。",
+    "陆迟的药签责任边界变更，但违规试用催芽散、损坏控露陶嘴、扣三点贡献和资格冻结仍不受影响。",
+    "十盆未裂根笑面参已分组：八盆列可验收生长区间观察；后丁六、乙五因笑纹开裂过深列降等候补观察。",
+    "甲一、甲二仍为裂根损耗观察，不可恢复。",
+    "陆迟本章未连续催芽；rapid-growth-ban 继续有效，伤势解除前不得连续施术。",
+    "wood-qi-spasm 仍为部分恢复状态且未加重；陆迟仍是炼气二层，尚未突破。",
+    "解除 wood-qi-spasm 需要连续二十四次稳定小周天、至少两枚下品灵石或等价灵气来源、全程监护记录。",
+    "陆迟现有四枚下品灵石，尚未消耗；林素要求申请时带两枚，明日辰初来监护申请栏。",
+    "即使成功解除伤势，也不恢复资格、不抵陶嘴赔偿、不删催芽散违规；突破另算。",
+    "乔枝因签字改变态度与韩笑关系承压，可延续为后续人际压力。"
+  ],
+  "deviations": []
+}
+```
+
+## 第 7 章
+
+```json
+{
+  "state_schema_version": "1.1",
+  "event_id": "chapter-0007",
+  "chapter": 7,
+  "source_draft": "chapters/0007/draft.final.md",
+  "source_sha256": "bc962a78bc8226815dc90f086f4e594c73f8658004cc653161c238200f4dcc7c",
+  "entity_changes": [
+    {
+      "change": "乔枝完成二十四次小周天的全程见证签字，成为本次监护记录的正式见证人。",
+      "source_evidence": "乔枝签下第二十四格，放下笔：“全程见证。若有人认为只见证了大半，可先核验我的二十四个签名。”"
+    }
+  ],
+  "relationship_changes": [
+    {
+      "change": "魏远接受林素监护确认的伤势解除记录入验收表，但继续以流程责任约束陆迟。",
+      "source_evidence": "魏远翻到自己辰初签过的确认栏，最终提笔补上：“经林素监护确认，木灵气逆冲已解除。”\n\n“记录有效。”他合起表，“资格冻结继续。三点贡献已扣，控露陶嘴赔偿待核，违规催芽散责任保留。补齐损耗说明、赔偿栏和违规责任栏后，再谈复议。”"
+    }
+  ],
+  "cultivation_changes": [
+    {
+      "subject_id": "lu-chi",
+      "kind": "recovery",
+      "change": "陆迟完成二十四次稳定小周天后，wood-qi-spasm 木灵气逆冲明确解除。",
+      "state_id": "wood-qi-spasm",
+      "state_action": "resolve",
+      "stage_after": "炼气二层",
+      "from_stage": "",
+      "to_stage": "",
+      "prerequisites": [],
+      "costs": [],
+      "new_limits": [],
+      "source_evidence": "林素在记录末尾写道：“二十四次稳定小周天完成。wood-qi-spasm，木灵气逆冲，解除。”"
+    },
+    {
+      "subject_id": "lu-chi",
+      "kind": "breakthrough",
+      "change": "陆迟由炼气二层突破到炼气三层，提升仅限灵气控制稳定，不增加药性见识，不改变既有药损。",
+      "state_id": "",
+      "state_action": "",
+      "stage_after": "炼气三层",
+      "from_stage": "炼气二层",
+      "to_stage": "炼气三层",
+      "prerequisites": [
+        "wood-qi-spasm 木灵气逆冲已解除",
+        "二十四次稳定小周天完成",
+        "有林素监护记录"
+      ],
+      "costs": [
+        "消耗二枚下品灵石",
+        "突破后三日不得连续使用微量催芽诀"
+      ],
+      "new_limits": [
+        "只增灵气控制稳定，不增药性见识，不改既有药损",
+        "突破后三日不得连续使用微量催芽诀"
+      ],
+      "source_evidence": "“炼气三层。”林素提笔，“只增灵气控制稳定，不增药性见识，不改既有药损。原禁令随伤势解除终止；突破后三日，不得连续使用微量催芽诀。”"
+    },
+    {
+      "subject_id": "lu-chi",
+      "kind": "restriction",
+      "change": "rapid-growth-ban 因 wood-qi-spasm 解除而终止。",
+      "state_id": "rapid-growth-ban",
+      "state_action": "resolve",
+      "stage_after": "炼气三层",
+      "from_stage": "",
+      "to_stage": "",
+      "prerequisites": [],
+      "costs": [],
+      "new_limits": [],
+      "source_evidence": "“炼气三层。”林素提笔，“只增灵气控制稳定，不增药性见识，不改既有药损。原禁令随伤势解除终止；突破后三日，不得连续使用微量催芽诀。”"
+    },
+    {
+      "subject_id": "lu-chi",
+      "kind": "restriction",
+      "change": "陆迟新增短期限制：突破后三日不得连续使用微量催芽诀。",
+      "state_id": "post-breakthrough-three-day-sprout-ban",
+      "state_action": "set",
+      "stage_after": "炼气三层",
+      "from_stage": "",
+      "to_stage": "",
+      "prerequisites": [],
+      "costs": [],
+      "new_limits": [],
+      "source_evidence": "“炼气三层。”林素提笔，“只增灵气控制稳定，不增药性见识，不改既有药损。原禁令随伤势解除终止；突破后三日，不得连续使用微量催芽诀。”"
+    }
+  ],
+  "resource_changes": [
+    {
+      "owner_id": "lu-chi",
+      "resource_id": "low-spirit-stone",
+      "operation": "consume",
+      "amount": 2,
+      "unit": "枚",
+      "resulting_balance": 2,
+      "source_or_destination": "林素监护吐纳与突破过程耗用",
+      "change": "陆迟消耗二枚下品灵石，余额从4枚变为2枚。",
+      "source_evidence": "“下品灵石耗用二枚，余额二枚。”林素收起碎块，“守住气息，不要起身。”"
+    }
+  ],
+  "knowledge_changes": [
+    {
+      "character_id": "wei-yuan",
+      "fact_id": "wood-qi-spasm-resolved-record-valid",
+      "state": "knows",
+      "belief": "魏远知道林素监护确认的木灵气逆冲解除记录有效，并已入验收表。",
+      "supersedes_fact_ids": [],
+      "change": "魏远确认并记录木灵气逆冲已解除。",
+      "source_evidence": "魏远翻到自己辰初签过的确认栏，最终提笔补上：“经林素监护确认，木灵气逆冲已解除。”"
+    },
+    {
+      "character_id": "qiao-zhi",
+      "fact_id": "lu-chi-twenty-four-circuits-witnessed",
+      "state": "knows",
+      "belief": "乔枝知道自己全程见证并签下了陆迟二十四次稳定小周天记录。",
+      "supersedes_fact_ids": [],
+      "change": "乔枝掌握并承担二十四格全程见证事实。",
+      "source_evidence": "乔枝签下第二十四格，放下笔：“全程见证。若有人认为只见证了大半，可先核验我的二十四个签名。”"
+    }
+  ],
+  "thread_changes": [
+    {
+      "change": "陆迟药庐小考资格冻结、三点贡献扣减、控露陶嘴赔偿待核、违规催芽散责任均继续保留，复议需补齐相关栏。",
+      "source_evidence": "“记录有效。”他合起表，“资格冻结继续。三点贡献已扣，控露陶嘴赔偿待核，违规催芽散责任保留。补齐损耗说明、赔偿栏和违规责任栏后，再谈复议。”"
+    },
+    {
+      "change": "笑面参分盆状态未因陆迟突破改变：甲一、甲二不可恢复，八盆可验收观察，后丁六、乙五降等候补，月露未登记挪用仍不被抵消。",
+      "source_evidence": "陆迟逐盆查过：“甲一、甲二裂根，不可恢复。八盆仍列可验收观察；后丁六、乙五笑纹开裂过深，仍列降等候补。突破不改药材现状，也不改月露未登记挪用。”"
+    }
+  ],
+  "comedy_changes": [
+    {
+      "change": "乔枝试图只作旁证未成，被林素要求二十四周天每一格都签名。",
+      "source_evidence": "“坐满。”林素道。\n\n“什么？”\n\n“每一周天，签一格。”"
+    },
+    {
+      "change": "乔枝的风险提示被陆迟按表格规则反向限制，只能挤在第一格内。",
+      "source_evidence": "陆迟睁眼：“后半句算第二圈的停顿条件？”\n\n“不算。”\n\n“那请留在第一格。”\n\n乔枝只得把字挤紧，险些写出格外。"
+    },
+    {
+      "change": "魏远的表格流程被乔枝用二十四格见证表反向约束，无法只收突破而拒收伤势状态变更。",
+      "source_evidence": "乔枝将二十四格见证表压在验收表上：“伤势状态原本就在此表。监护人、灵石支出和二十四次周天俱全。若只收突破，不收状态变更，这二十四格要逐格退回重签？”"
+    }
+  ],
+  "new_constraints": [
+    {
+      "change": "陆迟突破后三日不得连续使用微量催芽诀。",
+      "source_evidence": "“炼气三层。”林素提笔，“只增灵气控制稳定，不增药性见识，不改既有药损。原禁令随伤势解除终止；突破后三日，不得连续使用微量催芽诀。”"
+    },
+    {
+      "change": "陆迟下一步分盆终整只能低频分段处理，不许连续催芽。",
+      "source_evidence": "他在明日工单第一行写下：分盆终整，低频分段，不许连催。"
+    },
+    {
+      "change": "陆迟仍需填写控露陶嘴赔偿核价单。",
+      "source_evidence": "第三行刚写到“控露陶嘴赔偿”，魏远便将一张空白核价单推到了他面前。"
+    }
+  ],
+  "resolved_constraints": [
+    {
+      "change": "陆迟伤势解除前不得连续施术的 rapid-growth-ban 原禁令终止。",
+      "source_evidence": "“炼气三层。”林素提笔，“只增灵气控制稳定，不增药性见识，不改既有药损。原禁令随伤势解除终止；突破后三日，不得连续使用微量催芽诀。”"
+    }
+  ],
+  "next_chapter_inputs": [
+    "陆迟已为炼气三层，wood-qi-spasm 木灵气逆冲已解除；突破收益仅限控制稳定，不增药性见识，不改既有药损。",
+    "陆迟 low-spirit-stone 余额为2枚。",
+    "陆迟突破后三日不得连续使用微量催芽诀；明日分盆终整需低频分段，不许连催。",
+    "魏远已承认林素监护确认的木灵气逆冲解除记录有效入表，但资格冻结继续，三点贡献已扣，控露陶嘴赔偿待核，违规催芽散责任保留。",
+    "陆迟需补齐损耗说明、赔偿栏和违规责任栏后，才可再谈药庐小考资格复议。",
+    "乔枝完成二十四格全程见证签字，可作为后续复议和核表见证人。",
+    "甲一、甲二裂根不可恢复；八盆仍列可验收观察；后丁六、乙五仍列降等候补。",
+    "韩笑月露未登记挪用仍不被陆迟突破抵消，本章未扩展为更大分配关系网。"
+  ],
+  "deviations": []
+}
+```
+
+## 第 8 章
+
+```json
+{
+  "state_schema_version": "1.1",
+  "event_id": "chapter-0008",
+  "chapter": 8,
+  "source_draft": "chapters/0008/draft.final.md",
+  "source_sha256": "a87f53a738bb0fb3525e82f07dad3947d501662df15955adf3e563ac47f4b763",
+  "entity_changes": [
+    {
+      "change": "甲一、甲二笑面参正式按裂根计损处理，确认不可恢复。",
+      "source_evidence": "乔枝看了看裂根，落笔签名：“我只确认实况。甲一、甲二裂根计损，不可恢复。”"
+    },
+    {
+      "change": "八盆笑面参完成换盆、重排盆位和重挂药签，暂入可验收生长区间。",
+      "source_evidence": "到午时，八盆已换入完整盆体。盆位依照受露量与现存药性错开，盆间留下足够空隙。\n\n乔枝换上新药签，在每只盆沿画下一道核验墨线，逐一念道：“后丙三、乙四、戊二、前丁一……共八盆，根系完整，笑纹回稳，暂入可验收生长区间。只写暂入，不写合格。”"
+    },
+    {
+      "change": "后丁六与乙五被列为降等候补，不提升为合格品。",
+      "source_evidence": "乔枝在两块黄边木牌上签字：“后丁六月露用量异常，乙五笑纹裂度超线。两盆列降等候补。若强提为合格，复验退回时还要追加损耗说明。”"
+    },
+    {
+      "change": "控露陶嘴损坏状态完成初核：裂后无法稳定控露，只能作废。",
+      "source_evidence": "损坏的控露陶嘴被放上秤盘。嘴端缺了一块，裂纹横穿两道控露槽，注水后必然偏流。\n\n魏远翻开公物册：“同制陶嘴，折旧三成。裂后无法稳定控露，只能作废。初核价——”"
+    }
+  ],
+  "relationship_changes": [
+    {
+      "change": "乔枝继续以可核记录为依据给陆迟作见证，并因此受到韩笑偏帮暗示的压力。",
+      "source_evidence": "韩笑在旁道：“乔师妹这几日签得比管事还勤。不知情的，怕要说你偏帮陆师弟。”\n\n乔枝笔尖停住。\n\n这次她没有回避，只将名字签完：“我承担可核记录的后果。陆迟违规用催芽散，我签。甲一、甲二不可恢复，我签。陆迟主动调换全部药签不成立，我也签。若你认为哪项不实，请报盆号、时辰和记录页。”"
+    }
+  ],
+  "cultivation_changes": [
+    {
+      "subject_id": "lu-chi",
+      "kind": "restriction",
+      "change": "陆迟突破后三日不得连续使用微量催芽诀的限制仍有效，本章按低频分段方式施术，没有连续催芽。",
+      "state_id": "post-breakthrough-three-day-sprout-ban",
+      "state_action": "set",
+      "stage_after": "炼气三层",
+      "from_stage": "",
+      "to_stage": "",
+      "prerequisites": [],
+      "costs": [],
+      "new_limits": [],
+      "source_evidence": "陆迟全程共施术八次，每次之间完成三轮吐纳，没有一次连续催芽。两枚下品灵石仍收在储物袋底，未动分毫。"
+    },
+    {
+      "subject_id": "lu-chi",
+      "kind": "progress",
+      "change": "陆迟炼气三层带来的收益落实为更干净的木灵气收束和单次短促引导，不增加药性见识或越过限制。",
+      "state_id": "",
+      "state_action": "",
+      "stage_after": "炼气三层",
+      "from_stage": "",
+      "to_stage": "",
+      "prerequisites": [],
+      "costs": [],
+      "new_limits": [],
+      "source_evidence": "每道微量催芽诀只牵引一盆根须，术印一散，他便退开吐纳。炼气三层没有让乱根自行归位，却让木灵气收束得更干净。过去须得追着乱根连催两三次，如今一次短促引导便能让它们停在新土沟内。"
+    }
+  ],
+  "resource_changes": [],
+  "knowledge_changes": [
+    {
+      "character_id": "han-xiao",
+      "fact_id": "moon-dew-misuse-no-common-handler-confirmed",
+      "state": "knows",
+      "belief": "韩笑确认后丁六月露用量偏多、后丙三只是沾用余量，且没有其他可核经手人；共同养护误差说法无法补入责任栏。",
+      "supersedes_fact_ids": [],
+      "change": "韩笑在核对后承认没有其他可核经手人，不能继续把后丁六和后丙三月露问题写成共同养护误差。",
+      "source_evidence": "“后丁六用量偏多。后丙三只是沾了余量。没有其他可核经手人。”\n\n陆迟问：“共同栏还补吗？”\n\n“共同二字可以不写。”韩笑道，“笑纹开裂也有夜温影响。”"
+    },
+    {
+      "character_id": "lu-chi",
+      "fact_id": "label-swap-not-lu-chi-active-all-pots",
+      "state": "knows",
+      "belief": "经工时牌、月露刻度、灵墨迁色与分盆记录交叉核验，陆迟主动调换十二盆药签不成立；这不抵消他违规使用催芽散的责任。",
+      "supersedes_fact_ids": [],
+      "change": "陆迟在违规责任栏中把违规催芽散责任与主动调换十二盆药签不成立分列。",
+      "source_evidence": "陆迟亲手写下：曾以一小撮便宜催芽散抢救受寒药苗，未先报备，违反药园用药规程，接受记录及后续处分。\n\n随后另起一行：此项责任不等于主动调换十二盆药签；后者经工时牌、月露刻度、灵墨迁色与分盆记录交叉核验，不成立。"
+    },
+    {
+      "character_id": "qiao-zhi",
+      "fact_id": "label-swap-not-lu-chi-active-all-pots",
+      "state": "knows",
+      "belief": "陆迟主动调换全部药签不成立，且乔枝愿意按可核记录承担见证后果。",
+      "supersedes_fact_ids": [],
+      "change": "乔枝公开确认陆迟主动调换全部药签不成立，并要求韩笑若质疑就报盆号、时辰和记录页。",
+      "source_evidence": "这次她没有回避，只将名字签完：“我承担可核记录的后果。陆迟违规用催芽散，我签。甲一、甲二不可恢复，我签。陆迟主动调换全部药签不成立，我也签。若你认为哪项不实，请报盆号、时辰和记录页。”"
+    },
+    {
+      "character_id": "wei-yuan",
+      "fact_id": "dew-control-spout-compensation-lu-chi-established",
+      "state": "knows",
+      "belief": "控露陶嘴由陆迟操作失稳致损，陆迟赔偿责任成立，金额需按本月采买价终核，突破不能抵赔偿。",
+      "supersedes_fact_ids": [],
+      "change": "魏远将控露陶嘴赔偿责任初核入表，确认陆迟仍需承担赔偿义务。",
+      "source_evidence": "魏远沉默两息，落笔写道：控露陶嘴一只，陆迟操作失稳致损；赔偿责任成立，金额按本月采买价终核。\n\n“突破不抵赔偿。”魏远道。"
+    }
+  ],
+  "thread_changes": [
+    {
+      "change": "复议前置材料已补齐到可终核阶段，但资格仍未恢复，下一步只剩终验、赔偿金额和资格裁定。",
+      "source_evidence": "魏远收齐三张表，以终核木尺压住：“损耗说明已成，分盆记录已成，赔偿初核已成，违规责任已入栏。下品灵石余额两枚，无本日消耗。明日我验实物、查采买价，再按同一份验收表裁定复议。”\n\n陆迟问：“资格状态？”\n\n“仍冻结。”\n\n木尺落下，最上方只剩三处空格：终验、赔偿金额、资格裁定。"
+    },
+    {
+      "change": "韩笑的月露问题仍固定在私取庚七月露一份、未按时登记归还、无共同经手人这一公物责任栏事实。",
+      "source_evidence": "韩笑没再争，在公物责任页原处按下指印。纸上仍清楚写着：私取庚七月露一份，未按时登记归还，无共同经手人。"
+    }
+  ],
+  "comedy_changes": [
+    {
+      "change": "韩笑试图用“共同养护误差”稀释责任，反被陆迟登记为需要本人核对月露余量来源的工作项。",
+      "source_evidence": "韩笑放下空盆，转向后丁六与乙五：“这两盆笑纹深些，也未必全因月露。十来日内经手的人不少，若算共同养护误差，留在观察栏也说得过去。”\n\n陆迟翻开工册，记下一行。\n\n韩笑笑意一顿：“你记什么？”\n\n“韩笑主张共同养护误差。请主张人核对后丁六、后丙三月露余量来源，按盆号补充经手记录。”"
+    },
+    {
+      "change": "陆迟用验收表规定反制魏远试图暂空赔偿栏的做法，让待核赔偿也必须写明责任人和依据。",
+      "source_evidence": "陆迟道：“赔偿栏空着。”\n\n“终核金额要查本月采买价。”\n\n“验收表第六附项规定，待核赔偿也须写明责任人、损坏物和核价依据。若留空，便算未报损。”\n\n魏远抬眼看他。\n\n陆迟把表推回去：“未报损还要另补迟报说明。”"
+    }
+  ],
+  "new_constraints": [
+    {
+      "change": "陆迟药庐小考资格继续冻结；材料齐全只代表可以终核，不代表资格恢复。",
+      "source_evidence": "“损耗说明、陶嘴赔偿核价、违规催芽散责任，分开填写。”他道，“材料齐全，只代表可以终核，不代表资格恢复。”"
+    },
+    {
+      "change": "控露陶嘴赔偿责任已成立，但具体金额必须等魏远按本月采买价终核。",
+      "source_evidence": "魏远沉默两息，落笔写道：控露陶嘴一只，陆迟操作失稳致损；赔偿责任成立，金额按本月采买价终核。"
+    },
+    {
+      "change": "陆迟违规试用便宜催芽散责任正式入栏，后续处分仍需承受。",
+      "source_evidence": "陆迟亲手写下：曾以一小撮便宜催芽散抢救受寒药苗，未先报备，违反药园用药规程，接受记录及后续处分。"
+    },
+    {
+      "change": "后丁六、乙五若被强提为合格，复验退回时还要追加损耗说明。",
+      "source_evidence": "乔枝在两块黄边木牌上签字：“后丁六月露用量异常，乙五笑纹裂度超线。两盆列降等候补。若强提为合格，复验退回时还要追加损耗说明。”"
+    }
+  ],
+  "resolved_constraints": [],
+  "next_chapter_inputs": [
+    "十二盆笑面参终整状态已形成：甲一、甲二裂根计损不可恢复；八盆暂入可验收生长区间；后丁六、乙五列降等候补。",
+    "陆迟仍为炼气三层；突破后三日不得连续使用微量催芽诀的限制继续有效，本章未连续催芽。",
+    "陆迟下品灵石余额仍为2枚，本章无消耗；贡献点扣减后现余6点，账目无变。",
+    "陆迟违规试用便宜催芽散责任已亲手补入责任栏，但该责任不等于主动调换十二盆药签。",
+    "控露陶嘴赔偿初核已成：陆迟赔偿责任成立，金额需按本月采买价终核。",
+    "乔枝继续作为可核记录见证人，已签损耗、分盆和二十四格见证相关附注，并承受韩笑偏帮暗示压力。",
+    "韩笑仍只坐实月露公物责任：私取庚七月露一份，未按时登记归还，无共同经手人；他未承认移动药签。",
+    "下一章魏远可验实物、查采买价，并在同一份验收表上裁定复议；当前资格状态仍冻结，空格为终验、赔偿金额、资格裁定。"
+  ],
+  "deviations": []
+}
+```
+
+## 第 9 章
+
+```json
+{
+  "state_schema_version": "1.1",
+  "event_id": "chapter-0009",
+  "chapter": 9,
+  "source_draft": "chapters/0009/draft.final.md",
+  "source_sha256": "6cbdedf4c3e24019e59959fddf29faaafbc94b988165d950421994dc363922e9",
+  "entity_changes": [
+    {
+      "change": "十二盆笑面参终验定案：两盆计损，八盆可验收，两盆降等候补，药材等级按现状固定。",
+      "source_evidence": "林素最后合上药针盒：“两盆计损，八盆可验收，两盆降等候补。药材等级按现状。谁负什么责任，另看责任栏。”"
+    },
+    {
+      "change": "陆迟的药庐小考资格由冻结改为恢复但附条件。",
+      "source_evidence": "他终于提笔，在末栏写下：恢复药庐小考资格，附条件。"
+    }
+  ],
+  "relationship_changes": [
+    {
+      "change": "乔枝继续以可核证词支持记录边界，明确选择承担得罪人的风险而不撤回证词。",
+      "source_evidence": "乔枝没有看他，只检查自己的签名：“若撤回可核证词，我会承担虚报风险；若保留，最多承担得罪人的风险。后者损失较小。”"
+    },
+    {
+      "change": "韩笑对乔枝签满证词产生施压言语，二人关系裂痕继续存在。",
+      "source_evidence": "韩笑忽然开口：“乔枝，你这几处签得这样满，往后旁人难免说你偏帮。”"
+    }
+  ],
+  "cultivation_changes": [
+    {
+      "subject_id": "lu-chi",
+      "kind": "restriction",
+      "change": "陆迟的木灵气逆冲解除记录被终核承认，但突破后三日不得连续使用微量催芽诀的限制继续有效。",
+      "state_id": "post-breakthrough-three-day-sprout-ban",
+      "state_action": "set",
+      "stage_after": "炼气三层",
+      "from_stage": "",
+      "to_stage": "",
+      "prerequisites": [],
+      "costs": [],
+      "new_limits": [],
+      "source_evidence": "林素看了他一眼：“伤势解除，不等于限制解除。写清。”\n\n陆迟在伤势栏后补上：木灵气逆冲已解除；突破后三日不得连续使用微量催芽诀。\n\n魏远翻到前页。伤势解除一栏下，有林素的确认、乔枝二十四格见证，以及他自己此前落下的“准予入表”四字。他看了片刻，只能在终核处再签一次。"
+    },
+    {
+      "subject_id": "lu-chi",
+      "kind": "progress",
+      "change": "陆迟确认炼气三层只提升灵气收束稳定性，不能恢复裂根药材，也不能取消三日禁连催限制。",
+      "state_id": "",
+      "state_action": "",
+      "stage_after": "炼气三层",
+      "from_stage": "",
+      "to_stage": "",
+      "prerequisites": [],
+      "costs": [],
+      "new_limits": [],
+      "source_evidence": "“不能。”陆迟答得很快，“境界只让灵气收束更稳，不会让断根接回去。继续施术还违反三日禁连催。”"
+    }
+  ],
+  "resource_changes": [],
+  "knowledge_changes": [
+    {
+      "character_id": "qiao-zhi",
+      "fact_id": "label-swap-not-lu-chi-active-swap",
+      "state": "knows",
+      "belief": "工时牌、月露刻度、回收灵墨迁色和韩笑行动记录合看，足以排除陆迟主动调换十二盆药签，但不能认定谁移动了药签。",
+      "supersedes_fact_ids": [
+        "moon-dew-record-conflict"
+      ],
+      "change": "乔枝完成证词转向，亲自划去先前陆迟主动调换全部药签的判断，并以四项记录排除陆迟主动调换药签。",
+      "source_evidence": "她将四份记录并排压住：“工时牌证明领还时辰，月露刻度证明用量不合，回收灵墨迁色证明旧签具备错看、错挂条件，韩笑的行动记录证明庚七月露另有去向。四项合看，足以排除陆迟主动调换十二盆药签的判断，但不能据此认定谁移动了药签。”\n\n魏远逐份核过。乔枝先前那条“陆迟主动调换全部药签”的判断，已被她亲笔划去，旁注新事实与对应页码。"
+    },
+    {
+      "character_id": "wei-yuan",
+      "fact_id": "label-swap-not-lu-chi-active-swap",
+      "state": "knows",
+      "belief": "陆迟主动调换十二盆药签的原判断不成立，但谁移动药签仍未定。",
+      "supersedes_fact_ids": [],
+      "change": "魏远核过四份记录后，在责任边界栏确认原判断不成立。",
+      "source_evidence": "魏远逐份核过。乔枝先前那条“陆迟主动调换全部药签”的判断，已被她亲笔划去，旁注新事实与对应页码。\n\n他在责任边界栏写下：“原判断不成立。”"
+    },
+    {
+      "character_id": "han-xiao",
+      "fact_id": "label-swap-involvement-denial",
+      "state": "conceals",
+      "belief": "韩笑承认月露一事，但仍公开否认药签之事与自己有关；正文未确认他是否移动药签。",
+      "supersedes_fact_ids": [],
+      "change": "韩笑继续否认药签之事与自己有关。",
+      "source_evidence": "韩笑面色微沉，却只道：“月露一事我认，药签之事仍与我无关。”"
+    },
+    {
+      "character_id": "wei-yuan",
+      "fact_id": "han-xiao-moon-dew-public-property-violation-limited",
+      "state": "knows",
+      "belief": "韩笑本次只被定为未登记挪用一份月露，处分另定且不扩大到其他事项。",
+      "supersedes_fact_ids": [],
+      "change": "魏远正式限定韩笑被坐实的违规范围为未登记挪用一份月露。",
+      "source_evidence": "“本次也只定你未登记挪用一份月露。”魏远道，“处分另定，不作扩大。”"
+    },
+    {
+      "character_id": "lin-su",
+      "fact_id": "han-xiao-moon-dew-public-property-violation-limited",
+      "state": "knows",
+      "belief": "韩笑私自挪用庚七月露一份，未按时登记归还；动机不改变公物记录。",
+      "supersedes_fact_ids": [],
+      "change": "林素确认韩笑私自挪用一份月露且未按时登记归还。",
+      "source_evidence": "“庚七月露一份，由你私自挪用，未按时登记归还。”林素打断他，“后丁六沾用为主，余量沾到后丙三。此项已经核过。”\n\n“我并非说不是我经手，只是当时月露紧缺，想着先顾药势。”\n\n“动机不改公物记录。”"
+    }
+  ],
+  "thread_changes": [
+    {
+      "change": "资格复议完成：魏远依据同一份验收表恢复陆迟药庐小考资格，但附补交损耗说明正本、赔偿控露陶嘴、违规催芽散记录随卷、三点贡献扣减保留和逾期再议等条件。",
+      "source_evidence": "他终于提笔，在末栏写下：恢复药庐小考资格，附条件。\n\n“一，补交十二盆损耗说明正本；二，按核价赔偿控露陶嘴；三，违规催芽散记录随卷。三点贡献扣减保留。任一项逾期，资格再议。”"
+    },
+    {
+      "change": "外门药园月露短缺仍未解决，且不纳入本次资格复议。",
+      "source_evidence": "魏远写完“核验有效”，又补道：“药园月露本月仍缺，后续分配不在本次复议内。”\n\n“记下了。”陆迟说，“缺额未解决，不计作资格恢复条件。”"
+    },
+    {
+      "change": "控露陶嘴核价单已送达，陆迟必须在小考名册酉时封卷前完成赔偿入账。",
+      "source_evidence": "一名杂役快步送来控露陶嘴核价单。魏远扫了一眼，盖上采买印，推到陆迟面前。\n\n陆迟看清赔偿数额，又摸了摸袋中仅剩的两枚下品灵石。\n\n名册今日酉时封卷，赔偿也须在酉时前入账。"
+    }
+  ],
+  "comedy_changes": [
+    {
+      "change": "魏远试图追加观察时，被陆迟和乔枝用验收规程与空遗漏栏反制，形成表格反噬。",
+      "source_evidence": "魏远道：“疯长刚止，仍需观察。”\n\n陆迟翻开分盆页：“观察时辰已满。起始、复查、终整三栏齐全。”\n\n乔枝将记录册转过去：“分盆见证是我，终整初核是魏管事。若要增加观察时辰，按验收规程，应在初核前写明。”\n\n魏远看见自己那枚方正的印，指节在桌沿敲了一下。\n\n“我只是核对是否有遗漏。”\n\n陆迟道：“遗漏栏在下一格，目前为空。”"
+    },
+    {
+      "change": "魏远最终被自己此前签过和盖过的表格流程推到恢复资格栏，不能继续用同一表格冻结资格。",
+      "source_evidence": "魏远从头翻到尾。每一处印记都在，其中数处还是他亲手盖的。若继续冻结，反倒要另写一份不依本表的理由。"
+    }
+  ],
+  "new_constraints": [
+    {
+      "change": "陆迟恢复药庐小考资格的条件包括补交十二盆损耗说明正本、按核价赔偿控露陶嘴、违规催芽散记录随卷；三点贡献扣减保留，任一项逾期资格再议。",
+      "source_evidence": "“一，补交十二盆损耗说明正本；二，按核价赔偿控露陶嘴；三，违规催芽散记录随卷。三点贡献扣减保留。任一项逾期，资格再议。”"
+    },
+    {
+      "change": "陆迟的控露陶嘴赔偿须在今日酉时前入账，否则影响名册封卷前状态。",
+      "source_evidence": "陆迟看清赔偿数额，又摸了摸袋中仅剩的两枚下品灵石。\n\n名册今日酉时封卷，赔偿也须在酉时前入账。"
+    },
+    {
+      "change": "陆迟低资源压力继续存在：赔偿核价已出，袋中仅剩两枚下品灵石。",
+      "source_evidence": "陆迟看清赔偿数额，又摸了摸袋中仅剩的两枚下品灵石。"
+    },
+    {
+      "change": "陆迟违规试用便宜催芽散责任正式保留，不因药签错乱另有原因而免除。",
+      "source_evidence": "他翻到责任栏，语气重新硬了几分：“陆迟，违规试用便宜催芽散，是否承认？”\n\n“承认。用量一小撮，用于受寒药苗，未申报。责任保留。”\n\n“不得因药签错乱另有原因而免除。”\n\n“不申请免除。”"
+    },
+    {
+      "change": "陆迟损坏控露陶嘴的赔偿责任成立，三点贡献扣减不退，现余六点。",
+      "source_evidence": "魏远落印，又指向控露陶嘴一项：“强行稳根时损坏公用陶嘴，赔偿责任成立。按本月采买价核赔。此前扣除三点贡献，不退。现余六点。”"
+    }
+  ],
+  "resolved_constraints": [
+    {
+      "change": "陆迟药庐小考资格的冻结状态解除，改为恢复但附条件。",
+      "source_evidence": "他终于提笔，在末栏写下：恢复药庐小考资格，附条件。"
+    }
+  ],
+  "next_chapter_inputs": [
+    "陆迟已恢复带条件药庐小考资格，但必须补交十二盆损耗说明正本、按核价赔偿控露陶嘴，并接受违规催芽散记录随卷；三点贡献扣减保留，任一项逾期资格再议。",
+    "控露陶嘴核价单已送到陆迟面前，赔偿须在今日酉时前入账；陆迟袋中仅剩两枚下品灵石，资源压力继续存在。",
+    "十二盆笑面参终验定案：两盆计损，八盆可验收，两盆降等候补，药材等级按现状。",
+    "陆迟仍为炼气三层；木灵气逆冲解除记录有效，但突破后三日不得连续使用微量催芽诀的限制仍在，且不能恢复裂根药材。",
+    "乔枝已亲笔划去陆迟主动调换全部药签的原判断；四项记录足以排除陆迟主动调换十二盆药签，但不能据此认定谁移动了药签。",
+    "韩笑本次只被定为未登记挪用一份月露，处分另定且不作扩大；他仍否认药签之事与自己有关。",
+    "药园月露本月仍缺，后续分配不在本次复议内，外门月露分配压力未解决。"
+  ],
+  "deviations": []
+}
+```
+
+## 第 10 章
+
+```json
+{
+  "state_schema_version": "1.1",
+  "event_id": "chapter-0010",
+  "chapter": 10,
+  "source_draft": "chapters/0010/draft.final.md",
+  "source_sha256": "7eb9634b7ab32f977c5fd6ec57862c223c53c1ee316a25de380c938660a8c9e0",
+  "entity_changes": [
+    {
+      "change": "陆迟正式取得带朱印的带条件药庐小考随卷单，资格入口落实为可携带凭据。",
+      "source_evidence": "陆迟接过随卷单，先看印，再看红栏，最后把它夹进薄册最硬的一页。"
+    },
+    {
+      "change": "十二盆笑面参最终交接状态固定为两盆计损、八盆可验收、两盆降等候补，药签重挂但不补完真相。",
+      "source_evidence": "他走出工具廊时，回头看了一眼药园。十二盆笑面参已经分列入账：两盆计损，八盆可验收，两盆降等候补。药签重新挂好，却没有替谁讲完所有真相。"
+    },
+    {
+      "change": "甲一、甲二裂根计损，并被明确禁止恢复或改写为合格。",
+      "source_evidence": "“甲一、甲二，裂根计损。”她按下木签，“不得恢复，不得改写为合格。若随卷中出现‘已补救’三字，我退卷。”"
+    }
+  ],
+  "relationship_changes": [
+    {
+      "change": "乔枝以见证人身份公开限定证词边界，继续承担见证立场带来的关系压力。",
+      "source_evidence": "乔枝落笔很慢，写完名字，又按要求在“见证边界”旁画押。她放下笔时，轻声补了一句：“若有人把我的签名说成替陆迟担保全无过错，此说法风险自负。”"
+    },
+    {
+      "change": "韩笑在魏远、乔枝、陆迟面前收到公物责任回执，寒暄被明确挡回责任边界内。",
+      "source_evidence": "魏远正好从棚内出来，手里拿着另一份回执，闻言看向韩笑：“仔细些好。韩笑，庚七月露一份未登记挪用，未按时归还，已入公物责任栏。处分另定。你在这份回执上写明收到，不得写成共同免赔申请。”"
+    }
+  ],
+  "cultivation_changes": [
+    {
+      "subject_id": "lu-chi",
+      "kind": "restriction",
+      "change": "陆迟的突破后三日不得连续使用微量催芽诀限制继续有效，三日内训练只能基础吐纳、辨药复核和低频分段练手。",
+      "state_id": "post-breakthrough-three-day-sprout-ban",
+      "state_action": "set",
+      "stage_after": "炼气三层",
+      "from_stage": "",
+      "to_stage": "",
+      "prerequisites": [],
+      "costs": [],
+      "new_limits": [],
+      "source_evidence": "陆迟收起核价单，又取出一枚小木签，在随卷单外侧夹住：“明日开始小考准备。今日不连续催芽，明日也不连续。三日内只做基础吐纳、辨药复核和低频分段练手。”"
+    },
+    {
+      "subject_id": "lu-chi",
+      "kind": "restriction",
+      "change": "陆迟炼气三层只提升灵气收束稳定，不增加药性见识，也不改变药损。",
+      "state_id": "qi-refinement-three-limited-control-only",
+      "state_action": "set",
+      "stage_after": "炼气三层",
+      "from_stage": "",
+      "to_stage": "",
+      "prerequisites": [],
+      "costs": [],
+      "new_limits": [],
+      "source_evidence": "林素把最后一盆白签笑面参放回原位：“说得对。炼气三层只说明你收束灵气稳些，不增加药性见识，不改药损。三日禁令照行。”"
+    }
+  ],
+  "resource_changes": [],
+  "knowledge_changes": [
+    {
+      "character_id": "qiao-zhi",
+      "fact_id": "label-swap-boundary-lu-chi-not-full-culprit",
+      "state": "knows",
+      "belief": "乔枝知道四项记录共同证明陆迟主动调换全部药签不成立，但她的证词不免除陆迟违规催芽散责任，也不免除任何人的月露、公物或药签责任。",
+      "supersedes_fact_ids": [],
+      "change": "乔枝正式签署并重申自己的见证边界。",
+      "source_evidence": "乔枝站在见证栏旁，手里捏着笔，指节发白。她今日没背整段规章，只把边界说明重读了一遍：“本人乔枝见证：工时牌、月露刻度、回收灵墨迁色及韩笑行动记录共同证明，陆迟主动调换全部药签不成立。此证词不替陆迟免除违规催芽散责任，不替任何人免除月露、公物或药签责任。”"
+    },
+    {
+      "character_id": "wei-yuan",
+      "fact_id": "lu-chi-conditional-exam-eligibility-valid",
+      "state": "knows",
+      "belief": "魏远知道陆迟复议后资格恢复，工时记录、月露核验、伤势解除记录和分盆结果有效，但资格仍带责任条件。",
+      "supersedes_fact_ids": [],
+      "change": "魏远依据验收表承认陆迟带条件资格恢复及相关记录有效。",
+      "source_evidence": "“陆迟，复议后资格恢复，不等于无责。第一栏，工时记录有效；第二栏，月露核验有效；第三栏，林素巡验弟子所记伤势解除有效；第四栏，分盆结果有效。”"
+    },
+    {
+      "character_id": "han-xiao",
+      "fact_id": "label-swap-involvement-denial",
+      "state": "conceals",
+      "belief": "韩笑承认收到月露未登记挪用的回执，但仍公开否认药签之事；正文仍未确认他是否移动药签。",
+      "supersedes_fact_ids": [],
+      "change": "韩笑继续否认药签之事，并要求不要把月露责任扩展成别的责任。",
+      "source_evidence": "韩笑最终接过笔，仍尽力圆场：“管事放心，我只写收到。药签之事，我仍未认，也请诸位莫把月露一项推成别的。”"
+    },
+    {
+      "character_id": "lin-su",
+      "fact_id": "han-xiao-moon-dew-not-label-proof",
+      "state": "knows",
+      "belief": "林素知道韩笑的月露责任不能据此定为移动药签，也不能据此免除月露责任。",
+      "supersedes_fact_ids": [],
+      "change": "林素明确韩笑月露违规与药签责任之间的证据边界。",
+      "source_evidence": "林素的声音从棚内传来：“无人据此定你移动药签。也无人据此免你月露责任。”"
+    },
+    {
+      "character_id": "lu-chi",
+      "fact_id": "conditional-exam-burdens-remain",
+      "state": "knows",
+      "belief": "陆迟知道小考资格入口已经到手，但随卷处分、损耗说明、控露陶嘴赔偿、贡献点扣减和灵石不足都仍然存在。",
+      "supersedes_fact_ids": [],
+      "change": "陆迟确认资格恢复没有减少待付账目。",
+      "source_evidence": "陆迟背起药箱，确认三叠纸都在：随卷单带朱印，红栏清楚；损耗说明等他补正；控露陶嘴赔偿核价单压得最紧。两枚下品灵石在袋中轻碰，提醒他资格入口已经到手，账还没有少一笔。"
+    }
+  ],
+  "thread_changes": [
+    {
+      "change": "陆迟的小考准备线正式开启，启动条件是带条件资格已取得但须先处理付账与随卷责任。",
+      "source_evidence": "陆迟把薄册合上，沿着去药庐的小径往前走。\n\n“下一项，”他低声念，“小考准备。附：先付账。”"
+    },
+    {
+      "change": "韩笑的责任线被限定在一份庚七月露未登记挪用、未按时归还，处分另定，未扩展为药签真凶或月露分配网络。",
+      "source_evidence": "魏远正好从棚内出来，手里拿着另一份回执，闻言看向韩笑：“仔细些好。韩笑，庚七月露一份未登记挪用，未按时归还，已入公物责任栏。处分另定。你在这份回执上写明收到，不得写成共同免赔申请。”"
+    }
+  ],
+  "comedy_changes": [
+    {
+      "change": "陆迟把资格条件逐项抄成待办事项，反迫使魏远按表格盖出随卷单。",
+      "source_evidence": "魏远终于发现，自己每念一项限制，陆迟就把那项限制变成领取随卷单的前置勾验。若再不盖，反像他扣着已有效的栏不办。他沉着脸，取出百草坡管事印，先盖在验收表“复议后资格恢复”处，又盖在随卷单“带条件准入”处。"
+    },
+    {
+      "change": "乔枝将见证边界说成可留底的表格话术，形成表格喜剧并保留责任后果。",
+      "source_evidence": "韩笑把回执交给魏远，朝乔枝笑了笑：“乔师妹如今说话更像表了。”\n\n乔枝平静道：“表至少会留底。”"
+    },
+    {
+      "change": "陆迟把高兴也纳入栏位管理，强化带条件资格必须先付账的喜剧机制。",
+      "source_evidence": "陆迟把控露陶嘴核价单压在最上面：“第一叠今日酉时前入账，第二叠随卷处分，第三叠小考。高兴若插队，须有栏位。”"
+    }
+  ],
+  "new_constraints": [
+    {
+      "change": "陆迟随卷单红栏明确保留违规催芽散责任、控露陶嘴赔偿待清、三点贡献点已扣不返还，以及突破后三日不得连续使用微量催芽诀。",
+      "source_evidence": "魏远没有立刻盖。他先指着三处红栏：“违规试用便宜催芽散，责任随卷。损坏控露陶嘴，赔偿待清。三点贡献点已扣，不返还。另，突破后三日不得连续使用微量催芽诀，林素巡验记录附后。”"
+    },
+    {
+      "change": "陆迟小考前不得把降等候补的笑面参数量充作合格数量。",
+      "source_evidence": "“候补不是合格。”陆迟照抄，又补了两个小圈，“小考前不得拿候补数充合格数。”"
+    },
+    {
+      "change": "韩笑不得把收到处分待定回执写成共同免赔申请。",
+      "source_evidence": "魏远正好从棚内出来，手里拿着另一份回执，闻言看向韩笑：“仔细些好。韩笑，庚七月露一份未登记挪用，未按时归还，已入公物责任栏。处分另定。你在这份回执上写明收到，不得写成共同免赔申请。”"
+    }
+  ],
+  "resolved_constraints": [],
+  "next_chapter_inputs": [
+    "陆迟已持有带朱印的带条件药庐小考随卷单，可直接进入小考准备。",
+    "陆迟的随卷单保留违规试用便宜催芽散责任、控露陶嘴赔偿待清、三点贡献点已扣不返还等红栏记录。",
+    "陆迟袋中只剩两枚下品灵石，控露陶嘴赔偿核价单仍压在待办中，资源压力持续。",
+    "陆迟仍为炼气三层，但三日内不得连续使用微量催芽诀，只能基础吐纳、辨药复核和低频分段练手。",
+    "炼气三层只提升陆迟灵气收束稳定，不增加药性见识，不改变药损，不能恢复裂根药材。",
+    "十二盆笑面参交接状态为两盆计损、八盆可验收、两盆降等候补；甲一、甲二不得恢复或改写为合格，候补不得充合格数。",
+    "乔枝的见证边界公开：只证明陆迟主动调换全部药签不成立，不替陆迟免违规，也不替任何人免月露、公物或药签责任。",
+    "韩笑庚七月露一份未登记挪用、未按时归还，已入公物责任栏，处分另定；他仍否认药签之事，正文未确认药签真正移动者。",
+    "药签重新挂好，但未讲完所有真相；外门药材配给长期短缺和月露分配压力仍未解决。"
+  ],
+  "deviations": []
+}
+```
+
+## 最终结构化快照
+
+```json
+{
+  "after_chapter": 10,
+  "event_ids": [
+    "chapter-0001",
+    "chapter-0002",
+    "chapter-0003",
+    "chapter-0004",
+    "chapter-0005",
+    "chapter-0006",
+    "chapter-0007",
+    "chapter-0008",
+    "chapter-0009",
+    "chapter-0010"
+  ],
+  "changes": {
+    "entity_changes": [
+      {
+        "change": "十二盆笑面参确认提前疯长、根须互缠，东侧两盆出现裂根并持续渗液，属于高风险损耗状态。",
+        "source_evidence": "盆一只没少，笑面参却全挤出了盆沿。肥厚叶片层层叠叠，白根从排水孔里钻出，沿木架彼此纠缠。靠东两盆最重，根颈已有细裂，淡黄汁液渗进湿土，笑纹一路咧到土面，像是赶在验收前先笑坏了。"
+      },
+      {
+        "change": "十二枚药签被夜露浸透，回收灵墨迁色造成看错或错挂条件，但不证明移动药签者。",
+        "source_evidence": "他以左手按住药签，施展辨药术。淡青灵气沿墨痕缓缓游过，夜露下浮起一层旧字。确是回收灵墨迁色：旧痕遇湿返出，新字便会偏移，足以让人看错，也可能造成错挂。\n\n但辨药术只能辨墨，不能辨手。\n\n陆迟拔起一枚药签查看底痕，随即放回原位：“迁色成立。只能说明具备看错、错挂的条件，不能证明谁动过。”"
+      },
+      {
+        "change": "告状藤提供一条完整命令复述，内容涉及把若干盆挂到后排并等露痕干掉，但来源、时辰、真假均不明，只能列为线索。",
+        "source_evidence": "乔枝正要再改，竹架上的告状藤忽然扬起藤梢，用一道陌生而含糊的嗓音说道：\n\n“先把那几盆挂到后排再说，露痕干了就看不出来。”\n\n两人的手同时停下。\n\n告状藤将整句话又复述一遍，字字不差，却没有再多一个字。\n\n乔枝望向药签：“有人说过这话。”\n\n“它只会复述听过的完整命令。”陆迟记下原句，“不知道说话者，不知道时辰，也不辨真假。”\n\n“至少说明有人提过挂到后排。”\n\n“所以是线索，不是证据。”"
+      },
+      {
+        "change": "甲一笑面参确认裂根且不可逆，被移入损耗观察。",
+        "source_evidence": "陆迟给甲一盆沿系上红绳，移到右侧空架：“甲一，裂根，停用月露，不施催芽，入损耗观察。”"
+      },
+      {
+        "change": "甲二笑面参确认裂根且不可逆，被计入损耗观察。",
+        "source_evidence": "陆迟停了手，也给甲二系上红绳。\n\n“甲二，裂根，不可逆。”"
+      },
+      {
+        "change": "乙三根须被陆迟强行施术暂时稳定，丙一裂缝未继续扩大。",
+        "source_evidence": "乙三的根须终于定住，丙一土面的裂缝也不再扩大。"
+      },
+      {
+        "change": "一只控露陶嘴被陆迟施术时的灵气冲裂，进入损耗记录，赔偿待核。",
+        "source_evidence": "魏远没有理会两人的争执，提笔填下损耗：控露陶嘴一只，陆迟强行施术所致，赔偿待核。"
+      },
+      {
+        "change": "陆迟保留了工时牌、月露初值拓纸和十二盆编号副记，作为后续核验材料。",
+        "source_evidence": "陆迟用左手收起工时牌、月露初值拓纸和十二盆编号副记。正表由魏远带走，副记则被他装进布袋。"
+      },
+      {
+        "change": "魏远在同一张验收表过程栏补入陆迟停术、疗伤膏使用、伤势部分恢复、月露初值抄本、分盆编号备注和乔枝见证签字等补交事实，并盖印接收。",
+        "source_evidence": "魏远看过她的签字，最终提笔填入过程栏，盖上小印：“接收，不作为免责。月露刻度有矛盾，只说明要继续核验，不说明谁清白。药签错乱仍未查明。”"
+      },
+      {
+        "change": "十二盆笑面参完成逐盆辨药核验：甲一、甲二仍为裂根损耗观察，其余十盆按叶脉、根纹与笑纹反应分成轻重两档，和账册相同月露用量记录矛盾。",
+        "source_evidence": "两人逐盆核验。甲一、甲二裂根另列，其余十盆的叶脉、根纹与笑纹反应，明显分成轻重两档。账册上却记着相同的月露用量。"
+      },
+      {
+        "change": "回收灵墨旧签经等量夜露复核，确认会发生迁色并造成错读、错挂条件，但不能定出移动药签者。",
+        "source_evidence": "两人转到旧药签清洗台。乔枝取三枚回收灵墨旧签，滴上等量夜露。半盏茶后，其中一枚“乙二”的旧刮痕洇开，下半笔画滑成近似“丙”；另一枚横画迁移，遮住小半编号。\n\n“迁色成立。”陆迟道，“足以造成错读，继而错挂。”\n\n乔枝把三枚签翻面比对：“迁色方向受刮痕和露量影响，不能倒推出谁拿过。只可记条件，不可定人。”"
+      },
+      {
+        "change": "庚七编号月露进入正式核验：领取人为韩笑工时牌，归还栏空缺。",
+        "source_evidence": "魏远翻开领取簿，指尖停在一行。\n\n“庚七瓶，昨日申时二刻，韩笑工时牌领取。用途，后排笑面参补露。归还栏空缺。”"
+      },
+      {
+        "change": "庚七编号月露实物余量比账面少一份。",
+        "source_evidence": "魏远取出庚七，置于刻度灯下。银蓝液面停在第三细刻下方。他再查账面应余，脸色沉了下来。\n\n“少一份。”"
+      },
+      {
+        "change": "庚七月露复称完成并正式记录为较账面短缺一份。",
+        "source_evidence": "第一遍复称，月露仍少一份。乔枝换上备用小砣，第二遍结果不变。魏远转动瓶身，将挂壁的三滴聚到底部，秤杆依旧停在原处。\n\n他提笔写入公物复称栏：“庚七余量较账面少一份，封存后复称无改。”"
+      },
+      {
+        "change": "庚七月露实际用露盆号待核记录新增后丙三与后丁六，且后丁六不在陆迟当值照料记录内。",
+        "source_evidence": "陆迟写下待核首行：庚七至少用于后丙三与后丁六；后丁六不在陆迟当值照料记录内。非抢救，不得再开新瓶。"
+      },
+      {
+        "change": "甲一、甲二笑面参仍列裂根损耗，未恢复。",
+        "source_evidence": "魏远合上验收表：“庚七三项事实有效，不代表陆迟原有责任取消。药庐小考资格继续冻结，三点贡献已经扣除；控露陶嘴赔偿待核，违规试用催芽散照旧入责任栏。甲一、甲二仍计裂根损耗。”"
+      },
+      {
+        "change": "韩笑补交庚七月露归还说明，承认庚七一份主要用于后丁六、余量沾用后丙三，未按时登记归还且无共同经手人，但仍否认移动药签。",
+        "source_evidence": "韩笑脸上的笑淡了：“归还说明：庚七一份，申时二刻领取，主要用于后丁六，余量沾用后丙三，未按时登记归还。共同经手人，无。”\n\n他停了一下，又补道：“我仍否认移动药签。”"
+      },
+      {
+        "change": "魏远将韩笑庚七月露未登记挪用写入公物责任栏，处分另定。",
+        "source_evidence": "魏远收起副记：“韩笑，庚七月露未登记挪用，入公物责任栏，处分另定。陆迟，药签责任边界变更，不影响你违规试用催芽散、损坏控露陶嘴、扣三点贡献和资格冻结。”"
+      },
+      {
+        "change": "十盆未裂根笑面参完成分组稳定方案：八盆列可验收生长区间观察，后丁六、乙五列降等候补观察；甲一、甲二仍为裂根损耗观察且不可恢复。",
+        "source_evidence": "陆迟在主册落笔：“十盆未裂根笑面参，八盆列可验收生长区间观察；后丁六、乙五笑纹开裂过深，列降等候补观察。甲一、甲二裂根损耗观察，不可恢复。”"
+      },
+      {
+        "change": "乔枝完成二十四次小周天的全程见证签字，成为本次监护记录的正式见证人。",
+        "source_evidence": "乔枝签下第二十四格，放下笔：“全程见证。若有人认为只见证了大半，可先核验我的二十四个签名。”"
+      },
+      {
+        "change": "甲一、甲二笑面参正式按裂根计损处理，确认不可恢复。",
+        "source_evidence": "乔枝看了看裂根，落笔签名：“我只确认实况。甲一、甲二裂根计损，不可恢复。”"
+      },
+      {
+        "change": "八盆笑面参完成换盆、重排盆位和重挂药签，暂入可验收生长区间。",
+        "source_evidence": "到午时，八盆已换入完整盆体。盆位依照受露量与现存药性错开，盆间留下足够空隙。\n\n乔枝换上新药签，在每只盆沿画下一道核验墨线，逐一念道：“后丙三、乙四、戊二、前丁一……共八盆，根系完整，笑纹回稳，暂入可验收生长区间。只写暂入，不写合格。”"
+      },
+      {
+        "change": "后丁六与乙五被列为降等候补，不提升为合格品。",
+        "source_evidence": "乔枝在两块黄边木牌上签字：“后丁六月露用量异常，乙五笑纹裂度超线。两盆列降等候补。若强提为合格，复验退回时还要追加损耗说明。”"
+      },
+      {
+        "change": "控露陶嘴损坏状态完成初核：裂后无法稳定控露，只能作废。",
+        "source_evidence": "损坏的控露陶嘴被放上秤盘。嘴端缺了一块，裂纹横穿两道控露槽，注水后必然偏流。\n\n魏远翻开公物册：“同制陶嘴，折旧三成。裂后无法稳定控露，只能作废。初核价——”"
+      },
+      {
+        "change": "十二盆笑面参终验定案：两盆计损，八盆可验收，两盆降等候补，药材等级按现状固定。",
+        "source_evidence": "林素最后合上药针盒：“两盆计损，八盆可验收，两盆降等候补。药材等级按现状。谁负什么责任，另看责任栏。”"
+      },
+      {
+        "change": "陆迟的药庐小考资格由冻结改为恢复但附条件。",
+        "source_evidence": "他终于提笔，在末栏写下：恢复药庐小考资格，附条件。"
+      },
+      {
+        "change": "陆迟正式取得带朱印的带条件药庐小考随卷单，资格入口落实为可携带凭据。",
+        "source_evidence": "陆迟接过随卷单，先看印，再看红栏，最后把它夹进薄册最硬的一页。"
+      },
+      {
+        "change": "十二盆笑面参最终交接状态固定为两盆计损、八盆可验收、两盆降等候补，药签重挂但不补完真相。",
+        "source_evidence": "他走出工具廊时，回头看了一眼药园。十二盆笑面参已经分列入账：两盆计损，八盆可验收，两盆降等候补。药签重新挂好，却没有替谁讲完所有真相。"
+      },
+      {
+        "change": "甲一、甲二裂根计损，并被明确禁止恢复或改写为合格。",
+        "source_evidence": "“甲一、甲二，裂根计损。”她按下木签，“不得恢复，不得改写为合格。若随卷中出现‘已补救’三字，我退卷。”"
+      }
+    ],
+    "relationship_changes": [
+      {
+        "change": "乔枝被流程留在现场参与核药签，并签下暂留时辰，但仍保留对陆迟调换药签的怀疑。",
+        "source_evidence": "魏远又指向乔枝：“你既签了暂留，就负责核药签。规章不能只从嘴里过。”\n\n乔枝沉默片刻，接过半叠湿药签：“我仍保留对陆迟调换药签的怀疑。”\n\n“可以。”陆迟在她名下添了一笔，“怀疑保留，核签照办。”"
+      },
+      {
+        "change": "乔枝仍不为陆迟担保，但她已签署自己在场确认的前置状态记录。",
+        "source_evidence": "“我签的是前置状态，不是替你担保。”\n\n“栏位名正是前置状态。”\n\n乔枝盯了他一息，还是签下名字。"
+      },
+      {
+        "change": "乔枝因以降低共同损失为由留下，实际成为陆迟停术、疗伤和后续记录核验的见证人。",
+        "source_evidence": "乔枝退了半步：“我留下，只为降低共同损失。你若再抖坏一只陶嘴，本月公器损耗栏会很难看。”\n\n陆迟提笔添上一行：“乔枝因降低共同损失留下，任风险见证人。”"
+      },
+      {
+        "change": "韩笑与陆迟在庚七月露复核事项上转为公开戒备，韩笑虽语气温和但眼神变冷。",
+        "source_evidence": "韩笑站在封存柜前，语气仍温和，眼神却已冷了：“那便一起量。只盼陆师弟的待核栏装得下所有人的误差。”"
+      },
+      {
+        "change": "乔枝继续以签字见证人身份推动核验，并明确愿意承担本次见证风险。",
+        "source_evidence": "乔枝递上自己的签字页：“我申请依公物流程开柜。若不核验，后续损耗扩大，我的见证记录也不完整。为降低共同损失，我承担本次见证风险。”"
+      },
+      {
+        "change": "韩笑因提出共同计量误差，被魏远要求亲自参与庚七月露搬秤、对瓶、列共同经手人。",
+        "source_evidence": "魏远皱了皱眉，却只能依公物流程点名：“韩笑既提出共同误差，便亲自搬秤、对瓶，再列共同经手人。乔枝核砣见证。陆迟停术，不碰公物，只作副记。”"
+      },
+      {
+        "change": "乔枝成为庚七月露复称见证人，但她见证范围限于复称短缺，不证明药签责任。",
+        "source_evidence": "乔枝在复称记录末尾签名：“我只见证今日复称仍少一份，不证明谁移动药签。”"
+      },
+      {
+        "change": "韩笑被指定为庚七相关核盆责任人，后续必须补交归还说明并到场核盆。",
+        "source_evidence": "“所以补流程。”魏远道，“你补交庚七归还说明，列明实际用露时辰、盆号及共同经手人。庚七相关核盆，你必须到场。”\n\n陆迟随即记下：“韩笑，核盆责任人。”"
+      },
+      {
+        "change": "乔枝因重新核签改变证词立场，韩笑当面指出旁人可能认为她偏帮，显示乔枝与韩笑关系转紧。",
+        "source_evidence": "韩笑望向乔枝：“这一签落下，旁人怕要说你偏帮。”\n\n乔枝洗去笔尖余墨：“我只替可核记录签字。它若日后反咬我，也有四项牙印。”"
+      },
+      {
+        "change": "魏远接受林素监护确认的伤势解除记录入验收表，但继续以流程责任约束陆迟。",
+        "source_evidence": "魏远翻到自己辰初签过的确认栏，最终提笔补上：“经林素监护确认，木灵气逆冲已解除。”\n\n“记录有效。”他合起表，“资格冻结继续。三点贡献已扣，控露陶嘴赔偿待核，违规催芽散责任保留。补齐损耗说明、赔偿栏和违规责任栏后，再谈复议。”"
+      },
+      {
+        "change": "乔枝继续以可核记录为依据给陆迟作见证，并因此受到韩笑偏帮暗示的压力。",
+        "source_evidence": "韩笑在旁道：“乔师妹这几日签得比管事还勤。不知情的，怕要说你偏帮陆师弟。”\n\n乔枝笔尖停住。\n\n这次她没有回避，只将名字签完：“我承担可核记录的后果。陆迟违规用催芽散，我签。甲一、甲二不可恢复，我签。陆迟主动调换全部药签不成立，我也签。若你认为哪项不实，请报盆号、时辰和记录页。”"
+      },
+      {
+        "change": "乔枝继续以可核证词支持记录边界，明确选择承担得罪人的风险而不撤回证词。",
+        "source_evidence": "乔枝没有看他，只检查自己的签名：“若撤回可核证词，我会承担虚报风险；若保留，最多承担得罪人的风险。后者损失较小。”"
+      },
+      {
+        "change": "韩笑对乔枝签满证词产生施压言语，二人关系裂痕继续存在。",
+        "source_evidence": "韩笑忽然开口：“乔枝，你这几处签得这样满，往后旁人难免说你偏帮。”"
+      },
+      {
+        "change": "乔枝以见证人身份公开限定证词边界，继续承担见证立场带来的关系压力。",
+        "source_evidence": "乔枝落笔很慢，写完名字，又按要求在“见证边界”旁画押。她放下笔时，轻声补了一句：“若有人把我的签名说成替陆迟担保全无过错，此说法风险自负。”"
+      },
+      {
+        "change": "韩笑在魏远、乔枝、陆迟面前收到公物责任回执，寒暄被明确挡回责任边界内。",
+        "source_evidence": "魏远正好从棚内出来，手里拿着另一份回执，闻言看向韩笑：“仔细些好。韩笑，庚七月露一份未登记挪用，未按时归还，已入公物责任栏。处分另定。你在这份回执上写明收到，不得写成共同免赔申请。”"
+      }
+    ],
+    "cultivation_changes": [
+      {
+        "subject_id": "lu-chi",
+        "kind": "injury",
+        "change": "wood-qi-spasm 仍处于活动状态；陆迟施展微量催芽诀时右臂木灵气逆冲，导致指尖发抖、青光断开、呼吸中断。",
+        "state_id": "wood-qi-spasm",
+        "state_action": "set",
+        "stage_after": "炼气二层",
+        "from_stage": "",
+        "to_stage": "",
+        "prerequisites": [],
+        "costs": [],
+        "new_limits": [],
+        "source_evidence": "他右手结印，微量催芽诀刚凝出一线青光，小臂经脉便猛地逆抽。木灵气从腕间撞向肘侧，指尖一抖，青光当即断开，呼吸也在喉间噎了一下。"
+      },
+      {
+        "subject_id": "lu-chi",
+        "kind": "restriction",
+        "change": "rapid-growth-ban 继续生效；陆迟不得连续使用微量催芽诀，只能停手改用手工隔根。",
+        "state_id": "rapid-growth-ban",
+        "state_action": "set",
+        "stage_after": "炼气二层",
+        "from_stage": "",
+        "to_stage": "",
+        "prerequisites": [],
+        "costs": [],
+        "new_limits": [],
+        "source_evidence": "陆迟立刻散诀，改用竹片隔开根须。\n\n“木灵气逆冲仍在，不得连续催芽。”他在工牌背面记下一笔，“改手工，耗时另计。”"
+      },
+      {
+        "subject_id": "lu-chi",
+        "kind": "injury",
+        "change": "wood-qi-spasm 加重，陆迟右臂木灵气逆冲更严重，已不能稳定结印。",
+        "state_id": "wood-qi-spasm",
+        "state_action": "set",
+        "stage_after": "炼气二层",
+        "from_stage": "",
+        "to_stage": "",
+        "prerequisites": [],
+        "costs": [],
+        "new_limits": [],
+        "source_evidence": "他试着松开右腕，五指立刻抖出一个残缺印势。乔枝按住他的手，把“木灵气逆冲加重，已不能稳定结印”添进旁注。"
+      },
+      {
+        "subject_id": "lu-chi",
+        "kind": "restriction",
+        "change": "rapid-growth-ban 继续有效；陆迟伤势限制未除，不能连续用催芽诀。",
+        "state_id": "rapid-growth-ban",
+        "state_action": "set",
+        "stage_after": "炼气二层",
+        "from_stage": "",
+        "to_stage": "",
+        "prerequisites": [],
+        "costs": [],
+        "new_limits": [],
+        "source_evidence": "乔枝脸色一沉：“你的木灵气逆冲还在。伤势限制未除，不能连续用催芽诀。”"
+      },
+      {
+        "subject_id": "lu-chi",
+        "kind": "recovery",
+        "change": "陆迟停止施术、使用疗伤膏并进行基础吐纳后，wood-qi-spasm 从加重进入部分恢复。",
+        "state_id": "wood-qi-spasm",
+        "state_action": "set",
+        "stage_after": "炼气二层",
+        "from_stage": "",
+        "to_stage": "",
+        "prerequisites": [],
+        "costs": [],
+        "new_limits": [],
+        "source_evidence": "乔枝立刻落笔：“木灵气逆冲由加重转为部分恢复。可短时稳定结印，仍有手抖与气息中断，不得连续施术。”"
+      },
+      {
+        "subject_id": "lu-chi",
+        "kind": "injury",
+        "change": "wood-qi-spasm 仍未解除，陆迟仍有右臂手抖与气息中断，只能短时稳定结印。",
+        "state_id": "wood-qi-spasm",
+        "state_action": "set",
+        "stage_after": "炼气二层",
+        "from_stage": "",
+        "to_stage": "",
+        "prerequisites": [],
+        "costs": [],
+        "new_limits": [],
+        "source_evidence": "乔枝立刻落笔：“木灵气逆冲由加重转为部分恢复。可短时稳定结印，仍有手抖与气息中断，不得连续施术。”"
+      },
+      {
+        "subject_id": "lu-chi",
+        "kind": "restriction",
+        "change": "rapid-growth-ban 继续生效；陆迟伤势未除前不得连续施术，本章已停止施术并改用基础吐纳。",
+        "state_id": "rapid-growth-ban",
+        "state_action": "set",
+        "stage_after": "炼气二层",
+        "from_stage": "",
+        "to_stage": "",
+        "prerequisites": [],
+        "costs": [],
+        "new_limits": [],
+        "source_evidence": "乔枝把“余额零”写下，又补了一句：“伤势未除，不得连续施术。”\n\n陆迟不再看分盆区，依基础吐纳缓缓引气。"
+      },
+      {
+        "subject_id": "lu-chi",
+        "kind": "injury",
+        "change": "wood-qi-spasm 仍处于部分恢复状态；陆迟低负担辨药后右手轻抖，不能继续结印。",
+        "state_id": "wood-qi-spasm",
+        "state_action": "set",
+        "stage_after": "炼气二层",
+        "from_stage": "",
+        "to_stage": "",
+        "prerequisites": [],
+        "costs": [],
+        "new_limits": [],
+        "source_evidence": "查到最后一盆，陆迟收针时右手轻抖，针尖磕在木盘上。\n\n乔枝按住册页：“停。今日不得再结印。”\n\n“只是辨药术。”\n\n“所以我会写明低负担辨药，并非催芽。”乔枝看了一眼他的手臂，“伤势仍只是部分恢复，不代表可以拿剩下那部分去冒险。”"
+      },
+      {
+        "subject_id": "lu-chi",
+        "kind": "restriction",
+        "change": "rapid-growth-ban 继续生效；本章陆迟只能进行低负担辨药，不得连续催芽或继续结印。",
+        "state_id": "rapid-growth-ban",
+        "state_action": "set",
+        "stage_after": "炼气二层",
+        "from_stage": "",
+        "to_stage": "",
+        "prerequisites": [],
+        "costs": [],
+        "new_limits": [],
+        "source_evidence": "乔枝抱着册子道：“今日禁连续催芽。每查一盆，先报盆号、动作、反应。右臂若再抖，立即停。”"
+      },
+      {
+        "subject_id": "lu-chi",
+        "kind": "insight",
+        "change": "陆迟确认十二盆笑面参既往月露用量至少存在轻重两档反应，不能再按账册同一用量直接解释。",
+        "state_id": "",
+        "state_action": "",
+        "stage_after": "炼气二层",
+        "from_stage": "",
+        "to_stage": "",
+        "prerequisites": [],
+        "costs": [],
+        "new_limits": [],
+        "source_evidence": "两人逐盆核验。甲一、甲二裂根另列，其余十盆的叶脉、根纹与笑纹反应，明显分成轻重两档。账册上却记着相同的月露用量。"
+      },
+      {
+        "subject_id": "lu-chi",
+        "kind": "injury",
+        "change": "wood-qi-spasm 仍未解除；陆迟右手仍轻抖，维持部分恢复但需停术的伤势状态。",
+        "state_id": "wood-qi-spasm",
+        "state_action": "set",
+        "stage_after": "炼气二层",
+        "from_stage": "",
+        "to_stage": "",
+        "prerequisites": [],
+        "costs": [],
+        "new_limits": [],
+        "source_evidence": "“明白。”陆迟收起副记，右手仍在轻抖，“今日未连续催芽。剩余十盆另拟分档稳定方案。”\n\n林素看了他的手一眼：“继续停术。守住，才可申请伤势确认。”"
+      },
+      {
+        "subject_id": "lu-chi",
+        "kind": "restriction",
+        "change": "rapid-growth-ban 继续有效；陆迟本章未连续催芽，仍需继续停术。",
+        "state_id": "rapid-growth-ban",
+        "state_action": "set",
+        "stage_after": "炼气二层",
+        "from_stage": "",
+        "to_stage": "",
+        "prerequisites": [],
+        "costs": [],
+        "new_limits": [],
+        "source_evidence": "“明白。”陆迟收起副记，右手仍在轻抖，“今日未连续催芽。剩余十盆另拟分档稳定方案。”\n\n林素看了他的手一眼：“继续停术。守住，才可申请伤势确认。”"
+      },
+      {
+        "subject_id": "lu-chi",
+        "kind": "restriction",
+        "change": "陆迟本章遵守未连续催芽限制，rapid-growth-ban 继续有效，伤势解除前不得连续施术。",
+        "state_id": "rapid-growth-ban",
+        "state_action": "set",
+        "stage_after": "炼气二层",
+        "from_stage": "",
+        "to_stage": "",
+        "prerequisites": [],
+        "costs": [],
+        "new_limits": [],
+        "source_evidence": "“本章未连续催芽。wood-qi-spasm仍为部分恢复，未加重。”她松开手，“rapid-growth-ban继续有效，伤势解除前不得连续施术。”"
+      },
+      {
+        "subject_id": "lu-chi",
+        "kind": "injury",
+        "change": "wood-qi-spasm 仍为部分恢复状态且未加重，陆迟仍是炼气二层。",
+        "state_id": "wood-qi-spasm",
+        "state_action": "set",
+        "stage_after": "炼气二层",
+        "from_stage": "",
+        "to_stage": "",
+        "prerequisites": [],
+        "costs": [],
+        "new_limits": [],
+        "source_evidence": "“本章未连续催芽。wood-qi-spasm仍为部分恢复，未加重。”她松开手，“rapid-growth-ban继续有效，伤势解除前不得连续施术。”"
+      },
+      {
+        "subject_id": "lu-chi",
+        "kind": "insight",
+        "change": "陆迟获知解除 wood-qi-spasm 的下一步条件：连续二十四次稳定小周天、至少两枚下品灵石或等价灵气来源、全程监护记录。",
+        "state_id": "",
+        "state_action": "",
+        "stage_after": "炼气二层",
+        "from_stage": "",
+        "to_stage": "",
+        "prerequisites": [],
+        "costs": [],
+        "new_limits": [],
+        "source_evidence": "陆迟问：“解除需要什么？”\n\n“连续二十四次稳定小周天。至少两枚下品灵石，或等价灵气来源。全程须有监护记录。”"
+      },
+      {
+        "subject_id": "lu-chi",
+        "kind": "recovery",
+        "change": "陆迟完成二十四次稳定小周天后，wood-qi-spasm 木灵气逆冲明确解除。",
+        "state_id": "wood-qi-spasm",
+        "state_action": "resolve",
+        "stage_after": "炼气二层",
+        "from_stage": "",
+        "to_stage": "",
+        "prerequisites": [],
+        "costs": [],
+        "new_limits": [],
+        "source_evidence": "林素在记录末尾写道：“二十四次稳定小周天完成。wood-qi-spasm，木灵气逆冲，解除。”"
+      },
+      {
+        "subject_id": "lu-chi",
+        "kind": "breakthrough",
+        "change": "陆迟由炼气二层突破到炼气三层，提升仅限灵气控制稳定，不增加药性见识，不改变既有药损。",
+        "state_id": "",
+        "state_action": "",
+        "stage_after": "炼气三层",
+        "from_stage": "炼气二层",
+        "to_stage": "炼气三层",
+        "prerequisites": [
+          "wood-qi-spasm 木灵气逆冲已解除",
+          "二十四次稳定小周天完成",
+          "有林素监护记录"
+        ],
+        "costs": [
+          "消耗二枚下品灵石",
+          "突破后三日不得连续使用微量催芽诀"
+        ],
+        "new_limits": [
+          "只增灵气控制稳定，不增药性见识，不改既有药损",
+          "突破后三日不得连续使用微量催芽诀"
+        ],
+        "source_evidence": "“炼气三层。”林素提笔，“只增灵气控制稳定，不增药性见识，不改既有药损。原禁令随伤势解除终止；突破后三日，不得连续使用微量催芽诀。”"
+      },
+      {
+        "subject_id": "lu-chi",
+        "kind": "restriction",
+        "change": "rapid-growth-ban 因 wood-qi-spasm 解除而终止。",
+        "state_id": "rapid-growth-ban",
+        "state_action": "resolve",
+        "stage_after": "炼气三层",
+        "from_stage": "",
+        "to_stage": "",
+        "prerequisites": [],
+        "costs": [],
+        "new_limits": [],
+        "source_evidence": "“炼气三层。”林素提笔，“只增灵气控制稳定，不增药性见识，不改既有药损。原禁令随伤势解除终止；突破后三日，不得连续使用微量催芽诀。”"
+      },
+      {
+        "subject_id": "lu-chi",
+        "kind": "restriction",
+        "change": "陆迟新增短期限制：突破后三日不得连续使用微量催芽诀。",
+        "state_id": "post-breakthrough-three-day-sprout-ban",
+        "state_action": "set",
+        "stage_after": "炼气三层",
+        "from_stage": "",
+        "to_stage": "",
+        "prerequisites": [],
+        "costs": [],
+        "new_limits": [],
+        "source_evidence": "“炼气三层。”林素提笔，“只增灵气控制稳定，不增药性见识，不改既有药损。原禁令随伤势解除终止；突破后三日，不得连续使用微量催芽诀。”"
+      },
+      {
+        "subject_id": "lu-chi",
+        "kind": "restriction",
+        "change": "陆迟突破后三日不得连续使用微量催芽诀的限制仍有效，本章按低频分段方式施术，没有连续催芽。",
+        "state_id": "post-breakthrough-three-day-sprout-ban",
+        "state_action": "set",
+        "stage_after": "炼气三层",
+        "from_stage": "",
+        "to_stage": "",
+        "prerequisites": [],
+        "costs": [],
+        "new_limits": [],
+        "source_evidence": "陆迟全程共施术八次，每次之间完成三轮吐纳，没有一次连续催芽。两枚下品灵石仍收在储物袋底，未动分毫。"
+      },
+      {
+        "subject_id": "lu-chi",
+        "kind": "progress",
+        "change": "陆迟炼气三层带来的收益落实为更干净的木灵气收束和单次短促引导，不增加药性见识或越过限制。",
+        "state_id": "",
+        "state_action": "",
+        "stage_after": "炼气三层",
+        "from_stage": "",
+        "to_stage": "",
+        "prerequisites": [],
+        "costs": [],
+        "new_limits": [],
+        "source_evidence": "每道微量催芽诀只牵引一盆根须，术印一散，他便退开吐纳。炼气三层没有让乱根自行归位，却让木灵气收束得更干净。过去须得追着乱根连催两三次，如今一次短促引导便能让它们停在新土沟内。"
+      },
+      {
+        "subject_id": "lu-chi",
+        "kind": "restriction",
+        "change": "陆迟的木灵气逆冲解除记录被终核承认，但突破后三日不得连续使用微量催芽诀的限制继续有效。",
+        "state_id": "post-breakthrough-three-day-sprout-ban",
+        "state_action": "set",
+        "stage_after": "炼气三层",
+        "from_stage": "",
+        "to_stage": "",
+        "prerequisites": [],
+        "costs": [],
+        "new_limits": [],
+        "source_evidence": "林素看了他一眼：“伤势解除，不等于限制解除。写清。”\n\n陆迟在伤势栏后补上：木灵气逆冲已解除；突破后三日不得连续使用微量催芽诀。\n\n魏远翻到前页。伤势解除一栏下，有林素的确认、乔枝二十四格见证，以及他自己此前落下的“准予入表”四字。他看了片刻，只能在终核处再签一次。"
+      },
+      {
+        "subject_id": "lu-chi",
+        "kind": "progress",
+        "change": "陆迟确认炼气三层只提升灵气收束稳定性，不能恢复裂根药材，也不能取消三日禁连催限制。",
+        "state_id": "",
+        "state_action": "",
+        "stage_after": "炼气三层",
+        "from_stage": "",
+        "to_stage": "",
+        "prerequisites": [],
+        "costs": [],
+        "new_limits": [],
+        "source_evidence": "“不能。”陆迟答得很快，“境界只让灵气收束更稳，不会让断根接回去。继续施术还违反三日禁连催。”"
+      },
+      {
+        "subject_id": "lu-chi",
+        "kind": "restriction",
+        "change": "陆迟的突破后三日不得连续使用微量催芽诀限制继续有效，三日内训练只能基础吐纳、辨药复核和低频分段练手。",
+        "state_id": "post-breakthrough-three-day-sprout-ban",
+        "state_action": "set",
+        "stage_after": "炼气三层",
+        "from_stage": "",
+        "to_stage": "",
+        "prerequisites": [],
+        "costs": [],
+        "new_limits": [],
+        "source_evidence": "陆迟收起核价单，又取出一枚小木签，在随卷单外侧夹住：“明日开始小考准备。今日不连续催芽，明日也不连续。三日内只做基础吐纳、辨药复核和低频分段练手。”"
+      },
+      {
+        "subject_id": "lu-chi",
+        "kind": "restriction",
+        "change": "陆迟炼气三层只提升灵气收束稳定，不增加药性见识，也不改变药损。",
+        "state_id": "qi-refinement-three-limited-control-only",
+        "state_action": "set",
+        "stage_after": "炼气三层",
+        "from_stage": "",
+        "to_stage": "",
+        "prerequisites": [],
+        "costs": [],
+        "new_limits": [],
+        "source_evidence": "林素把最后一盆白签笑面参放回原位：“说得对。炼气三层只说明你收束灵气稳些，不增加药性见识，不改药损。三日禁令照行。”"
+      }
+    ],
+    "resource_changes": [
+      {
+        "owner_id": "lu-chi",
+        "resource_id": "contribution-point",
+        "operation": "consume",
+        "amount": 3,
+        "unit": "点",
+        "resulting_balance": 6,
+        "source_or_destination": "魏远验收表处罚扣减",
+        "change": "陆迟贡献点从九点扣三点，余额六点。",
+        "source_evidence": "贡献点栏随之落定：原有九点，扣三点，余六点。"
+      },
+      {
+        "owner_id": "lu-chi",
+        "resource_id": "healing-salve",
+        "operation": "consume",
+        "amount": 1,
+        "unit": "份",
+        "resulting_balance": 0,
+        "source_or_destination": "陆迟疗伤使用",
+        "change": "陆迟消耗仅剩的1份疗伤膏，healing-salve 从1份变为0份。",
+        "source_evidence": "陆迟取出仅剩的一份疗伤膏。封纸揭开，辛涩木气散出，他右臂筋络骤然抽紧，五指不受控制地颤了几下。\n\n乔枝俯身记录：“停术时辰，辰初二刻。疗伤膏一份，全数使用。症状：右臂木灵气逆冲，指节颤，气息断续。”"
+      },
+      {
+        "owner_id": "lu-chi",
+        "resource_id": "low-spirit-stone",
+        "operation": "consume",
+        "amount": 2,
+        "unit": "枚",
+        "resulting_balance": 2,
+        "source_or_destination": "林素监护吐纳与突破过程耗用",
+        "change": "陆迟消耗二枚下品灵石，余额从4枚变为2枚。",
+        "source_evidence": "“下品灵石耗用二枚，余额二枚。”林素收起碎块，“守住气息，不要起身。”"
+      }
+    ],
+    "knowledge_changes": [
+      {
+        "character_id": "lu-chi",
+        "fact_id": "recycled-ink-migration-condition",
+        "state": "knows",
+        "belief": "药签回收灵墨遇夜露迁色，只能造成看错或错挂条件，不能证明是谁动过药签。",
+        "supersedes_fact_ids": [],
+        "change": "陆迟通过辨药术确认回收灵墨迁色的证据边界。",
+        "source_evidence": "他以左手按住药签，施展辨药术。淡青灵气沿墨痕缓缓游过，夜露下浮起一层旧字。确是回收灵墨迁色：旧痕遇湿返出，新字便会偏移，足以让人看错，也可能造成错挂。\n\n但辨药术只能辨墨，不能辨手。\n\n陆迟拔起一枚药签查看底痕，随即放回原位：“迁色成立。只能说明具备看错、错挂的条件，不能证明谁动过。”"
+      },
+      {
+        "character_id": "lu-chi",
+        "fact_id": "lu-chi-illegal-sprout-powder-liability",
+        "state": "knows",
+        "belief": "自己上月曾违规试用便宜催芽散一小撮救西架三株受寒苗，违规属实，但影响范围仍待核。",
+        "supersedes_fact_ids": [],
+        "change": "陆迟承认违规试用便宜催芽散，并将其登记为待核责任。",
+        "source_evidence": "陆迟翻到工牌空白处，写下：待核责任一，陆迟违规试用便宜催芽散一小撮，地点西架，目的救受寒苗，影响范围待核。"
+      },
+      {
+        "character_id": "qiao-zhi",
+        "fact_id": "label-swap-culprit",
+        "state": "believes_false",
+        "belief": "陆迟为了遮掩违规使用催芽散而调换药签；她保留这一怀疑。",
+        "supersedes_fact_ids": [],
+        "change": "乔枝当面提出并继续保留对陆迟调换药签的误信。",
+        "source_evidence": "乔枝皱眉：“你承认得这么快，不代表这十二盆与你无关。你为了遮掩用散，调换药签，也说得通。”"
+      },
+      {
+        "character_id": "qiao-zhi",
+        "fact_id": "vine-command-clue-limited",
+        "state": "knows",
+        "belief": "告状藤复述的后排挂盆命令只能增加线索风险，不能单独证明责任，也不能免除陆迟催芽散责任。",
+        "supersedes_fact_ids": [],
+        "change": "乔枝知道藤语、工时牌和月露记录都不能单独定责或免责。",
+        "source_evidence": "乔枝跟来，照着规章念道：“工时牌仅作时辰参照。月露用量须与柜中刻度相合。藤语不得单独入证。三项加在一起，也不能免除你的催芽散责任。”"
+      },
+      {
+        "character_id": "wei-yuan",
+        "fact_id": "lu-chi-liability",
+        "state": "suspects",
+        "belief": "陆迟有违规催芽在前，药签错乱和笑面参异常必须按工时、月露、分盆记录核验；目前不正式冻结资格，但若下次验收仍不可核则按缺项处置。",
+        "supersedes_fact_ids": [],
+        "change": "魏远将陆迟药庐小考资格列入冻结风险，但没有立即冻结。",
+        "source_evidence": "魏远看向陆迟：“药庐小考资格列入冻结风险。现在不冻，下一次验收仍不可核，便按缺项处置。你有违规催芽在前，别指望一句藤话替你挡。”"
+      },
+      {
+        "character_id": "wei-yuan",
+        "fact_id": "recycled-ink-migration-condition",
+        "state": "knows",
+        "belief": "回收灵墨迁色能造成看错或错挂，但不能证明谁动过，也不能替任何人免责。",
+        "supersedes_fact_ids": [],
+        "change": "魏远确认药签灵墨迁色的证据边界。",
+        "source_evidence": "“回收灵墨迁色，能造成看错、错挂。”魏远道，“不能证明谁动过，也不能替谁免责。”"
+      },
+      {
+        "character_id": "lu-chi",
+        "fact_id": "vine-command-clue-limited",
+        "state": "investigating",
+        "belief": "告状藤复述的命令需与昨日后排工牌等记录核验，不能直接当证据。",
+        "supersedes_fact_ids": [],
+        "change": "陆迟把告状藤复述命令列入待核线索，并决定从昨日后排工牌查起。",
+        "source_evidence": "告状藤在棚里拖长声音：“先把那几盆挂到后排再说——”\n\n陆迟推开参棚木门：“这句话也核。先从昨日谁领过后排工牌查起。”"
+      },
+      {
+        "character_id": "qiao-zhi",
+        "fact_id": "label-swap-culprit",
+        "state": "believes_false",
+        "belief": "乔枝仍怀疑陆迟调换过药签，但承认这不能写入事实栏。",
+        "supersedes_fact_ids": [],
+        "change": "乔枝的 label-swap-culprit 误信仍保持活跃。",
+        "source_evidence": "“我只降低风险。”乔枝立即划清边界，“且仍怀疑他调过药签。”\n\n陆迟道：“怀疑不入事实栏。”\n\n乔枝转头瞪他：“我知道！”"
+      },
+      {
+        "character_id": "qiao-zhi",
+        "fact_id": "pre-operation-abnormalities",
+        "state": "knows",
+        "belief": "乔枝亲眼确认陆迟本次施术前已存在甲一甲二裂根、根须互缠和药签回收灵墨迁色。",
+        "supersedes_fact_ids": [],
+        "change": "乔枝掌握并签署了施术前异常已存在的现场事实。",
+        "source_evidence": "乔枝沉默片刻，在抢救单上补了一行：“本人在场确认，甲一、甲二施术前已有根须互缠、笑纹裂开；各盆药签均见回收灵墨迁色。”"
+      },
+      {
+        "character_id": "wei-yuan",
+        "fact_id": "lu-chi-liability-confirmed",
+        "state": "knows",
+        "belief": "魏远确认陆迟连续施术、伤势加重和损坏控露陶嘴的责任，同时确认乙三未裂是抢救结果，两者不相抵。",
+        "supersedes_fact_ids": [
+          "lu-chi-liability"
+        ],
+        "change": "魏远对陆迟责任的状态从怀疑转为正式记录确认，并据此处罚。",
+        "source_evidence": "“乙三未裂，是抢救结果。”魏远收笔，“你连续施术、伤势加重、损坏陶嘴，也是结果。两者不相抵。”"
+      },
+      {
+        "character_id": "wei-yuan",
+        "fact_id": "pre-freeze-abnormalities",
+        "state": "knows",
+        "belief": "魏远知道资格冻结前现场已存在药签回收灵墨迁色、笑面参根须互缠、甲一甲二裂根、乔枝见证、月露初值未动和工时牌卯末领取等前置记录。",
+        "supersedes_fact_ids": [],
+        "change": "魏远在同一验收表上记录资格冻结前的前置异常和核验材料。",
+        "source_evidence": "片刻后，魏远在同一张表上补写：冻结前，现场已有药签回收灵墨迁色、笑面参根须互缠；甲一、甲二裂根，入损耗观察；乔枝在场见证；月露刻度初值未动，工时牌卯末领取，待核。"
+      },
+      {
+        "character_id": "lu-chi",
+        "fact_id": "qualification-frozen",
+        "state": "knows",
+        "belief": "陆迟知道自己的药庐小考资格已被临时冻结，后续需等抢救过程、工时牌与月露用量核验后复议。",
+        "supersedes_fact_ids": [],
+        "change": "陆迟明确知道资格已被冻结且复议依赖核验记录。",
+        "source_evidence": "最后是资格栏：药庐小考资格临时冻结，待抢救过程、工时牌与月露用量核验后复议。"
+      },
+      {
+        "character_id": "qiao-zhi",
+        "fact_id": "label-swap-culprit",
+        "state": "believes_false",
+        "belief": "乔枝仍怀疑陆迟调换过药签并有调签嫌疑，但已承认“陆迟主动调换全部药签”的单一说法尚不完整，不能只按该说法写事实。",
+        "supersedes_fact_ids": [],
+        "change": "乔枝的 label-swap-culprit 误信仍活跃，但被工时牌、月露初值和分盆编号的矛盾动摇。",
+        "source_evidence": "她一笔一画写道：“工时牌归还时辰、月露初值与分盆编号存在不合；不足以证明陆迟无责，足以说明其主动调换全部药签之说尚不完整。后续核验月露领取、用量、归还及药签迁色。”\n\n写完，她沉默片刻，又补上自己的名字。\n\n陆迟点头：“见证完整。”\n\n“我的怀疑仍在。”"
+      },
+      {
+        "character_id": "qiao-zhi",
+        "fact_id": "moon-dew-record-conflict",
+        "state": "investigating",
+        "belief": "工时牌归还时辰、月露初值与分盆编号存在不合，需要继续核验月露领取、用量、归还及药签迁色。",
+        "supersedes_fact_ids": [],
+        "change": "乔枝开始按证据补记录并将月露与药签迁色列为后续核验目标。",
+        "source_evidence": "她一笔一画写道：“工时牌归还时辰、月露初值与分盆编号存在不合；不足以证明陆迟无责，足以说明其主动调换全部药签之说尚不完整。后续核验月露领取、用量、归还及药签迁色。”"
+      },
+      {
+        "character_id": "lu-chi",
+        "fact_id": "moon-dew-record-conflict",
+        "state": "investigating",
+        "belief": "月露初值、工时牌时辰和分盆编号存在不合，下一步应核验月露领取簿。",
+        "supersedes_fact_ids": [],
+        "change": "陆迟把月露初值不合和领取簿待核写入副记末尾。",
+        "source_evidence": "最末一行墨迹尚湿：月露初值不合，领取簿待核。"
+      },
+      {
+        "character_id": "wei-yuan",
+        "fact_id": "moon-dew-record-conflict",
+        "state": "investigating",
+        "belief": "月露刻度存在矛盾，只能说明要继续核验，不能证明陆迟清白或确定责任人。",
+        "supersedes_fact_ids": [],
+        "change": "魏远接收月露矛盾记录，但只将其作为继续核验事项。",
+        "source_evidence": "魏远看过她的签字，最终提笔填入过程栏，盖上小印：“接收，不作为免责。月露刻度有矛盾，只说明要继续核验，不说明谁清白。药签错乱仍未查明。”"
+      },
+      {
+        "character_id": "wei-yuan",
+        "fact_id": "lu-chi-penalties-maintained",
+        "state": "knows",
+        "belief": "陆迟违规试用便宜催芽散责任栏保留，控露陶嘴赔偿待核，贡献点扣除三点已执行，药庐小考资格继续冻结。",
+        "supersedes_fact_ids": [],
+        "change": "魏远明确维持对陆迟的既有处罚和待赔责任。",
+        "source_evidence": "魏远逐页翻过停术记录、疗伤膏封纸和月露刻度抄本，先开口道：“补记录不能抵扣处罚。违规试用便宜催芽散，责任栏保留；控露陶嘴损坏，赔偿待核；贡献点扣除三点已执行；药庐小考资格继续冻结。”"
+      },
+      {
+        "character_id": "qiao-zhi",
+        "fact_id": "label-swap-culprit",
+        "state": "believes_false",
+        "belief": "乔枝仍未正式撤销陆迟调换药签嫌疑，但因异常盆号不全处于陆迟当值时段，已将原判断降为更需核查的怀疑。",
+        "supersedes_fact_ids": [],
+        "change": "乔枝的 label-swap-culprit 误信进一步动摇，但仍未被正式淘汰。",
+        "source_evidence": "陆迟问：“原判断撤销？”\n\n“只能降为更需核查的怀疑。”乔枝合上半页册子，“时段不合，不能证明谁动了药签。你试用便宜催芽散的责任也还在。”"
+      },
+      {
+        "character_id": "qiao-zhi",
+        "fact_id": "moon-dew-usage-two-levels",
+        "state": "knows",
+        "belief": "十二盆笑面参中，除甲一、甲二裂根另列外，其余十盆对辨药检查呈现轻重两档月露反应，与账册同一用量记录矛盾。",
+        "supersedes_fact_ids": [],
+        "change": "乔枝掌握了盆株药性反应与月露账册记录不一致的事实。",
+        "source_evidence": "两人逐盆核验。甲一、甲二裂根另列，其余十盆的叶脉、根纹与笑纹反应，明显分成轻重两档。账册上却记着相同的月露用量。"
+      },
+      {
+        "character_id": "lu-chi",
+        "fact_id": "moon-dew-usage-two-levels",
+        "state": "knows",
+        "belief": "十二盆笑面参中，除甲一、甲二裂根另列外，其余十盆对辨药检查呈现轻重两档月露反应，与账册同一用量记录矛盾。",
+        "supersedes_fact_ids": [],
+        "change": "陆迟掌握了盆株药性反应与月露账册记录不一致的事实。",
+        "source_evidence": "两人逐盆核验。甲一、甲二裂根另列，其余十盆的叶脉、根纹与笑纹反应，明显分成轻重两档。账册上却记着相同的月露用量。"
+      },
+      {
+        "character_id": "qiao-zhi",
+        "fact_id": "ink-label-color-migration-limit",
+        "state": "knows",
+        "belief": "灵墨旧签迁色足以造成错读和错挂条件，但迁色方向不能倒推出谁拿过药签。",
+        "supersedes_fact_ids": [],
+        "change": "乔枝确认灵墨迁色的证据边界。",
+        "source_evidence": "“迁色成立。”陆迟道，“足以造成错读，继而错挂。”\n\n乔枝把三枚签翻面比对：“迁色方向受刮痕和露量影响，不能倒推出谁拿过。只可记条件，不可定人。”"
+      },
+      {
+        "character_id": "lu-chi",
+        "fact_id": "ink-label-color-migration-limit",
+        "state": "knows",
+        "belief": "灵墨旧签迁色足以造成错读和错挂条件，但迁色方向不能倒推出谁拿过药签。",
+        "supersedes_fact_ids": [],
+        "change": "陆迟确认灵墨迁色的证据边界。",
+        "source_evidence": "“迁色成立。”陆迟道，“足以造成错读，继而错挂。”\n\n乔枝把三枚签翻面比对：“迁色方向受刮痕和露量影响，不能倒推出谁拿过。只可记条件，不可定人。”"
+      },
+      {
+        "character_id": "wei-yuan",
+        "fact_id": "han-xiao-geng-seven-record",
+        "state": "knows",
+        "belief": "庚七瓶月露由韩笑工时牌领取，归还栏未按时登记，实物比账面少一份；这三项已确认，但不能裁定韩笑动过药签。",
+        "supersedes_fact_ids": [],
+        "change": "魏远正式确认庚七月露领取、归还登记缺失和余量短缺三项事实。",
+        "source_evidence": "“无人如此裁定。”魏远道，“现在只确认三项：庚七由你的工时牌领取；归还栏未按时登记；实物比账面少一份。”"
+      },
+      {
+        "character_id": "lu-chi",
+        "fact_id": "han-xiao-geng-seven-record",
+        "state": "knows",
+        "belief": "庚七瓶月露由韩笑工时牌领取，归还栏未按时登记，实物比账面少一份；这三项已确认，但不能裁定韩笑动过药签。",
+        "supersedes_fact_ids": [],
+        "change": "陆迟掌握庚七月露领取、归还登记缺失和余量短缺三项事实，并将其纳入待核。",
+        "source_evidence": "“无人如此裁定。”魏远道，“现在只确认三项：庚七由你的工时牌领取；归还栏未按时登记；实物比账面少一份。”"
+      },
+      {
+        "character_id": "qiao-zhi",
+        "fact_id": "han-xiao-geng-seven-record",
+        "state": "knows",
+        "belief": "庚七瓶月露由韩笑工时牌领取，归还栏未按时登记，实物比账面少一份；这三项已确认，但不能裁定韩笑动过药签。",
+        "supersedes_fact_ids": [],
+        "change": "乔枝掌握庚七月露领取、归还登记缺失和余量短缺三项事实。",
+        "source_evidence": "“无人如此裁定。”魏远道，“现在只确认三项：庚七由你的工时牌领取；归还栏未按时登记；实物比账面少一份。”"
+      },
+      {
+        "character_id": "han-xiao",
+        "fact_id": "han-xiao-geng-seven-explanation",
+        "state": "suspects",
+        "belief": "韩笑承认自己领取过庚七瓶月露，但将余量差额解释为可能的共同计量误差，并强调不能证明他动过药签。",
+        "supersedes_fact_ids": [],
+        "change": "韩笑公开承认经手庚七月露，同时继续否认药签移动责任并以共同计量误差辩解差额。",
+        "source_evidence": "韩笑看过工牌印记，笑意稍淡：“是我。昨日后排几盆蔫笑，我按例补露。归还时房里无人，便先放回柜中，原想稍后补记。”"
+      },
+      {
+        "character_id": "han-xiao",
+        "fact_id": "moon-dew-diversion",
+        "state": "conceals",
+        "belief": "自己挪用过一份月露并利用错签混乱掩盖用量差；本章仍未公开承认，只以共同计量误差解释差额。",
+        "supersedes_fact_ids": [],
+        "change": "韩笑继续隐瞒上一状态中的月露挪用事实。",
+        "source_evidence": "韩笑目光在瓶身与众人之间转了一圈：“月露沾瓶挂壁，又常经多人之手。昨日药棚忙乱，这点差额，或许是共同计量误差。”"
+      },
+      {
+        "character_id": "wei-yuan",
+        "fact_id": "lu-chi-penalties-active",
+        "state": "knows",
+        "belief": "陆迟资格继续冻结，三点贡献不退，陶嘴赔偿与催芽散责任保留；新增事实只入月露核验栏。",
+        "supersedes_fact_ids": [],
+        "change": "魏远继续维持对陆迟的既有处分和责任栏。",
+        "source_evidence": "魏远合拢验收表，“陆迟资格继续冻结，三点贡献不退，陶嘴赔偿与催芽散责任保留。今日新增，只入月露核验栏。”"
+      },
+      {
+        "character_id": "wei-yuan",
+        "fact_id": "geng-seven-recorded-shortage",
+        "state": "knows",
+        "belief": "庚七月露复称短缺一份、韩笑申时二刻领取后归还时辰空缺、陆迟申时一刻后停术疗伤记录有效，均已成为验收表有效记录。",
+        "supersedes_fact_ids": [],
+        "change": "魏远在月露核验栏正式补写庚七短缺、韩笑领取与归还空缺、陆迟停术疗伤记录有效三项事实。",
+        "source_evidence": "魏远提笔，在月露核验栏补写：“庚七复称短缺一份；韩笑申时二刻领取，归还时辰空缺；陆迟申时一刻后停术疗伤记录有效。”"
+      },
+      {
+        "character_id": "lin-su",
+        "fact_id": "lu-chi-stop-treatment-cannot-explain-han-return-blank",
+        "state": "knows",
+        "belief": "陆迟停术疗伤不能解释韩笑领取庚七月露后的归还时辰空栏。",
+        "supersedes_fact_ids": [],
+        "change": "林素明确裁定陆迟停术疗伤不能解释韩笑的归还空栏。",
+        "source_evidence": "林素打断他：“陆迟停术疗伤，不能解释你的归还空栏。”"
+      },
+      {
+        "character_id": "lu-chi",
+        "fact_id": "geng-seven-actual-use-pots",
+        "state": "knows",
+        "belief": "庚七月露至少用于后丙三与后丁六，其中后丁六不在陆迟当值照料记录内；非抢救不得再开新瓶。",
+        "supersedes_fact_ids": [
+          "moon-dew-record-conflict"
+        ],
+        "change": "陆迟将庚七至少用于后丙三与后丁六、后丁六不在自己当值照料记录内写入待核首行。",
+        "source_evidence": "陆迟写下待核首行：庚七至少用于后丙三与后丁六；后丁六不在陆迟当值照料记录内。非抢救，不得再开新瓶。"
+      },
+      {
+        "character_id": "qiao-zhi",
+        "fact_id": "label-swap-culprit",
+        "state": "suspects",
+        "belief": "乔枝认为现有记录不足以支持陆迟主动调换全部药签，但她尚未撤销怀疑，仍需核对药签迁色、盆位与用露时辰。",
+        "supersedes_fact_ids": [],
+        "change": "乔枝正式写明现有记录不足以支持陆迟主动调换全部药签，但口头说明只是证据不足，不是撤销怀疑。",
+        "source_evidence": "乔枝在复称见证页后添了一句：“现有记录不足以支持陆迟主动调换全部药签之判断；仍待药签迁色、盆位与用露时辰合核。”\n\n陆迟看向她。\n\n乔枝按住纸页：“只是证据不足，不是撤销怀疑。若后续有新证，我会修正。”\n\n“记为尚未撤销。”陆迟道。"
+      },
+      {
+        "character_id": "han-xiao",
+        "fact_id": "han-xiao-geng-seven-explanation",
+        "state": "suspects",
+        "belief": "韩笑继续主张庚七短缺只是流程缺漏或共同计量误差，不能证明挪用或药签移动。",
+        "supersedes_fact_ids": [],
+        "change": "韩笑在复称短缺后仍强调短缺不等于挪用或药签移动，之后又将记录结果解释为流程有缺。",
+        "source_evidence": "韩笑立刻道：“短缺不等于挪用，更不等于有人动过药签。”"
+      },
+      {
+        "character_id": "han-xiao",
+        "fact_id": "moon-dew-diversion",
+        "state": "conceals",
+        "belief": "韩笑仍未公开承认挪用月露或移动药签，只以共同误差、摆位混乱和流程缺漏解释异常。",
+        "supersedes_fact_ids": [],
+        "change": "韩笑未承认药签责任或挪用事实，并继续用共同误差、邻盆和流程缺漏作解释。",
+        "source_evidence": "韩笑接道：“所以我写或邻盆。昨日摆位混乱，可能有人共同读错。”"
+      },
+      {
+        "character_id": "qiao-zhi",
+        "fact_id": "label-swap-culprit-resolved",
+        "state": "knows",
+        "belief": "乔枝经复核确认，‘陆迟主动调换全部药签’的判断不成立；工时牌、月露刻度、灵墨迁色及韩笑行动记录共同说明药签错乱不能归为陆迟主动调换所致。",
+        "supersedes_fact_ids": [
+          "label-swap-culprit"
+        ],
+        "change": "乔枝正式淘汰自己此前对陆迟主动调换全部药签的核心怀疑。",
+        "source_evidence": "“经复核，‘陆迟主动调换全部药签’之判断不成立。工时牌、月露刻度、灵墨迁色及韩笑行动记录相互核验，药签错乱不能归为陆迟主动调换所致。”"
+      },
+      {
+        "character_id": "wei-yuan",
+        "fact_id": "han-xiao-moon-dew-unregistered-diversion",
+        "state": "knows",
+        "belief": "魏远知道韩笑庚七月露存在未登记挪用，并将其入公物责任栏，但该事实不影响陆迟催芽散违规、控露陶嘴赔偿、扣三点贡献和资格冻结。",
+        "supersedes_fact_ids": [
+          "moon-dew-record-conflict"
+        ],
+        "change": "魏远对月露记录矛盾作出阶段性裁定：韩笑承担庚七月露未登记挪用责任，但陆迟其他责任继续保留。",
+        "source_evidence": "魏远收起副记：“韩笑，庚七月露未登记挪用，入公物责任栏，处分另定。陆迟，药签责任边界变更，不影响你违规试用催芽散、损坏控露陶嘴、扣三点贡献和资格冻结。”"
+      },
+      {
+        "character_id": "han-xiao",
+        "fact_id": "han-xiao-moon-dew-unregistered-diversion",
+        "state": "knows",
+        "belief": "韩笑知道自己将庚七一份主要用于后丁六、余量沾用后丙三，且未按时登记归还，但仍否认移动药签。",
+        "supersedes_fact_ids": [
+          "han-xiao-geng-seven-explanation"
+        ],
+        "change": "韩笑不再以流程缺漏或共同计量误差解释庚七短缺，而是承认具体未登记补露去向。",
+        "source_evidence": "韩笑脸上的笑淡了：“归还说明：庚七一份，申时二刻领取，主要用于后丁六，余量沾用后丙三，未按时登记归还。共同经手人，无。”\n\n他停了一下，又补道：“我仍否认移动药签。”"
+      },
+      {
+        "character_id": "han-xiao",
+        "fact_id": "label-swap-involvement-denial",
+        "state": "conceals",
+        "belief": "韩笑仍否认自己移动药签；正文未确认他是否真的移动药签。",
+        "supersedes_fact_ids": [
+          "moon-dew-diversion"
+        ],
+        "change": "韩笑公开承认月露未登记挪用后，仍保留对药签移动的否认。",
+        "source_evidence": "韩笑脸上的笑淡了：“归还说明：庚七一份，申时二刻领取，主要用于后丁六，余量沾用后丙三，未按时登记归还。共同经手人，无。”\n\n他停了一下，又补道：“我仍否认移动药签。”"
+      },
+      {
+        "character_id": "lu-chi",
+        "fact_id": "wood-qi-spasm-release-requirements",
+        "state": "knows",
+        "belief": "陆迟知道解除 wood-qi-spasm 需要连续二十四次稳定小周天、至少两枚下品灵石或等价灵气来源、全程监护记录，且成功解除伤势也不恢复资格、不抵赔偿、不删违规。",
+        "supersedes_fact_ids": [],
+        "change": "陆迟获得明确的伤势解除入口和边界。",
+        "source_evidence": "“申请时带两枚。”林素道，“成功只解除伤势，不恢复资格，不抵陶嘴赔偿，不删催芽散违规。突破另算。”"
+      },
+      {
+        "character_id": "lin-su",
+        "fact_id": "lu-chi-ban-compliance-and-injury-status",
+        "state": "knows",
+        "belief": "林素确认陆迟本章未连续催芽，wood-qi-spasm 仍部分恢复且未加重，rapid-growth-ban 继续有效。",
+        "supersedes_fact_ids": [
+          "qualification-result"
+        ],
+        "change": "林素完成本章对陆迟守禁和伤势状态的确认，但未恢复资格。",
+        "source_evidence": "“本章未连续催芽。wood-qi-spasm仍为部分恢复，未加重。”她松开手，“rapid-growth-ban继续有效，伤势解除前不得连续施术。”"
+      },
+      {
+        "character_id": "wei-yuan",
+        "fact_id": "wood-qi-spasm-resolved-record-valid",
+        "state": "knows",
+        "belief": "魏远知道林素监护确认的木灵气逆冲解除记录有效，并已入验收表。",
+        "supersedes_fact_ids": [],
+        "change": "魏远确认并记录木灵气逆冲已解除。",
+        "source_evidence": "魏远翻到自己辰初签过的确认栏，最终提笔补上：“经林素监护确认，木灵气逆冲已解除。”"
+      },
+      {
+        "character_id": "qiao-zhi",
+        "fact_id": "lu-chi-twenty-four-circuits-witnessed",
+        "state": "knows",
+        "belief": "乔枝知道自己全程见证并签下了陆迟二十四次稳定小周天记录。",
+        "supersedes_fact_ids": [],
+        "change": "乔枝掌握并承担二十四格全程见证事实。",
+        "source_evidence": "乔枝签下第二十四格，放下笔：“全程见证。若有人认为只见证了大半，可先核验我的二十四个签名。”"
+      },
+      {
+        "character_id": "han-xiao",
+        "fact_id": "moon-dew-misuse-no-common-handler-confirmed",
+        "state": "knows",
+        "belief": "韩笑确认后丁六月露用量偏多、后丙三只是沾用余量，且没有其他可核经手人；共同养护误差说法无法补入责任栏。",
+        "supersedes_fact_ids": [],
+        "change": "韩笑在核对后承认没有其他可核经手人，不能继续把后丁六和后丙三月露问题写成共同养护误差。",
+        "source_evidence": "“后丁六用量偏多。后丙三只是沾了余量。没有其他可核经手人。”\n\n陆迟问：“共同栏还补吗？”\n\n“共同二字可以不写。”韩笑道，“笑纹开裂也有夜温影响。”"
+      },
+      {
+        "character_id": "lu-chi",
+        "fact_id": "label-swap-not-lu-chi-active-all-pots",
+        "state": "knows",
+        "belief": "经工时牌、月露刻度、灵墨迁色与分盆记录交叉核验，陆迟主动调换十二盆药签不成立；这不抵消他违规使用催芽散的责任。",
+        "supersedes_fact_ids": [],
+        "change": "陆迟在违规责任栏中把违规催芽散责任与主动调换十二盆药签不成立分列。",
+        "source_evidence": "陆迟亲手写下：曾以一小撮便宜催芽散抢救受寒药苗，未先报备，违反药园用药规程，接受记录及后续处分。\n\n随后另起一行：此项责任不等于主动调换十二盆药签；后者经工时牌、月露刻度、灵墨迁色与分盆记录交叉核验，不成立。"
+      },
+      {
+        "character_id": "qiao-zhi",
+        "fact_id": "label-swap-not-lu-chi-active-all-pots",
+        "state": "knows",
+        "belief": "陆迟主动调换全部药签不成立，且乔枝愿意按可核记录承担见证后果。",
+        "supersedes_fact_ids": [],
+        "change": "乔枝公开确认陆迟主动调换全部药签不成立，并要求韩笑若质疑就报盆号、时辰和记录页。",
+        "source_evidence": "这次她没有回避，只将名字签完：“我承担可核记录的后果。陆迟违规用催芽散，我签。甲一、甲二不可恢复，我签。陆迟主动调换全部药签不成立，我也签。若你认为哪项不实，请报盆号、时辰和记录页。”"
+      },
+      {
+        "character_id": "wei-yuan",
+        "fact_id": "dew-control-spout-compensation-lu-chi-established",
+        "state": "knows",
+        "belief": "控露陶嘴由陆迟操作失稳致损，陆迟赔偿责任成立，金额需按本月采买价终核，突破不能抵赔偿。",
+        "supersedes_fact_ids": [],
+        "change": "魏远将控露陶嘴赔偿责任初核入表，确认陆迟仍需承担赔偿义务。",
+        "source_evidence": "魏远沉默两息，落笔写道：控露陶嘴一只，陆迟操作失稳致损；赔偿责任成立，金额按本月采买价终核。\n\n“突破不抵赔偿。”魏远道。"
+      },
+      {
+        "character_id": "qiao-zhi",
+        "fact_id": "label-swap-not-lu-chi-active-swap",
+        "state": "knows",
+        "belief": "工时牌、月露刻度、回收灵墨迁色和韩笑行动记录合看，足以排除陆迟主动调换十二盆药签，但不能认定谁移动了药签。",
+        "supersedes_fact_ids": [
+          "moon-dew-record-conflict"
+        ],
+        "change": "乔枝完成证词转向，亲自划去先前陆迟主动调换全部药签的判断，并以四项记录排除陆迟主动调换药签。",
+        "source_evidence": "她将四份记录并排压住：“工时牌证明领还时辰，月露刻度证明用量不合，回收灵墨迁色证明旧签具备错看、错挂条件，韩笑的行动记录证明庚七月露另有去向。四项合看，足以排除陆迟主动调换十二盆药签的判断，但不能据此认定谁移动了药签。”\n\n魏远逐份核过。乔枝先前那条“陆迟主动调换全部药签”的判断，已被她亲笔划去，旁注新事实与对应页码。"
+      },
+      {
+        "character_id": "wei-yuan",
+        "fact_id": "label-swap-not-lu-chi-active-swap",
+        "state": "knows",
+        "belief": "陆迟主动调换十二盆药签的原判断不成立，但谁移动药签仍未定。",
+        "supersedes_fact_ids": [],
+        "change": "魏远核过四份记录后，在责任边界栏确认原判断不成立。",
+        "source_evidence": "魏远逐份核过。乔枝先前那条“陆迟主动调换全部药签”的判断，已被她亲笔划去，旁注新事实与对应页码。\n\n他在责任边界栏写下：“原判断不成立。”"
+      },
+      {
+        "character_id": "han-xiao",
+        "fact_id": "label-swap-involvement-denial",
+        "state": "conceals",
+        "belief": "韩笑承认月露一事，但仍公开否认药签之事与自己有关；正文未确认他是否移动药签。",
+        "supersedes_fact_ids": [],
+        "change": "韩笑继续否认药签之事与自己有关。",
+        "source_evidence": "韩笑面色微沉，却只道：“月露一事我认，药签之事仍与我无关。”"
+      },
+      {
+        "character_id": "wei-yuan",
+        "fact_id": "han-xiao-moon-dew-public-property-violation-limited",
+        "state": "knows",
+        "belief": "韩笑本次只被定为未登记挪用一份月露，处分另定且不扩大到其他事项。",
+        "supersedes_fact_ids": [],
+        "change": "魏远正式限定韩笑被坐实的违规范围为未登记挪用一份月露。",
+        "source_evidence": "“本次也只定你未登记挪用一份月露。”魏远道，“处分另定，不作扩大。”"
+      },
+      {
+        "character_id": "lin-su",
+        "fact_id": "han-xiao-moon-dew-public-property-violation-limited",
+        "state": "knows",
+        "belief": "韩笑私自挪用庚七月露一份，未按时登记归还；动机不改变公物记录。",
+        "supersedes_fact_ids": [],
+        "change": "林素确认韩笑私自挪用一份月露且未按时登记归还。",
+        "source_evidence": "“庚七月露一份，由你私自挪用，未按时登记归还。”林素打断他，“后丁六沾用为主，余量沾到后丙三。此项已经核过。”\n\n“我并非说不是我经手，只是当时月露紧缺，想着先顾药势。”\n\n“动机不改公物记录。”"
+      },
+      {
+        "character_id": "qiao-zhi",
+        "fact_id": "label-swap-boundary-lu-chi-not-full-culprit",
+        "state": "knows",
+        "belief": "乔枝知道四项记录共同证明陆迟主动调换全部药签不成立，但她的证词不免除陆迟违规催芽散责任，也不免除任何人的月露、公物或药签责任。",
+        "supersedes_fact_ids": [],
+        "change": "乔枝正式签署并重申自己的见证边界。",
+        "source_evidence": "乔枝站在见证栏旁，手里捏着笔，指节发白。她今日没背整段规章，只把边界说明重读了一遍：“本人乔枝见证：工时牌、月露刻度、回收灵墨迁色及韩笑行动记录共同证明，陆迟主动调换全部药签不成立。此证词不替陆迟免除违规催芽散责任，不替任何人免除月露、公物或药签责任。”"
+      },
+      {
+        "character_id": "wei-yuan",
+        "fact_id": "lu-chi-conditional-exam-eligibility-valid",
+        "state": "knows",
+        "belief": "魏远知道陆迟复议后资格恢复，工时记录、月露核验、伤势解除记录和分盆结果有效，但资格仍带责任条件。",
+        "supersedes_fact_ids": [],
+        "change": "魏远依据验收表承认陆迟带条件资格恢复及相关记录有效。",
+        "source_evidence": "“陆迟，复议后资格恢复，不等于无责。第一栏，工时记录有效；第二栏，月露核验有效；第三栏，林素巡验弟子所记伤势解除有效；第四栏，分盆结果有效。”"
+      },
+      {
+        "character_id": "han-xiao",
+        "fact_id": "label-swap-involvement-denial",
+        "state": "conceals",
+        "belief": "韩笑承认收到月露未登记挪用的回执，但仍公开否认药签之事；正文仍未确认他是否移动药签。",
+        "supersedes_fact_ids": [],
+        "change": "韩笑继续否认药签之事，并要求不要把月露责任扩展成别的责任。",
+        "source_evidence": "韩笑最终接过笔，仍尽力圆场：“管事放心，我只写收到。药签之事，我仍未认，也请诸位莫把月露一项推成别的。”"
+      },
+      {
+        "character_id": "lin-su",
+        "fact_id": "han-xiao-moon-dew-not-label-proof",
+        "state": "knows",
+        "belief": "林素知道韩笑的月露责任不能据此定为移动药签，也不能据此免除月露责任。",
+        "supersedes_fact_ids": [],
+        "change": "林素明确韩笑月露违规与药签责任之间的证据边界。",
+        "source_evidence": "林素的声音从棚内传来：“无人据此定你移动药签。也无人据此免你月露责任。”"
+      },
+      {
+        "character_id": "lu-chi",
+        "fact_id": "conditional-exam-burdens-remain",
+        "state": "knows",
+        "belief": "陆迟知道小考资格入口已经到手，但随卷处分、损耗说明、控露陶嘴赔偿、贡献点扣减和灵石不足都仍然存在。",
+        "supersedes_fact_ids": [],
+        "change": "陆迟确认资格恢复没有减少待付账目。",
+        "source_evidence": "陆迟背起药箱，确认三叠纸都在：随卷单带朱印，红栏清楚；损耗说明等他补正；控露陶嘴赔偿核价单压得最紧。两枚下品灵石在袋中轻碰，提醒他资格入口已经到手，账还没有少一笔。"
+      }
+    ],
+    "thread_changes": [
+      {
+        "change": "陆迟需要在下一次验收前补齐工时牌领还记录、月露用量刻度、分盆抢救过程，并逐一重挂药签、单列旧墨迁色和裂根风险。",
+        "source_evidence": "“那就只列线索。”魏远把工牌拍回他手中，“下一次验收前，交齐工时牌领还记录、月露用量刻度、分盆抢救过程。十二盆逐一重挂药签，旧墨迁色单列。裂根的，不准写成已愈。”"
+      },
+      {
+        "change": "陆迟确定下一步抢救顺序：先救未裂盆，裂根两盆只隔离并计风险，每动一盆都记录时辰、药签旧痕和月露刻度。",
+        "source_evidence": "“先救未裂的。裂根两盆只隔离、计风险。每动一盆，记时辰、药签旧痕和月露刻度。”"
+      },
+      {
+        "change": "陆迟的资格线从冻结风险推进为临时冻结，复议条件被写进验收表。",
+        "source_evidence": "最后是资格栏：药庐小考资格临时冻结，待抢救过程、工时牌与月露用量核验后复议。"
+      },
+      {
+        "change": "同一验收表同时固定了陆迟责任和冻结前异常，为后续按记录反查留下依据。",
+        "source_evidence": "片刻后，魏远在同一张表上补写：冻结前，现场已有药签回收灵墨迁色、笑面参根须互缠；甲一、甲二裂根，入损耗观察；乔枝在场见证；月露刻度初值未动，工时牌卯末领取，待核。"
+      },
+      {
+        "change": "药签错乱责任仍未查明，告状藤本章没有提供新的可靠证词。",
+        "source_evidence": "告状藤缠在远处竹架上，今日没听到新的完整命令，只抖了两片叶。两人都未理会。"
+      },
+      {
+        "change": "甲一、甲二两盆笑面参仍不可复原，只能继续列入损耗观察。",
+        "source_evidence": "甲一、甲二盆沿挂着黑绳。两盆笑面参裂根处已经干白，笑纹开裂，不可能复原，只能继续列入损耗观察。陆迟没有碰它们。"
+      },
+      {
+        "change": "月露领取、用量、归还记录成为下一步核验方向。",
+        "source_evidence": "“先回去。”她说，“明日查月露领取簿。若你今晚再碰催芽诀，我就在风险备注里另开一页。”"
+      },
+      {
+        "change": "月露调查从刻度矛盾推进到庚七编号月露的领取、归还和余量短缺核验。",
+        "source_evidence": "“无人如此裁定。”魏远道，“现在只确认三项：庚七由你的工时牌领取；归还栏未按时登记；实物比账面少一份。”"
+      },
+      {
+        "change": "韩笑被正式列为下一轮庚七月露复核参与者，需参加复称、盆号核对和归还说明。",
+        "source_evidence": "魏远看过那行字，道：“公物流程中，共同误差须有共同复核人。韩笑，明日辰初，到柜前复称庚七余量，核对昨日实际用露盆号，补归还说明。”"
+      },
+      {
+        "change": "药签错乱案仍未裁定责任人；灵墨迁色和庚七月露事实均不能直接证明谁动过药签。",
+        "source_evidence": "韩笑没有接笔，只拱手道：“弟子遵。但此事不能证明我动过药签。”\n\n“无人如此裁定。”魏远道，“现在只确认三项：庚七由你的工时牌领取；归还栏未按时登记；实物比账面少一份。”"
+      },
+      {
+        "change": "庚七月露线索从余量矛盾推进为正式复称短缺、归还空栏和实际用露盆号待核。",
+        "source_evidence": "魏远提笔，在月露核验栏补写：“庚七复称短缺一份；韩笑申时二刻领取，归还时辰空缺；陆迟申时一刻后停术疗伤记录有效。”"
+      },
+      {
+        "change": "药签错乱调查下一步转向药签迁色和昨日盆位核验。",
+        "source_evidence": "乔枝将签牌压在记录页上：“下一项，核药签迁色和昨日盆位。”"
+      },
+      {
+        "change": "陆迟资格冻结与原处罚未撤销，庚七三项事实只改变后续核验边界。",
+        "source_evidence": "魏远合上验收表：“庚七三项事实有效，不代表陆迟原有责任取消。药庐小考资格继续冻结，三点贡献已经扣除；控露陶嘴赔偿待核，违规试用催芽散照旧入责任栏。甲一、甲二仍计裂根损耗。”"
+      },
+      {
+        "change": "药签错乱责任线推进：乔枝正式写明陆迟主动调换全部药签的判断不成立，但陆迟其他责任仍保留。",
+        "source_evidence": "魏远收起副记：“韩笑，庚七月露未登记挪用，入公物责任栏，处分另定。陆迟，药签责任边界变更，不影响你违规试用催芽散、损坏控露陶嘴、扣三点贡献和资格冻结。”"
+      },
+      {
+        "change": "笑面参抢救线推进到分组观察阶段：八盆可验收观察，两盆降等候补观察，甲一甲二不可恢复。",
+        "source_evidence": "陆迟在主册落笔：“十盆未裂根笑面参，八盆列可验收生长区间观察；后丁六、乙五笑纹开裂过深，列降等候补观察。甲一、甲二裂根损耗观察，不可恢复。”"
+      },
+      {
+        "change": "陆迟伤势解除线获得下一章行动入口：明日辰初带灵石申请监护吐纳。",
+        "source_evidence": "林素在监护申请栏划下一道细线：“明日辰初，带灵石来。”"
+      },
+      {
+        "change": "陆迟药庐小考资格冻结、三点贡献扣减、控露陶嘴赔偿待核、违规催芽散责任均继续保留，复议需补齐相关栏。",
+        "source_evidence": "“记录有效。”他合起表，“资格冻结继续。三点贡献已扣，控露陶嘴赔偿待核，违规催芽散责任保留。补齐损耗说明、赔偿栏和违规责任栏后，再谈复议。”"
+      },
+      {
+        "change": "笑面参分盆状态未因陆迟突破改变：甲一、甲二不可恢复，八盆可验收观察，后丁六、乙五降等候补，月露未登记挪用仍不被抵消。",
+        "source_evidence": "陆迟逐盆查过：“甲一、甲二裂根，不可恢复。八盆仍列可验收观察；后丁六、乙五笑纹开裂过深，仍列降等候补。突破不改药材现状，也不改月露未登记挪用。”"
+      },
+      {
+        "change": "复议前置材料已补齐到可终核阶段，但资格仍未恢复，下一步只剩终验、赔偿金额和资格裁定。",
+        "source_evidence": "魏远收齐三张表，以终核木尺压住：“损耗说明已成，分盆记录已成，赔偿初核已成，违规责任已入栏。下品灵石余额两枚，无本日消耗。明日我验实物、查采买价，再按同一份验收表裁定复议。”\n\n陆迟问：“资格状态？”\n\n“仍冻结。”\n\n木尺落下，最上方只剩三处空格：终验、赔偿金额、资格裁定。"
+      },
+      {
+        "change": "韩笑的月露问题仍固定在私取庚七月露一份、未按时登记归还、无共同经手人这一公物责任栏事实。",
+        "source_evidence": "韩笑没再争，在公物责任页原处按下指印。纸上仍清楚写着：私取庚七月露一份，未按时登记归还，无共同经手人。"
+      },
+      {
+        "change": "资格复议完成：魏远依据同一份验收表恢复陆迟药庐小考资格，但附补交损耗说明正本、赔偿控露陶嘴、违规催芽散记录随卷、三点贡献扣减保留和逾期再议等条件。",
+        "source_evidence": "他终于提笔，在末栏写下：恢复药庐小考资格，附条件。\n\n“一，补交十二盆损耗说明正本；二，按核价赔偿控露陶嘴；三，违规催芽散记录随卷。三点贡献扣减保留。任一项逾期，资格再议。”"
+      },
+      {
+        "change": "外门药园月露短缺仍未解决，且不纳入本次资格复议。",
+        "source_evidence": "魏远写完“核验有效”，又补道：“药园月露本月仍缺，后续分配不在本次复议内。”\n\n“记下了。”陆迟说，“缺额未解决，不计作资格恢复条件。”"
+      },
+      {
+        "change": "控露陶嘴核价单已送达，陆迟必须在小考名册酉时封卷前完成赔偿入账。",
+        "source_evidence": "一名杂役快步送来控露陶嘴核价单。魏远扫了一眼，盖上采买印，推到陆迟面前。\n\n陆迟看清赔偿数额，又摸了摸袋中仅剩的两枚下品灵石。\n\n名册今日酉时封卷，赔偿也须在酉时前入账。"
+      },
+      {
+        "change": "陆迟的小考准备线正式开启，启动条件是带条件资格已取得但须先处理付账与随卷责任。",
+        "source_evidence": "陆迟把薄册合上，沿着去药庐的小径往前走。\n\n“下一项，”他低声念，“小考准备。附：先付账。”"
+      },
+      {
+        "change": "韩笑的责任线被限定在一份庚七月露未登记挪用、未按时归还，处分另定，未扩展为药签真凶或月露分配网络。",
+        "source_evidence": "魏远正好从棚内出来，手里拿着另一份回执，闻言看向韩笑：“仔细些好。韩笑，庚七月露一份未登记挪用，未按时归还，已入公物责任栏。处分另定。你在这份回执上写明收到，不得写成共同免赔申请。”"
+      }
+    ],
+    "comedy_changes": [
+      {
+        "change": "告状藤学舌陆迟的流程用语并反向嘲讽，形成核账式笑点。",
+        "source_evidence": "竹架上的告状藤抖了抖叶：“耗时另计。”\n\n陆迟头也不抬：“你没有工时。”\n\n告状藤安静片刻，又道：“你没有工时。”\n\n陆迟决定不与一株藤核账。"
+      },
+      {
+        "change": "陆迟把乔枝的风险提示和暂留行为登记成核对协助，迫使乔枝被流程留在现场。",
+        "source_evidence": "“我是在提示风险。”\n\n“已记为核对提示。”\n\n乔枝刚要拒绝，廊下传来脚步声。"
+      },
+      {
+        "change": "陆迟把魏远的处罚拆成表格栏位，要求扣点、损耗和资格冻结分别入表。",
+        "source_evidence": "“是。”陆迟从台角抽出验收表，“请分别记入损耗栏、贡献点栏和资格栏。”\n\n魏远目光一沉：“你还替我备好了处罚？”"
+      },
+      {
+        "change": "陆迟用表格逻辑把怀疑和事实分栏，形成规章喜剧效果。",
+        "source_evidence": "“我只降低风险。”乔枝立即划清边界，“且仍怀疑他调过药签。”\n\n陆迟道：“怀疑不入事实栏。”\n\n乔枝转头瞪他：“我知道！”"
+      },
+      {
+        "change": "乔枝用风险告知保持距离，却被陆迟把风险告知记录成处置建议和见证事项。",
+        "source_evidence": "陆迟用左手摊开副记：“处置建议，立即停术。请告知人签字。”\n\n“我是在告知风险，不是在替你开药方。”\n\n“告知改变了处置，效力相同。”"
+      },
+      {
+        "change": "乔枝反复强调自己只是为了降低共同损失，结果被陆迟不断写进记录。",
+        "source_evidence": "走出管事房，乔枝才低声道：“我同意继续核验，是为了降低共同损失。”\n\n陆迟在副记末尾写下：“乔枝同意核月露领取、用量及归还记录。”\n\n“后一句呢？”\n\n“理由不影响工作项。”"
+      },
+      {
+        "change": "韩笑试图用“共同计量误差”圆场，反被陆迟登记成共同复核事项并指定韩笑为第一参与人。",
+        "source_evidence": "韩笑目光在瓶身与众人之间转了一圈：“月露沾瓶挂壁，又常经多人之手。昨日药棚忙乱，这点差额，或许是共同计量误差。”\n\n乔枝提笔：“共同人员有哪些？”\n\n“乔师妹，若每滴露都要认清经手人，药苗未必等得及。”\n\n陆迟已翻到待核栏，逐字写下：“庚七差额，韩笑提出共同计量误差。后续核验：实物称量、实际盆号、归还经过、共同人员列名。第一参与人，韩笑。”"
+      },
+      {
+        "change": "陆迟把韩笑的“所有人的误差”继续落成具体劳动安排，让韩笑负责第一轮盆号核对。",
+        "source_evidence": "韩笑站在封存柜前，语气仍温和，眼神却已冷了：“那便一起量。只盼陆师弟的待核栏装得下所有人的误差。”\n\n陆迟在末页添上一行：“若装不下，另起副册。韩笑负责第一轮盆号核对。”"
+      },
+      {
+        "change": "韩笑的“共同计量误差”被陆迟按字面拆成共同经手人员、实际用露盆号、归还经过、复称参与人四个正式工作项。",
+        "source_evidence": "“流程上更该列。”陆迟在纸上分出四项，“共同经手人员、实际用露盆号、归还经过、复称参与人。少一项，便不能叫共同。”"
+      },
+      {
+        "change": "乔枝把韩笑的共同误差说法反向变成签字风险和搬责任风险。",
+        "source_evidence": "乔枝收起笔：“界线不清，搬完秤还要搬责任。”"
+      },
+      {
+        "change": "陆迟用账目栏位冷幽默回应韩笑的人情试探。",
+        "source_evidence": "韩笑扫过那行字：“陆师弟记账从不留情面？”\n\n“情面没有对应栏。”"
+      },
+      {
+        "change": "乔枝原本强调风险边界，陆迟直接把风险边界登记成四项见证工作，形成证词成本笑点。",
+        "source_evidence": "乔枝铺开副记纸：“今日复核只为降低共同损失。先说明风险边界：药签迁色痕、停术时辰、庚七用露盆号、分盆位置，四项须逐一对应。中途若有一项不合，我保留退出见证的权利。”\n\n陆迟提笔便写：乔枝见证事项一，核签；二，核时；三，核露；四，核盆。"
+      },
+      {
+        "change": "乔枝签字太用力压弯药签，陆迟把这也记成见证成本，延续核表喜剧。",
+        "source_evidence": "乔枝签名时用力过重，纸角压住一枚薄木签。木签弯出轻响，险些折断。\n\n陆迟看了一眼：“见证成本，药签受压，未裂。”"
+      },
+      {
+        "change": "乔枝把压弯的药签夹进副记，并以签字人离药签远些收束本章标题笑点。",
+        "source_evidence": "乔枝把那枚压弯的药签夹进副记：“再添一条。签字人离药签远些，免得证词尚未压实，先把签压弯。”"
+      },
+      {
+        "change": "乔枝试图只作旁证未成，被林素要求二十四周天每一格都签名。",
+        "source_evidence": "“坐满。”林素道。\n\n“什么？”\n\n“每一周天，签一格。”"
+      },
+      {
+        "change": "乔枝的风险提示被陆迟按表格规则反向限制，只能挤在第一格内。",
+        "source_evidence": "陆迟睁眼：“后半句算第二圈的停顿条件？”\n\n“不算。”\n\n“那请留在第一格。”\n\n乔枝只得把字挤紧，险些写出格外。"
+      },
+      {
+        "change": "魏远的表格流程被乔枝用二十四格见证表反向约束，无法只收突破而拒收伤势状态变更。",
+        "source_evidence": "乔枝将二十四格见证表压在验收表上：“伤势状态原本就在此表。监护人、灵石支出和二十四次周天俱全。若只收突破，不收状态变更，这二十四格要逐格退回重签？”"
+      },
+      {
+        "change": "韩笑试图用“共同养护误差”稀释责任，反被陆迟登记为需要本人核对月露余量来源的工作项。",
+        "source_evidence": "韩笑放下空盆，转向后丁六与乙五：“这两盆笑纹深些，也未必全因月露。十来日内经手的人不少，若算共同养护误差，留在观察栏也说得过去。”\n\n陆迟翻开工册，记下一行。\n\n韩笑笑意一顿：“你记什么？”\n\n“韩笑主张共同养护误差。请主张人核对后丁六、后丙三月露余量来源，按盆号补充经手记录。”"
+      },
+      {
+        "change": "陆迟用验收表规定反制魏远试图暂空赔偿栏的做法，让待核赔偿也必须写明责任人和依据。",
+        "source_evidence": "陆迟道：“赔偿栏空着。”\n\n“终核金额要查本月采买价。”\n\n“验收表第六附项规定，待核赔偿也须写明责任人、损坏物和核价依据。若留空，便算未报损。”\n\n魏远抬眼看他。\n\n陆迟把表推回去：“未报损还要另补迟报说明。”"
+      },
+      {
+        "change": "魏远试图追加观察时，被陆迟和乔枝用验收规程与空遗漏栏反制，形成表格反噬。",
+        "source_evidence": "魏远道：“疯长刚止，仍需观察。”\n\n陆迟翻开分盆页：“观察时辰已满。起始、复查、终整三栏齐全。”\n\n乔枝将记录册转过去：“分盆见证是我，终整初核是魏管事。若要增加观察时辰，按验收规程，应在初核前写明。”\n\n魏远看见自己那枚方正的印，指节在桌沿敲了一下。\n\n“我只是核对是否有遗漏。”\n\n陆迟道：“遗漏栏在下一格，目前为空。”"
+      },
+      {
+        "change": "魏远最终被自己此前签过和盖过的表格流程推到恢复资格栏，不能继续用同一表格冻结资格。",
+        "source_evidence": "魏远从头翻到尾。每一处印记都在，其中数处还是他亲手盖的。若继续冻结，反倒要另写一份不依本表的理由。"
+      },
+      {
+        "change": "陆迟把资格条件逐项抄成待办事项，反迫使魏远按表格盖出随卷单。",
+        "source_evidence": "魏远终于发现，自己每念一项限制，陆迟就把那项限制变成领取随卷单的前置勾验。若再不盖，反像他扣着已有效的栏不办。他沉着脸，取出百草坡管事印，先盖在验收表“复议后资格恢复”处，又盖在随卷单“带条件准入”处。"
+      },
+      {
+        "change": "乔枝将见证边界说成可留底的表格话术，形成表格喜剧并保留责任后果。",
+        "source_evidence": "韩笑把回执交给魏远，朝乔枝笑了笑：“乔师妹如今说话更像表了。”\n\n乔枝平静道：“表至少会留底。”"
+      },
+      {
+        "change": "陆迟把高兴也纳入栏位管理，强化带条件资格必须先付账的喜剧机制。",
+        "source_evidence": "陆迟把控露陶嘴核价单压在最上面：“第一叠今日酉时前入账，第二叠随卷处分，第三叠小考。高兴若插队，须有栏位。”"
+      }
+    ],
+    "new_constraints": [
+      {
+        "change": "陆迟药庐小考资格尚未冻结，但已列入冻结风险；若下一次验收仍不可核，将按缺项处置。",
+        "source_evidence": "魏远看向陆迟：“药庐小考资格列入冻结风险。现在不冻，下一次验收仍不可核，便按缺项处置。你有违规催芽在前，别指望一句藤话替你挡。”"
+      },
+      {
+        "change": "裂根的笑面参不得写成已愈，只能按风险和隔离处理。",
+        "source_evidence": "“那就只列线索。”魏远把工牌拍回他手中，“下一次验收前，交齐工时牌领还记录、月露用量刻度、分盆抢救过程。十二盆逐一重挂药签，旧墨迁色单列。裂根的，不准写成已愈。”"
+      },
+      {
+        "change": "乔枝因签下暂留时辰，被要求负责核药签。",
+        "source_evidence": "魏远又指向乔枝：“你既签了暂留，就负责核药签。规章不能只从嘴里过。”"
+      },
+      {
+        "change": "陆迟需要赔偿被其强行施术损坏的一只控露陶嘴，具体赔偿待核。",
+        "source_evidence": "魏远没有理会两人的争执，提笔填下损耗：控露陶嘴一只，陆迟强行施术所致，赔偿待核。"
+      },
+      {
+        "change": "陆迟药庐小考资格临时冻结，需待抢救过程、工时牌与月露用量核验后复议。",
+        "source_evidence": "最后是资格栏：药庐小考资格临时冻结，待抢救过程、工时牌与月露用量核验后复议。"
+      },
+      {
+        "change": "陆迟副记不得改动，否则临时冻结将升级为非临时状态。",
+        "source_evidence": "魏远临出棚前道：“资格已经冻结。若副记改动一笔，便不再是临时。”"
+      },
+      {
+        "change": "陆迟右臂逆冲加重，已不能稳定结印，不能继续声称自己还能正常抢救。",
+        "source_evidence": "他试着松开右腕，五指立刻抖出一个残缺印势。乔枝按住他的手，把“木灵气逆冲加重，已不能稳定结印”添进旁注。\n\n“这是防止你再说还能做。”她道。"
+      },
+      {
+        "change": "陆迟疗伤膏余额为零，后续不能再从自己现有库存中使用 healing-salve。",
+        "source_evidence": "“再记余额为零。”\n\n“你连自己的药膏都防着多报？”\n\n“余量不清，后续会误领。”\n\n乔枝把“余额零”写下，又补了一句：“伤势未除，不得连续施术。”"
+      },
+      {
+        "change": "陆迟控露陶嘴损坏责任继续存在，需待核赔偿。",
+        "source_evidence": "陆迟睁眼：“陶嘴也记？”\n\n“免得赔偿时把一只算成两只。损坏责任不免，数目不能乱加。”\n\n“降低共同损失，有效。”\n\n乔枝笔锋一顿，仍在图旁写下：控露陶嘴一只，已碎，待赔。"
+      },
+      {
+        "change": "陆迟违规试用便宜催芽散责任栏保留，未被补记录抵扣或洗白。",
+        "source_evidence": "魏远逐页翻过停术记录、疗伤膏封纸和月露刻度抄本，先开口道：“补记录不能抵扣处罚。违规试用便宜催芽散，责任栏保留；控露陶嘴损坏，赔偿待核；贡献点扣除三点已执行；药庐小考资格继续冻结。”"
+      },
+      {
+        "change": "陆迟药庐小考资格继续冻结。",
+        "source_evidence": "魏远逐页翻过停术记录、疗伤膏封纸和月露刻度抄本，先开口道：“补记录不能抵扣处罚。违规试用便宜催芽散，责任栏保留；控露陶嘴损坏，赔偿待核；贡献点扣除三点已执行；药庐小考资格继续冻结。”"
+      },
+      {
+        "change": "庚七编号月露被封存；药园后续可调用月露收紧，其余月露按紧缺公物领用，非抢救不得开新瓶。",
+        "source_evidence": "魏远给庚七贴上封条，移入侧柜：“此瓶封存。其余月露按紧缺公物领用，非抢救不得开新瓶。”"
+      },
+      {
+        "change": "韩笑必须在明日辰初参与庚七余量复称、昨日实际用露盆号核对和归还说明补记。",
+        "source_evidence": "魏远看过那行字，道：“公物流程中，共同误差须有共同复核人。韩笑，明日辰初，到柜前复称庚七余量，核对昨日实际用露盆号，补归还说明。”"
+      },
+      {
+        "change": "陆迟的药庐小考资格冻结、三点贡献扣减、控露陶嘴赔偿与催芽散责任继续有效。",
+        "source_evidence": "魏远合拢验收表，“陆迟资格继续冻结，三点贡献不退，陶嘴赔偿与催芽散责任保留。今日新增，只入月露核验栏。”"
+      },
+      {
+        "change": "陆迟本章检查结束后当日不得再结印。",
+        "source_evidence": "陆迟右手又开始轻抖，便换左手收起册子：“明日辰初复核。今日不再结印。”"
+      },
+      {
+        "change": "韩笑必须补交庚七归还说明，列明实际用露时辰、盆号及共同经手人，并到场参与庚七相关核盆。",
+        "source_evidence": "“所以补流程。”魏远道，“你补交庚七归还说明，列明实际用露时辰、盆号及共同经手人。庚七相关核盆，你必须到场。”"
+      },
+      {
+        "change": "陆迟停术，不得碰公物，只能作副记参与公物复称流程。",
+        "source_evidence": "魏远皱了皱眉，却只能依公物流程点名：“韩笑既提出共同误差，便亲自搬秤、对瓶，再列共同经手人。乔枝核砣见证。陆迟停术，不碰公物，只作副记。”"
+      },
+      {
+        "change": "非抢救不得再开新瓶月露。",
+        "source_evidence": "陆迟写下待核首行：庚七至少用于后丙三与后丁六；后丁六不在陆迟当值照料记录内。非抢救，不得再开新瓶。"
+      },
+      {
+        "change": "陆迟药庐小考资格继续冻结，三点贡献扣除不退，控露陶嘴赔偿待核，违规试用催芽散仍入责任栏。",
+        "source_evidence": "魏远合上验收表：“庚七三项事实有效，不代表陆迟原有责任取消。药庐小考资格继续冻结，三点贡献已经扣除；控露陶嘴赔偿待核，违规试用催芽散照旧入责任栏。甲一、甲二仍计裂根损耗。”"
+      },
+      {
+        "change": "陆迟的违规试用催芽散、损坏控露陶嘴、扣三点贡献和资格冻结继续保留，不因药签责任边界变更而解除。",
+        "source_evidence": "魏远收起副记：“韩笑，庚七月露未登记挪用，入公物责任栏，处分另定。陆迟，药签责任边界变更，不影响你违规试用催芽散、损坏控露陶嘴、扣三点贡献和资格冻结。”"
+      },
+      {
+        "change": "陆迟伤势解除前不得连续施术，rapid-growth-ban 继续有效。",
+        "source_evidence": "“本章未连续催芽。wood-qi-spasm仍为部分恢复，未加重。”她松开手，“rapid-growth-ban继续有效，伤势解除前不得连续施术。”"
+      },
+      {
+        "change": "解除 wood-qi-spasm 的申请条件明确为连续二十四次稳定小周天、至少两枚下品灵石或等价灵气来源、全程监护记录。",
+        "source_evidence": "陆迟问：“解除需要什么？”\n\n“连续二十四次稳定小周天。至少两枚下品灵石，或等价灵气来源。全程须有监护记录。”"
+      },
+      {
+        "change": "即使成功解除伤势，也不恢复药庐小考资格、不抵控露陶嘴赔偿、不删除催芽散违规，突破另算。",
+        "source_evidence": "“申请时带两枚。”林素道，“成功只解除伤势，不恢复资格，不抵陶嘴赔偿，不删催芽散违规。突破另算。”"
+      },
+      {
+        "change": "陆迟突破后三日不得连续使用微量催芽诀。",
+        "source_evidence": "“炼气三层。”林素提笔，“只增灵气控制稳定，不增药性见识，不改既有药损。原禁令随伤势解除终止；突破后三日，不得连续使用微量催芽诀。”"
+      },
+      {
+        "change": "陆迟下一步分盆终整只能低频分段处理，不许连续催芽。",
+        "source_evidence": "他在明日工单第一行写下：分盆终整，低频分段，不许连催。"
+      },
+      {
+        "change": "陆迟仍需填写控露陶嘴赔偿核价单。",
+        "source_evidence": "第三行刚写到“控露陶嘴赔偿”，魏远便将一张空白核价单推到了他面前。"
+      },
+      {
+        "change": "陆迟药庐小考资格继续冻结；材料齐全只代表可以终核，不代表资格恢复。",
+        "source_evidence": "“损耗说明、陶嘴赔偿核价、违规催芽散责任，分开填写。”他道，“材料齐全，只代表可以终核，不代表资格恢复。”"
+      },
+      {
+        "change": "控露陶嘴赔偿责任已成立，但具体金额必须等魏远按本月采买价终核。",
+        "source_evidence": "魏远沉默两息，落笔写道：控露陶嘴一只，陆迟操作失稳致损；赔偿责任成立，金额按本月采买价终核。"
+      },
+      {
+        "change": "陆迟违规试用便宜催芽散责任正式入栏，后续处分仍需承受。",
+        "source_evidence": "陆迟亲手写下：曾以一小撮便宜催芽散抢救受寒药苗，未先报备，违反药园用药规程，接受记录及后续处分。"
+      },
+      {
+        "change": "后丁六、乙五若被强提为合格，复验退回时还要追加损耗说明。",
+        "source_evidence": "乔枝在两块黄边木牌上签字：“后丁六月露用量异常，乙五笑纹裂度超线。两盆列降等候补。若强提为合格，复验退回时还要追加损耗说明。”"
+      },
+      {
+        "change": "陆迟恢复药庐小考资格的条件包括补交十二盆损耗说明正本、按核价赔偿控露陶嘴、违规催芽散记录随卷；三点贡献扣减保留，任一项逾期资格再议。",
+        "source_evidence": "“一，补交十二盆损耗说明正本；二，按核价赔偿控露陶嘴；三，违规催芽散记录随卷。三点贡献扣减保留。任一项逾期，资格再议。”"
+      },
+      {
+        "change": "陆迟的控露陶嘴赔偿须在今日酉时前入账，否则影响名册封卷前状态。",
+        "source_evidence": "陆迟看清赔偿数额，又摸了摸袋中仅剩的两枚下品灵石。\n\n名册今日酉时封卷，赔偿也须在酉时前入账。"
+      },
+      {
+        "change": "陆迟低资源压力继续存在：赔偿核价已出，袋中仅剩两枚下品灵石。",
+        "source_evidence": "陆迟看清赔偿数额，又摸了摸袋中仅剩的两枚下品灵石。"
+      },
+      {
+        "change": "陆迟违规试用便宜催芽散责任正式保留，不因药签错乱另有原因而免除。",
+        "source_evidence": "他翻到责任栏，语气重新硬了几分：“陆迟，违规试用便宜催芽散，是否承认？”\n\n“承认。用量一小撮，用于受寒药苗，未申报。责任保留。”\n\n“不得因药签错乱另有原因而免除。”\n\n“不申请免除。”"
+      },
+      {
+        "change": "陆迟损坏控露陶嘴的赔偿责任成立，三点贡献扣减不退，现余六点。",
+        "source_evidence": "魏远落印，又指向控露陶嘴一项：“强行稳根时损坏公用陶嘴，赔偿责任成立。按本月采买价核赔。此前扣除三点贡献，不退。现余六点。”"
+      },
+      {
+        "change": "陆迟随卷单红栏明确保留违规催芽散责任、控露陶嘴赔偿待清、三点贡献点已扣不返还，以及突破后三日不得连续使用微量催芽诀。",
+        "source_evidence": "魏远没有立刻盖。他先指着三处红栏：“违规试用便宜催芽散，责任随卷。损坏控露陶嘴，赔偿待清。三点贡献点已扣，不返还。另，突破后三日不得连续使用微量催芽诀，林素巡验记录附后。”"
+      },
+      {
+        "change": "陆迟小考前不得把降等候补的笑面参数量充作合格数量。",
+        "source_evidence": "“候补不是合格。”陆迟照抄，又补了两个小圈，“小考前不得拿候补数充合格数。”"
+      },
+      {
+        "change": "韩笑不得把收到处分待定回执写成共同免赔申请。",
+        "source_evidence": "魏远正好从棚内出来，手里拿着另一份回执，闻言看向韩笑：“仔细些好。韩笑，庚七月露一份未登记挪用，未按时归还，已入公物责任栏。处分另定。你在这份回执上写明收到，不得写成共同免赔申请。”"
+      }
+    ],
+    "resolved_constraints": [
+      {
+        "change": "乔枝对陆迟主动调换全部药签的核心怀疑被正式撤销。",
+        "source_evidence": "“经复核，‘陆迟主动调换全部药签’之判断不成立。工时牌、月露刻度、灵墨迁色及韩笑行动记录相互核验，药签错乱不能归为陆迟主动调换所致。”"
+      },
+      {
+        "change": "陆迟伤势解除前不得连续施术的 rapid-growth-ban 原禁令终止。",
+        "source_evidence": "“炼气三层。”林素提笔，“只增灵气控制稳定，不增药性见识，不改既有药损。原禁令随伤势解除终止；突破后三日，不得连续使用微量催芽诀。”"
+      },
+      {
+        "change": "陆迟药庐小考资格的冻结状态解除，改为恢复但附条件。",
+        "source_evidence": "他终于提笔，在末栏写下：恢复药庐小考资格，附条件。"
+      }
+    ]
+  },
+  "structured_state": {
+    "cultivation": [
+      {
+        "subject_id": "han-xiao",
+        "stage": "炼气二层",
+        "abilities": [
+          "基础吐纳",
+          "熟悉药签与月露分配"
+        ],
+        "injuries": [],
+        "limits": [
+          "不能正面对抗药庐巡验弟子"
+        ],
+        "tracked_states": []
+      },
+      {
+        "subject_id": "lin-su",
+        "stage": "炼气四层",
+        "abilities": [
+          "药性鉴别",
+          "基础炼药"
+        ],
+        "injuries": [],
+        "limits": [
+          "不能越过实作考核程序直接给资格"
+        ],
+        "tracked_states": []
+      },
+      {
+        "subject_id": "lu-chi",
+        "stage": "炼气三层",
+        "abilities": [
+          "基础吐纳",
+          "辨药术",
+          "微量催芽诀"
+        ],
+        "injuries": [],
+        "limits": [
+          "只增灵气控制稳定，不增药性见识，不改既有药损",
+          "突破后三日不得连续使用微量催芽诀",
+          "陆迟的突破后三日不得连续使用微量催芽诀限制继续有效，三日内训练只能基础吐纳、辨药复核和低频分段练手。",
+          "陆迟炼气三层只提升灵气收束稳定，不增加药性见识，也不改变药损。"
+        ],
+        "tracked_states": [
+          {
+            "state_id": "post-breakthrough-three-day-sprout-ban",
+            "kind": "restriction",
+            "description": "陆迟的突破后三日不得连续使用微量催芽诀限制继续有效，三日内训练只能基础吐纳、辨药复核和低频分段练手。"
+          },
+          {
+            "state_id": "qi-refinement-three-limited-control-only",
+            "kind": "restriction",
+            "description": "陆迟炼气三层只提升灵气收束稳定，不增加药性见识，也不改变药损。"
+          }
+        ],
+        "last_kind": "restriction",
+        "last_change": "陆迟炼气三层只提升灵气收束稳定，不增加药性见识，也不改变药损。"
+      },
+      {
+        "subject_id": "qiao-zhi",
+        "stage": "炼气一层",
+        "abilities": [
+          "基础吐纳",
+          "药园规章记忆"
+        ],
+        "injuries": [],
+        "limits": [
+          "实战与独立施术经验不足"
+        ],
+        "tracked_states": []
+      },
+      {
+        "subject_id": "wei-yuan",
+        "stage": "炼气三层",
+        "abilities": [
+          "基础术法",
+          "药材验收"
+        ],
+        "injuries": [],
+        "limits": [
+          "必须服从可核验的正式记录"
+        ],
+        "tracked_states": []
+      }
+    ],
+    "resources": [
+      {
+        "owner_id": "baicao-garden",
+        "resource_id": "moon-dew",
+        "amount": 6,
+        "unit": "瓶"
+      },
+      {
+        "owner_id": "lu-chi",
+        "resource_id": "contribution-point",
+        "amount": 6.0,
+        "unit": "点",
+        "last_operation": "consume",
+        "last_source_or_destination": "魏远验收表处罚扣减"
+      },
+      {
+        "owner_id": "lu-chi",
+        "resource_id": "healing-salve",
+        "amount": 0.0,
+        "unit": "份",
+        "last_operation": "consume",
+        "last_source_or_destination": "陆迟疗伤使用"
+      },
+      {
+        "owner_id": "lu-chi",
+        "resource_id": "low-spirit-stone",
+        "amount": 2.0,
+        "unit": "枚",
+        "last_operation": "consume",
+        "last_source_or_destination": "林素监护吐纳与突破过程耗用"
+      }
+    ],
+    "knowledge": [
+      {
+        "character_id": "han-xiao",
+        "fact_id": "han-xiao-moon-dew-unregistered-diversion",
+        "state": "knows",
+        "belief": "韩笑知道自己将庚七一份主要用于后丁六、余量沾用后丙三，且未按时登记归还，但仍否认移动药签。",
+        "last_change": "韩笑不再以流程缺漏或共同计量误差解释庚七短缺，而是承认具体未登记补露去向。"
+      },
+      {
+        "character_id": "han-xiao",
+        "fact_id": "label-swap-involvement-denial",
+        "state": "conceals",
+        "belief": "韩笑承认收到月露未登记挪用的回执，但仍公开否认药签之事；正文仍未确认他是否移动药签。",
+        "last_change": "韩笑继续否认药签之事，并要求不要把月露责任扩展成别的责任。"
+      },
+      {
+        "character_id": "han-xiao",
+        "fact_id": "moon-dew-misuse-no-common-handler-confirmed",
+        "state": "knows",
+        "belief": "韩笑确认后丁六月露用量偏多、后丙三只是沾用余量，且没有其他可核经手人；共同养护误差说法无法补入责任栏。",
+        "last_change": "韩笑在核对后承认没有其他可核经手人，不能继续把后丁六和后丙三月露问题写成共同养护误差。"
+      },
+      {
+        "character_id": "lin-su",
+        "fact_id": "han-xiao-moon-dew-not-label-proof",
+        "state": "knows",
+        "belief": "林素知道韩笑的月露责任不能据此定为移动药签，也不能据此免除月露责任。",
+        "last_change": "林素明确韩笑月露违规与药签责任之间的证据边界。"
+      },
+      {
+        "character_id": "lin-su",
+        "fact_id": "han-xiao-moon-dew-public-property-violation-limited",
+        "state": "knows",
+        "belief": "韩笑私自挪用庚七月露一份，未按时登记归还；动机不改变公物记录。",
+        "last_change": "林素确认韩笑私自挪用一份月露且未按时登记归还。"
+      },
+      {
+        "character_id": "lin-su",
+        "fact_id": "lu-chi-ban-compliance-and-injury-status",
+        "state": "knows",
+        "belief": "林素确认陆迟本章未连续催芽，wood-qi-spasm 仍部分恢复且未加重，rapid-growth-ban 继续有效。",
+        "last_change": "林素完成本章对陆迟守禁和伤势状态的确认，但未恢复资格。"
+      },
+      {
+        "character_id": "lin-su",
+        "fact_id": "lu-chi-stop-treatment-cannot-explain-han-return-blank",
+        "state": "knows",
+        "belief": "陆迟停术疗伤不能解释韩笑领取庚七月露后的归还时辰空栏。",
+        "last_change": "林素明确裁定陆迟停术疗伤不能解释韩笑的归还空栏。"
+      },
+      {
+        "character_id": "lu-chi",
+        "fact_id": "conditional-exam-burdens-remain",
+        "state": "knows",
+        "belief": "陆迟知道小考资格入口已经到手，但随卷处分、损耗说明、控露陶嘴赔偿、贡献点扣减和灵石不足都仍然存在。",
+        "last_change": "陆迟确认资格恢复没有减少待付账目。"
+      },
+      {
+        "character_id": "lu-chi",
+        "fact_id": "geng-seven-actual-use-pots",
+        "state": "knows",
+        "belief": "庚七月露至少用于后丙三与后丁六，其中后丁六不在陆迟当值照料记录内；非抢救不得再开新瓶。",
+        "last_change": "陆迟将庚七至少用于后丙三与后丁六、后丁六不在自己当值照料记录内写入待核首行。"
+      },
+      {
+        "character_id": "lu-chi",
+        "fact_id": "han-xiao-geng-seven-record",
+        "state": "knows",
+        "belief": "庚七瓶月露由韩笑工时牌领取，归还栏未按时登记，实物比账面少一份；这三项已确认，但不能裁定韩笑动过药签。",
+        "last_change": "陆迟掌握庚七月露领取、归还登记缺失和余量短缺三项事实，并将其纳入待核。"
+      },
+      {
+        "character_id": "lu-chi",
+        "fact_id": "herb-overgrowth-cause",
+        "state": "investigating",
+        "belief": "笑面参疯长不只由自己试用催芽散造成，药签和月露用量也有异常"
+      },
+      {
+        "character_id": "lu-chi",
+        "fact_id": "ink-label-color-migration-limit",
+        "state": "knows",
+        "belief": "灵墨旧签迁色足以造成错读和错挂条件，但迁色方向不能倒推出谁拿过药签。",
+        "last_change": "陆迟确认灵墨迁色的证据边界。"
+      },
+      {
+        "character_id": "lu-chi",
+        "fact_id": "label-swap-not-lu-chi-active-all-pots",
+        "state": "knows",
+        "belief": "经工时牌、月露刻度、灵墨迁色与分盆记录交叉核验，陆迟主动调换十二盆药签不成立；这不抵消他违规使用催芽散的责任。",
+        "last_change": "陆迟在违规责任栏中把违规催芽散责任与主动调换十二盆药签不成立分列。"
+      },
+      {
+        "character_id": "lu-chi",
+        "fact_id": "lu-chi-illegal-sprout-powder-liability",
+        "state": "knows",
+        "belief": "自己上月曾违规试用便宜催芽散一小撮救西架三株受寒苗，违规属实，但影响范围仍待核。",
+        "last_change": "陆迟承认违规试用便宜催芽散，并将其登记为待核责任。"
+      },
+      {
+        "character_id": "lu-chi",
+        "fact_id": "moon-dew-usage-two-levels",
+        "state": "knows",
+        "belief": "十二盆笑面参中，除甲一、甲二裂根另列外，其余十盆对辨药检查呈现轻重两档月露反应，与账册同一用量记录矛盾。",
+        "last_change": "陆迟掌握了盆株药性反应与月露账册记录不一致的事实。"
+      },
+      {
+        "character_id": "lu-chi",
+        "fact_id": "qualification-frozen",
+        "state": "knows",
+        "belief": "陆迟知道自己的药庐小考资格已被临时冻结，后续需等抢救过程、工时牌与月露用量核验后复议。",
+        "last_change": "陆迟明确知道资格已被冻结且复议依赖核验记录。"
+      },
+      {
+        "character_id": "lu-chi",
+        "fact_id": "recycled-ink-migration-condition",
+        "state": "knows",
+        "belief": "药签回收灵墨遇夜露迁色，只能造成看错或错挂条件，不能证明是谁动过药签。",
+        "last_change": "陆迟通过辨药术确认回收灵墨迁色的证据边界。"
+      },
+      {
+        "character_id": "lu-chi",
+        "fact_id": "vine-command-clue-limited",
+        "state": "investigating",
+        "belief": "告状藤复述的命令需与昨日后排工牌等记录核验，不能直接当证据。",
+        "last_change": "陆迟把告状藤复述命令列入待核线索，并决定从昨日后排工牌查起。"
+      },
+      {
+        "character_id": "lu-chi",
+        "fact_id": "wood-qi-spasm-release-requirements",
+        "state": "knows",
+        "belief": "陆迟知道解除 wood-qi-spasm 需要连续二十四次稳定小周天、至少两枚下品灵石或等价灵气来源、全程监护记录，且成功解除伤势也不恢复资格、不抵赔偿、不删违规。",
+        "last_change": "陆迟获得明确的伤势解除入口和边界。"
+      },
+      {
+        "character_id": "qiao-zhi",
+        "fact_id": "han-xiao-geng-seven-record",
+        "state": "knows",
+        "belief": "庚七瓶月露由韩笑工时牌领取，归还栏未按时登记，实物比账面少一份；这三项已确认，但不能裁定韩笑动过药签。",
+        "last_change": "乔枝掌握庚七月露领取、归还登记缺失和余量短缺三项事实。"
+      },
+      {
+        "character_id": "qiao-zhi",
+        "fact_id": "ink-label-color-migration-limit",
+        "state": "knows",
+        "belief": "灵墨旧签迁色足以造成错读和错挂条件，但迁色方向不能倒推出谁拿过药签。",
+        "last_change": "乔枝确认灵墨迁色的证据边界。"
+      },
+      {
+        "character_id": "qiao-zhi",
+        "fact_id": "label-swap-boundary-lu-chi-not-full-culprit",
+        "state": "knows",
+        "belief": "乔枝知道四项记录共同证明陆迟主动调换全部药签不成立，但她的证词不免除陆迟违规催芽散责任，也不免除任何人的月露、公物或药签责任。",
+        "last_change": "乔枝正式签署并重申自己的见证边界。"
+      },
+      {
+        "character_id": "qiao-zhi",
+        "fact_id": "label-swap-culprit-resolved",
+        "state": "knows",
+        "belief": "乔枝经复核确认，‘陆迟主动调换全部药签’的判断不成立；工时牌、月露刻度、灵墨迁色及韩笑行动记录共同说明药签错乱不能归为陆迟主动调换所致。",
+        "last_change": "乔枝正式淘汰自己此前对陆迟主动调换全部药签的核心怀疑。"
+      },
+      {
+        "character_id": "qiao-zhi",
+        "fact_id": "label-swap-not-lu-chi-active-all-pots",
+        "state": "knows",
+        "belief": "陆迟主动调换全部药签不成立，且乔枝愿意按可核记录承担见证后果。",
+        "last_change": "乔枝公开确认陆迟主动调换全部药签不成立，并要求韩笑若质疑就报盆号、时辰和记录页。"
+      },
+      {
+        "character_id": "qiao-zhi",
+        "fact_id": "label-swap-not-lu-chi-active-swap",
+        "state": "knows",
+        "belief": "工时牌、月露刻度、回收灵墨迁色和韩笑行动记录合看，足以排除陆迟主动调换十二盆药签，但不能认定谁移动了药签。",
+        "last_change": "乔枝完成证词转向，亲自划去先前陆迟主动调换全部药签的判断，并以四项记录排除陆迟主动调换药签。"
+      },
+      {
+        "character_id": "qiao-zhi",
+        "fact_id": "lu-chi-twenty-four-circuits-witnessed",
+        "state": "knows",
+        "belief": "乔枝知道自己全程见证并签下了陆迟二十四次稳定小周天记录。",
+        "last_change": "乔枝掌握并承担二十四格全程见证事实。"
+      },
+      {
+        "character_id": "qiao-zhi",
+        "fact_id": "moon-dew-usage-two-levels",
+        "state": "knows",
+        "belief": "十二盆笑面参中，除甲一、甲二裂根另列外，其余十盆对辨药检查呈现轻重两档月露反应，与账册同一用量记录矛盾。",
+        "last_change": "乔枝掌握了盆株药性反应与月露账册记录不一致的事实。"
+      },
+      {
+        "character_id": "qiao-zhi",
+        "fact_id": "pre-operation-abnormalities",
+        "state": "knows",
+        "belief": "乔枝亲眼确认陆迟本次施术前已存在甲一甲二裂根、根须互缠和药签回收灵墨迁色。",
+        "last_change": "乔枝掌握并签署了施术前异常已存在的现场事实。"
+      },
+      {
+        "character_id": "qiao-zhi",
+        "fact_id": "vine-command-clue-limited",
+        "state": "knows",
+        "belief": "告状藤复述的后排挂盆命令只能增加线索风险，不能单独证明责任，也不能免除陆迟催芽散责任。",
+        "last_change": "乔枝知道藤语、工时牌和月露记录都不能单独定责或免责。"
+      },
+      {
+        "character_id": "wei-yuan",
+        "fact_id": "dew-control-spout-compensation-lu-chi-established",
+        "state": "knows",
+        "belief": "控露陶嘴由陆迟操作失稳致损，陆迟赔偿责任成立，金额需按本月采买价终核，突破不能抵赔偿。",
+        "last_change": "魏远将控露陶嘴赔偿责任初核入表，确认陆迟仍需承担赔偿义务。"
+      },
+      {
+        "character_id": "wei-yuan",
+        "fact_id": "geng-seven-recorded-shortage",
+        "state": "knows",
+        "belief": "庚七月露复称短缺一份、韩笑申时二刻领取后归还时辰空缺、陆迟申时一刻后停术疗伤记录有效，均已成为验收表有效记录。",
+        "last_change": "魏远在月露核验栏正式补写庚七短缺、韩笑领取与归还空缺、陆迟停术疗伤记录有效三项事实。"
+      },
+      {
+        "character_id": "wei-yuan",
+        "fact_id": "han-xiao-geng-seven-record",
+        "state": "knows",
+        "belief": "庚七瓶月露由韩笑工时牌领取，归还栏未按时登记，实物比账面少一份；这三项已确认，但不能裁定韩笑动过药签。",
+        "last_change": "魏远正式确认庚七月露领取、归还登记缺失和余量短缺三项事实。"
+      },
+      {
+        "character_id": "wei-yuan",
+        "fact_id": "han-xiao-moon-dew-public-property-violation-limited",
+        "state": "knows",
+        "belief": "韩笑本次只被定为未登记挪用一份月露，处分另定且不扩大到其他事项。",
+        "last_change": "魏远正式限定韩笑被坐实的违规范围为未登记挪用一份月露。"
+      },
+      {
+        "character_id": "wei-yuan",
+        "fact_id": "han-xiao-moon-dew-unregistered-diversion",
+        "state": "knows",
+        "belief": "魏远知道韩笑庚七月露存在未登记挪用，并将其入公物责任栏，但该事实不影响陆迟催芽散违规、控露陶嘴赔偿、扣三点贡献和资格冻结。",
+        "last_change": "魏远对月露记录矛盾作出阶段性裁定：韩笑承担庚七月露未登记挪用责任，但陆迟其他责任继续保留。"
+      },
+      {
+        "character_id": "wei-yuan",
+        "fact_id": "label-swap-not-lu-chi-active-swap",
+        "state": "knows",
+        "belief": "陆迟主动调换十二盆药签的原判断不成立，但谁移动药签仍未定。",
+        "last_change": "魏远核过四份记录后，在责任边界栏确认原判断不成立。"
+      },
+      {
+        "character_id": "wei-yuan",
+        "fact_id": "lu-chi-conditional-exam-eligibility-valid",
+        "state": "knows",
+        "belief": "魏远知道陆迟复议后资格恢复，工时记录、月露核验、伤势解除记录和分盆结果有效，但资格仍带责任条件。",
+        "last_change": "魏远依据验收表承认陆迟带条件资格恢复及相关记录有效。"
+      },
+      {
+        "character_id": "wei-yuan",
+        "fact_id": "lu-chi-liability-confirmed",
+        "state": "knows",
+        "belief": "魏远确认陆迟连续施术、伤势加重和损坏控露陶嘴的责任，同时确认乙三未裂是抢救结果，两者不相抵。",
+        "last_change": "魏远对陆迟责任的状态从怀疑转为正式记录确认，并据此处罚。"
+      },
+      {
+        "character_id": "wei-yuan",
+        "fact_id": "lu-chi-penalties-active",
+        "state": "knows",
+        "belief": "陆迟资格继续冻结，三点贡献不退，陶嘴赔偿与催芽散责任保留；新增事实只入月露核验栏。",
+        "last_change": "魏远继续维持对陆迟的既有处分和责任栏。"
+      },
+      {
+        "character_id": "wei-yuan",
+        "fact_id": "lu-chi-penalties-maintained",
+        "state": "knows",
+        "belief": "陆迟违规试用便宜催芽散责任栏保留，控露陶嘴赔偿待核，贡献点扣除三点已执行，药庐小考资格继续冻结。",
+        "last_change": "魏远明确维持对陆迟的既有处罚和待赔责任。"
+      },
+      {
+        "character_id": "wei-yuan",
+        "fact_id": "pre-freeze-abnormalities",
+        "state": "knows",
+        "belief": "魏远知道资格冻结前现场已存在药签回收灵墨迁色、笑面参根须互缠、甲一甲二裂根、乔枝见证、月露初值未动和工时牌卯末领取等前置记录。",
+        "last_change": "魏远在同一验收表上记录资格冻结前的前置异常和核验材料。"
+      },
+      {
+        "character_id": "wei-yuan",
+        "fact_id": "recycled-ink-migration-condition",
+        "state": "knows",
+        "belief": "回收灵墨迁色能造成看错或错挂，但不能证明谁动过，也不能替任何人免责。",
+        "last_change": "魏远确认药签灵墨迁色的证据边界。"
+      },
+      {
+        "character_id": "wei-yuan",
+        "fact_id": "wood-qi-spasm-resolved-record-valid",
+        "state": "knows",
+        "belief": "魏远知道林素监护确认的木灵气逆冲解除记录有效，并已入验收表。",
+        "last_change": "魏远确认并记录木灵气逆冲已解除。"
+      }
+    ]
+  },
+  "next_chapter_inputs": [
+    "陆迟已持有带朱印的带条件药庐小考随卷单，可直接进入小考准备。",
+    "陆迟的随卷单保留违规试用便宜催芽散责任、控露陶嘴赔偿待清、三点贡献点已扣不返还等红栏记录。",
+    "陆迟袋中只剩两枚下品灵石，控露陶嘴赔偿核价单仍压在待办中，资源压力持续。",
+    "陆迟仍为炼气三层，但三日内不得连续使用微量催芽诀，只能基础吐纳、辨药复核和低频分段练手。",
+    "炼气三层只提升陆迟灵气收束稳定，不增加药性见识，不改变药损，不能恢复裂根药材。",
+    "十二盆笑面参交接状态为两盆计损、八盆可验收、两盆降等候补；甲一、甲二不得恢复或改写为合格，候补不得充合格数。",
+    "乔枝的见证边界公开：只证明陆迟主动调换全部药签不成立，不替陆迟免违规，也不替任何人免月露、公物或药签责任。",
+    "韩笑庚七月露一份未登记挪用、未按时归还，已入公物责任栏，处分另定；他仍否认药签之事，正文未确认药签真正移动者。",
+    "药签重新挂好，但未讲完所有真相；外门药材配给长期短缺和月露分配压力仍未解决。"
+  ],
+  "deviations": [],
+  "last_source_draft": "chapters/0010/draft.final.md",
+  "last_source_sha256": "7eb9634b7ab32f977c5fd6ec57862c223c53c1ee316a25de380c938660a8c9e0",
+  "source": "chapters/0010/state-event.json"
+}
+```

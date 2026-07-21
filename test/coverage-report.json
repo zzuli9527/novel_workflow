@@ -1,0 +1,238 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-07-21T13:14:40.142561+00:00",
+  "case_count": 15,
+  "all_evidence_found": true,
+  "status_counts": {
+    "automated_flow_pass": 10,
+    "partial": 5,
+    "real_model_required": 0
+  },
+  "cases": [
+    {
+      "id": "X01",
+      "status": "partial",
+      "evidence": [
+        {
+          "path": "tests/test_outline_validation.py",
+          "test": "test_rejects_missing_dual_engine_fields",
+          "found": true
+        }
+      ],
+      "remaining": "需要真实首章正文验证修仙问题与喜剧气质是否同时成立。"
+    },
+    {
+      "id": "X02",
+      "status": "automated_flow_pass",
+      "evidence": [
+        {
+          "path": "tests/test_long_workload.py",
+          "test": "test_twelve_chapters_keep_real_length_and_state_chain",
+          "found": true
+        }
+      ],
+      "remaining": "真实模型仍需验证不靠重复和摘要凑足长度。"
+    },
+    {
+      "id": "X03",
+      "status": "partial",
+      "evidence": [
+        {
+          "path": "tests/test_chapter_service.py",
+          "test": "test_quality_review_blocks_cultivation_inconsistency",
+          "found": true
+        },
+        {
+          "path": "tests/test_chapter_service.py",
+          "test": "test_state_change_requires_exact_draft_evidence",
+          "found": true
+        }
+      ],
+      "remaining": "需要带具体境界、伤势和能力限制的多章正文样例。"
+    },
+    {
+      "id": "X04",
+      "status": "automated_flow_pass",
+      "evidence": [
+        {
+          "path": "tests/test_structured_state.py",
+          "test": "test_breakthrough_without_cost_is_rejected",
+          "found": true
+        }
+      ],
+      "remaining": "结构化事件已强制前置、成本和新限制；真实突破场景仍需正文验证。"
+    },
+    {
+      "id": "X05",
+      "status": "automated_flow_pass",
+      "evidence": [
+        {
+          "path": "tests/test_structured_state.py",
+          "test": "test_resource_balance_is_mechanically_projected",
+          "found": true
+        },
+        {
+          "path": "tests/test_chapter_service.py",
+          "test": "test_continuity_failure_does_not_append_state_event",
+          "found": true
+        }
+      ],
+      "remaining": "余额、来源去向和正文证据已机械核验；真实资源叙事仍需正文验证。"
+    },
+    {
+      "id": "X06",
+      "status": "automated_flow_pass",
+      "evidence": [
+        {
+          "path": "tests/test_outline_validation.py",
+          "test": "test_rejects_three_identical_comedy_mechanisms",
+          "found": true
+        },
+        {
+          "path": "tests/test_plan_import.py",
+          "test": "test_rejects_three_identical_comedy_mechanisms",
+          "found": true
+        }
+      ],
+      "remaining": "真实笑点是否有效仍需正文评审。"
+    },
+    {
+      "id": "X07",
+      "status": "automated_flow_pass",
+      "evidence": [
+        {
+          "path": "tests/test_structured_state.py",
+          "test": "test_knowledge_state_is_projected_per_character_across_chapters",
+          "found": true
+        }
+      ],
+      "remaining": "已按角色和事实投影知识状态；复杂误会的文学合理性仍需正文验证。"
+    },
+    {
+      "id": "X08",
+      "status": "partial",
+      "evidence": [
+        {
+          "path": "tests/test_chapter_service.py",
+          "test": "test_quality_review_blocks_indistinguishable_character_voices",
+          "found": true
+        }
+      ],
+      "remaining": "已有独立质量闸门，角色声音是否真正鲜明仍需真实正文验证。"
+    },
+    {
+      "id": "X09",
+      "status": "automated_flow_pass",
+      "evidence": [
+        {
+          "path": "tests/test_plan_import.py",
+          "test": "test_rejects_complete_unit_without_setback_mapping",
+          "found": true
+        }
+      ],
+      "remaining": "章纲必须明确承载真实受挫；失败后果与追读动力仍需真实正文验证。"
+    },
+    {
+      "id": "X10",
+      "status": "partial",
+      "evidence": [
+        {
+          "path": "tests/test_chapter_service.py",
+          "test": "test_quality_review_blocks_comedy_that_erases_consequence",
+          "found": true
+        }
+      ],
+      "remaining": "需要严肃损失场景的独立正文样例。"
+    },
+    {
+      "id": "X11",
+      "status": "partial",
+      "evidence": [
+        {
+          "path": "tests/test_chapter_service.py",
+          "test": "test_quality_review_blocks_disconnected_multi_line_plot",
+          "found": true
+        }
+      ],
+      "remaining": "已有多线因果闸门，仍需真实多线交汇正文样例。"
+    },
+    {
+      "id": "X12",
+      "status": "automated_flow_pass",
+      "evidence": [
+        {
+          "path": "tests/test_ledger.py",
+          "test": "test_builds_json_and_markdown_ledger",
+          "found": true
+        },
+        {
+          "path": "tests/test_ledger.py",
+          "test": "test_fills_structured_active_state_when_model_omits_it",
+          "found": true
+        },
+        {
+          "path": "tests/test_long_workload.py",
+          "test": "test_twelve_chapters_keep_real_length_and_state_chain",
+          "found": true
+        },
+        {
+          "path": "tests/test_unit_runner.py",
+          "test": "test_run_unit_plans_each_missing_batch_after_previous_ledger",
+          "found": true
+        }
+      ],
+      "remaining": "离线已证明下一批章纲和正文 Prompt 使用首批账本；真实模型需验证信息充分性。"
+    },
+    {
+      "id": "X13",
+      "status": "automated_flow_pass",
+      "evidence": [
+        {
+          "path": "tests/test_plan_import.py",
+          "test": "test_rejects_complete_unit_without_final_payoff_mapping",
+          "found": true
+        },
+        {
+          "path": "tests/test_unit_runner.py",
+          "test": "test_runs_ten_chapter_unit_to_completion",
+          "found": true
+        }
+      ],
+      "remaining": "末章兑现和退出状态已绑定章纲，文学兑现仍需真实正文。"
+    },
+    {
+      "id": "X14",
+      "status": "automated_flow_pass",
+      "evidence": [
+        {
+          "path": "tests/test_long_workload.py",
+          "test": "test_twelve_chapters_keep_real_length_and_state_chain",
+          "found": true
+        }
+      ],
+      "remaining": "已完成 12 章、约 2.4 万以上正文字符的离线长链路负载测试。"
+    },
+    {
+      "id": "X15",
+      "status": "automated_flow_pass",
+      "evidence": [
+        {
+          "path": "tests/test_unit_runner.py",
+          "test": "test_failure_pauses_unit_and_does_not_advance_later_chapters",
+          "found": true
+        },
+        {
+          "path": "tests/test_chapter_service.py",
+          "test": "test_resume_completes_prepared_commit_journal",
+          "found": true
+        },
+        {
+          "path": "tests/test_revision.py",
+          "test": "test_revision_journal_can_resume_after_interruption",
+          "found": true
+        }
+      ],
+      "remaining": "真实网络中断仍需在获批调用后验证。"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "density": "medium",
+  "protagonist_role": "姜守把推诿和口头承诺写成维修工单，迫使说话者承担具体工作",
+  "character_contrasts": [
+    "姜守按故障项说话，苏叶按风险条款说话",
+    "赵矩用事故表压人，同一事故表也会限制他",
+    "闻岚面对荒谬口令仍只查灵纹、时辰和后果",
+    "袁客把具体领用说成大家都缺，姜守要求填具体数量"
+  ],
+  "allowed_mechanisms": ["维修工单字面执行", "安全条款反差", "口令字面错位", "规章回调", "阵法测试导致行动连锁"],
+  "forbidden_humor": ["伤势或器损被笑话取消", "回声阵牌万能破案", "网络热梗", "全员降智", "围观震惊"],
+  "language_boundaries": ["姜守短句列项", "苏叶先说风险再行动", "赵矩引用栏位", "闻岚短句定边界", "袁客圆滑回避数量"],
+  "callbacks": [
+    {"callback_id": "repair-order", "setup": "推诿被写成维修工单", "rule": "回调时说话者必须承担一项工作"},
+    {"callback_id": "shared-incident", "setup": "苏叶把帮忙称为隔离共同事故", "rule": "她必须付出时间或证词代价"},
+    {"callback_id": "form-return", "setup": "赵矩用事故表冻结资格", "rule": "同一表格后续必须要求他承认已核事实"}
+  ],
+  "fatigued_mechanisms": [],
+  "serious_scene_limits": ["伤势加重、裂镜、扣点、资格裁定降低笑点密度"]
+}

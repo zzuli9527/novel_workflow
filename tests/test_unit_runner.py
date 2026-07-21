@@ -219,6 +219,94 @@ class UnitRunnerTests(unittest.TestCase):
             (self.run_dir / "reports/story-unit-review-unit-0001.md").is_file()
         )
 
+    def test_retries_state_content_failure_inside_unit(self) -> None:
+        class StateRetryProvider(ScriptedProvider):
+            def __init__(self) -> None:
+                super().__init__()
+                self.state_attempts = 0
+
+            def generate(self, request: GenerationRequest) -> GenerationResponse:
+                chapter = request.metadata.get("chapter")
+                if request.task == "extract_state" and chapter == 1:
+                    self.calls.append(("extract_state", 1))
+                    self.state_attempts += 1
+                    if self.state_attempts == 1:
+                        invalid = {
+                            **EMPTY_STATE,
+                            "knowledge_changes": [
+                                {
+                                    "character_id": "protagonist",
+                                    "fact_id": "new-fact",
+                                    "state": "knows",
+                                    "belief": "新事实",
+                                    "supersedes_fact_ids": ["missing-fact"],
+                                    "change": "确认新事实",
+                                    "source_evidence": "甲乙丙丁戊",
+                                }
+                            ],
+                        }
+                        return GenerationResponse(
+                            text=json.dumps(invalid, ensure_ascii=False),
+                            provider="scripted",
+                            model="scripted-v1",
+                            usage={},
+                        )
+                return super().generate(request)
+
+        provider = StateRetryProvider()
+        report = run_unit(self.root, "demo-run", "unit-0001", provider)
+
+        self.assertEqual(report["status"], "completed")
+        self.assertEqual(provider.state_attempts, 2)
+        self.assertTrue((self.run_dir / "chapters/0001/state.raw.v2.json").exists())
+        outlines = json.loads(
+            (self.run_dir / "planning/chapter-outlines.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        self.assertEqual(outlines[0]["retry_counts"]["state_content"], 1)
+        self.assertEqual(outlines[0]["status"], "committed")
+
+    def test_retries_review_evidence_failure_inside_unit(self) -> None:
+        class ReviewRetryProvider(ScriptedProvider):
+            def __init__(self) -> None:
+                super().__init__()
+                self.review_attempts = 0
+
+            def generate(self, request: GenerationRequest) -> GenerationResponse:
+                chapter = request.metadata.get("chapter")
+                if request.task == "review_chapter" and chapter == 1:
+                    self.calls.append(("review_chapter", 1))
+                    self.review_attempts += 1
+                    if self.review_attempts == 1:
+                        return GenerationResponse(
+                            text="不是 JSON",
+                            provider="scripted",
+                            model="scripted-v1",
+                            usage={},
+                        )
+                    return GenerationResponse(
+                        text=json.dumps(REVIEW, ensure_ascii=False),
+                        provider="scripted",
+                        model="scripted-v1",
+                        usage={},
+                    )
+                return super().generate(request)
+
+        provider = ReviewRetryProvider()
+        report = run_unit(self.root, "demo-run", "unit-0001", provider)
+
+        self.assertEqual(report["status"], "completed")
+        self.assertEqual(provider.review_attempts, 2)
+        self.assertTrue((self.run_dir / "chapters/0001/review.raw.v2.json").exists())
+        outlines = json.loads(
+            (self.run_dir / "planning/chapter-outlines.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        self.assertEqual(outlines[0]["retry_counts"]["review_format"], 1)
+        self.assertEqual(outlines[0]["status"], "committed")
+
     def test_failure_pauses_unit_and_does_not_advance_later_chapters(self) -> None:
         provider = ScriptedProvider(fail_chapter=5)
         with self.assertRaises(UnitRunnerError):
@@ -315,6 +403,20 @@ class UnitRunnerTests(unittest.TestCase):
         )
         self.assertEqual(resumed["status"], "completed")
         self.assertEqual(resumed["planned_batches"], [[5, 7], [8, 10]])
+        review = json.loads(
+            (
+                self.run_dir / "reports/story-unit-review-unit-0001.json"
+            ).read_text(encoding="utf-8")
+        )
+        self.assertEqual(review["metrics"]["breakpoint_recovery_count"], 1)
+        runtime_events = [
+            json.loads(line)
+            for line in (self.run_dir / "logs/events.jsonl").read_text(
+                encoding="utf-8"
+            ).splitlines()
+            if line.strip()
+        ]
+        self.assertEqual(runtime_events[-1]["action"], "unit_resumed")
 
 
 if __name__ == "__main__":

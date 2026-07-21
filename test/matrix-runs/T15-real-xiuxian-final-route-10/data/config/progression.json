@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "realms": [
+    {"stage": "炼气一层", "requirements": ["基础引气"], "boundaries": ["只能照看性情稳定的小型灵兽"]},
+    {"stage": "炼气二层", "requirements": ["小周天稳定", "掌握一项基础御兽术"], "boundaries": ["可在监督下处理小型兽群，不能强行镇压失控灵兽"]},
+    {"stage": "炼气三层", "requirements": ["御兽术与灵气储量达标"], "boundaries": ["本单元陆宁不得突破到此境界"]}
+  ],
+  "resources": [
+    {"resource_id": "calm-mint-leaf", "unit": "片", "rules": ["只能缓解灵兽躁动，使用后必须扣减余额"]},
+    {"resource_id": "contribution-point", "unit": "点", "rules": ["扣减与冻结继续使用同一资源 ID"]},
+    {"resource_id": "ear-seal-strip", "unit": "条", "rules": ["只能降低听息回声，不能瞬间治愈眩晕"]},
+    {"resource_id": "sweet-root-pouch", "unit": "袋", "rules": ["属于诱引饲料，领用和去向必须留痕"]}
+  ],
+  "techniques": [
+    {"technique_id": "beast-breath-listening", "name": "听息诀", "effects": ["辨认灵兽基础呼吸节奏", "在训练后区分受热不适与群体惊慌"], "limits": ["不能读心", "不能判断谁投放饲料", "同时听取多只灵兽会加重回声眩晕"]},
+    {"technique_id": "soft-rein-guiding", "name": "柔缰引导", "effects": ["以低强度灵气改变小型灵兽行进方向"], "limits": ["不能强行压制冲栏兽群"]},
+    {"technique_id": "basic-breathing", "name": "基础吐纳", "effects": ["稳定自身灵气"], "limits": ["不能修复栏门或消除违规记录"]}
+  ],
+  "artifacts": [
+    {"artifact_id": "feeding-bell-board", "name": "饲铃牌", "limits": ["只记录铃序和触发槽位，不记录敲铃者"]},
+    {"artifact_id": "trough-pressure-stone", "name": "食槽压力石", "limits": ["只响应重量与持续时间，不能识别压石对象"]}
+  ],
+  "injury_rules": [
+    {"state_id": "breath-echo-vertigo", "name": "听息回声眩晕", "symptoms": ["耳鸣", "眩晕", "方向错判"], "recovery": ["停止整群听息", "使用封耳条", "单兽低强度校验", "考核管事确认"], "hard_rule": "所有加重、部分恢复和解除复用同一 state_id"}
+  ],
+  "breakthrough_rules": [],
+  "power_boundaries": ["陆宁全单元保持炼气二层", "破局依靠兽息对照、压力石记录、饲料残留和角色协作，不靠临时升级"],
+  "exceptions": []
+}

@@ -117,9 +117,9 @@ def default_run_config(run_id: str) -> dict[str, Any]:
             "length": {
                 "unit": "non_whitespace_character",
                 "target_min": 2000,
-                "target_max": 2500,
+                "target_max": 3000,
                 "expand_from": 1800,
-                "review_over": 3000,
+                "review_over": 3500,
             },
             "batch": {
                 "story_unit_min": 10,
@@ -420,6 +420,43 @@ def _validate_run_json(data: Any, expected_run_id: str) -> list[ValidationIssue]
                     "第一版只支持 non_whitespace_character",
                 )
             )
+        preferred_min = length.get("preferred_min")
+        preferred_max = length.get("preferred_max")
+        if (preferred_min is None) != (preferred_max is None):
+            issues.append(
+                ValidationIssue(
+                    "run.policies.length",
+                    "preferred_min 和 preferred_max 必须同时配置或同时省略",
+                )
+            )
+        elif preferred_min is not None and preferred_max is not None:
+            target_min = length.get("target_min")
+            target_max = length.get("target_max")
+            if not all(
+                isinstance(value, int) and not isinstance(value, bool)
+                for value in (preferred_min, preferred_max)
+            ):
+                issues.append(
+                    ValidationIssue(
+                        "run.policies.length",
+                        "preferred_min 和 preferred_max 必须是整数",
+                    )
+                )
+            elif (
+                isinstance(target_min, int)
+                and not isinstance(target_min, bool)
+                and isinstance(target_max, int)
+                and not isinstance(target_max, bool)
+                and not (
+                    target_min <= preferred_min <= preferred_max <= target_max
+                )
+            ):
+                issues.append(
+                    ValidationIssue(
+                        "run.policies.length",
+                        "首选长度区间必须位于正文硬范围内",
+                    )
+                )
 
     batch = policies.get("batch")
     if _expect_type(issues, "run.policies.batch", batch, dict):

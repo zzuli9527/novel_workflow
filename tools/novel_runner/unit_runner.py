@@ -30,6 +30,7 @@ from .planning_service import PlanningServiceError, plan_chapter_batch
 from .reporting import ReportingError, generate_unit_review
 from .storage import (
     StorageError,
+    append_jsonl,
     atomic_write_json,
     read_json,
     resolve_run_dir,
@@ -238,9 +239,19 @@ def _set_unit_status(
     with run_lock(run_dir):
         run_config = read_json(run_dir / "run.json")
         units = read_json(run_dir / "planning/story-units.json")
+        previous_unit_status: str | None = None
+        previous_pause_reason: str | None = None
         for index, unit in enumerate(units):
             if unit.get("unit_id") != unit_id:
                 continue
+            previous_unit_status = (
+                unit.get("status") if isinstance(unit.get("status"), str) else None
+            )
+            previous_pause_reason = (
+                unit.get("pause_reason")
+                if isinstance(unit.get("pause_reason"), str)
+                else None
+            )
             updated = {**unit, "status": status, "updated_at": _utc_now()}
             if reason is not None:
                 updated["pause_reason"] = reason
@@ -265,6 +276,18 @@ def _set_unit_status(
             run_update.pop("pause_reason", None)
         atomic_write_json(run_dir / "planning/story-units.json", units)
         atomic_write_json(run_dir / "run.json", run_update)
+        if previous_unit_status == "paused" and status == "running":
+            next_chapter = run_config.get("last_committed_chapter", 0) + 1
+            append_jsonl(
+                run_dir / "logs/events.jsonl",
+                {
+                    "timestamp": _utc_now(),
+                    "action": "unit_resumed",
+                    "unit_id": unit_id,
+                    "chapter": next_chapter,
+                    "previous_pause_reason": previous_pause_reason,
+                },
+            )
 
 
 def _set_current_batch(root: Path, run_id: str, batch: ChapterBatch) -> None:
@@ -291,6 +314,48 @@ def _current_outline(root: Path, run_id: str, chapter: int) -> dict[str, Any]:
     return matches[0]
 
 
+def _state_failure_has_retry_budget(
+    root: Path, run_id: str, outline: dict[str, Any]
+) -> bool:
+    if outline.get("status") != "state_failed":
+        return False
+    retry_kind = outline.get("state_failure_kind")
+    if retry_kind not in {"format", "content"}:
+        return False
+    retry_counts = outline.get("retry_counts", {})
+    retry_counter_key = f"state_{retry_kind}"
+    current_count = (
+        retry_counts.get(retry_counter_key, 0)
+        if isinstance(retry_counts, dict)
+        else 0
+    )
+    if not isinstance(current_count, int):
+        current_count = 0
+    run = read_json(resolve_run_dir(root, run_id) / "run.json")
+    maximum = run["policies"]["retry"][retry_kind]
+    return current_count < maximum
+
+
+def _review_failure_has_retry_budget(
+    root: Path, run_id: str, outline: dict[str, Any]
+) -> bool:
+    if outline.get("status") != "draft_quality_pending":
+        return False
+    if not outline.get("review_failure_reason"):
+        return False
+    retry_counts = outline.get("retry_counts", {})
+    current_count = (
+        retry_counts.get("review_format", 0)
+        if isinstance(retry_counts, dict)
+        else 0
+    )
+    if not isinstance(current_count, int):
+        current_count = 0
+    run = read_json(resolve_run_dir(root, run_id) / "run.json")
+    maximum = run["policies"]["retry"]["format"]
+    return current_count < maximum
+
+
 def _drive_chapter(
     root: Path,
     run_id: str,
@@ -314,10 +379,22 @@ def _drive_chapter(
             repair_chapter(root, run_id, chapter, provider)
             continue
         if status == "draft_quality_pending":
-            review_chapter(root, run_id, chapter, provider)
+            try:
+                review_chapter(root, run_id, chapter, provider)
+            except ChapterServiceError:
+                failed_outline = _current_outline(root, run_id, chapter)
+                if _review_failure_has_retry_budget(root, run_id, failed_outline):
+                    continue
+                raise
             continue
         if status in {"draft_passed", "state_failed"}:
-            extract_state(root, run_id, chapter, provider)
+            try:
+                extract_state(root, run_id, chapter, provider)
+            except ChapterServiceError:
+                failed_outline = _current_outline(root, run_id, chapter)
+                if _state_failure_has_retry_budget(root, run_id, failed_outline):
+                    continue
+                raise
             continue
         if status == "state_ready":
             commit_chapter(root, run_id, chapter)

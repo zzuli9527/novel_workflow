@@ -152,11 +152,34 @@ class ChapterServiceTests(unittest.TestCase):
         )
         self.assertIn("本章机械长度契约", prompt)
         self.assertIn('"preferred_range": [', prompt)
+        self.assertIn('"preferred_range": [\n    5,\n    6\n  ]', prompt)
         self.assertIn('"hard_range": [', prompt)
 
         reviewed = self._pass_quality_review()
         self.assertEqual(reviewed["outline"]["status"], "draft_passed")
         self.assertTrue((self.run_dir / "chapters/0001/draft.final.md").is_file())
+
+    def test_review_and_state_prompts_use_compact_chapter_contract(self) -> None:
+        self._draft_and_review()
+        review_prompt = (
+            self.run_dir / "chapters/0001/review.prompt.v1.md"
+        ).read_text(encoding="utf-8")
+        self.assertIn("当前章契约", review_prompt)
+        self.assertIn('"required_outcomes"', review_prompt)
+        self.assertNotIn('"scene_id"', review_prompt)
+
+        extract_state(
+            self.root,
+            "demo-run",
+            1,
+            self._fixture("compact-state.json", json.dumps(VALID_STATE_EVENT)),
+        )
+        state_prompt = (
+            self.run_dir / "chapters/0001/state.prompt.v1.md"
+        ).read_text(encoding="utf-8")
+        self.assertIn("当前章契约", state_prompt)
+        self.assertIn('"closing_state"', state_prompt)
+        self.assertNotIn('"scene_id"', state_prompt)
 
     def test_short_draft_is_blocked(self) -> None:
         result = draft_chapter(
@@ -484,6 +507,104 @@ class ChapterServiceTests(unittest.TestCase):
         ]
         self.assertNotIn("accepted", [item.get("status") for item in state_records])
 
+    def test_unknown_superseded_fact_is_content_retry_with_allowed_ids(self) -> None:
+        initial_path = self.run_dir / "config/initial-state.json"
+        initial = json.loads(initial_path.read_text(encoding="utf-8"))
+        initial["knowledge"] = [
+            {
+                "character_id": "protagonist",
+                "fact_id": "known-fact",
+                "state": "suspects",
+                "belief": "旧怀疑",
+            }
+        ]
+        initial_path.write_text(
+            json.dumps(initial, ensure_ascii=False), encoding="utf-8"
+        )
+        self._draft_and_review()
+        outlines_path = self.run_dir / "planning/chapter-outlines.json"
+        outlines = json.loads(outlines_path.read_text(encoding="utf-8"))
+        outlines[0]["retry_counts"] = {"content": 2}
+        outlines_path.write_text(
+            json.dumps(outlines, ensure_ascii=False), encoding="utf-8"
+        )
+        (self.run_dir / "chapters/0001/outline.json").write_text(
+            json.dumps(outlines[0], ensure_ascii=False), encoding="utf-8"
+        )
+        invalid = {
+            **VALID_STATE_EVENT,
+            "knowledge_changes": [
+                {
+                    "character_id": "protagonist",
+                    "fact_id": "new-fact",
+                    "state": "knows",
+                    "belief": "新事实",
+                    "supersedes_fact_ids": ["missing-fact"],
+                    "change": "确认新事实",
+                    "source_evidence": "甲乙丙丁戊",
+                }
+            ],
+        }
+        with self.assertRaisesRegex(ChapterServiceError, "知识状态不存在"):
+            extract_state(
+                self.root,
+                "demo-run",
+                1,
+                self._fixture(
+                    "unknown-superseded-fact.json",
+                    json.dumps(invalid, ensure_ascii=False),
+                ),
+            )
+
+        first_prompt = (
+            self.run_dir / "chapters/0001/state.prompt.v1.md"
+        ).read_text(encoding="utf-8")
+        self.assertIn("允许引用的活动状态 ID", first_prompt)
+        self.assertIn('"known-fact"', first_prompt)
+
+        outlines = json.loads(
+            (self.run_dir / "planning/chapter-outlines.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        self.assertEqual(outlines[0]["status"], "state_failed")
+        self.assertEqual(outlines[0]["state_failure_kind"], "content")
+        self.assertFalse((self.run_dir / "state/events.jsonl").exists())
+        self.assertFalse((self.run_dir / "chapters/0001/state-event.json").exists())
+
+        valid = {
+            **invalid,
+            "knowledge_changes": [
+                {
+                    **invalid["knowledge_changes"][0],
+                    "supersedes_fact_ids": ["known-fact"],
+                }
+            ],
+        }
+        event = extract_state(
+            self.root,
+            "demo-run",
+            1,
+            self._fixture(
+                "valid-superseded-fact.json", json.dumps(valid, ensure_ascii=False)
+            ),
+        )
+        self.assertEqual(event["knowledge_changes"][0]["fact_id"], "new-fact")
+        retry_prompt = (
+            self.run_dir / "chapters/0001/state.prompt.v2.md"
+        ).read_text(encoding="utf-8")
+        self.assertIn("要淘汰的知识状态不存在", retry_prompt)
+        self.assertIn('"knowledge_fact_ids_by_character"', retry_prompt)
+        self.assertIn('"known-fact"', retry_prompt)
+        self.assertIn("只能引用下方允许的活动知识 fact_id", retry_prompt)
+        outlines = json.loads(
+            (self.run_dir / "planning/chapter-outlines.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        self.assertEqual(outlines[0]["retry_counts"]["state_content"], 1)
+        self.assertEqual(outlines[0]["retry_counts"]["content"], 2)
+
     def test_invalid_state_json_moves_to_state_failed(self) -> None:
         self._draft_and_review()
         with self.assertRaisesRegex(ChapterServiceError, "有效 JSON"):
@@ -719,7 +840,7 @@ class ChapterServiceTests(unittest.TestCase):
                 encoding="utf-8"
             )
         )
-        self.assertEqual(outlines[0]["retry_counts"]["format"], 1)
+        self.assertEqual(outlines[0]["retry_counts"]["state_format"], 1)
 
     def test_state_provider_failure_is_retryable(self) -> None:
         class FailingProvider:

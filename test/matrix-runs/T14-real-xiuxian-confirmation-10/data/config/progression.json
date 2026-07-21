@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "realms": [
+    {"stage": "炼气一层", "requirements": ["基础引气"], "boundaries": ["只能低强度导灵"]},
+    {"stage": "炼气二层", "requirements": ["小周天稳定"], "boundaries": ["可做低强度校阵，不能独立启动完整剑阵"]},
+    {"stage": "炼气三层", "requirements": ["阵纹控制与灵气储量达标"], "boundaries": ["本单元姜守不得突破到此境界"]}
+  ],
+  "resources": [
+    {"resource_id": "low-spirit-stone", "unit": "枚", "rules": ["获得和消耗必须记余额"]},
+    {"resource_id": "contribution-point", "unit": "点", "rules": ["扣减与冻结使用同一资源 ID"]},
+    {"resource_id": "burn-salve", "unit": "份", "rules": ["只能缓解阵火灼伤，不能瞬间治愈"]},
+    {"resource_id": "direction-spirit-nail", "unit": "枚", "rules": ["阵堂公物，领用和归还必须留记录"]}
+  ],
+  "techniques": [
+    {"technique_id": "basic-breathing", "name": "基础吐纳", "effects": ["稳定灵气"], "limits": ["不能修复裂镜"]},
+    {"technique_id": "pattern-reading", "name": "灵纹辨识", "effects": ["辨认磨损和导灵方向"], "limits": ["不能判断谁移动过灵钉"]},
+    {"technique_id": "low-array-calibration", "name": "低强度校阵", "effects": ["在停阵或监督下微调局部灵纹"], "limits": ["伤势未解除不得接触运行阵眼", "不能独立启动整阵"]}
+  ],
+  "artifacts": [
+    {"artifact_id": "calibration-mirror", "name": "校准镜", "limits": ["裂损后不可自行恢复"]},
+    {"artifact_id": "echo-command-plate", "name": "回声阵牌", "limits": ["只复述完整口令，不记录说话者和时间"]}
+  ],
+  "injury_rules": [
+    {"state_id": "left-palm-burn", "name": "左掌阵火灼伤", "symptoms": ["刺痛", "导灵抖动", "灵纹失稳"], "recovery": ["停用运行阵眼", "使用灼伤膏", "稳定吐纳", "巡验确认"], "hard_rule": "所有更新和解除复用同一 state_id"}
+  ],
+  "breakthrough_rules": [],
+  "power_boundaries": ["姜守全单元保持炼气二层", "修复依靠记录、停阵测试和协作，不靠临时升级"],
+  "exceptions": []
+}

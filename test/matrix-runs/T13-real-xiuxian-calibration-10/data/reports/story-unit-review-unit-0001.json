@@ -1,0 +1,205 @@
+{
+  "schema_version": "1.0",
+  "run_id": "T13-real-xiuxian-calibration-10",
+  "unit_id": "unit-0001",
+  "chapter_range": [
+    1,
+    10
+  ],
+  "unit_status": "completed",
+  "verdict": "通过",
+  "metrics": {
+    "planned_chapters": 10,
+    "committed_chapters": 10,
+    "length_target_pass_count": 10,
+    "length_target_pass_rate": 1.0,
+    "initial_draft_length_pass_count": 3,
+    "initial_draft_length_pass_rate": 0.3,
+    "initial_drafts": [
+      {
+        "chapter": 1,
+        "actual_length": 2869,
+        "status": "needs_redundancy_review",
+        "passed": false
+      },
+      {
+        "chapter": 2,
+        "actual_length": 2718,
+        "status": "needs_redundancy_review",
+        "passed": false
+      },
+      {
+        "chapter": 3,
+        "actual_length": 3345,
+        "status": "needs_compression_review",
+        "passed": false
+      },
+      {
+        "chapter": 4,
+        "actual_length": 2675,
+        "status": "needs_redundancy_review",
+        "passed": false
+      },
+      {
+        "chapter": 5,
+        "actual_length": 2730,
+        "status": "needs_redundancy_review",
+        "passed": false
+      },
+      {
+        "chapter": 6,
+        "actual_length": 2593,
+        "status": "needs_redundancy_review",
+        "passed": false
+      },
+      {
+        "chapter": 7,
+        "actual_length": 2785,
+        "status": "needs_redundancy_review",
+        "passed": false
+      },
+      {
+        "chapter": 8,
+        "actual_length": 2214,
+        "status": "passed",
+        "passed": true
+      },
+      {
+        "chapter": 9,
+        "actual_length": 2382,
+        "status": "passed",
+        "passed": true
+      },
+      {
+        "chapter": 10,
+        "actual_length": 2465,
+        "status": "passed",
+        "passed": true
+      }
+    ],
+    "total_body_characters": 22659,
+    "scene_budget": {
+      "evaluated_chapters": 10,
+      "mean_absolute_deviation_characters": 73.9,
+      "mean_absolute_deviation_ratio": 0.033021,
+      "chapters": [
+        {
+          "chapter": 1,
+          "actual": 2306,
+          "scene_budget": 2250,
+          "difference": 56,
+          "absolute_ratio": 0.024889
+        },
+        {
+          "chapter": 2,
+          "actual": 2255,
+          "scene_budget": 2250,
+          "difference": 5,
+          "absolute_ratio": 0.002222
+        },
+        {
+          "chapter": 3,
+          "actual": 2213,
+          "scene_budget": 2300,
+          "difference": -87,
+          "absolute_ratio": 0.037826
+        },
+        {
+          "chapter": 4,
+          "actual": 2203,
+          "scene_budget": 2200,
+          "difference": 3,
+          "absolute_ratio": 0.001364
+        },
+        {
+          "chapter": 5,
+          "actual": 2153,
+          "scene_budget": 2150,
+          "difference": 3,
+          "absolute_ratio": 0.001395
+        },
+        {
+          "chapter": 6,
+          "actual": 2199,
+          "scene_budget": 2200,
+          "difference": -1,
+          "absolute_ratio": 0.000455
+        },
+        {
+          "chapter": 7,
+          "actual": 2248,
+          "scene_budget": 2350,
+          "difference": -102,
+          "absolute_ratio": 0.043404
+        },
+        {
+          "chapter": 8,
+          "actual": 2235,
+          "scene_budget": 2150,
+          "difference": 85,
+          "absolute_ratio": 0.039535
+        },
+        {
+          "chapter": 9,
+          "actual": 2382,
+          "scene_budget": 2250,
+          "difference": 132,
+          "absolute_ratio": 0.058667
+        },
+        {
+          "chapter": 10,
+          "actual": 2465,
+          "scene_budget": 2200,
+          "difference": 265,
+          "absolute_ratio": 0.120455
+        }
+      ]
+    },
+    "summary_like_chapters": 0,
+    "cultivation_inconsistencies": 0,
+    "serious_consequence_failures": 0,
+    "resource_continuity_failures": 0,
+    "knowledge_state_failures": 0,
+    "character_voice_failures": 0,
+    "multi_line_causality_failures": 0,
+    "current_state_failures": 0,
+    "state_event_count": 10,
+    "reworked_chapters": 8,
+    "chapters_with_any_retry": 9,
+    "average_retries_per_chapter": 1.2,
+    "comedy_rotation": {
+      "adjacent_repeat_count": 0,
+      "longest_same_mechanism_streak": 1
+    },
+    "ledger_compression": {
+      "ledger_count": 3,
+      "must_read_item_counts": [
+        8,
+        8,
+        8
+      ],
+      "max_must_read_items": 8,
+      "within_limit": true,
+      "item_limit": 8
+    },
+    "api": {
+      "calls": 57,
+      "successful_calls": 53,
+      "failed_calls": 4,
+      "total_tokens": 682913,
+      "total_cost": 0.0,
+      "input_characters": 0,
+      "output_characters": 0,
+      "total_duration_seconds": 3279.878
+    },
+    "average_context_characters": 18478.39,
+    "manual_intervention_count": 0,
+    "breakpoint_recovery_count": 0
+  },
+  "automated_gaps": [
+    "结构化字段可以核对余额、境界和知识状态，但正文是否正确提取这些事实仍需独立评审。",
+    "角色语言区分与笑点实际效果仍需要人工或独立模型评审。",
+    "API 用量只证明调用规模；未配置模型单价时，total_cost 不能作为真实费用结论。"
+  ],
+  "generated_at": "2026-07-20T13:56:00.591175+00:00"
+}

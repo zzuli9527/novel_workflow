@@ -1,0 +1,984 @@
+[
+  {
+    "number": 1,
+    "title": "七号田先封人",
+    "actual_length": 2340,
+    "status": "passed",
+    "hard_pass": true,
+    "requires_review": false,
+    "can_update_state": true,
+    "message": "长度闸门通过",
+    "chapter": 1,
+    "draft_version": 4,
+    "draft_path": "chapters/0001/draft.v4.md",
+    "quality": {
+      "required_outcomes": [
+        {
+          "index": 0,
+          "passed": true,
+          "source_evidence": "田埂另一头，宁霜踏露而来。青白短袍下摆掠过草尖，腰间挂着巡田铜尺。她在枯苗前蹲下，捻起一撮湿土。\n\n“七号田，谁管？”\n\n许观上前行礼：“杂役许观。”\n\n严九尺抱着两册簿子从人群里挤出，管事木牌撞在册角上。他先向宁霜拱手，随即翻开登记册，手指落在末行。\n\n“按《青禾谷巡田杂务暂行条目》第六十七，灵田异常，先核责任人。另，昨夜公用库少了四张引雨符。借用登记最后一笔，工牌号丙七二一——许观。”\n\n四周顿时安静。\n\n许观看清那行字。编号是他的，字不是，但仅凭这一点，抵不过盖过库房印的登记。\n\n他道：“我没有领过引雨符。”\n\n严九尺又抽出一本设施巡检册：“按条目七十一，登记以工牌号为准。人会忘，纸不会。”\n\n人群后的庞大海探出头：“严管事，纸也会被虫咬。”\n\n严九尺转眼看他：“同屋杂役庞大海。按条目四十三，知情不报，可列同屋知情风险。”\n\n庞大海往后缩了半步：“我是在保存有生力量，等需要时再出来说要紧的。”\n\n宁霜没有理会这番保存，只问：“库中现数？”\n\n“应余十二，实余八，缺四。”严九尺答道，“末笔就是许观。”\n\n说完，他弯腰拨开田边浮土，露出一截旧竹管。竹节糊着灰黄封泥，绑线歪斜，边缘有新刮痕。\n\n“还有此处。公用灵田设施不得私修，明令在册。”\n\n宁霜看向许观：“你修的？”\n\n封泥里混了他惯用的细砂，绑线也是从破篓上拆的。此时否认，往后只会多添一项欺瞒。\n\n“是我。”许观道，“七日前竹管渗水，报修排到旬后。我怕灵苗缺水，私下补过。违规我认，但四张引雨符不是我领的。”\n\n严九尺立刻合上巡检册：“私修已认。按条目八十二，因私修致公田受损，责任杂役先行赔付；又涉公物缺失，应先封工牌，停库房权限，待赔后查。”\n\n宁霜起身，望过成片倒伏的灵苗。\n\n“三日内止不住枯势，坏死灵苗按公田损耗计赔。责任未明前，许观杂役身份待裁。若裁定主责，逐出青禾谷，外门小考推荐取消。”"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "source_evidence": "严九尺抱着两册簿子从人群里挤出，管事木牌撞在册角上。他先向宁霜拱手，随即翻开登记册，手指落在末行。\n\n“按《青禾谷巡田杂务暂行条目》第六十七，灵田异常，先核责任人。另，昨夜公用库少了四张引雨符。借用登记最后一笔，工牌号丙七二一——许观。”"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "source_evidence": "说完，他弯腰拨开田边浮土，露出一截旧竹管。竹节糊着灰黄封泥，绑线歪斜，边缘有新刮痕。\n\n“还有此处。公用灵田设施不得私修，明令在册。”\n\n宁霜看向许观：“你修的？”\n\n封泥里混了他惯用的细砂，绑线也是从破篓上拆的。此时否认，往后只会多添一项欺瞒。\n\n“是我。”许观道，“七日前竹管渗水，报修排到旬后。我怕灵苗缺水，私下补过。违规我认，但四张引雨符不是我领的。”\n\n严九尺立刻合上巡检册：“私修已认。按条目八十二，因私修致公田受损，责任杂役先行赔付；又涉公物缺失，应先封工牌，停库房权限，待赔后查。”"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "source_evidence": "“是我。”许观道，“七日前竹管渗水，报修排到旬后。我怕灵苗缺水，私下补过。违规我认，但四张引雨符不是我领的。”"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "source_evidence": "裂口在西北角，离它最近的三垄虽然发黄，却还直立。反倒是东南一带倒得最齐，苗身全朝西北倾斜。泥上的湿痕也没有从裂口向外扩散，而是在田中拐出一道硬弯，中间还隔着一条窄窄的干线。\n\n他折下三根枯枝，分别插在裂口、倒伏最重处和湿痕转折处。\n\n“若只因裂口泄了灵压，近处该先坏，水痕该从西北往外散。可现在远处先倒，倒伏朝向裂口，湿痕从东南回压。私修有错，但不能单独造成眼前的枯势。”"
+        },
+        {
+          "index": 5,
+          "passed": true,
+          "source_evidence": "“私修责任记下。”宁霜看向许观，“盗符和毁田主因，证据未闭合。给你三日。三日内止住枯势，拿出可核验的证据。不是猜测，也不是口头自辩。”"
+        },
+        {
+          "index": 6,
+          "passed": true,
+          "source_evidence": "严九尺补道：“工牌暂不没收，库房权限列为待控。出入须登记陪同。杂役身份待裁，外门小考推荐暂悬。”"
+        }
+      ],
+      "forbidden_outcomes": [
+        {
+          "index": 0,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 1,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 2,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 3,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 4,
+          "appeared": false,
+          "source_evidence": ""
+        }
+      ],
+      "summary_like": false,
+      "cultivation_consistent": true,
+      "comedy_causal": true,
+      "serious_consequences_preserved": true,
+      "chapter_hook_concrete": true,
+      "resource_continuity_consistent": true,
+      "knowledge_states_consistent": true,
+      "character_voices_distinct": true,
+      "multi_line_causality_preserved": true,
+      "warnings": [
+        "候选正文末尾附有“机械长度检查”元数据，不属于正文内容，正式入稿时应移除。"
+      ],
+      "contract_failures": [],
+      "quality_failures": []
+    },
+    "quality_status": "draft_passed"
+  },
+  {
+    "number": 2,
+    "title": "保存有生力量的人证",
+    "actual_length": 2234,
+    "status": "passed",
+    "hard_pass": true,
+    "requires_review": false,
+    "can_update_state": true,
+    "message": "长度闸门通过",
+    "chapter": 2,
+    "draft_version": 2,
+    "draft_path": "chapters/0002/draft.v2.md",
+    "quality": {
+      "required_outcomes": [
+        {
+          "index": 0,
+          "passed": true,
+          "source_evidence": "入夜后，山风掠过青禾谷，七号灵田里的枯苗一层层伏下去。\n\n许观提着旧油灯沿田埂走，庞大海跟在后头，手里的灯却一直照着水沟。"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "source_evidence": "他压住呼吸，牵引丹田内那点薄弱灵力贴近土中气息，只转过经脉一角便停住，不敢在灵压紊乱处运行完整周天。\n\n细碎的沙响从四面涌来。\n\n旧竹管裂口处，确有一缕灵压往外泄，细而不稳。若枯势全由此处引起，灵气本该顺着裂口向外散开，越远越弱。\n\n许观将心神往东南探出一小段。\n\n耳中骤然嗡鸣。\n\n远端有一股灵压顶了回来。\n\n那股力量不厚，却短促而硬，既不像水脉自流，也不像竹管漏压，更像引雨符催动后的残余灵劲。"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "source_evidence": "许观立即收术，睁开眼时，灯火已晃成两团。\n\n“听出什么了？”庞大海问，“总不会是水老鼠在念经吧？”\n\n许观抬手示意他安静，伸手去扶三步外的田垄，指尖却立刻碰到了潮泥。他身体一歪，半只脚踩空，险些滑进水沟。\n\n庞大海一把揪住他的后领，自己也被带得踉跄两步。\n\n“我就说此地最适合发生意外！”\n\n许观站稳，低头看向脚边。田垄就在身侧，并非三步之外。\n\n听脉术让他的距离判断出了偏差。"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "source_evidence": "庞大海见状，立即挺起胸膛：“依我看，我应当退到安全处保存有生力量。若你倒下，我好报信；若你没倒，我也能证明你没倒。两头都有用。”\n\n说完，他便退向田埂外，动作熟练得像早已想好。"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "source_evidence": "退到小路交会处，庞大海忽然停下。那里比田面高出半尺，往东能看见远端水口，往北正对通往灵材库的小路，往西还能看清七号田边界上的竹枝。"
+        },
+        {
+          "index": 5,
+          "passed": true,
+          "source_evidence": "许观取出小木片，用炭头写下几行：“田埂外交会处，可见库房小路、远端水口、七号田东南边界。庞大海守此处。”\n\n“等等，你为何把我名字写进去？”\n\n“这是守田人证点。”"
+        },
+        {
+          "index": 6,
+          "passed": true,
+          "source_evidence": "庞大海哼了一声，却没有离开：“你也别再听了。明日还得找真凭实据。”\n\n许观点头。他耳中的嗡鸣尚未散去，风声与水声忽远忽近。七号田东南角的灰白叶尖比入夜时又多了一片，枯势仍在蔓延。\n\n他们没有止住它，也没有找到能提交核验的实物。"
+        }
+      ],
+      "forbidden_outcomes": [
+        {
+          "index": 0,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 1,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 2,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 3,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 4,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 5,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 6,
+          "appeared": false,
+          "source_evidence": ""
+        }
+      ],
+      "summary_like": false,
+      "cultivation_consistent": true,
+      "comedy_causal": true,
+      "serious_consequences_preserved": true,
+      "chapter_hook_concrete": true,
+      "resource_continuity_consistent": true,
+      "knowledge_states_consistent": true,
+      "character_voices_distinct": true,
+      "multi_line_causality_preserved": true,
+      "warnings": [],
+      "contract_failures": [],
+      "quality_failures": []
+    },
+    "quality_status": "draft_passed"
+  },
+  {
+    "number": 3,
+    "title": "冻结先照条目来",
+    "actual_length": 2247,
+    "status": "passed",
+    "hard_pass": true,
+    "requires_review": false,
+    "can_update_state": true,
+    "message": "长度闸门通过",
+    "chapter": 3,
+    "draft_version": 2,
+    "draft_path": "chapters/0003/draft.v2.md",
+    "quality": {
+      "required_outcomes": [
+        {
+          "index": 0,
+          "passed": true,
+          "source_evidence": "“不可。”严九尺答得极快，“按条目七十三，涉公物缺失者，库房借用权限暂封。按七十四，涉公田损毁者，未列赔偿预估前，不得接触相关物资。你若要查记录，先列明赔偿预估、查验缘由和经手关联，再由管事或巡田弟子监督。”"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "source_evidence": "他没有再说自己无罪，只道：“私修旧引水竹管确实违规，损耗和罚额该核算。但借符登记只能证明有人写了我的工牌号，不能证明是我本人领取。”"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "source_evidence": "许观每听一项，便抄一项，又在纸上分出四栏：扣罚依据、封签号、登记页、经手人，最后添上一格时辰。"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "source_evidence": "末笔写着“丙七二一，许观，取引雨符四张”。工牌号没错，名字也没错。页角则有昨夜巡更留下的更印，标明二更末，朱砂已渗入纸纹。\n\n可末笔墨色比前几行更亮，浮在纸面。尤其“符”字最后一点避开了更印边缘，两者之间留着一道极细的白隙。"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "source_evidence": "“不能。”宁霜看向许观，“工牌号正确，盗符嫌疑仍在。你要补批次、封签，或证人。没有这些，时间差只能证明此页值得查，不能证明符不是你领的。”"
+        }
+      ],
+      "forbidden_outcomes": [
+        {
+          "index": 0,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 1,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 2,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 3,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 4,
+          "appeared": false,
+          "source_evidence": ""
+        }
+      ],
+      "summary_like": false,
+      "cultivation_consistent": true,
+      "comedy_causal": true,
+      "serious_consequences_preserved": true,
+      "chapter_hook_concrete": true,
+      "resource_continuity_consistent": true,
+      "knowledge_states_consistent": true,
+      "character_voices_distinct": true,
+      "multi_line_causality_preserved": true,
+      "warnings": [],
+      "contract_failures": [],
+      "quality_failures": []
+    },
+    "quality_status": "draft_passed"
+  },
+  {
+    "number": 4,
+    "title": "货架背后的雨声",
+    "actual_length": 2278,
+    "status": "passed",
+    "hard_pass": true,
+    "requires_review": false,
+    "can_update_state": true,
+    "message": "长度闸门通过",
+    "chapter": 4,
+    "draft_version": 2,
+    "draft_path": "chapters/0004/draft.v2.md",
+    "quality": {
+      "required_outcomes": [
+        {
+          "index": 0,
+          "passed": true,
+          "source_evidence": "罗七没碰清单，先问：“按流程，许兄的工牌昨夜可曾离身？”\n\n“未曾。睡前挂在床头，夜查时带在身上。”\n\n“那工牌号可有人见过？”\n\n“同屋、管事、库房都见过。”\n\n罗七叹了口气：“这便难了。登记只写编号，并不核工牌本体。编号旁人见过，许兄平日又常替人记账，笔迹是否也有人能仿？”"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "source_evidence": "“有。外谷退回一小匣，今晨不用，便先并进来。”罗七答得很快，“巡田前夜人手乱，催得急。搬运、值守、登记都挤在前厅，册子也有几个人围着看。复核栏空着，是等晨查再补。”\n\n宁霜问：“谁搬的？”\n\n“我和两个杂役。名字可以列。”罗七道，“但昨夜有人催符，有人催封条，还有人催我找墨锭。责任若按声音分，我只怕要欠半个青禾谷。”\n\n他承认的是忙乱，不是谁拿了符。"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "source_evidence": "西侧有杂役搬动药泥箱，木箱拖过地面，闷响压住了众人的脚步声。许观垂下眼，指尖按住清单边缘，只将听脉术放开一瞬。\n\n库中灵气被符匣与封泥压成细细数缕。东一温缓，东二轻浮，到了东三下层里侧，忽然响起一丝短促回音。\n\n像雨点落进倒扣的竹筒，没有散开，反被筒壁顶回。\n\n比七号田东南水口的回顶轻得多，却有相似的滞涩。"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "source_evidence": "他在清单上画出货架位置，写道：东三里侧有轻微回顶；封泥新旧不一；疑有不同批次混放。合格符或被换走。无实物，不足为证。"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "source_evidence": "走出库门，日光刺得他眼前发白。耳鸣没有退，远处风声忽近忽远。庞大海仍坐在田埂交会处，抱着木片看守库房小路与远端水口，坐姿端正得像随时准备解释自己为何坐着。\n\n清单上多了货架方位、半角封泥和一缕回顶杂音，却没有一项能把四张引雨符从许观名下划掉。\n\n继续强听，只会把东二听成东三，把两步听成半丈。\n\n下一步必须找封签残号，或找昨夜真正看见符匣移动的人。"
+        }
+      ],
+      "forbidden_outcomes": [
+        {
+          "index": 0,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 1,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 2,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 3,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 4,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 5,
+          "appeared": false,
+          "source_evidence": ""
+        }
+      ],
+      "summary_like": false,
+      "cultivation_consistent": true,
+      "comedy_causal": true,
+      "serious_consequences_preserved": true,
+      "chapter_hook_concrete": true,
+      "resource_continuity_consistent": true,
+      "knowledge_states_consistent": true,
+      "character_voices_distinct": true,
+      "multi_line_causality_preserved": true,
+      "warnings": [],
+      "contract_failures": [],
+      "quality_failures": []
+    },
+    "quality_status": "draft_passed"
+  },
+  {
+    "number": 5,
+    "title": "封签烧成灰",
+    "actual_length": 2103,
+    "status": "passed",
+    "hard_pass": true,
+    "requires_review": false,
+    "can_update_state": true,
+    "message": "长度闸门通过",
+    "chapter": 5,
+    "draft_version": 2,
+    "draft_path": "chapters/0005/draft.v2.md",
+    "quality": {
+      "required_outcomes": [
+        {
+          "index": 0,
+          "passed": true,
+          "source_evidence": "第一片写着：二更后，库房小路无人公开搬符经过。\n\n第二片写着：三更前，远端水口忽有短促翻泥声，似有灵压顶土。本人未靠近，乃防踩坏证据。"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "source_evidence": "“昨夜搬运外谷退回符匣的，是我、周满、陈石。”罗七道，“前厅催符、催封条的人多，围看登记的也多。复核未补，是晨查未到。东三货架封泥新旧不一，不过是退回物暂并公用库，不能据此说有人调换。”"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "source_evidence": "那股被他当作盗符残痕的力量猛地翻卷。错误批次引雨符留下的紊乱残压与旧管漏压相撞，灰白雾气从泥下冲起。封泥先裂，半截纸边随即焦黑卷曲。\n\n“放手！”宁霜喝道。\n\n许观手指慢了半拍。封签“嗤”地碎成焦灰，反噬已沿指尖冲入耳窍。\n\n四周骤然无声。\n\n风、脚步、呼喊全被隔在厚墙之外。许观只觉鼻下发热，血滴进泥里，眼前田埂猛地偏向一侧。他半身栽向水口，被庞大海扑上来抱住。\n\n庞大海嘴唇急动，许观却一个字也听不见。\n\n灰雾扫过田边，最外侧一小块灵苗迅速卷缩，由浅青褪成死白。枯势没有停，坏死范围又添了一块。\n\n宁霜以竹钉压住反噬位置，用封纸罩住焦灰，随即检查许观的瞳孔与鼻血。她放慢口形：“停。不得再听。”\n\n严九尺已翻开册子，指着条目七十四：“公田损害扩大，涉责杂役贡献点先行冻结，用于坏死灵苗与公物损耗预扣。许观名下十二点，全部冻结。”"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "source_evidence": "灰雾扫过田边，最外侧一小块灵苗迅速卷缩，由浅青褪成死白。枯势没有停，坏死范围又添了一块。\n\n宁霜以竹钉压住反噬位置，用封纸罩住焦灰，随即检查许观的瞳孔与鼻血。她放慢口形：“停。不得再听。”\n\n严九尺已翻开册子，指着条目七十四：“公田损害扩大，涉责杂役贡献点先行冻结，用于坏死灵苗与公物损耗预扣。许观名下十二点，全部冻结。”\n\n“他都听不见了！”庞大海扶着许观，声音发紧。\n\n严九尺脸色也有一瞬不自然，仍抱紧册子：“伤情另记，预扣照行。”\n\n这一次，庞大海没有接话。\n\n许观坐在田埂上，鼻血浸湿袖口。那半截封签只剩一撮焦灰，别说批次残号，连一个完整笔画都找不出来。"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "source_evidence": "宁霜摇头，在记录上写下位置、时辰、灵压反噬、许观伤情与新增坏死，随后将纸转给他看。\n\n“残片烧毁，不能单独定责。只能记为反噬现场。”\n\n许观盯着那行字，终于明白自己听错了什么。\n\n他追到的确是回流，却不是清楚的盗符残痕。错误批次符压与旧管异常绞在一起，他把其中最像证据的一段声音，当成了完整因果。\n\n庞大海低声问：“是不是我的记录让你追得太急？”\n\n许观勉强从口形猜出意思，摇头：“记录有用。是我把待核，算成了实收。”\n\n宁霜收好焦灰：“之后改用标界、证人、账册核对。低风险。未经准许，不得再挖，不得强听。”"
+        }
+      ],
+      "forbidden_outcomes": [
+        {
+          "index": 0,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 1,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 2,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 3,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 4,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 5,
+          "appeared": false,
+          "source_evidence": ""
+        }
+      ],
+      "summary_like": false,
+      "cultivation_consistent": true,
+      "comedy_causal": true,
+      "serious_consequences_preserved": true,
+      "chapter_hook_concrete": true,
+      "resource_continuity_consistent": true,
+      "knowledge_states_consistent": true,
+      "character_voices_distinct": true,
+      "multi_line_causality_preserved": true,
+      "warnings": [],
+      "contract_failures": [],
+      "quality_failures": []
+    },
+    "quality_status": "draft_passed"
+  },
+  {
+    "number": 6,
+    "title": "先把耳朵停账",
+    "actual_length": 2198,
+    "status": "passed",
+    "hard_pass": true,
+    "requires_review": false,
+    "can_update_state": true,
+    "message": "长度闸门通过",
+    "chapter": 6,
+    "draft_version": 2,
+    "draft_path": "chapters/0006/draft.v2.md",
+    "quality": {
+      "required_outcomes": [
+        {
+          "index": 0,
+          "passed": true,
+          "source_evidence": "他没有吐纳，也没有再施听脉术，只把昨日反噬位置、庞大海记下的远端水口翻泥处，以及旧管外缘画在纸上。\n\n“先定边。”他道，“不用耳朵。”\n\n庞大海拿起竹签：“许账房有令，耳朵退下，竹签当值。”\n\n严九尺盯着他们：“不得插入旧管，不得扰动水口，不得引灵入土。”\n\n庞大海立刻复述：“不得插管，不得动口，不得引灵，不得私修，也不得把泥抹成一条新管。”\n\n宁霜在案纸上补得更准确：“竹签仅标田面，不触设施。”\n\n许观沿坏死边缘外一尺插下第一根竹签，又顺着湿痕弯折处落下第二根。他从田面旧沟的残水里牵出一条细水线，不开水口，只让水沿低处缓慢爬行。\n\n水线到了青苗边缘，忽然一滞，像被什么从地下轻轻顶住。\n\n许观没有追那股力量，只在停滞处插下第三根竹签，再观察三处灵苗的叶尖。"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "source_evidence": "“不是核准你歇一日，是不准你再强听。”庞大海夺过炭头，替他补上，“不得再挖，不得擅动旧管、水口，不得碰库房物资。要做什么，须有人盯着。”\n\n宁霜把案纸递近。上面写得更清楚：只准在巡田监督下标界，进行低风险截流试验。"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "source_evidence": "许观把两枚灵石推过去。一枚换基础疗伤药，一枚换竹节封泥。摊主收钱后特意叮嘱：“封泥只能敷旧管外缘作隔断。不能糊裂口，不能当修管材料。”\n\n许观看向庞大海。\n\n庞大海提高嗓门复述：“只能挡，不能修；只能抹外面，不能碰里面。总之，这盒泥能止事，不能省罪。”\n\n宁霜验过封口，在案纸上添了一行：“物资自购。用途限定为外缘截流隔断，非私修。”\n\n许观收起最后一枚灵石。布袋轻了大半，账却清楚了：三枚变一枚，十二点贡献仍一分不能动。"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "source_evidence": "许观点头，用小竹片挑起封泥，只在旧管外侧土缘薄薄敷出一道弧。封泥不入裂缝，不改水口，也不拆管身，只把回流可能经过的外缘隔开一段。\n\n宁霜站在近处逐项看过：“符合限定。继续观察。”"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "source_evidence": "宁霜亲自量过两处叶尖，又查看水线位置。\n\n“扩散速度下降。”她道，“试验可记有效，但不是定责证据。继续守夜观察，不得加封。”\n\n许观胸口终于松开一线。\n\n截流没有止住全部枯势，却让剩余青苗有了撑下去的可能。只要不是眼睁睁看着整片田一寸寸白完，他便还有时间补后面的证据。"
+        },
+        {
+          "index": 5,
+          "passed": true,
+          "source_evidence": "可已经白透的灵苗没有回青。\n\n许观拔起最外侧一株。根须灰败，灵气早已散尽。他没有运转小周天去试——灵压仍乱，坏死也不是吐纳能补回来的。\n\n宁霜看过后道：“已坏死，不能恢复。”\n\n严九尺当即落笔：“坏死部分计入后续赔偿。截流有效，不抵既有损失。”"
+        },
+        {
+          "index": 6,
+          "passed": true,
+          "source_evidence": "许观点头，在清单末尾写下新的规矩：\n\n听脉只定方位，不追完整因果。方位之后，要看实物、水线、记录和证人。\n\n耳朵只能指出账目在哪，不能替他把整本账算完。"
+        }
+      ],
+      "forbidden_outcomes": [
+        {
+          "index": 0,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 1,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 2,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 3,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 4,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 5,
+          "appeared": false,
+          "source_evidence": ""
+        }
+      ],
+      "summary_like": false,
+      "cultivation_consistent": true,
+      "comedy_causal": true,
+      "serious_consequences_preserved": true,
+      "chapter_hook_concrete": true,
+      "resource_continuity_consistent": true,
+      "knowledge_states_consistent": true,
+      "character_voices_distinct": true,
+      "multi_line_causality_preserved": true,
+      "warnings": [],
+      "contract_failures": [],
+      "quality_failures": []
+    },
+    "quality_status": "draft_passed"
+  },
+  {
+    "number": 7,
+    "title": "这账走了也亏",
+    "actual_length": 2155,
+    "status": "passed",
+    "hard_pass": true,
+    "requires_review": false,
+    "can_update_state": true,
+    "message": "长度闸门通过",
+    "chapter": 7,
+    "draft_version": 2,
+    "draft_path": "chapters/0007/draft.v2.md",
+    "quality": {
+      "required_outcomes": [
+        {
+          "index": 0,
+          "passed": true,
+          "source_evidence": "“我说守田之事应重新分派。买药我认，跑腿也是我，可守田记录能不能只说我路过？同屋、买药、记边界，全挂在我身上，严管事一翻册子，怕是能把我也翻成一页。”"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "source_evidence": "“守田一夜，误工半日，你已经付了。”\n\n庞大海皱眉：“误工也算？”\n\n“买药跑腿，药摊主见过你，宁师姐的案纸上也记了你。第二笔已付。严管事点过同屋知情，第三笔退不掉。”\n\n许观写到最后一栏：“你现在退出，今晚无人证明库房小路和远端水口的动静。前面承担的风险没有证词收益。若日后罗七说你从未守过，或说你替我遮掩，你连自己亏在哪一笔都说不清。”"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "source_evidence": "“我留下不是被账吓住。是有生力量保存得太远，便和没有差不多。”\n\n许观落笔：庞大海，自愿续守。\n\n“自愿划掉。”\n\n许观改成：因地势险要，且退出更亏，续守。\n\n庞大海吸了口气：“你给人留些体面。”\n\n“空处容易被人添字。”\n\n许观另递给他一块木片：“按宁师姐认可的格式。时辰、方向、停留、衣饰。只看不追，只记不抢。若见到符，记数量和封签，不要靠近。”"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "source_evidence": "那人避开石板，从旧竹筐的阴影间穿过。月色照到侧脸时，庞大海握炭头的手一紧。\n\n是罗七。\n\n罗七在野竹旁停下，与那外谷杂役低声交谈。隔得远，风又乱，庞大海只断续听见“退回”“别走正册”几个碎词。随后罗七从袖中取出两张符纸，递给对方。\n\n符纸外裹薄油纸，露出的两道封签齐整，封泥线未破。\n\n两张，封签完整。"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "source_evidence": "庞大海背上冒出冷汗。他既没冲出去，也没起身逃，只把身体压在竹根后。罗七停了片刻，没有靠近，反而绕向库房另一侧，避开原路返回。\n\n直到脚步消失，庞大海才用石子压住木片，补齐记录：二更初后，罗七自库房侧门来，未走正路；交外谷杂役引雨符样物两张，封签完整；外谷杂役往东南小径去；罗七约半刻后绕库房另一侧返回。"
+        },
+        {
+          "index": 5,
+          "passed": true,
+          "source_evidence": "他按了按仍在发鸣的耳后。自己无法追踪，也不能再靠听脉术把异常算成定责。庞大海记下的时辰、路线、衣饰和返回时间，却能与库房里其他人的见闻相接。\n\n“明日问人。”许观道，“不再问地下。”"
+        }
+      ],
+      "forbidden_outcomes": [
+        {
+          "index": 0,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 1,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 2,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 3,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 4,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 5,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 6,
+          "appeared": false,
+          "source_evidence": ""
+        }
+      ],
+      "summary_like": false,
+      "cultivation_consistent": true,
+      "comedy_causal": true,
+      "serious_consequences_preserved": true,
+      "chapter_hook_concrete": true,
+      "resource_continuity_consistent": true,
+      "knowledge_states_consistent": true,
+      "character_voices_distinct": true,
+      "multi_line_causality_preserved": true,
+      "warnings": [],
+      "contract_failures": [],
+      "quality_failures": []
+    },
+    "quality_status": "draft_passed"
+  },
+  {
+    "number": 8,
+    "title": "清债先问人",
+    "actual_length": 2273,
+    "status": "passed",
+    "hard_pass": true,
+    "requires_review": false,
+    "can_update_state": true,
+    "message": "长度闸门通过",
+    "chapter": 8,
+    "draft_version": 2,
+    "draft_path": "chapters/0008/draft.v2.md",
+    "quality": {
+      "required_outcomes": [
+        {
+          "index": 0,
+          "passed": true,
+          "source_evidence": "许观耳中仍嗡嗡作响，只看清她的口形，便把木片递给庞大海：“时辰、路线、衣饰、交接物外观、听到的碎词、证词限制。六项。”"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "source_evidence": "庞大海看了一眼，声音低了些：“还听见‘退回’、‘别走正册’几个碎词。没听全前后，不知道完整意思。”"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "source_evidence": "轮到许观问话，他朝几名旁听杂役拱手：“我只核各位在库房账上的风险。谁见过符匣，谁搬运，数量如何记，批次何时补。今日若不说清，明日出了缺口，沉默的人也会挂在同一本账上。”"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "source_evidence": "周满先撑不住：“我只搭手搬过！那晚外谷退回一个符匣，说有四张，暂并公用库，等巡查后再复核批次。”"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "source_evidence": "又有一名年轻杂役道：“我在水井边见过那样衣饰的人，从库房方向往东南走，左肩空担，帽檐压得低，没看清脸。”"
+        },
+        {
+          "index": 5,
+          "passed": true,
+          "source_evidence": "竹签外三寸的叶尖仍青，没有新增枯白；封泥内侧却还压着一层灰意。截流有效，枯势未绝，坏死的苗也不会再活。"
+        },
+        {
+          "index": 6,
+          "passed": true,
+          "source_evidence": "宁霜收起案纸：“明日公开核验。庞大海证词，周满、陈石及库房杂役见闻，外谷扁担旁证，乙卷第十九页时间差，七号田截流记录，一并入案。另核封签残号、库中剩余八张引雨符批次、数量差及罗七口径。”"
+        },
+        {
+          "index": 7,
+          "passed": true,
+          "source_evidence": "严九尺道：“许观私修、借符登记、坏死灵苗赔偿也一并核。贡献点继续冻结，小考资格仍悬。”"
+        }
+      ],
+      "forbidden_outcomes": [
+        {
+          "index": 0,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 1,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 2,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 3,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 4,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 5,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 6,
+          "appeared": false,
+          "source_evidence": ""
+        }
+      ],
+      "summary_like": false,
+      "cultivation_consistent": true,
+      "comedy_causal": true,
+      "serious_consequences_preserved": true,
+      "chapter_hook_concrete": true,
+      "resource_continuity_consistent": true,
+      "knowledge_states_consistent": true,
+      "character_voices_distinct": true,
+      "multi_line_causality_preserved": true,
+      "warnings": [],
+      "contract_failures": [],
+      "quality_failures": []
+    },
+    "quality_status": "draft_passed"
+  },
+  {
+    "number": 9,
+    "title": "封签也认账",
+    "actual_length": 2098,
+    "status": "passed",
+    "hard_pass": true,
+    "requires_review": false,
+    "can_update_state": true,
+    "message": "长度闸门通过",
+    "chapter": 9,
+    "draft_version": 2,
+    "draft_path": "chapters/0009/draft.v2.md",
+    "quality": {
+      "required_outcomes": [
+        {
+          "index": 0,
+          "passed": true,
+          "source_evidence": "“今日是资格与证据核验，不是免罪担保。许观只能提交记录、证词和现场截流材料，不得触碰封存符匣，不得再用听脉术。”"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "source_evidence": "“旧管截流痕，证明田中灵压异常方向；竹签水线，证明截流后枯势暂缓；乙卷第十九页，证明末笔有后补疑点；庞大海的证词，补二更初后的交接时间；周满、陈石的见闻，证明外谷退回符曾暂并公用库，罗七参与搬运，并主张复核后补。”"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "source_evidence": "严九尺已经翻开登记副册：“依条目七十三，公用灵田设施不得私修；依条目七十四，库物借取以登记工牌号为凭。末笔是许观工牌号，七号田旧管又确由他私修。庞大海与他同屋，证词只能列作偏证。盗符与毁田主责，仍应由许观承担。”"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "source_evidence": "罗七摊手：“外谷退回样物临时交接，走侧门也不稀奇。没有接收人姓名，没有实物，夜色中认错更是常事。”"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "source_evidence": "“公用库剩余八张引雨符，三张封签残号与七号田适用批次不合，不得直接用于七号田。”"
+        },
+        {
+          "index": 5,
+          "passed": true,
+          "source_evidence": "“现在封签证明，库中表格只记数量，没有记批次。这些仍不能抵掉我的私修责任，但工牌号也不能单独证明是我本人领取。”"
+        },
+        {
+          "index": 6,
+          "passed": true,
+          "source_evidence": "庞大海立刻改口：“二更初后，我在七号田外埂，看见罗七从库房侧门方向来，避开正路，与一人交接两张封签完整的引雨符样物。那人穿灰褐短褂，系暗青腰带，左肩空扁担，往东南小径走。罗七约半刻后从库房另一侧返回。”\n\n“听见什么？”\n\n“只听见‘退回’和‘别走正册’几个碎词。没有完整对话，没有实物。我没追，也没抢。”"
+        },
+        {
+          "index": 7,
+          "passed": true,
+          "source_evidence": "宁霜在案纸上落笔：“罗七无法当场说明两张封签完整合格符的明确去向，列为待复核重点。”\n\n她没有就此定责，而是将拓痕纸、水线记录、错误批次封签残号、乙卷墨迹时间差、证人时间线和库房数量差逐项并入案纸。"
+        },
+        {
+          "index": 8,
+          "passed": true,
+          "source_evidence": "她没有就此定责，而是将拓痕纸、水线记录、错误批次封签残号、乙卷墨迹时间差、证人时间线和库房数量差逐项并入案纸。\n\n“今日只确认材料效力，不作最终裁定。许观私修责任仍成立，贡献点冻结与赔偿预扣不变；盗符嫌疑尚未解除，但登记工牌号不能单独证明本人领取。罗七不得离谷，不得私自接触外谷退回册。”"
+        }
+      ],
+      "forbidden_outcomes": [
+        {
+          "index": 0,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 1,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 2,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 3,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 4,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 5,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 6,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 7,
+          "appeared": false,
+          "source_evidence": ""
+        }
+      ],
+      "summary_like": false,
+      "cultivation_consistent": true,
+      "comedy_causal": true,
+      "serious_consequences_preserved": true,
+      "chapter_hook_concrete": true,
+      "resource_continuity_consistent": true,
+      "knowledge_states_consistent": true,
+      "character_voices_distinct": true,
+      "multi_line_causality_preserved": true,
+      "warnings": [],
+      "contract_failures": [],
+      "quality_failures": []
+    },
+    "quality_status": "draft_passed"
+  },
+  {
+    "number": 10,
+    "title": "小考签押",
+    "actual_length": 2440,
+    "status": "passed",
+    "hard_pass": true,
+    "requires_review": false,
+    "can_update_state": true,
+    "message": "长度闸门通过",
+    "chapter": 10,
+    "draft_version": 3,
+    "draft_path": "chapters/0010/draft.v3.md",
+    "quality": {
+      "required_outcomes": [
+        {
+          "index": 0,
+          "passed": true,
+          "source_evidence": "许观耳中嗡鸣未退，外围杂役的低语像隔着一层水。他没有运听脉术，只将旧管拓痕纸、竹签水线记录和封签残号依次推到案前。\n\n“旧管截流痕能证明裂口漏压。库中三张错误批次符，与七号田适用批次不合。乙卷末笔又在巡更印后补写。若这笔登记能证明是我本人领符，至少应有当面核牌、符箓批次和经手签押。如今只有一个可以抄录的工牌号。”"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "source_evidence": "宁霜随即宣读案纸：“许观私修旧引水竹管，责任成立。借符末笔存在后补时间差，登记流程缺少批次与三方签押，工牌号存在抄录冒用，不能证明许观本人领取。七号田毁田主因，按错误批次引雨符灵压回顶与旧管灵压异常共同触发处理。公用库余八张中，三张错误批次封存，不得用于七号田。”"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "source_evidence": "批次栏空着，下面三处签押也空着。\n\n“缺几处？”\n\n严九尺盯了片刻：“三处签押，另缺批次。”\n\n“所以表册只记数量，未记批次。流程有缺。”\n\n严九尺脸颊绷紧，仍只能答：“有缺。”"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "source_evidence": "“正册没有移交记录，外谷退回册也没有。”宁霜道，“庞大海所见与周满、陈石的经手时辰能够相接。两张合格符由你私换出库并转卖的嫌疑成立，暂扣，移交执事复核。失窃四符的主责一并复核，其余两张去向与背后经手者另查。”"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "source_evidence": "众人转到田埂。第四根竹签外侧没有新增枯白，水线也停在昨日刻痕下方。宁霜量过竹签，又揭看封泥边缘，内侧灰意仍未散去。\n\n“哪些已经坏死？”\n\n许观指向内侧三畦：“叶脉全灰，根须断脆，救不回。”"
+        },
+        {
+          "index": 5,
+          "passed": true,
+          "source_evidence": "宁霜没有让他们继续争。她在田埂旁的案桌上落笔：“许观私修公用灵田设施，罚三个月不得私动旧管、封泥与公用符箓。观察竹签、水线须留记录，不得擅改。”\n\n许观拱手：“认罚。”\n\n“十二点贡献，解冻四点。余八点继续冻结，用于坏死灵苗与私修违规核算。疗伤欠账另列。”"
+        },
+        {
+          "index": 6,
+          "passed": true,
+          "source_evidence": "宁霜取出小考签押木牌：“杂役身份保留。外门小考资格准入，考前须补交部分赔偿与疗伤欠账。许观，列为可观察考生，不是被保对象。”"
+        },
+        {
+          "index": 7,
+          "passed": true,
+          "source_evidence": "宁霜问：“听脉术以后如何用？”\n\n许观看着那三畦灰白灵苗，没有再试图听地下乱流。\n\n“先定方位，再找实物佐证。听见的只作路标，不能直接入账。”\n\n“记住。”宁霜看了他一眼，“你仍是炼气一层。伤势未愈，也没有突破。小考资格不是修为凭证。”"
+        }
+      ],
+      "forbidden_outcomes": [
+        {
+          "index": 0,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 1,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 2,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 3,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 4,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 5,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 6,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 7,
+          "appeared": false,
+          "source_evidence": ""
+        }
+      ],
+      "summary_like": false,
+      "cultivation_consistent": true,
+      "comedy_causal": true,
+      "serious_consequences_preserved": true,
+      "chapter_hook_concrete": true,
+      "resource_continuity_consistent": true,
+      "knowledge_states_consistent": true,
+      "character_voices_distinct": true,
+      "multi_line_causality_preserved": true,
+      "warnings": [],
+      "contract_failures": [],
+      "quality_failures": []
+    },
+    "quality_status": "draft_passed"
+  }
+]

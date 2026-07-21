@@ -26,7 +26,7 @@ def valid_outline(number: int = 1, mechanism: str = "性格反差") -> dict[str,
         "cost_or_aftereffect": "消耗时间",
         "closing_state": ["本章行动已经产生结果"],
         "next_chapter_input": ["继续处理本章后果"],
-        "target_length": {"min": 2000, "max": 2500},
+        "target_length": {"min": 2000, "max": 3000},
         "scenes": [
             {
                 "scene_id": f"chapter-{number:04d}-scene-1",

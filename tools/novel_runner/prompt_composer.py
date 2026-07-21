@@ -97,6 +97,70 @@ def _compact_snapshot(snapshot: Any) -> Any:
     }
 
 
+def _active_state_ids(snapshot_or_initial: Any) -> dict[str, Any]:
+    """Return the stable IDs a state-repair response may legally reference."""
+
+    if not isinstance(snapshot_or_initial, dict):
+        return {
+            "tracked_state_ids_by_subject": {},
+            "resource_ids_by_owner": {},
+            "knowledge_fact_ids_by_character": {},
+        }
+    structured = snapshot_or_initial.get("structured_state")
+    if not isinstance(structured, dict):
+        structured = snapshot_or_initial
+
+    tracked_by_subject: dict[str, list[str]] = {}
+    for item in structured.get("cultivation", []):
+        if not isinstance(item, dict) or not isinstance(item.get("subject_id"), str):
+            continue
+        state_ids = sorted(
+            {
+                state["state_id"]
+                for state in item.get("tracked_states", [])
+                if isinstance(state, dict)
+                and isinstance(state.get("state_id"), str)
+                and state["state_id"].strip()
+            }
+        )
+        if state_ids:
+            tracked_by_subject[item["subject_id"]] = state_ids
+
+    resources_by_owner: dict[str, list[str]] = {}
+    for item in structured.get("resources", []):
+        if not isinstance(item, dict):
+            continue
+        owner_id = item.get("owner_id")
+        resource_id = item.get("resource_id")
+        if not isinstance(owner_id, str) or not isinstance(resource_id, str):
+            continue
+        resources_by_owner.setdefault(owner_id, []).append(resource_id)
+    resources_by_owner = {
+        owner_id: sorted(set(resource_ids))
+        for owner_id, resource_ids in resources_by_owner.items()
+    }
+
+    knowledge_by_character: dict[str, list[str]] = {}
+    for item in structured.get("knowledge", []):
+        if not isinstance(item, dict):
+            continue
+        character_id = item.get("character_id")
+        fact_id = item.get("fact_id")
+        if not isinstance(character_id, str) or not isinstance(fact_id, str):
+            continue
+        knowledge_by_character.setdefault(character_id, []).append(fact_id)
+    knowledge_by_character = {
+        character_id: sorted(set(fact_ids))
+        for character_id, fact_ids in knowledge_by_character.items()
+    }
+
+    return {
+        "tracked_state_ids_by_subject": tracked_by_subject,
+        "resource_ids_by_owner": resources_by_owner,
+        "knowledge_fact_ids_by_character": knowledge_by_character,
+    }
+
+
 def _compact_story_unit(unit: Any) -> Any:
     if not isinstance(unit, dict):
         return unit
@@ -111,6 +175,42 @@ def _compact_story_unit(unit: Any) -> Any:
         "must_not_resolve",
     )
     return {field: unit.get(field) for field in fields}
+
+
+def _compact_chapter_contract(outline: Any) -> Any:
+    """Project a chapter outline down to the fields used by review/state tasks."""
+
+    if not isinstance(outline, dict):
+        return outline
+    fields = (
+        "chapter_id",
+        "number",
+        "title",
+        "story_unit_id",
+        "intent",
+        "opening_state",
+        "required_outcomes",
+        "forbidden_outcomes",
+        "progression_payoff",
+        "comedy_mechanism",
+        "comedy_payoff",
+        "cost_or_aftereffect",
+        "closing_state",
+        "next_chapter_input",
+    )
+    return {field: outline.get(field) for field in fields}
+
+
+def _preferred_length_range(length: dict[str, Any]) -> tuple[int, int]:
+    target_min = int(length.get("target_min", 2000))
+    target_max = int(length.get("target_max", 3000))
+    span = max(0, target_max - target_min)
+    default_min = target_min + min(200, span // 5)
+    default_max = min(target_max, default_min + min(300, max(1, span // 3)))
+    return (
+        int(length.get("preferred_min", default_min)),
+        int(length.get("preferred_max", default_max)),
+    )
 
 
 def compose_story_unit_plan_prompt(
@@ -187,7 +287,7 @@ def compose_batch_outline_plan_prompt(
                 "title": "",
                 "story_unit_id": unit.get("unit_id"),
                 "status": "outline_ready",
-                "target_length": {"min": 2000, "max": 2500},
+                "target_length": {"min": 2000, "max": 3000},
                 "intent": "",
                 "opening_state": [],
                 "required_outcomes": [],
@@ -289,9 +389,8 @@ def compose_draft_prompt(
     )
     length = run_config.get("policies", {}).get("length", {})
     target_min = int(length.get("target_min", 2000))
-    target_max = int(length.get("target_max", 2500))
-    preferred_min = target_min
-    preferred_max = min(target_max, target_min + 100)
+    target_max = int(length.get("target_max", 3000))
+    preferred_min, preferred_max = _preferred_length_range(length)
     scene_budget = sum(
         scene.get("target_length", 0)
         for scene in outline.get("scenes", [])
@@ -415,12 +514,21 @@ def compose_state_prompt(
     }
     sections: list[tuple[str, str]] = [
         ("状态回填工作流", workflow),
-        ("当前章细纲", _json_block(outline)),
+        ("当前章契约", _json_block(_compact_chapter_contract(outline))),
         ("本章 final 正文", draft_text),
         ("本章检查结果", _json_block(checks)),
         ("上一章状态快照", _json_block(_compact_snapshot(previous_snapshot))),
         ("修炼体系", _json_block(read_json(run_dir / "config/progression.json"))),
     ]
+    state_reference = previous_snapshot
+    if state_reference is None:
+        state_reference = read_json(run_dir / "config/initial-state.json")
+    sections.append(
+        (
+            "允许引用的活动状态 ID",
+            _json_block(_active_state_ids(state_reference)),
+        )
+    )
     failure_reason = outline.get("state_failure_reason")
     retry_counts = outline.get("retry_counts")
     if isinstance(failure_reason, str) and failure_reason.strip() or isinstance(
@@ -437,8 +545,11 @@ def compose_state_prompt(
                         "state_failure_reason": failure_reason or "上一版未通过校验",
                         "repair_instruction": (
                             "只修复失败原因所指向的字段；不得复制上一版中的错误资源 ID、"
-                            "错误余额或无正文证据的变化。重新核对上一状态后输出完整契约。"
+                            "错误余额或无正文证据的变化。supersedes_fact_ids 只能引用下方"
+                            "允许的活动知识 fact_id；没有合法淘汰项时必须输出空数组，禁止"
+                            "根据正文措辞臆造 ID。重新核对上一状态后输出完整契约。"
                         ),
+                        "allowed_active_ids": _active_state_ids(state_reference),
                         "previous_invalid_output": previous_invalid_output,
                     }
                 ),
@@ -497,6 +608,7 @@ def compose_repair_prompt(
     }
     if mode not in directives:
         raise StorageError(f"未知修复模式：{mode}")
+    preferred_min, preferred_max = _preferred_length_range(length)
     repair_section = {
         "mode": mode,
         "actual_length": actual,
@@ -508,10 +620,7 @@ def compose_repair_prompt(
             if isinstance(actual, int)
             else 0
         ),
-        "preferred_rewrite_range": [
-            length["target_min"] + 100,
-            max(length["target_min"] + 100, length["target_max"] - 150),
-        ],
+        "preferred_rewrite_range": [preferred_min, preferred_max],
         "hard_output_range": [length["target_min"], length["target_max"]],
         "instruction": directives[mode],
         "latest_checks": checks,
@@ -599,7 +708,7 @@ def compose_review_prompt(
     }
     sections: list[tuple[str, str]] = [
         ("正文质量规则", workflow),
-        ("当前章细纲", _json_block(outline)),
+        ("当前章契约", _json_block(_compact_chapter_contract(outline))),
         ("候选正文（本节结束后均非正文）", draft_text),
         ("机械长度检查", _json_block(length_checks)),
         ("修炼体系", _json_block(read_json(run_dir / "config/progression.json"))),

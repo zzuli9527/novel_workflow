@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "cultivation": [
+    {
+      "subject_id": "jiang-shou",
+      "stage": "炼气二层",
+      "abilities": ["基础吐纳", "灵纹辨识", "低强度校阵"],
+      "injuries": [{"state_id": "left-palm-burn", "description": "左掌阵火灼伤，导灵时会刺痛、抖动并导致灵纹失稳"}],
+      "limits": [{"state_id": "live-array-contact-ban", "description": "left-palm-burn 解除前不得接触运行阵眼"}]
+    },
+    {"subject_id": "su-ye", "stage": "炼气一层", "abilities": ["基础吐纳", "安全条款记忆"], "injuries": [], "limits": ["不能独立校阵"]},
+    {"subject_id": "zhao-ju", "stage": "炼气三层", "abilities": ["基础阵法", "事故验收"], "injuries": [], "limits": ["必须服从正式事故记录"]},
+    {"subject_id": "wen-lan", "stage": "炼气四层", "abilities": ["阵纹巡验", "基础御剑"], "injuries": [], "limits": ["不能越过阵堂考核程序直接给资格"]},
+    {"subject_id": "yuan-ke", "stage": "炼气二层", "abilities": ["基础吐纳", "熟悉灵钉领用"], "injuries": [], "limits": ["不能正面对抗巡验弟子"]}
+  ],
+  "resources": [
+    {"owner_id": "jiang-shou", "resource_id": "low-spirit-stone", "amount": 3, "unit": "枚"},
+    {"owner_id": "jiang-shou", "resource_id": "contribution-point", "amount": 8, "unit": "点"},
+    {"owner_id": "jiang-shou", "resource_id": "burn-salve", "amount": 1, "unit": "份"},
+    {"owner_id": "formation-hall", "resource_id": "direction-spirit-nail", "amount": 12, "unit": "枚"}
+  ],
+  "knowledge": [
+    {"character_id": "jiang-shou", "fact_id": "array-command-error-cause", "state": "investigating", "belief": "追后三步的错误不只来自自己的维护签，阵眼方向和灵钉数量也有异常"},
+    {"character_id": "su-ye", "fact_id": "command-slip-tamperer", "state": "believes_false", "belief": "姜守为了催缴维修贡献主动改写了阵法口令签"},
+    {"character_id": "zhao-ju", "fact_id": "jiang-shou-liability", "state": "suspects", "belief": "姜守带伤校阵和维护签足以先冻结资格"},
+    {"character_id": "yuan-ke", "fact_id": "spirit-nail-borrowing", "state": "conceals", "belief": "自己未登记借走三枚定向灵钉，必须让核查停在口令签上"},
+    {"character_id": "wen-lan", "fact_id": "qualification-result", "state": "investigating", "belief": "姜守的资格由修复过程、伤势处置和责任记录决定"}
+  ]
+}

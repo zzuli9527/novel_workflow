@@ -55,7 +55,38 @@ class RunInitializationTests(unittest.TestCase):
             run_dir = init_run(root, "demo-run")
             path = run_dir / "run.json"
             data = json.loads(path.read_text(encoding="utf-8"))
-            data["policies"]["length"]["target_min"] = 2600
+            data["policies"]["length"]["target_min"] = 3100
+            path.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+
+            report = validate_run_directory(root, "demo-run")
+            self.assertFalse(report.valid)
+            self.assertTrue(
+                any(issue.path == "run.policies.length" for issue in report.issues)
+            )
+
+    def test_validation_accepts_preferred_length_range_inside_hard_range(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            run_dir = init_run(root, "demo-run")
+            path = run_dir / "run.json"
+            data = json.loads(path.read_text(encoding="utf-8"))
+            data["policies"]["length"].update(
+                {"preferred_min": 2200, "preferred_max": 2500}
+            )
+            path.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+
+            report = validate_run_directory(root, "demo-run")
+            self.assertTrue(report.valid, report.issues)
+
+    def test_validation_rejects_preferred_length_range_outside_hard_range(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            run_dir = init_run(root, "demo-run")
+            path = run_dir / "run.json"
+            data = json.loads(path.read_text(encoding="utf-8"))
+            data["policies"]["length"].update(
+                {"preferred_min": 1900, "preferred_max": 2250}
+            )
             path.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
 
             report = validate_run_directory(root, "demo-run")
@@ -158,7 +189,15 @@ class ConfigCliTests(unittest.TestCase):
             self.assertEqual(provider["api_key_env"], "MESHYCODE_API_KEY")
             self.assertEqual(
                 provider["routes"]["drafter"]["model_env"],
-                "NOVEL_MODEL_DRAFTER",
+                "NOVEL_MODEL_REWRITER",
+            )
+            self.assertEqual(
+                provider["routes"]["drafter"]["fallback_model_envs"],
+                ["NOVEL_MODEL_REVIEWER"],
+            )
+            self.assertEqual(
+                provider["routes"]["rewriter"]["fallback_model_envs"],
+                ["NOVEL_MODEL_DRAFTER"],
             )
             self.assertEqual(
                 data["policies"]["batch"]["outline_request_chunk_size"], 2

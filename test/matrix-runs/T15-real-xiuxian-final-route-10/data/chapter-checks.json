@@ -1,0 +1,1054 @@
+[
+  {
+    "number": 1,
+    "title": "白绒拒食与三声错铃",
+    "actual_length": 2098,
+    "status": "passed",
+    "hard_pass": true,
+    "requires_review": false,
+    "can_update_state": true,
+    "message": "长度闸门通过",
+    "chapter": 1,
+    "draft_version": 1,
+    "draft_path": "chapters/0001/draft.v1.md",
+    "quality": {
+      "required_outcomes": [
+        {
+          "index": 0,
+          "passed": true,
+          "source_evidence": "鹿群已围上食槽。唯独额前生着一团白绒的幼鹿停在三步外，鼻翼翕动两下，忽然向旁一绕。\n\n它这一绕，身后两只幼鹿也跟着偏开。中槽前顿时空出一块，几只成鹿低头闻过，没吃，反而不安地刨了刨地面。\n\n乔穗立刻放下空桶：“白绒指认中槽。”\n\n“先别给它安身份。”\n\n陆宁走近中槽，没有伸手翻料，只俯身嗅了嗅。青穗草的清气下压着一股极淡的暖燥味，像被烈日晒透的旧褥子，又混进了谷壳焦香。\n\n白绒退得更远了。"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "source_evidence": "陆宁并起两指，按在耳后，收束灵气，只将听息诀放到最低。鹿群的呼吸一层层叠来，成年鹿沉些，幼鹿急些，中间却都夹着不顺畅的短促停顿。\n\n他只听了数息便撤诀。\n\n耳中仍“嗡”地一响，食槽边缘像轻轻向左滑了半寸。陆宁闭眼定了定，脚下没有移动。\n\n乔穗凑近：“它们说什么？”\n\n“呼吸发紧，节奏乱。是不适。”\n\n“谁害的？”\n\n“听不出来。”"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "source_evidence": "“证词也要写得详尽。”\n\n陆宁取来一只洗净的空桶，想把白绒引向左槽。他以柔缰术放出一缕低缓灵气，轻轻压住它偏转的方向，不曾强迫，只给出一条舒缓的行路。\n\n白绒果然走了。\n\n它越过左槽，径直把鼻子探进了陆宁手里的空桶。\n\n乔穗抬头：“它选了证物。”\n\n“桶里什么都没有。”\n\n“所以清白。”\n\n陆宁把桶翻过来给她看：“它只是闻到桶洗过，没有那股暖味。记空桶无异味，白绒愿意靠近。”\n\n乔穗只得把“证物清白”划去，改成“空桶无暖味，白绒主动嗅闻”。她刚写完，白绒又把脑袋往桶里送了送，角芽卡在桶沿。\n\n陆宁扶住桶，乔穗负责把鹿脑袋拔出来。两人忙完，鹿群仍旧没有进食，中槽前的蹄印反倒越来越乱。\n\n值房方向传来急促脚步。\n\n许苛走到栏前，第一眼没看鹿，先看三只食槽，再看地上的分料闸，最后才问：“第几声铃后拒食？”\n\n陆宁答：“第三声开食后。白绒先避中槽，两只幼鹿随行，成鹿闻槽未食。”\n\n乔穗补充：“白绒已经表态。”\n\n许苛看她一眼：“表态几斤几两？”\n\n乔穗张了张嘴。\n\n“写气味、踏痕、进食结果。”许苛取出封料纸和细口瓷瓶，“灵兽不是值房执事，它不签押。”"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "source_evidence": "“一声，聚栏。二声，冷料分左槽。三声，开食。”许苛念到末尾，手指停住，“这里还有一次三声触发。”\n\n陆宁看见那道细痕紧挨着自己的值守时段，间隔不过半刻。\n\n许苛道：“按铃次复述你今晨做过什么。”\n\n“卯初入值房，查三槽空净。一声聚栏，开外栏门；二声分槽，推三道分料闸；三声开食，观察鹿群。发现拒食后未再敲铃。”\n\n“碰过铃槌？”\n\n“第三声后没有。”\n\n“谁能证明？”\n\n陆宁回头。乔穗还蹲在中槽边数蹄印，数到一半，白绒踩过去添了一个新的。她沉默片刻，只能摇头：“我去取过空桶，没一直看着他。”\n\n许苛敲了敲饲铃牌：“牌只记铃序和触发槽位，不记敲铃的人。这一次异常与你值守相邻，是复核项，不是定责。”"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "source_evidence": "他戴上薄皮手套，从中槽内沿刮下一层细末。碎草间粘着几粒暗金色谷屑，指腹一碾，暖燥气便明显了。\n\n陆宁神色微沉：“像燥阳谷。”\n\n“初闻是。”许苛将残留装瓶，封纸压印，“只说明燥阳谷到过这只槽，不说明谁放的。封存，核份量。”"
+        },
+        {
+          "index": 5,
+          "passed": true,
+          "source_evidence": "白绒此时挣开乔穗，凑到陆宁身边，嗅了嗅他的袖口。它没闻到中槽那股暖燥味，便安静站了一瞬，又转头去追空桶。\n\n乔穗眼睛一亮：“它愿意亲近陆宁。”\n\n许苛封好瓷瓶：“亲近不抵一粒谷，避开也不抵一声铃。后续我只看铃序、饲料份量和兽栏后果。”"
+        },
+        {
+          "index": 6,
+          "passed": true,
+          "source_evidence": "许苛转向陆宁：“今夜在我或指定弟子监督下，复核封存残留、铃序和鹿栏安抚流程。你的听息回声眩晕尚在，方才只听数息，耳鸣也没避过。”\n\n陆宁没有辩解：“是。”\n\n“禁令再记一次。伤势确认解除前，不得独自在夜间对整群云蹄鹿用听息诀。低强度复核也须有人在场。”"
+        }
+      ],
+      "forbidden_outcomes": [
+        {
+          "index": 0,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 1,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 2,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 3,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 4,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 5,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 6,
+          "appeared": false,
+          "source_evidence": ""
+        }
+      ],
+      "summary_like": false,
+      "cultivation_consistent": true,
+      "comedy_causal": true,
+      "serious_consequences_preserved": true,
+      "chapter_hook_concrete": true,
+      "resource_continuity_consistent": true,
+      "knowledge_states_consistent": true,
+      "character_voices_distinct": true,
+      "multi_line_causality_preserved": true,
+      "warnings": [],
+      "contract_failures": [],
+      "quality_failures": []
+    },
+    "quality_status": "draft_passed"
+  },
+  {
+    "number": 2,
+    "title": "错铃夜与冲栏鹿",
+    "actual_length": 2093,
+    "status": "passed",
+    "hard_pass": true,
+    "requires_review": false,
+    "can_update_state": true,
+    "message": "长度闸门通过",
+    "chapter": 2,
+    "draft_version": 2,
+    "draft_path": "chapters/0002/draft.v2.md",
+    "quality": {
+      "required_outcomes": [
+        {
+          "index": 0,
+          "passed": true,
+          "source_evidence": "宵禁梆子敲过两轮，鹿栏里的青穗草仍一口未动。\n\n陆宁站在廊下，隔着半开的窗缝看见白绒从中槽前退开。幼鹿前蹄落地很轻，后蹄却反复刨着垫草，几只成年云蹄鹿随它来回转向，鼻息越来越重。\n\n监督复核已经结束，许苛临走前封了中槽，也重申过禁令。按规矩，此刻陆宁该回试舍。\n\n白绒忽然晃了一下，前膝几乎碰到地面。\n\n陆宁推门入栏。"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "source_evidence": "他抬手先敲了右铃。\n\n清响荡过栏顶。\n\n饲铃牌上，一道银纹随即亮起，右侧槽位下方也闪过一线微光。\n\n乔穗脸色变了：“顺序错了。”"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "source_evidence": "白绒从中槽边横窜，鹿群被它带得挤向栏门。暖性残留令几只鹿呼吸发急，错位的铃声又把它们引向相反方向。前鹿想退，后鹿仍在向前，鹿角与栏木接连擦响。\n\n陆宁甩出柔缰。\n\n两缕低强度灵气绕上最前方两只鹿的肩颈，将它们往侧道牵。它们偏开半步，后方鹿群一拥，两缕柔缰当即绷直。陆宁手腕一沉，鞋底被拖过湿草，掌中灵气也被冲势震得断续。\n\n炼气二层的柔缰能改小兽方向，压不住整群冲势。"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "source_evidence": "陆宁结印，听息诀骤然铺开。\n\n十几道呼吸同时灌入耳中。长短、轻重、急缓，层层撞在一起。他原本只想找出鹿群冲势里最松的一侧，却听见每一道喘息都像贴着耳骨回响。\n\n左侧有空。\n\n他猛地收紧右手柔缰，朝乔穗喊：“让右边！”\n\n乔穗刚退半步，便看见右侧三只云蹄鹿贴栏冲来：“右边没有路！”\n\n陆宁眼前的栏木陡然倾斜。他分明朝左迈步，身体却撞上右侧门柱。方向在耳鸣里整个翻了过来。\n\n下一瞬，鹿群擦着门柱挤过。\n\n白绒被成年鹿带得侧滑，陆宁俯身将它往内推开，自己肩头重重撞上栏门。门铰承住鹿群余势，先是弯折，随后“咔”地裂开一道口子。整扇栏门向外歪斜，底角拖进泥里。"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "source_evidence": "许苛蹲下检查门铰。裂口贯过铰片，固定钉也被扯松。他没有伸手硬掰，只取出损坏签压在门柱上，又命乔穗搬来横木，从外侧抵住歪斜栏门。\n\n“铰片裂损，当场不能恢复。今夜只能临时加固，明日起报修。修料、工时与赔偿，你参与核算。”"
+        },
+        {
+          "index": 5,
+          "passed": true,
+          "source_evidence": "“燥阳谷不是我加的。”\n\n许苛合上半边册页：“中槽有燥阳谷残留，错铃发生在你值守相邻时段，今夜你又私自改铃。我当前先按你可能私加暖料核查。”\n\n“饲铃牌不记敲铃者。”\n\n“所以我说核查，不是定案。”许苛指向封住的中槽，“残留只能证明暖性饲料到过鹿栏，不能单独证明谁投放。你的违规与投料责任分开记。铃序、份量、饲料路线，一项都不会少。”"
+        },
+        {
+          "index": 6,
+          "passed": true,
+          "source_evidence": "尺端忽然停住。\n\n泥里有一串圆钝压痕，边缘宽厚，没有分瓣，不是云蹄鹿留下的。压痕从中槽后方斜穿清理道，一直没入食槽阵的石廊。\n\n乔穗挪过灯盏，顺着最后两枚压痕照去。\n\n它们正停在那块压力石旁。"
+        }
+      ],
+      "forbidden_outcomes": [
+        {
+          "index": 0,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 1,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 2,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 3,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 4,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 5,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 6,
+          "appeared": false,
+          "source_evidence": ""
+        }
+      ],
+      "summary_like": false,
+      "cultivation_consistent": true,
+      "comedy_causal": true,
+      "serious_consequences_preserved": true,
+      "chapter_hook_concrete": true,
+      "resource_continuity_consistent": true,
+      "knowledge_states_consistent": true,
+      "character_voices_distinct": true,
+      "multi_line_causality_preserved": true,
+      "warnings": [],
+      "contract_failures": [],
+      "quality_failures": []
+    },
+    "quality_status": "draft_passed"
+  },
+  {
+    "number": 3,
+    "title": "冻牌弟子与圆钝压痕",
+    "actual_length": 2295,
+    "status": "passed",
+    "hard_pass": true,
+    "requires_review": false,
+    "can_update_state": true,
+    "message": "长度闸门通过",
+    "chapter": 3,
+    "draft_version": 1,
+    "draft_path": "chapters/0003/draft.v1.md",
+    "quality": {
+      "required_outcomes": [
+        {
+          "index": 0,
+          "passed": true,
+          "source_evidence": "许苛合上簿册，“复查准许。只限白日，须我或同组弟子在场，不得听整群兽息，不得独立触动食槽阵。夜间禁令照旧。”"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "source_evidence": "乔穗一把扶住他肩膀，将人往左扳正：“压力石在那边。你走的是坏门。”\n\n陆宁停稳，没有辩解。\n\n许苛在值事簿上添了一行：“辰时，方向错判一次，旁人扶正。听息回声仍重。”"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "source_evidence": "乔穗重新铺开沾泥薄纸，将“白绒在告状”彻底划去，逐项写下避槽位置、绕行距离、暖性气味与圆钝压痕。"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "source_evidence": "许苛以木尺压了压压力石。石面缓缓下沉，阵盘内传出机括咬合声，指向暖料槽路的细铜片随之偏转。\n\n“压力石认重量和持续时间，不认蹄子，更不认引导者。”他说，“压痕与贪食豚栏常见蹄垫痕相似，只能记相似。不得定哪只豚，也不得定谁带来的。”"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "source_evidence": "“第一张，只记压力石：压痕尺寸、泥层、草根倒向，另查受压时长。”\n\n“第二张，只记饲铃牌：哪一铃异常，触发哪个槽位。饲铃牌不记敲铃者，别擅自添名字。”\n\n“第三张，只记燥阳谷残留：中槽、槽缝、阵路沿途各有多少，气味和颗粒往哪边递减。”\n\n乔穗问：“白绒的拒食放哪张？”\n\n“另纸。它能证明自己避了什么，不能替你们把三张纸缝成一个人。”"
+        },
+        {
+          "index": 5,
+          "passed": true,
+          "source_evidence": "他又指了指栏门：“复查前，先加一道横撑。昨夜的麻绳只够撑到今日。门铰裂了就是裂了，不会因为查出别的路径便自己长好。报修、工时、赔偿，后续照算。”"
+        }
+      ],
+      "forbidden_outcomes": [
+        {
+          "index": 0,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 1,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 2,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 3,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 4,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 5,
+          "appeared": false,
+          "source_evidence": ""
+        }
+      ],
+      "summary_like": false,
+      "cultivation_consistent": true,
+      "comedy_causal": true,
+      "serious_consequences_preserved": true,
+      "chapter_hook_concrete": true,
+      "resource_continuity_consistent": true,
+      "knowledge_states_consistent": true,
+      "character_voices_distinct": true,
+      "multi_line_causality_preserved": true,
+      "warnings": [],
+      "contract_failures": [],
+      "quality_failures": []
+    },
+    "quality_status": "draft_passed"
+  },
+  {
+    "number": 4,
+    "title": "贪食豚把石头睡热了",
+    "actual_length": 2236,
+    "status": "passed",
+    "hard_pass": true,
+    "requires_review": false,
+    "can_update_state": true,
+    "message": "长度闸门通过",
+    "chapter": 4,
+    "draft_version": 1,
+    "draft_path": "chapters/0004/draft.v1.md",
+    "quality": {
+      "required_outcomes": [
+        {
+          "index": 0,
+          "passed": true,
+          "source_evidence": "许苛将三次结果写进阵录：“持续受压，暖槽偏向鹿栏；解除压力，阵路复位。错送可能存在。至于昨夜压石的是不是这只、为何停留，尚不能定。”"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "source_evidence": "一只灰背贪食豚从半掩的栏门挤出脑袋，鼻尖贴着地面一路嗅。乔穗伸手去拦，它绕过她的膝盖，径直走到压力石旁，先用肚皮蹭了两下，再慢慢把四蹄收进腹下，沉沉趴住。\n\n压力石亮起暗红纹路。"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "source_evidence": "陆宁坐在隔绳外，双手压膝：“只听它一只，十息。若有方向错判，立刻停。”\n\n许苛站在他右后方：“不得扩到鹿群。不得借呼吸猜人。说节奏，不说心思。”"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "source_evidence": "片刻后，耳中的尖鸣稍稍退远，像从耳骨里挪到了院墙外，可脚下仍有轻微倾斜感。\n\n许苛问：“还能报结果？”"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "source_evidence": "“可作低强度对照。”许苛在阵录后添上一行，“鹿对暖性余味有受热不适，与群体惊慌节奏不同。”\n\n他笔锋一转，又补了三句：“不能证明谁投料。不能证明昨夜具体阵路。不能抵销错铃与宵禁违规。”"
+        },
+        {
+          "index": 5,
+          "passed": true,
+          "source_evidence": "许苛指向贪食豚栏：“能。画图的人最熟压痕与阵沟，午后清豚栏，再刷压力石周边。泥印、草屑分别留样。”"
+        }
+      ],
+      "forbidden_outcomes": [
+        {
+          "index": 0,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 1,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 2,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 3,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 4,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 5,
+          "appeared": false,
+          "source_evidence": ""
+        }
+      ],
+      "summary_like": false,
+      "cultivation_consistent": true,
+      "comedy_causal": true,
+      "serious_consequences_preserved": true,
+      "chapter_hook_concrete": true,
+      "resource_continuity_consistent": true,
+      "knowledge_states_consistent": true,
+      "character_voices_distinct": true,
+      "multi_line_causality_preserved": true,
+      "warnings": [],
+      "contract_failures": [],
+      "quality_failures": []
+    },
+    "quality_status": "draft_passed"
+  },
+  {
+    "number": 5,
+    "title": "甜根囊领用册不认顺手",
+    "actual_length": 2115,
+    "status": "passed",
+    "hard_pass": true,
+    "requires_review": false,
+    "can_update_state": true,
+    "message": "长度闸门通过",
+    "chapter": 5,
+    "draft_version": 1,
+    "draft_path": "chapters/0005/draft.v1.md",
+    "quality": {
+      "required_outcomes": [
+        {
+          "index": 0,
+          "passed": true,
+          "source_evidence": "“甜根囊，一袋。酉末领出，名目——安置贪食豚换栏。领用人，贺鸣。”"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "source_evidence": "乔穗用细针拨了拨：“都是三股细丝拧成，断口散开，气味也近。”\n\n许苛问：“能写什么？”\n\n“甜根囊来过这里。”\n\n陆宁摇头：“只能写甜根囊外袋同类纤维曾接近此处。留样不能说明是谁带来，也不能说明贪食豚一定压过石。”"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "source_evidence": "“我没往鹿栏投过。”贺鸣道，“甜根囊只是为了让贪食豚离开我的栏位。它后来往哪儿蹭，是它自己的腿。”"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "source_evidence": "许苛看向陆宁：“一次，短息。只听白绒。”\n\n陆宁按住耳后封耳条，缓缓引出一缕灵气。听息诀只落在白绒身上，不向旁侧扩散。\n\n细碎的呼吸声贴近耳中。\n\n两短，一滞，再短促收紧。\n\n不像昨夜群体惊慌时此起彼伏的急乱，也没有互相追随的节奏。更像白绒先前靠近暖槽时，胸息受热后出现的回避。\n\n陆宁立刻收诀。\n\n耳内仍旧闷响了一下，脚下也有轻微浮晃。他扶住栏柱，等视线定住，才开口：“单兽。受热不适前的躲槽节奏，不是群体惊慌。”"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "source_evidence": "“从今日起，不再只复查陆宁是否私加燥阳谷。”许苛道，“分三段查。甜根囊从领出到耗用去了哪里；贪食豚昨夜停在何处、停了多久；暖槽错路是否与受压时段重合。”"
+        }
+      ],
+      "forbidden_outcomes": [
+        {
+          "index": 0,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 1,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 2,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 3,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 4,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 5,
+          "appeared": false,
+          "source_evidence": ""
+        }
+      ],
+      "summary_like": false,
+      "cultivation_consistent": true,
+      "comedy_causal": true,
+      "serious_consequences_preserved": true,
+      "chapter_hook_concrete": true,
+      "resource_continuity_consistent": true,
+      "knowledge_states_consistent": true,
+      "character_voices_distinct": true,
+      "multi_line_causality_preserved": true,
+      "warnings": [],
+      "contract_failures": [],
+      "quality_failures": []
+    },
+    "quality_status": "draft_passed"
+  },
+  {
+    "number": 6,
+    "title": "贪食豚只跟甜味讲道理",
+    "actual_length": 2046,
+    "status": "passed",
+    "hard_pass": true,
+    "requires_review": false,
+    "can_update_state": true,
+    "message": "长度闸门通过",
+    "chapter": 6,
+    "draft_version": 2,
+    "draft_path": "chapters/0006/draft.v2.md",
+    "quality": {
+      "required_outcomes": [
+        {
+          "index": 0,
+          "passed": true,
+          "source_evidence": "许苛把饲铃牌搁上石墩：“贺鸣，从领料开始。按铃次、步数、甜根囊用量说。记不清，就回豚栏重走。”\n\n贺鸣理了理腰间柔缰绳：“酉末二刻领甜根囊一袋，名目是安置贪食豚换栏。三声晚饲铃后到我栏外，二十七步。那豚不听栏铃，我以柔缰引它出门。”"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "source_evidence": "许苛收起记时片：“少量甜根囊残味，足以诱使贪食豚靠近并停留压力石。只证诱因可行，不证明昨夜压石对象有意破坏阵路。”"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "source_evidence": "贺鸣看着被蹭乱的泥线，终于低下头：“昨夜是我私下用了甜根囊，把它从自己栏位引开。它赖着不走，我又在石缝边留了一点，让它停在那里。我只想让它别回来，没投燥阳谷。”"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "source_evidence": "许苛翻出处置册：“贺鸣，诱引饲料去向违规，待处置。私下引贪食豚停在压力石附近，记入后续对照。暂不认定你投放燥阳谷，也不扩作长期蓄意破坏。”\n\n他转向陆宁：“今日新证据削弱了你私加燥阳谷的嫌疑，但还不能定结。宵禁入栏、擅改铃序、栏门铰损坏另册照记。二点贡献不退，余额四点，试用资格继续冻结。”\n\n陆宁拱手：“明白。”\n\n许苛将饲铃牌、记时片和留样袋分别收入木匣：“下一步，对照压力石持续受压时长、饲铃牌异常铃序、燥阳谷残留路线。”"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "source_evidence": "许苛又看向陆宁：“你眩晕有所减轻，但未解除。明日白日，可在我监督下继续单兽低强度校验。夜间独自对整群听息，禁令照旧。”"
+        }
+      ],
+      "forbidden_outcomes": [
+        {
+          "index": 0,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 1,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 2,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 3,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 4,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 5,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 6,
+          "appeared": false,
+          "source_evidence": ""
+        }
+      ],
+      "summary_like": false,
+      "cultivation_consistent": true,
+      "comedy_causal": true,
+      "serious_consequences_preserved": true,
+      "chapter_hook_concrete": true,
+      "resource_continuity_consistent": true,
+      "knowledge_states_consistent": true,
+      "character_voices_distinct": true,
+      "multi_line_causality_preserved": true,
+      "warnings": [],
+      "contract_failures": [],
+      "quality_failures": []
+    },
+    "quality_status": "draft_passed"
+  },
+  {
+    "number": 7,
+    "title": "三张表都不替人背锅",
+    "actual_length": 2289,
+    "status": "passed",
+    "hard_pass": true,
+    "requires_review": false,
+    "can_update_state": true,
+    "message": "长度闸门通过",
+    "chapter": 7,
+    "draft_version": 2,
+    "draft_path": "chapters/0007/draft.v2.md",
+    "quality": {
+      "required_outcomes": [
+        {
+          "index": 0,
+          "passed": true,
+          "source_evidence": "许苛压上镇纸：“合成一张复核表。只对时辰、铃次、槽位、份量。谁看着可疑，不入表。”"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "source_evidence": "许苛核过三处：“压力石持续受压，覆盖异常三声铃后的暖槽偏移。残留路线，也与暖槽偏向鹿栏的阵路一致。到这里，只能说明暖料有错送路径。”"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "source_evidence": "“子初四刻后。”陆宁答，“鹿群先躁动，我后改铃。”\n\n“按铃次复述。”\n\n“异常三声铃结束。鹿群呼吸加快，开始撞栏。我入栏，改了一次安抚铃序。”\n\n许苛翻到饲铃牌末段。那里另有一道孤立的铃痕，确在压力石受压结束之后，也在鹿群躁动记录之后。\n\n“这声是你的违规。”许苛道，“宵禁后入栏、擅改安抚铃，照记。却不是异常三声铃的起点。”"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "source_evidence": "他收起记录板，当场改了旧案上的批注：“陆宁私加燥阳谷，改为尚无直接投料证据。待暖槽出料数、鹿栏残留量、原料库登记量核定。”\n\n陆宁问：“试用冻结呢？”\n\n“不解。二点贡献不退，余额四点。宵禁、错铃另册。栏门铰未修，修理与赔偿照旧。”"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "source_evidence": "乔穗把脸板正，继续登记。她这回不再写白绒“拒绝认账”，只记东槽甜气较重、槽底有暖料残留、白绒在该槽前停步拒食，蹄印转向西槽。"
+        },
+        {
+          "index": 5,
+          "passed": true,
+          "source_evidence": "“受热不适。”陆宁退开半步，“不是群体惊慌。只能验节奏，不能说明谁投料，也不能验谁说了假话。”"
+        },
+        {
+          "index": 6,
+          "passed": true,
+          "source_evidence": "“比昨日轻。转身仍晕。”\n\n“回声眩晕只记部分恢复，未解除。夜间独自整群听息禁令照旧。封耳条继续戴，今日不得再校验第二只。”"
+        }
+      ],
+      "forbidden_outcomes": [
+        {
+          "index": 0,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 1,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 2,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 3,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 4,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 5,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 6,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 7,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 8,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 9,
+          "appeared": false,
+          "source_evidence": ""
+        }
+      ],
+      "summary_like": false,
+      "cultivation_consistent": true,
+      "comedy_causal": true,
+      "serious_consequences_preserved": true,
+      "chapter_hook_concrete": true,
+      "resource_continuity_consistent": true,
+      "knowledge_states_consistent": true,
+      "character_voices_distinct": true,
+      "multi_line_causality_preserved": true,
+      "warnings": [],
+      "contract_failures": [],
+      "quality_failures": []
+    },
+    "quality_status": "draft_passed"
+  },
+  {
+    "number": 8,
+    "title": "原料库册不会替谁少一斗",
+    "actual_length": 2207,
+    "status": "passed",
+    "hard_pass": true,
+    "requires_review": false,
+    "can_update_state": true,
+    "message": "长度闸门通过",
+    "chapter": 8,
+    "draft_version": 1,
+    "draft_path": "chapters/0008/draft.v1.md",
+    "quality": {
+      "required_outcomes": [
+        {
+          "index": 0,
+          "passed": true,
+          "source_evidence": "许苛将算盘拨到最后一位：“异常三声铃后，暖槽出料四升。鹿栏东槽及偏送阵路复称三升八合。二合为沿路损耗。库中短少四升，与该次出料相符。”"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "source_evidence": "乔穗先把踏痕拓纸压在台角，又把甜气位置图钉在木板上，随后逐袋解绳。东槽一号是槽底扫出的谷粒，二号是槽沿缝隙里的碎屑，三号则混了少量鹿栏垫草。\n\n“白绒的三份——”\n\n许苛抬眼。\n\n“东槽三处残留。”乔穗把袋子放上小秤，“一号一升七合，二号六，三号九合。合计三升二合。”"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "source_evidence": "许苛看向陆宁：“只准用昨日校验所得，不得再运诀。”\n\n陆宁点头。他没有凝神听取整栏兽息，只依白绒昨日单兽低强度校验的记录，对照眼前起伏的腹侧。\n\n“短促，浅，咽前停顿。是受热不适。不是群体惊慌。”\n\n乔穗问：“翻到账上怎么写？”\n\n“东槽暖料残留位置，与受热不适、拒食位置相合。”陆宁顿了顿，“不能写谁投的。”"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "source_evidence": "许苛提笔，将旧批注划去，重写：“燥阳谷份量缺口与异常铃后暖槽出料相符，鹿栏残留及阵路损耗可核。现有事实暂不支持陆宁私自投放燥阳谷，尚未结案。”"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "source_evidence": "“不能。”许苛道，“四升燥阳谷可由错路解释，只说明暂不能认定有人另行投料。你领用诱引饲料不记耗用，又将贪食豚引到压力石附近，压力石持续受压的时段与错路重合。两件事不是一件罪，也不是毫无关系。下一步合并铃序与受压记录，另行处置。”"
+        },
+        {
+          "index": 5,
+          "passed": true,
+          "source_evidence": "许苛将另一册推到他面前：“私投燥阳谷暂不成立，不等于宵禁后入栏无事。你擅改一次安抚铃，记录保留；阻栏处置不当，栏门铰损坏，修理与赔偿保留；已扣二点贡献不退，余额四点；试用资格继续冻结。”\n\n他又指了指陆宁耳后的封耳条：“回声眩晕未由我确认解除。夜间不得独自对整群使用听息诀，仍然有效。”"
+        }
+      ],
+      "forbidden_outcomes": [
+        {
+          "index": 0,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 1,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 2,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 3,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 4,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 5,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 6,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 7,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 8,
+          "appeared": false,
+          "source_evidence": ""
+        }
+      ],
+      "summary_like": false,
+      "cultivation_consistent": true,
+      "comedy_causal": true,
+      "serious_consequences_preserved": true,
+      "chapter_hook_concrete": true,
+      "resource_continuity_consistent": true,
+      "knowledge_states_consistent": true,
+      "character_voices_distinct": true,
+      "multi_line_causality_preserved": true,
+      "warnings": [],
+      "contract_failures": [],
+      "quality_failures": []
+    },
+    "quality_status": "draft_passed"
+  },
+  {
+    "number": 9,
+    "title": "会引猪的人负责把猪挡在外面",
+    "actual_length": 2111,
+    "status": "passed",
+    "hard_pass": true,
+    "requires_review": false,
+    "can_update_state": true,
+    "message": "长度闸门通过",
+    "chapter": 9,
+    "draft_version": 1,
+    "draft_path": "chapters/0009/draft.v1.md",
+    "quality": {
+      "required_outcomes": [
+        {
+          "index": 0,
+          "passed": true,
+          "source_evidence": "第一张，压力石自亥初二刻起持续受压。第二张，亥初三刻出现异常三声铃，暖槽阵路偏向鹿栏。第三张，燥阳谷出料四升，鹿栏与偏送阵路复称三升八合，余二合为沿路损耗。第四张，贺鸣于亥初前领走甜根囊一袋，未记耗用，残囊留在压力石旁。\n\n许苛用朱笔将四处时辰连成一线：“贺鸣，复述。”"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "source_evidence": "“记录里也没写是你放的。”许苛道，“甜根囊解释压石，不解释燥阳谷由谁投入暖槽。现有材料不能认定你亲手投放，更不能写成你长期蓄意毁阵。”"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "source_evidence": "许苛落下一笔：“私用诱引饲料，漏记耗用，诱使贪食豚持续停留压力石，造成食槽阵错路条件。记过一次，清理压力石周边，安装防豚隔栏，赔工照册核算。”"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "source_evidence": "器具归净，施工重新开始。贺鸣先铲掉压力石边凝结的泥和甜根碎屑，再拆开偏接阵槽。陆宁不能猛转身搬重件，便沿阵纹逐段报位。\n\n“左侧导槽高半指。”\n\n贺鸣垫平槽脚。\n\n“压力石回弹迟一息。”\n\n乔穗清出石缝细砂，贺鸣重新校紧承簧。\n\n临时横撑挡住隔栏右脚的位置，他们不能挪横木，只得把隔栏向外移半尺，再加一道斜挡。贺鸣扛桩、压脚、收绳，肩上衣料很快湿透。许苛逐项验过，才准乔穗把铃序复核牌钉在阵台正面：一声开冷槽，二声换栏，三声启暖槽；压力石受压异常，先停铃复核。"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "source_evidence": "空槽试送时，许苛亲自拨动饲铃牌。\n\n一声，冷槽阵纹亮起。二声，分槽轮转。三声之后，暖槽木斗沿原定阵路滑向豚栏外的接料位，没有偏向云蹄鹿东槽。"
+        },
+        {
+          "index": 5,
+          "passed": true,
+          "source_evidence": "乔穗凑近闻了闻。木槌柄、绳头和贺鸣那只旧工具筐上，都沾着淡甜气。\n\n她立即划掉前一句，改记：“施工器具受甜根气味污染，贪食豚沿污染器具移动，妨碍隔栏定位。”\n\n许苛扫过记录：“停工。器具全洗。以后压力石区只准用无诱引气味工具。”"
+        },
+        {
+          "index": 6,
+          "passed": true,
+          "source_evidence": "许苛先检查陆宁耳侧。那条已经使用过的封耳条仍贴着，边缘略旧。\n\n“你先前已停止整群听息，休养数日，也用过一条封耳条。今日只做单兽低强度校验。”他指向远栏，“不得扩听，不得借兽息判断谁投料、谁说谎。”\n\n陆宁盘膝坐在栏外：“只辨节奏。”"
+        },
+        {
+          "index": 7,
+          "passed": true,
+          "source_evidence": "许苛在伤势册上写道：“经停止整群听息、使用封耳条、休养及白日监督下单兽低强度校验，听息回声眩晕解除。”\n\n朱笔再落一行。\n\n“夜间不得独自对整群使用听息诀的旧禁令随之结束。自今日起两日内，不得对整群使用听息诀。单兽低强度使用，仍须报备。”"
+        },
+        {
+          "index": 8,
+          "passed": true,
+          "source_evidence": "“你的试用冻结不解除。”许苛合上伤势册，将食槽阵初试记录、栏门赔偿单和责任卷并排放好，“明日验阵、宣告燥阳谷责任结论，再审临时饲兽牌。”"
+        },
+        {
+          "index": 9,
+          "passed": true,
+          "source_evidence": "他转头看了一眼裂开的栏门铰。横撑仍顶在原处，铰座上的裂缝半点没少。\n\n“食槽阵修了，栏门没修。陆宁，后续修理工时与赔偿写入你的条件审查。”"
+        }
+      ],
+      "forbidden_outcomes": [
+        {
+          "index": 0,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 1,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 2,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 3,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 4,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 5,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 6,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 7,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 8,
+          "appeared": false,
+          "source_evidence": ""
+        }
+      ],
+      "summary_like": false,
+      "cultivation_consistent": true,
+      "comedy_causal": true,
+      "serious_consequences_preserved": true,
+      "chapter_hook_concrete": true,
+      "resource_continuity_consistent": true,
+      "knowledge_states_consistent": true,
+      "character_voices_distinct": true,
+      "multi_line_causality_preserved": true,
+      "warnings": [],
+      "contract_failures": [],
+      "quality_failures": []
+    },
+    "quality_status": "draft_passed"
+  },
+  {
+    "number": 10,
+    "title": "临时牌上也写着赔栏门",
+    "actual_length": 2132,
+    "status": "passed",
+    "hard_pass": true,
+    "requires_review": false,
+    "can_update_state": true,
+    "message": "长度闸门通过",
+    "chapter": 10,
+    "draft_version": 2,
+    "draft_path": "chapters/0010/draft.v2.md",
+    "quality": {
+      "required_outcomes": [
+        {
+          "index": 0,
+          "passed": true,
+          "source_evidence": "陆宁先向许苛报备，才将两指轻按耳后，只把听息诀落在白绒一只鹿身上。\n\n细缓的呼吸混着咀嚼声传来，没有受热时的急促滞顿，也没有群体惊慌时一呼带一呼的乱拍。陆宁只听了三息便收诀，既不牵连旁边鹿群，也不追索气味来处。\n\n许苛问：“结果。”\n\n“能咽，不热，不是夸我。”\n\n白绒恰在此时抬头，鼻尖往陆宁空着的手上嗅了嗅，又低头继续吃。\n\n乔穗把刚要落下的“亲近”二字收住，改记为：“单兽低强度校验，呼吸平稳；西槽持续进食。陆宁手上无燥阳谷气味。”\n\n许苛逐项检查槽温、出口、隔栏木楔和复核牌，最后在验收册上盖下印章。\n\n“空槽试送无偏移，暖槽恢复原定路线；压力石校紧，防豚隔栏可阻持续压石；铃序复核牌可用。食槽阵，验收通过。”\n\n他翻到责任结论一页，声音不高，却一字未略。\n\n“压力石持续受压记录，与饲铃牌异常铃序覆盖时段相合；燥阳谷残留路线与错接阵路相合；原料库四升份量缺口，与暖槽错送量相合；甜根囊领用去向，证明贺鸣曾诱引贪食豚停留压力石，造成错路条件。”"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "source_evidence": "“压力石持续受压记录，与饲铃牌异常铃序覆盖时段相合；燥阳谷残留路线与错接阵路相合；原料库四升份量缺口，与暖槽错送量相合；甜根囊领用去向，证明贺鸣曾诱引贪食豚停留压力石，造成错路条件。”\n\n贺鸣握着刷子的手紧了紧。\n\n许苛继续道：“贺鸣之责，止于私用甜根囊、漏记耗用、诱引贪食豚压石。记过、清理赔工及隔栏安装照旧。现有证据不认定他投放燥阳谷，也不作长期毁阵论处。”\n\n随后，他看向陆宁。\n\n“上述记录、铃序、份量与残留路线，足以纠正先前对你私自投放燥阳谷的误信。燥阳谷经食槽阵错路进入鹿栏。现有证据，不能证明你私加燥阳谷。”"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "source_evidence": "许苛逐项检查槽温、出口、隔栏木楔和复核牌，最后在验收册上盖下印章。\n\n“空槽试送无偏移，暖槽恢复原定路线；压力石校紧，防豚隔栏可阻持续压石；铃序复核牌可用。食槽阵，验收通过。”"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "source_evidence": "许苛取出一块窄长木牌。牌正面烙着“御兽苑临时饲兽”，背面却密密刻了数行小字。\n\n“陆宁，试用资格由冻结改为通过条件审查。听息回声眩晕已经确认解除，原先夜间独自整群听息禁令随之结束。但自昨日计，两日内不得对整群使用听息诀；单兽低强度校验仍须报备。”"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "source_evidence": "陆宁站直：“宵禁后，我未经准许进入鹿栏。鹿群躁动后，我擅自改变一次安抚铃顺序。冲栏时处置不当，超限听取整群兽息，错判方向，未能护住栏门铰。”\n\n“顺序无误。”许苛把违规册推回去，“私加燥阳谷不成立，不等于这三项消失。”"
+        },
+        {
+          "index": 5,
+          "passed": true,
+          "source_evidence": "“扣二点贡献，不退。你原有六点，现余四点。”"
+        },
+        {
+          "index": 6,
+          "passed": true,
+          "source_evidence": "他又展开损坏单。纸上画着裂开的栏门铰，旁边写明临时横撑位置、修理工时与赔偿待核。\n\n“扣二点贡献，不退。你原有六点，现余四点。”\n\n“明白。”\n\n“栏门铰未修复。你参与拆铰、校门和换件，赔偿按材料实耗核算。”"
+        },
+        {
+          "index": 7,
+          "passed": true,
+          "source_evidence": "“陆宁，试用资格由冻结改为通过条件审查。听息回声眩晕已经确认解除，原先夜间独自整群听息禁令随之结束。但自昨日计，两日内不得对整群使用听息诀；单兽低强度校验仍须报备。”"
+        },
+        {
+          "index": 8,
+          "passed": true,
+          "source_evidence": "许苛继续道：“贺鸣之责，止于私用甜根囊、漏记耗用、诱引贪食豚压石。记过、清理赔工及隔栏安装照旧。现有证据不认定他投放燥阳谷，也不作长期毁阵论处。”"
+        },
+        {
+          "index": 9,
+          "passed": true,
+          "source_evidence": "白绒先在两槽之间停了停，鼻端贴近东槽边缘，随即转向西槽。它沿着新铺的细沙走出四枚清楚蹄印，低头吃下第一口鹿料。\n\n乔穗写道：“白绒愿意签收西槽——”\n\n许苛的目光扫过来。\n\n她立刻接下去：“即西槽槽温凉，无燥阳谷甜燥气，进食位置距槽口一尺二寸，蹄印由东向西，东槽未进食。”"
+        }
+      ],
+      "forbidden_outcomes": [
+        {
+          "index": 0,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 1,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 2,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 3,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 4,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 5,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 6,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 7,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 8,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 9,
+          "appeared": false,
+          "source_evidence": ""
+        }
+      ],
+      "summary_like": false,
+      "cultivation_consistent": true,
+      "comedy_causal": true,
+      "serious_consequences_preserved": true,
+      "chapter_hook_concrete": true,
+      "resource_continuity_consistent": true,
+      "knowledge_states_consistent": true,
+      "character_voices_distinct": true,
+      "multi_line_causality_preserved": true,
+      "warnings": [
+        "required_outcomes[9] 中乔穗“继续承担清栏与归档工作”在正文后段另有体现，但与白绒最终进食位置、槽位残留的登记不在同一小段连续原句内；整体情节已满足。"
+      ],
+      "contract_failures": [],
+      "quality_failures": []
+    },
+    "quality_status": "draft_passed"
+  }
+]

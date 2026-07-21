@@ -203,7 +203,7 @@ class LongWorkloadTests(unittest.TestCase):
                         "title": f"长压测{chapter}",
                         "story_unit_id": "unit-long-001",
                         "status": "outline_ready",
-                        "target_length": {"min": 2000, "max": 2500},
+                        "target_length": {"min": 2000, "max": 3000},
                         "intent": "推进修炼并完成喜剧因果",
                         "opening_state": [],
                         "required_outcomes": [progression],
@@ -256,7 +256,7 @@ class LongWorkloadTests(unittest.TestCase):
                     )
                 )
                 actual = checks["actual_length"]
-                self.assertTrue(2000 <= actual <= 2500)
+                self.assertTrue(2000 <= actual <= 3000)
                 self.assertEqual(checks["quality_status"], "draft_passed")
                 total_length += actual
             self.assertGreaterEqual(total_length, 24000)

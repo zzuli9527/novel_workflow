@@ -338,6 +338,7 @@ def generate_unit_review(root: Path, run_id: str, unit_id: str) -> dict[str, Any
             "revision_recovered",
             "incomplete_tasks_recovered",
             "commit_recovered",
+            "unit_resumed",
         }:
             continue
         chapter_value = runtime_event.get("chapter")

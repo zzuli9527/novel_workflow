@@ -635,12 +635,13 @@ def _extract_state_unlocked(
     run_config = read_json(run_dir / "run.json")
     if status == "state_failed":
         retry_kind = outline.get("state_failure_kind", "format")
-        if retry_kind not in {"transport", "format"}:
+        if retry_kind not in {"transport", "format", "content"}:
             retry_kind = "format"
+        retry_counter_key = f"state_{retry_kind}"
         retry_counts = outline.get("retry_counts", {})
         if not isinstance(retry_counts, dict):
             retry_counts = {}
-        current_count = retry_counts.get(retry_kind, 0)
+        current_count = retry_counts.get(retry_counter_key, 0)
         if not isinstance(current_count, int):
             current_count = 0
         max_retries = run_config["policies"]["retry"][retry_kind]
@@ -655,7 +656,7 @@ def _extract_state_unlocked(
             **outline,
             "retry_counts": {
                 **retry_counts,
-                retry_kind: current_count + 1,
+                retry_counter_key: current_count + 1,
             },
         }
 
@@ -740,7 +741,19 @@ def _extract_state_unlocked(
         )
         build_snapshot(event, previous_snapshot, initial_state=initial_state)
         ensure_event_compatible(run_dir / "state/events.jsonl", event)
-    except (StateStoreError, StorageError) as exc:
+    except StateStoreError as exc:
+        failure = ChapterServiceError(str(exc))
+        outline = transition_record(outline, "state_failed")
+        outline = {
+            **outline,
+            "state_failure_kind": "content",
+            "state_failure_reason": str(exc),
+        }
+        outlines[index] = outline
+        _save_outlines(run_dir, outlines)
+        atomic_write_json(chapter_dir / "outline.json", outline)
+        raise failure from exc
+    except StorageError as exc:
         failure = ChapterServiceError(str(exc))
         outline = transition_record(outline, "state_failed")
         outline = {
@@ -817,7 +830,9 @@ def _apply_commit_journal(
             outline = transition_record(outline, "state_failed")
             outline = {
                 **outline,
-                "state_failure_kind": "format",
+                "state_failure_kind": (
+                    "content" if isinstance(exc, StateStoreError) else "format"
+                ),
                 "state_failure_reason": str(exc),
             }
             outlines[index] = outline

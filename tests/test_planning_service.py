@@ -47,7 +47,7 @@ def outline(number: int) -> dict[str, object]:
         "title": f"计划章{number}",
         "story_unit_id": "unit-0001",
         "status": "outline_ready",
-        "target_length": {"min": 2000, "max": 2500},
+        "target_length": {"min": 2000, "max": 3000},
         "intent": "推进当前修炼任务",
         "opening_state": [],
         "required_outcomes": [f"完成第{number}章行动"],

@@ -60,7 +60,7 @@ class RevisionTests(unittest.TestCase):
                 "cost_or_aftereffect": "保留实际代价",
                 "closing_state": ["本章形成可承接结果"],
                 "next_chapter_input": ["继续处理本章后果"],
-                "target_length": {"min": 2000, "max": 2500},
+                "target_length": {"min": 2000, "max": 3000},
                 "scenes": [
                     {
                         "scene_id": f"chapter-{chapter:04d}-scene-1",

@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "cultivation": [
+    {"subject_id": "xu-guan", "stage": "炼气一层", "abilities": ["小周天吐纳", "残缺听脉术"], "injuries": [], "limits": ["听脉术过度使用会耳鸣、失向、鼻血或短暂失聪", "本单元不得突破"]},
+    {"subject_id": "pang-dahai", "stage": "炼气一层", "abilities": ["基础吐纳"], "injuries": [], "limits": ["实战经验少"]},
+    {"subject_id": "ning-shuang", "stage": "炼气三层", "abilities": ["基础御器", "巡田鉴气"], "injuries": [], "limits": ["不能越过证据程序直接裁定"]},
+    {"subject_id": "yan-jiuchi", "stage": "炼气二层", "abilities": ["基础术法"], "injuries": [], "limits": ["受杂役管事权限约束"]},
+    {"subject_id": "luo-qi", "stage": "炼气二层", "abilities": ["基础术法", "熟悉库房流程"], "injuries": [], "limits": ["不能正面对抗巡田弟子"]}
+  ],
+  "resources": [
+    {"owner_id": "xu-guan", "resource_id": "low-spirit-stone", "amount": 3, "unit": "枚"},
+    {"owner_id": "xu-guan", "resource_id": "contribution-point", "amount": 12, "unit": "点"},
+    {"owner_id": "qinghe-public-store", "resource_id": "rain-talisman", "amount": 8, "unit": "张"}
+  ],
+  "knowledge": [
+    {"character_id": "xu-guan", "fact_id": "rain-talisman-thief", "state": "investigating", "belief": "自己没有取走引雨符，但尚不知道谁伪造了登记"},
+    {"character_id": "xu-guan", "fact_id": "field-failure-cause", "state": "suspects", "belief": "枯苗不只由自己私修竹管造成，地下灵压还有另一处异常"},
+    {"character_id": "ning-shuang", "fact_id": "xu-guan-guilt", "state": "suspects", "belief": "登记和违规私修使许观可疑，但证据不足以确认盗符与毁田都是他所为"},
+    {"character_id": "yan-jiuchi", "fact_id": "field-failure-cause", "state": "believes_false", "belief": "只要把责任归到许观私修竹管，现有管理流程就没有问题"},
+    {"character_id": "pang-dahai", "fact_id": "rain-talisman-thief", "state": "believes_false", "belief": "库房肯定只是记错账，没有人敢倒卖宗门公物"},
+    {"character_id": "luo-qi", "fact_id": "rain-talisman-thief", "state": "conceals", "belief": "自己知道合格引雨符的真实去向，必须让调查停在登记笔迹上"}
+  ]
+}

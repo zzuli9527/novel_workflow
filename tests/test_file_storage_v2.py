@@ -5,7 +5,10 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest import mock
 
+from tools.novel_runner import chapter_service
+from tools.novel_runner.chapter_service import commit_chapter, resume_run
 from tools.novel_runner.config import init_run
 from tools.novel_runner.file_storage import enrich_v2_events, transaction_path
 from tools.novel_runner.state_rebuild import rebuild_state_snapshots
@@ -97,6 +100,108 @@ class FileStorageV2StressTests(unittest.TestCase):
             self.assertLessEqual(len(all_files), 300)
             for folder in (run_dir, run_dir / "state", run_dir / "artifacts"):
                 self.assertLessEqual(len(list(folder.iterdir())), 1000)
+
+
+class FileStorageV2CommitRecoveryTests(unittest.TestCase):
+    """Exercise the on-disk journal at every commit phase, not just its path."""
+
+    def _new_prepared_run(self, root: Path, index: int) -> Path:
+        run_id = f"fault-{index:03d}"
+        run_dir = init_run(root, run_id, storage_version="2.0")
+        draft = "# 第 1 章：事务恢复\n正文证据。\n"
+        draft_path = run_dir / "chapters/0001/draft.final.md"
+        atomic_write_text(draft_path, draft)
+        digest = hashlib.sha256(draft.encode("utf-8")).hexdigest()
+        event = {
+            "state_schema_version": "1.1",
+            "event_id": "chapter-0001",
+            "chapter": 1,
+            "source_draft": "chapters/0001/draft.final.md",
+            "source_sha256": digest,
+            **{field: [] for field in STATE_FIELDS},
+            "next_chapter_inputs": [],
+            "deviations": [],
+        }
+        atomic_write_json(run_dir / "chapters/0001/state-event.json", event)
+        atomic_write_json(
+            run_dir / "planning/chapter-outlines.json",
+            [
+                {
+                    "chapter_id": "chapter-0001",
+                    "number": 1,
+                    "status": "state_ready",
+                }
+            ],
+        )
+        return run_dir
+
+    def _inject_once(self, run_dir: Path, phase: int) -> None:
+        if phase == 0:
+            with mock.patch.object(
+                chapter_service,
+                "_save_outlines",
+                side_effect=OSError("injected before event append"),
+            ):
+                with self.assertRaises(OSError):
+                    commit_chapter(run_dir.parent.parent, run_dir.name, 1)
+        elif phase == 1:
+            with mock.patch.object(
+                chapter_service,
+                "append_event_once",
+                side_effect=OSError("injected event append interruption"),
+            ):
+                with self.assertRaises(OSError):
+                    commit_chapter(run_dir.parent.parent, run_dir.name, 1)
+        elif phase == 2:
+            with mock.patch.object(
+                chapter_service,
+                "write_snapshot",
+                side_effect=OSError("injected snapshot interruption"),
+            ):
+                with self.assertRaises(OSError):
+                    commit_chapter(run_dir.parent.parent, run_dir.name, 1)
+        elif phase == 3:
+            original = chapter_service.atomic_write_json
+
+            def fail_run_write(path: Path, value: object) -> None:
+                if path.name == "run.json":
+                    raise OSError("injected run pointer interruption")
+                original(path, value)
+
+            with mock.patch.object(chapter_service, "atomic_write_json", fail_run_write):
+                with self.assertRaises(OSError):
+                    commit_chapter(run_dir.parent.parent, run_dir.name, 1)
+        else:
+            journal = run_dir / "state/transaction.json"
+            original_unlink = Path.unlink
+
+            def fail_journal_cleanup(path: Path, *args: object, **kwargs: object) -> None:
+                if path == journal:
+                    raise OSError("injected journal cleanup interruption")
+                original_unlink(path, *args, **kwargs)
+
+            with mock.patch.object(Path, "unlink", fail_journal_cleanup):
+                with self.assertRaisesRegex(Exception, "无法清理"):
+                    commit_chapter(run_dir.parent.parent, run_dir.name, 1)
+
+    def test_100_commit_phase_interruptions_recover_without_duplicate_event(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            for index in range(100):
+                run_dir = self._new_prepared_run(root, index)
+                self._inject_once(run_dir, index % 5)
+                self.assertTrue((run_dir / "state/transaction.json").is_file())
+
+                result = resume_run(root, run_dir.name)
+                self.assertEqual(result["action"], "commit_recovered")
+                self.assertEqual(result["run"]["last_committed_chapter"], 1)
+                self.assertFalse((run_dir / "state/transaction.json").exists())
+                self.assertEqual(
+                    len((run_dir / "state/events.jsonl").read_text(encoding="utf-8").splitlines()),
+                    1,
+                )
+                outline = read_json(run_dir / "planning/chapter-outlines.json")[0]
+                self.assertEqual(outline["status"], "committed")
 
 
 if __name__ == "__main__":

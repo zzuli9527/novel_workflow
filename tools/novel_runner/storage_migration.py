@@ -149,4 +149,20 @@ def audit_storage_migration(
             run_dir / "run.json",
             {**run, "storage_version": V2_STORAGE_VERSION, "updated_at": _utc_now()},
         )
-        return {**report, "dry_run": False, "status": "migrated", "backup_path": str(backup)}
+        # The backup is now durable and run.json advertises the new layout, so
+        # the v1 per-chapter snapshots are redundant.  Keeping them would make
+        # an otherwise compact migrated run grow with every historical chapter.
+        # Do this only after the atomic v2 switch; the ZIP remains the complete
+        # legacy recovery source if cleanup itself is interrupted.
+        legacy_snapshots = run_dir / "state/snapshots"
+        removed_legacy_paths: list[str] = []
+        if legacy_snapshots.exists():
+            shutil.rmtree(legacy_snapshots)
+            removed_legacy_paths.append("state/snapshots")
+        return {
+            **report,
+            "dry_run": False,
+            "status": "migrated",
+            "backup_path": str(backup),
+            "removed_legacy_paths": removed_legacy_paths,
+        }

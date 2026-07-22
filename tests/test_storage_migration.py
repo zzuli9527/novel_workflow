@@ -75,6 +75,8 @@ class StorageMigrationTests(unittest.TestCase):
         self.assertEqual(current["last_event_sequence"], 1)
         self.assertTrue((self.run_dir / "ledgers/current.json").is_file())
         self.assertTrue((self.run_dir / "logs/runtime-events.jsonl").is_file())
+        self.assertEqual(result["removed_legacy_paths"], ["state/snapshots"])
+        self.assertFalse((self.run_dir / "state/snapshots").exists())
         repeat = audit_storage_migration(self.root, "legacy-run")
         self.assertEqual(repeat["status"], "already_v2")
 

@@ -494,7 +494,10 @@ def compose_batch_outline_plan_prompt(
         (
             "单元契约映射",
             "完整单元中必须至少有一章把 required_setback 原句放入 required_outcomes；"
-            "末章必须把 required_payoff 原句放入 required_outcomes，并在 closing_state 中逐条覆盖故事单元 closing_state。",
+            "末章必须把 required_payoff 原句作为 required_outcomes 数组中的一个独立元素逐字符复制，"
+            "禁止在前后添加 required_payoff、冒号、说明或任何改写；"
+            "末章 closing_state 也必须把故事单元 closing_state 的每一项逐字符作为独立元素复制，"
+            "可以额外补充状态，但不得用释义替换原句。",
         ),
         (
             "机器输出契约",

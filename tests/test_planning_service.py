@@ -11,6 +11,7 @@ from tools.novel_runner.planning_service import (
     plan_chapter_batch,
     plan_story_unit,
 )
+from tools.novel_runner.prompt_composer import compose_batch_outline_plan_prompt
 from tools.novel_runner.provider import (
     FixtureProvider,
     GenerationRequest,
@@ -160,6 +161,22 @@ class PlanningServiceTests(unittest.TestCase):
         prompt_text = prompt.read_text(encoding="utf-8")
         self.assertIn('"target_length": 1000', prompt_text)
         self.assertIn('"required_outcomes"', prompt_text)
+
+    def test_final_chapter_prompt_requires_literal_unit_contract_copy(self) -> None:
+        prompt = compose_batch_outline_plan_prompt(
+            self.root,
+            self.run_dir,
+            unit_payload(),
+            10,
+            10,
+            [],
+        )
+
+        self.assertIn("逐字符复制", prompt)
+        self.assertIn("禁止在前后添加 required_payoff、冒号", prompt)
+        self.assertIn("不得用释义替换原句", prompt)
+        self.assertIn("阶段目标有可见结果", prompt)
+        self.assertIn("取得阶段结果", prompt)
 
     def test_accepts_only_redundant_closing_delimiters_after_json_object(self) -> None:
         (self.run_dir / "planning/story-units.json").write_text(

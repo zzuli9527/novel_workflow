@@ -164,6 +164,12 @@ class PlanningServiceTests(unittest.TestCase):
         self.assertIn('"required_outcomes"', prompt_text)
         self.assertIn('writability.is_writable', prompt_text)
         self.assertIn('JSON 布尔值 true', prompt_text)
+        self.assertIn(
+            'writability.is_writable` 必须是 JSON 布尔值 `true`',
+            (Path(__file__).resolve().parents[1] / "workflow/runtime/plan-chapter-batch.md").read_text(
+                encoding="utf-8"
+            ),
+        )
 
     def test_final_chapter_prompt_requires_literal_unit_contract_copy(self) -> None:
         prompt = compose_batch_outline_plan_prompt(

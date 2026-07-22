@@ -23,3 +23,4 @@
 - 故事单元末章必须在 required_outcomes 映射 required_payoff，并在 closing_state
   逐条覆盖故事单元 closing_state。
 - writability.estimated_length 等于场景预算合计；不能靠设定解释、心理空转或重复段子凑长度。
+- 每章必须输出完整的 `writability` 对象，且 `writability.is_writable` 必须是 JSON 布尔值 `true`；不得省略、写成字符串或以文字结论替代。

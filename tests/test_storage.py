@@ -4,10 +4,12 @@ import json
 import os
 from pathlib import Path
 import socket
+import subprocess
+import sys
 import tempfile
 import unittest
 
-from tools.novel_runner.storage import RunLockedError, run_lock
+from tools.novel_runner.storage import RunLockedError, _process_alive, run_lock
 
 
 class RunLockTests(unittest.TestCase):
@@ -45,6 +47,11 @@ class RunLockTests(unittest.TestCase):
             with self.assertRaises(RunLockedError):
                 with run_lock(run_dir):
                     pass
+
+    def test_exited_process_is_not_treated_as_alive(self) -> None:
+        child = subprocess.Popen([sys.executable, "-c", "pass"])
+        child.wait(timeout=10)
+        self.assertFalse(_process_alive(child.pid))
 
 
 if __name__ == "__main__":

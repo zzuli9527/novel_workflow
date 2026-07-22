@@ -102,14 +102,31 @@ def _process_alive(pid: int) -> bool:
         synchronize = 0x00100000
         access_denied = 5
         kernel32 = ctypes.WinDLL("kernel32", use_last_error=True)
+        kernel32.OpenProcess.argtypes = (ctypes.c_ulong, ctypes.c_int, ctypes.c_ulong)
+        kernel32.OpenProcess.restype = ctypes.c_void_p
+        kernel32.GetExitCodeProcess.argtypes = (
+            ctypes.c_void_p,
+            ctypes.POINTER(ctypes.c_ulong),
+        )
+        kernel32.GetExitCodeProcess.restype = ctypes.c_int
+        kernel32.CloseHandle.argtypes = (ctypes.c_void_p,)
+        kernel32.CloseHandle.restype = ctypes.c_int
         handle = kernel32.OpenProcess(
             process_query_limited_information | synchronize,
             False,
             pid,
         )
         if handle:
-            kernel32.CloseHandle(handle)
-            return True
+            try:
+                exit_code = ctypes.c_ulong()
+                if not kernel32.GetExitCodeProcess(handle, ctypes.byref(exit_code)):
+                    # 无法读取退出码时，保守地把锁视为仍在使用。
+                    return True
+                # Windows 会在还有句柄引用时保留已退出的进程对象。只有
+                # STILL_ACTIVE 才表示该 PID 仍实际持有运行锁。
+                return exit_code.value == 259
+            finally:
+                kernel32.CloseHandle(handle)
         # A protected process can reject a query even though it is alive.
         return ctypes.get_last_error() == access_denied
     try:

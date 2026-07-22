@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "realms": [
+    {"stage": "炼气四层", "requirements": ["接地小周天入门"], "boundaries": ["只能维护浅层接地纹，不能独立登记雷时"]},
+    {"stage": "炼气五层", "requirements": ["能稳定辨认基础雷声回响"], "boundaries": ["可在监督下协助听雷塔登记，不能独自值守高压塔区"]},
+    {"stage": "炼气六层", "requirements": ["在真实雷雨中维持完整接地回路", "校准四处接地脊", "支付明确资源和神识成本"], "boundaries": ["可同时维持主塔与一处接地脊，不能预知随机落雷或识别人心"]},
+    {"stage": "炼气七层", "requirements": ["完成戒律堂正式巡雷考核"], "boundaries": ["本单元裴照野不得达到此境界"]}
+  ],
+  "resources": [
+    {"resource_id": "low-grade-spirit-stone", "unit": "枚", "rules": ["获得与消耗必须更新同一余额", "突破消耗后不得返还"]},
+    {"resource_id": "grounding-talisman", "unit": "张", "rules": ["只能短时稳定雷声回响和经脉，不能修复铜条或替代接地前置"]},
+    {"resource_id": "storm-reset-pin", "unit": "枚", "rules": ["属于听雷塔公共资源", "启用后永久消耗并记录用途"]},
+    {"resource_id": "conductive-copper-strip", "unit": "段", "rules": ["用于修补接地脊和导雷链", "每次使用必须记录去向和余额"]}
+  ],
+  "techniques": [
+    {"technique_id": "thunder-mark-sequencing", "name": "雷痕辨序", "effects": ["读取残留雷纹的方向和先后", "突破后可同时比较主塔与一处接地脊"], "limits": ["不能读取记忆", "不能判断动机", "不能识别谁传播避雷黄历", "右手旧伤发作时会误判符笔落点"]},
+    {"technique_id": "grounding-circulation", "name": "接地小周天", "effects": ["在低强度雷纹中稳定经脉和接地回路"], "limits": ["强行接触高压雷纹会加重右手雷麻", "不能替代器物维修"]}
+  ],
+  "artifacts": [
+    {"artifact_id": "thunder-listening-tower", "name": "听雷塔", "limits": ["只能记录、引导和分流预设范围内的雷击", "不能自动识别泄密者或人的动机"]},
+    {"artifact_id": "calibration-thunder-chime", "name": "校雷铜铃", "limits": ["特定位置会把低限试雷节拍传入值守廊", "不能显示后续随机落雷时刻"]}
+  ],
+  "injury_rules": [
+    {"state_id": "right-hand-thunder-numbness", "name": "右手雷麻", "symptoms": ["右手麻木", "指节颤动", "符笔落点偏移"], "recovery": ["停止接触高压雷纹", "取出掌侧残留铜刺", "使用定雷符稳定经脉", "完成低负荷抄录并由复核官确认"], "hard_rule": "加重、部分恢复和解除必须复用同一 state_id；突破不能自动治愈"},
+    {"state_id": "post-breakthrough-thunder-echo", "name": "突破后雷声回响", "symptoms": ["停雷后仍听见双重雷声", "落雷时刻判断延迟"], "recovery": ["三日内不得独自值守高压雷塔", "每日只进行低负荷接地复核"], "hard_rule": "本单元结尾保持为活动限制，不得立即解除"}
+  ],
+  "breakthrough_rules": [
+    {"from_stage": "炼气五层", "to_stage": "炼气六层", "prerequisites": ["完成四处接地脊校准", "旧伤在突破前按规则正式解除", "在真实雷雨中维持完整接地回路"], "costs": ["3 枚下品灵石", "1 张定雷符", "突破后雷声回响限制"], "new_limits": ["三日内不得独自值守高压雷塔", "不能同时维持超过一处接地脊"]}
+  ],
+  "power_boundaries": [
+    "裴照野只允许在第 9～10 章完成炼气五层到炼气六层突破",
+    "破局依靠雷痕先后、铜铃位置、封签时间、回声角度和角色协作，不靠读心、预知或临时万能能力",
+    "突破不能修复听雷塔、补回重置钉或免除漏封铜铃和无复核试雷的责任"
+  ],
+  "exceptions": []
+}

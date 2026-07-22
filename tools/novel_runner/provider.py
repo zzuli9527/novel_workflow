@@ -6,6 +6,7 @@ from dataclasses import dataclass, field
 import json
 import os
 from pathlib import Path
+from threading import Event, Timer
 from typing import Any, Protocol
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
@@ -140,6 +141,7 @@ class OpenAIResponsesProvider:
     api_key_env: str = "OPENAI_API_KEY"
     base_url: str = "https://api.openai.com/v1"
     timeout_seconds: int = 120
+    deadline_seconds: int | None = None
     max_output_tokens: int | None = None
     input_cost_per_million: float | None = None
     output_cost_per_million: float | None = None
@@ -207,9 +209,40 @@ class OpenAIResponsesProvider:
                 "User-Agent": self.user_agent,
             },
         )
+        if self.deadline_seconds is not None and (
+            not isinstance(self.deadline_seconds, int)
+            or isinstance(self.deadline_seconds, bool)
+            or self.deadline_seconds <= 0
+        ):
+            raise ProviderError("deadline_seconds 必须是正整数或 null")
+        deadline_reached = Event()
+        response_holder: list[Any | None] = [None]
+
+        def abort_at_deadline() -> None:
+            deadline_reached.set()
+            response = response_holder[0]
+            close = getattr(response, "close", None)
+            if callable(close):
+                try:
+                    close()
+                except OSError:
+                    pass
+
+        deadline_timer: Timer | None = None
+        request_timeout = self.timeout_seconds
+        if self.deadline_seconds is not None:
+            request_timeout = min(request_timeout, self.deadline_seconds)
+            deadline_timer = Timer(self.deadline_seconds, abort_at_deadline)
+            deadline_timer.daemon = True
+            deadline_timer.start()
         try:
-            with urlopen(http_request, timeout=self.timeout_seconds) as response:
+            with urlopen(http_request, timeout=request_timeout) as response:
+                response_holder[0] = response
+                if deadline_reached.is_set():
+                    raise TimeoutError("请求在响应读取前已超过绝对截止时间")
                 raw = response.read()
+                if deadline_reached.is_set():
+                    raise TimeoutError("请求读取超过绝对截止时间")
         except HTTPError as exc:
             try:
                 detail = exc.read().decode("utf-8", errors="replace")[:2000]
@@ -253,12 +286,23 @@ class OpenAIResponsesProvider:
                 attempted_models=(self.model,),
             ) from exc
         except (URLError, TimeoutError, OSError) as exc:
+            if deadline_reached.is_set() and self.deadline_seconds is not None:
+                raise ProviderError(
+                    f"OpenAI API 请求超过绝对截止时间：{self.deadline_seconds} 秒",
+                    error_code="deadline_exceeded",
+                    fallback_allowed=True,
+                    attempted_models=(self.model,),
+                ) from exc
             raise ProviderError(
                 f"OpenAI API 请求失败：{exc}",
                 error_code="transport_error",
                 fallback_allowed=True,
                 attempted_models=(self.model,),
             ) from exc
+        finally:
+            response_holder[0] = None
+            if deadline_timer is not None:
+                deadline_timer.cancel()
         try:
             data = json.loads(raw.decode("utf-8"))
         except (UnicodeDecodeError, json.JSONDecodeError) as exc:

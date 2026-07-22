@@ -55,6 +55,82 @@ def _json_block(data: Any) -> str:
     return json.dumps(data, ensure_ascii=False, indent=2)
 
 
+def _verbatim_paragraph_catalog(text: str) -> list[dict[str, str]]:
+    normalized = text.replace("\r\n", "\n").replace("\r", "\n")
+    paragraphs = [
+        paragraph.strip()
+        for paragraph in normalized.split("\n\n")
+        if paragraph.strip()
+    ]
+    return [
+        {"paragraph_id": f"P{index:03d}", "text": paragraph}
+        for index, paragraph in enumerate(paragraphs, start=1)
+    ]
+
+
+def _compact_state_checks(checks: Any) -> Any:
+    """Keep state-relevant review results without repeating review evidence."""
+
+    if not isinstance(checks, dict):
+        return checks
+    quality = checks.get("quality")
+    if not isinstance(quality, dict):
+        quality = {}
+    quality_fields = (
+        "summary_like",
+        "cultivation_consistent",
+        "serious_consequences_preserved",
+        "resource_continuity_consistent",
+        "knowledge_states_consistent",
+        "character_voices_distinct",
+        "multi_line_causality_preserved",
+        "warnings",
+        "contract_failures",
+        "quality_failures",
+        "soft_quality_warnings",
+    )
+    return {
+        "actual_length": checks.get("actual_length"),
+        "hard_pass": checks.get("hard_pass"),
+        "quality_status": checks.get("quality_status"),
+        "quality": {field: quality.get(field) for field in quality_fields},
+    }
+
+
+def _strip_source_evidence(value: Any) -> Any:
+    if isinstance(value, dict):
+        return {
+            key: _strip_source_evidence(item)
+            for key, item in value.items()
+            if key != "source_evidence"
+        }
+    if isinstance(value, list):
+        return [_strip_source_evidence(item) for item in value]
+    return value
+
+
+def _state_retry_output_projection(text: str, *, excerpt_limit: int = 2000) -> Any:
+    stripped = text.strip()
+    if not stripped:
+        return None
+    try:
+        parsed = json.loads(stripped)
+    except json.JSONDecodeError:
+        if len(stripped) <= excerpt_limit:
+            return {"invalid_json_excerpt": stripped}
+        head_length = excerpt_limit // 2
+        tail_length = excerpt_limit - head_length
+        return {
+            "invalid_json_excerpt": (
+                stripped[:head_length]
+                + "\n...<truncated>...\n"
+                + stripped[-tail_length:]
+            ),
+            "original_character_count": len(stripped),
+        }
+    return _strip_source_evidence(parsed)
+
+
 def _runtime_prompt(root: Path, name: str) -> str:
     path = root / "workflow/runtime" / name
     if path.is_file():
@@ -103,6 +179,7 @@ def _active_state_ids(snapshot_or_initial: Any) -> dict[str, Any]:
     if not isinstance(snapshot_or_initial, dict):
         return {
             "tracked_state_ids_by_subject": {},
+            "active_tracked_states_by_subject": {},
             "resource_ids_by_owner": {},
             "knowledge_fact_ids_by_character": {},
         }
@@ -111,23 +188,64 @@ def _active_state_ids(snapshot_or_initial: Any) -> dict[str, Any]:
         structured = snapshot_or_initial
 
     tracked_by_subject: dict[str, list[str]] = {}
-    for item in structured.get("cultivation", []):
+    tracked_details_by_subject: dict[str, list[dict[str, Any]]] = {}
+    cultivation = structured.get("cultivation", [])
+    if not isinstance(cultivation, list):
+        cultivation = []
+    for item in cultivation:
         if not isinstance(item, dict) or not isinstance(item.get("subject_id"), str):
             continue
-        state_ids = sorted(
-            {
-                state["state_id"]
-                for state in item.get("tracked_states", [])
+        active_states: list[dict[str, Any]] = []
+        tracked_states = item.get("tracked_states", [])
+        if isinstance(tracked_states, list):
+            active_states.extend(
+                state for state in tracked_states if isinstance(state, dict)
+            )
+        for kind, field in (
+            ("ability", "abilities"),
+            ("injury", "injuries"),
+            ("restriction", "limits"),
+        ):
+            values = item.get(field, [])
+            if not isinstance(values, list):
+                continue
+            active_states.extend(
+                {**state, "kind": kind}
+                for state in values
                 if isinstance(state, dict)
-                and isinstance(state.get("state_id"), str)
-                and state["state_id"].strip()
+            )
+
+        details_by_id: dict[str, dict[str, Any]] = {}
+        for state in active_states:
+            state_id = state.get("state_id")
+            kind = state.get("kind")
+            if (
+                not isinstance(state_id, str)
+                or not state_id.strip()
+                or kind not in {"ability", "injury", "restriction"}
+            ):
+                continue
+            allowed_changes = {
+                "ability": ["ability:set", "ability:resolve"],
+                "injury": ["injury:set", "recovery:set", "recovery:resolve"],
+                "restriction": ["restriction:set", "restriction:resolve"],
+            }[kind]
+            details_by_id[state_id] = {
+                "state_id": state_id,
+                "kind": kind,
+                "allowed_changes": allowed_changes,
             }
-        )
-        if state_ids:
-            tracked_by_subject[item["subject_id"]] = state_ids
+        if details_by_id:
+            subject_id = item["subject_id"]
+            details = sorted(details_by_id.values(), key=lambda value: value["state_id"])
+            tracked_by_subject[subject_id] = [value["state_id"] for value in details]
+            tracked_details_by_subject[subject_id] = details
 
     resources_by_owner: dict[str, list[str]] = {}
-    for item in structured.get("resources", []):
+    resources = structured.get("resources", [])
+    if not isinstance(resources, list):
+        resources = []
+    for item in resources:
         if not isinstance(item, dict):
             continue
         owner_id = item.get("owner_id")
@@ -141,7 +259,10 @@ def _active_state_ids(snapshot_or_initial: Any) -> dict[str, Any]:
     }
 
     knowledge_by_character: dict[str, list[str]] = {}
-    for item in structured.get("knowledge", []):
+    knowledge = structured.get("knowledge", [])
+    if not isinstance(knowledge, list):
+        knowledge = []
+    for item in knowledge:
         if not isinstance(item, dict):
             continue
         character_id = item.get("character_id")
@@ -156,6 +277,7 @@ def _active_state_ids(snapshot_or_initial: Any) -> dict[str, Any]:
 
     return {
         "tracked_state_ids_by_subject": tracked_by_subject,
+        "active_tracked_states_by_subject": tracked_details_by_subject,
         "resource_ids_by_owner": resources_by_owner,
         "knowledge_fact_ids_by_character": knowledge_by_character,
     }
@@ -197,6 +319,23 @@ def _compact_chapter_contract(outline: Any) -> Any:
         "cost_or_aftereffect",
         "closing_state",
         "next_chapter_input",
+    )
+    return {field: outline.get(field) for field in fields}
+
+
+def _compact_state_chapter_contract(outline: Any) -> Any:
+    """Project an outline down to facts needed by state extraction."""
+
+    if not isinstance(outline, dict):
+        return outline
+    fields = (
+        "chapter_id",
+        "number",
+        "title",
+        "required_outcomes",
+        "forbidden_outcomes",
+        "cost_or_aftereffect",
+        "closing_state",
     )
     return {field: outline.get(field) for field in fields}
 
@@ -466,7 +605,10 @@ def compose_state_prompt(
                 "kind": "progress / insight / ability / injury / recovery / breakthrough / restriction",
                 "change": "",
                 "state_id": "ability/injury/recovery/restriction 必填的稳定状态 ID",
-                "state_action": "上述四类必填：set / resolve",
+                "state_action": (
+                    "上述四类必填：set / resolve；必须符合活动状态 ID 中的 allowed_changes，"
+                    "recovery 只能引用当前活动 injury ID"
+                ),
                 "stage_after": "非突破时可选",
                 "from_stage": "突破时必填",
                 "to_stage": "突破时必填",
@@ -514,9 +656,9 @@ def compose_state_prompt(
     }
     sections: list[tuple[str, str]] = [
         ("状态回填工作流", workflow),
-        ("当前章契约", _json_block(_compact_chapter_contract(outline))),
+        ("当前章契约", _json_block(_compact_state_chapter_contract(outline))),
         ("本章 final 正文", draft_text),
-        ("本章检查结果", _json_block(checks)),
+        ("本章检查结果", _json_block(_compact_state_checks(checks))),
         ("上一章状态快照", _json_block(_compact_snapshot(previous_snapshot))),
         ("修炼体系", _json_block(read_json(run_dir / "config/progression.json"))),
     ]
@@ -531,30 +673,52 @@ def compose_state_prompt(
     )
     failure_reason = outline.get("state_failure_reason")
     retry_counts = outline.get("retry_counts")
-    if isinstance(failure_reason, str) and failure_reason.strip() or isinstance(
-        retry_counts, dict
-    ) and any(isinstance(value, int) and value > 0 for value in retry_counts.values()):
+    has_failure_reason = isinstance(failure_reason, str) and bool(
+        failure_reason.strip()
+    )
+    has_retry_count = isinstance(retry_counts, dict) and any(
+        isinstance(value, int) and value > 0 for value in retry_counts.values()
+    )
+    is_retry = has_failure_reason or has_retry_count
+    if is_retry:
         previous_invalid_output = _latest_state_raw(
             run_dir / f"chapters/{chapter:04d}"
         )
-        sections.append(
-            (
-                "上次状态提取失败修复信息",
-                _json_block(
-                    {
-                        "state_failure_reason": failure_reason or "上一版未通过校验",
-                        "repair_instruction": (
-                            "只修复失败原因所指向的字段；不得复制上一版中的错误资源 ID、"
-                            "错误余额或无正文证据的变化。supersedes_fact_ids 只能引用下方"
-                            "允许的活动知识 fact_id；没有合法淘汰项时必须输出空数组，禁止"
-                            "根据正文措辞臆造 ID。重新核对上一状态后输出完整契约。"
-                        ),
-                        "allowed_active_ids": _active_state_ids(state_reference),
-                        "previous_invalid_output": previous_invalid_output,
-                    }
-                ),
-            )
+        previous_output_projection = _state_retry_output_projection(
+            previous_invalid_output
         )
+        failure_kind = outline.get("state_failure_kind")
+        if previous_output_projection is not None or failure_kind in {
+            "format",
+            "content",
+        }:
+            repair_context = {
+                "state_failure_reason": failure_reason or "上一版未通过校验",
+                "repair_instruction": (
+                    "只修复失败原因所指向的字段；不得复制上一版中的错误资源 ID、"
+                    "错误余额或无正文证据的变化。supersedes_fact_ids 只能引用"
+                    "‘允许引用的活动状态 ID’区段中的活动知识 fact_id；没有合法"
+                    "淘汰项时必须输出空数组，禁止根据正文措辞臆造 ID。上一版输出"
+                    "中的 recovery 必须引用该区段列出的活动 injury ID，并符合"
+                    "allowed_changes；已解除或未列出的伤势 ID 不得再次恢复。"
+                    "已移除全部 source_evidence；请从逐字正文段落目录中重新复制"
+                    "一个或多个连续段落的原文，不得删字、补字或改写。重新核对"
+                    "上一状态后输出完整契约。"
+                ),
+                "verbatim_paragraph_catalog": _verbatim_paragraph_catalog(
+                    draft_text
+                ),
+            }
+            if previous_output_projection is not None:
+                repair_context["previous_output_without_source_evidence"] = (
+                    previous_output_projection
+                )
+            sections.append(
+                (
+                    "上次状态提取失败修复信息",
+                    _json_block(repair_context),
+                )
+            )
     if previous_snapshot is None:
         sections.append(
             (
@@ -591,18 +755,22 @@ def compose_repair_prompt(
             "只扩写低于预算的现有场景，补充动作、回应、修炼过程、关系反应或后果落地；"
             "不得推进下一章、改变章末状态、新增能力或重复笑点。"
         ),
+        "targeted_compression": (
+            "只压缩造成超长的局部段落，优先删除重复描写、同义解释、无新增信息的对话和"
+            "过长反应；不得截断有效场景、必做结果、因果链或章末钩子。"
+        ),
         "rewrite_short": (
             "当前正文严重不足。严格依据原章纲重写完整章节，不保留摘要式结构；"
             "不得通过解释设定或段子堆砌凑长度。"
         ),
         "rewrite_contract": (
-            "当前输出违反章节契约或格式。重新生成且只输出当前章节，完成必做结果，"
-            "不出现禁止结果。"
+            "只修改 latest_checks 中 contract_failures 指向的段落，补齐缺失的必做结果或"
+            "移除禁止结果；输出完整当前章节，但不要重写无关段落。"
         ),
         "rewrite_quality": (
-            "当前正文需要质量复查。保留全部必做结果、因果和章末状态，压缩重复描写、"
-            "同义解释、无新增信息的对话与过长反应。正文目标落在章节最低值以上、"
-            "目标上限以下，并为机械计数误差保留余量；不得用截断破坏场景或钩子。"
+            "只修改 latest_checks.quality.quality_failures 指向的段落，保留全部必做结果、"
+            "因果和章末状态。仅当 summary_like 明确指向全章摘要化时，才允许重构必要场景；"
+            "不得把局部问题扩大为整章重写。"
         ),
         "provider_retry": "沿用原章纲重新生成当前章节，不改变任何计划内容。",
     }
@@ -623,6 +791,13 @@ def compose_repair_prompt(
         "preferred_rewrite_range": [preferred_min, preferred_max],
         "hard_output_range": [length["target_min"], length["target_max"]],
         "instruction": directives[mode],
+        "repair_boundaries": [
+            "只处理失败字段对应的段落，保持其他段落原文不变",
+            "不改人物名、既有事实、章节结构、场景顺序和章末状态",
+            "不新增无关人物、能力、资源、支线或下一章事件",
+            "扩写或压缩只针对局部缺口，不以同义改写波及全文",
+            "状态提取错误不属于正文修复；只重试状态提取 JSON",
+        ],
         "latest_checks": checks,
     }
     return (
@@ -724,7 +899,11 @@ def compose_review_prompt(
                         "review_failure_reason": failure_reason,
                         "repair_instruction": (
                             "正文不变。只修复评审 JSON；source_evidence 必须逐字复制"
-                            "候选正文中的连续原句，不得补主语、改动引语或拼接改写。"
+                            "逐字正文段落目录中的一个或多个连续段落，不得补主语、删字、"
+                            "改动引语或拼接改写。不要复用上一版已经失败的证据文本。"
+                        ),
+                        "verbatim_paragraph_catalog": _verbatim_paragraph_catalog(
+                            draft_text
                         ),
                         "previous_invalid_review": _latest_review_raw(
                             run_dir / f"chapters/{int(outline['number']):04d}"

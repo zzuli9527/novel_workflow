@@ -159,7 +159,7 @@ class ConfigCliTests(unittest.TestCase):
                     "MESHYCODE_API_KEY": "secret",
                     "MESHYCODE_BASE_URL": "https://api.example.test/v1",
                 },
-                clear=False,
+                clear=True,
             ), redirect_stderr(stderr):
                 exit_code = main(
                     [
@@ -202,6 +202,59 @@ class ConfigCliTests(unittest.TestCase):
             self.assertEqual(
                 data["policies"]["batch"]["outline_request_chunk_size"], 2
             )
+            self.assertEqual(provider["deadline_seconds"], 300)
+            self.assertEqual(provider["routes"]["planner"]["deadline_seconds"], 300)
+            self.assertEqual(provider["routes"]["reviewer"]["deadline_seconds"], 240)
+            self.assertNotIn("efficiency", data["policies"])
+            self.assertEqual(
+                data["policies"]["budget"],
+                {"max_calls": None, "max_tokens": None, "max_cost": None},
+            )
+
+    def test_validation_accepts_positive_or_null_deadlines(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            run_dir = init_run(root, "demo-run")
+            path = run_dir / "run.json"
+            data = json.loads(path.read_text(encoding="utf-8"))
+            data["provider"]["deadline_seconds"] = 45
+            data["provider"]["routes"]["state"]["deadline_seconds"] = None
+            path.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+            report = validate_run_directory(root, "demo-run")
+            self.assertTrue(report.valid, report.issues)
+
+    def test_validation_rejects_invalid_deadlines(self) -> None:
+        for value in (0, -1, True, "300"):
+            with self.subTest(value=value), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                run_dir = init_run(root, "demo-run")
+                path = run_dir / "run.json"
+                data = json.loads(path.read_text(encoding="utf-8"))
+                data["provider"]["deadline_seconds"] = value
+                data["provider"]["routes"]["state"]["deadline_seconds"] = value
+                path.write_text(
+                    json.dumps(data, ensure_ascii=False), encoding="utf-8"
+                )
+                report = validate_run_directory(root, "demo-run")
+                paths = {issue.path for issue in report.issues}
+                self.assertIn("run.provider.deadline_seconds", paths)
+                self.assertIn(
+                    "run.provider.routes.state.deadline_seconds", paths
+                )
+
+    def test_validation_ignores_legacy_efficiency_thresholds(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            run_dir = init_run(root, "demo-run")
+            path = run_dir / "run.json"
+            data = json.loads(path.read_text(encoding="utf-8"))
+            data["policies"]["efficiency"] = {
+                "warning_calls": 61,
+                "hard_calls": 60,
+            }
+            path.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+            report = validate_run_directory(root, "demo-run")
+            self.assertTrue(report.valid, report.issues)
 
     def test_cli_validate_outline_returns_structured_failure(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

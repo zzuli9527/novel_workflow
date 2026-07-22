@@ -118,6 +118,61 @@ class RunArchiveTests(unittest.TestCase):
                     self.root, "archive-run", "unit-0001", "T-secret"
                 )
 
+    def test_archives_conditional_pass_when_hard_failures_are_zero(self) -> None:
+        report_path = self.run_dir / "reports/story-unit-review-unit-0001.json"
+        report_path.write_text(
+            json.dumps(
+                {
+                    "verdict": "有条件通过",
+                    "archivable": True,
+                    "usability": "可用，待润色",
+                    "metrics": {"hard_failure_count": 0},
+                },
+                ensure_ascii=False,
+            ),
+            encoding="utf-8",
+        )
+
+        result = archive_run(
+            self.root, "archive-run", "unit-0001", "T-conditional"
+        )
+
+        self.assertEqual(result["verdict"], "有条件通过")
+
+    def test_blocks_conditional_pass_without_archivable_marker(self) -> None:
+        report_path = self.run_dir / "reports/story-unit-review-unit-0001.json"
+        report_path.write_text(
+            json.dumps(
+                {"verdict": "有条件通过", "metrics": {}},
+                ensure_ascii=False,
+            ),
+            encoding="utf-8",
+        )
+
+        with self.assertRaisesRegex(RunArchiveError, "评审未通过"):
+            archive_run(
+                self.root, "archive-run", "unit-0001", "T-not-archivable"
+            )
+
+    def test_blocks_conditional_pass_with_declared_hard_failure(self) -> None:
+        report_path = self.run_dir / "reports/story-unit-review-unit-0001.json"
+        report_path.write_text(
+            json.dumps(
+                {
+                    "verdict": "有条件通过",
+                    "archivable": True,
+                    "metrics": {"hard_failure_count": 1},
+                },
+                ensure_ascii=False,
+            ),
+            encoding="utf-8",
+        )
+
+        with self.assertRaisesRegex(RunArchiveError, "评审未通过"):
+            archive_run(
+                self.root, "archive-run", "unit-0001", "T-hard-failure"
+            )
+
 
 if __name__ == "__main__":
     unittest.main()

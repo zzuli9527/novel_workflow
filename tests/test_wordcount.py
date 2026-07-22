@@ -109,7 +109,9 @@ class LengthGateTests(unittest.TestCase):
     def test_classifies_targeted_expansion(self) -> None:
         check = self._check("甲乙丙丁")
         self.assertEqual(check.status, "needs_expansion")
-        self.assertFalse(check.can_update_state)
+        self.assertTrue(check.hard_pass)
+        self.assertFalse(check.requires_review)
+        self.assertTrue(check.can_update_state)
 
     def test_passes_target_range(self) -> None:
         check = self._check("甲乙丙丁戊")
@@ -120,12 +122,24 @@ class LengthGateTests(unittest.TestCase):
         check = self._check("甲乙丙丁戊己庚辛")
         self.assertEqual(check.status, "needs_redundancy_review")
         self.assertTrue(check.hard_pass)
-        self.assertFalse(check.can_update_state)
+        self.assertFalse(check.requires_review)
+        self.assertTrue(check.can_update_state)
 
     def test_requires_compression_review_when_overlong(self) -> None:
         check = self._check("甲乙丙丁戊己庚辛壬癸")
         self.assertEqual(check.status, "needs_compression_review")
+        self.assertFalse(check.hard_pass)
         self.assertFalse(check.can_update_state)
+
+    def test_report_passes_with_soft_length_warnings(self) -> None:
+        markdown = """# 第 1 章
+甲乙丙丁
+# 第 2 章
+甲乙丙丁戊己庚辛
+"""
+        report = check_drafts(markdown, self.policy)
+        self.assertEqual(report.result, "passed")
+        self.assertEqual(report.exit_code, 0)
 
     def test_report_fails_when_any_chapter_is_short(self) -> None:
         markdown = """# 第 1 章
@@ -136,6 +150,26 @@ class LengthGateTests(unittest.TestCase):
         report = check_drafts(markdown, self.policy)
         self.assertEqual(report.result, "failed")
         self.assertEqual(report.exit_code, 1)
+
+    def test_default_policy_boundaries(self) -> None:
+        policy = LengthPolicy()
+        cases = (
+            (1799, "failed_too_short", False),
+            (1800, "needs_expansion", True),
+            (1999, "needs_expansion", True),
+            (2000, "passed", True),
+            (3000, "passed", True),
+            (3001, "needs_redundancy_review", True),
+            (3500, "needs_redundancy_review", True),
+            (3501, "needs_compression_review", False),
+        )
+        for length, status, hard_pass in cases:
+            with self.subTest(length=length):
+                check = check_drafts(
+                    f"# 第 1 章\n{'甲' * length}\n", policy
+                ).chapters[0]
+                self.assertEqual(check.status, status)
+                self.assertEqual(check.hard_pass, hard_pass)
 
     def test_policy_rejects_invalid_threshold_order(self) -> None:
         with self.assertRaises(ValueError):
@@ -172,10 +206,15 @@ class CliTests(unittest.TestCase):
         self.assertEqual(exit_code, 1)
         self.assertIn("failed_too_short", stdout)
 
-    def test_cli_returns_review_exit_code(self) -> None:
+    def test_cli_returns_zero_for_soft_length_warning(self) -> None:
         exit_code, stdout, _ = self._run_cli("# 第 1 章\n甲乙丙丁戊己庚辛\n")
-        self.assertEqual(exit_code, 2)
-        self.assertIn("review_required", stdout)
+        self.assertEqual(exit_code, 0)
+        self.assertIn("needs_redundancy_review", stdout)
+
+    def test_cli_returns_failure_for_hard_overlength(self) -> None:
+        exit_code, stdout, _ = self._run_cli("# 第 1 章\n甲乙丙丁戊己庚辛壬癸\n")
+        self.assertEqual(exit_code, 1)
+        self.assertIn("needs_compression_review", stdout)
 
     def test_cli_json_output(self) -> None:
         exit_code, stdout, _ = self._run_cli("# 第 1 章\n甲乙丙丁戊\n", "--json")

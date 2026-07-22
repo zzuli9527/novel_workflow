@@ -215,8 +215,96 @@ class UnitRunnerTests(unittest.TestCase):
         self.assertEqual(units[0]["status"], "completed")
         self.assertEqual(len(report["ledgers"]), len(report["batches"]))
         self.assertEqual(report["verdict"], "通过")
+        review = json.loads(
+            (self.run_dir / report["review_path"]).read_text(encoding="utf-8")
+        )
+        self.assertTrue(review["archivable"])
+        self.assertEqual(review["usability"], "可用")
         self.assertTrue(
             (self.run_dir / "reports/story-unit-review-unit-0001.md").is_file()
+        )
+
+    def test_soft_quality_warning_does_not_trigger_repair(self) -> None:
+        class SoftWarningProvider(ScriptedProvider):
+            def generate(self, request: GenerationRequest) -> GenerationResponse:
+                chapter = request.metadata.get("chapter")
+                if request.task == "review_chapter" and chapter == 1:
+                    self.calls.append(("review_chapter", 1))
+                    return GenerationResponse(
+                        text=json.dumps(
+                            {**REVIEW, "character_voices_distinct": False},
+                            ensure_ascii=False,
+                        ),
+                        provider="scripted",
+                        model="scripted-v1",
+                        usage={},
+                    )
+                return super().generate(request)
+
+        provider = SoftWarningProvider()
+        report = run_unit(self.root, "demo-run", "unit-0001", provider)
+        self.assertEqual(report["status"], "completed")
+        self.assertEqual(report["verdict"], "有条件通过")
+        review = json.loads(
+            (self.run_dir / report["review_path"]).read_text(encoding="utf-8")
+        )
+        self.assertTrue(review["archivable"])
+        self.assertEqual(review["usability"], "可用，待润色")
+        self.assertNotIn("repair_chapter", [task for task, _ in provider.calls])
+
+    def test_soft_length_warning_does_not_trigger_repair(self) -> None:
+        class SoftLengthProvider(ScriptedProvider):
+            def generate(self, request: GenerationRequest) -> GenerationResponse:
+                chapter = request.metadata.get("chapter")
+                if request.task == "draft_chapter" and chapter == 1:
+                    self.calls.append(("draft_chapter", 1))
+                    return GenerationResponse(
+                        text="# 第 1 章：测试1\n甲乙丙丁\n",
+                        provider="scripted",
+                        model="scripted-v1",
+                        usage={},
+                    )
+                return super().generate(request)
+
+        provider = SoftLengthProvider()
+        report = run_unit(self.root, "demo-run", "unit-0001", provider)
+        self.assertEqual(report["status"], "completed")
+        self.assertEqual(report["verdict"], "有条件通过")
+        self.assertNotIn("repair_chapter", [task for task, _ in provider.calls])
+
+    def test_hard_quality_failure_still_triggers_repair(self) -> None:
+        class HardFailureProvider(ScriptedProvider):
+            def __init__(self) -> None:
+                super().__init__()
+                self.chapter_one_reviews = 0
+
+            def generate(self, request: GenerationRequest) -> GenerationResponse:
+                chapter = request.metadata.get("chapter")
+                if request.task == "review_chapter" and chapter == 1:
+                    self.calls.append(("review_chapter", 1))
+                    self.chapter_one_reviews += 1
+                    return GenerationResponse(
+                        text=json.dumps(
+                            {
+                                **REVIEW,
+                                "cultivation_consistent": (
+                                    self.chapter_one_reviews > 1
+                                ),
+                            },
+                            ensure_ascii=False,
+                        ),
+                        provider="scripted",
+                        model="scripted-v1",
+                        usage={},
+                    )
+                return super().generate(request)
+
+        provider = HardFailureProvider()
+        report = run_unit(self.root, "demo-run", "unit-0001", provider)
+        self.assertEqual(report["status"], "completed")
+        self.assertEqual(
+            [call for call in provider.calls if call == ("repair_chapter", 1)],
+            [("repair_chapter", 1)],
         )
 
     def test_retries_state_content_failure_inside_unit(self) -> None:
@@ -266,8 +354,72 @@ class UnitRunnerTests(unittest.TestCase):
         )
         self.assertEqual(outlines[0]["retry_counts"]["state_content"], 1)
         self.assertEqual(outlines[0]["status"], "committed")
+        retry_prompt = (
+            self.run_dir / "chapters/0001/state.prompt.v2.md"
+        ).read_text(encoding="utf-8")
+        repair_context = retry_prompt.split(
+            "# 上次状态提取失败修复信息\n\n", 1
+        )[1].split("\n\n# ", 1)[0]
+        self.assertIn('"previous_output_without_source_evidence"', repair_context)
+        self.assertIn('"fact_id": "new-fact"', repair_context)
+        self.assertNotIn('"source_evidence"', repair_context)
+        self.assertEqual(retry_prompt.count('"knowledge_fact_ids_by_character"'), 1)
+
+    def test_repeated_state_content_failure_pauses_unit(self) -> None:
+        class RepeatedInvalidStateProvider(ScriptedProvider):
+            def __init__(self) -> None:
+                super().__init__()
+                self.state_attempts = 0
+
+            def generate(self, request: GenerationRequest) -> GenerationResponse:
+                chapter = request.metadata.get("chapter")
+                if request.task == "extract_state" and chapter == 1:
+                    self.calls.append(("extract_state", 1))
+                    self.state_attempts += 1
+                    invalid = {
+                        **EMPTY_STATE,
+                        "knowledge_changes": [
+                            {
+                                "character_id": "protagonist",
+                                "fact_id": "new-fact",
+                                "state": "knows",
+                                "belief": "新事实",
+                                "supersedes_fact_ids": ["missing-fact"],
+                                "change": "确认新事实",
+                                "source_evidence": "甲乙丙丁戊",
+                            }
+                        ],
+                    }
+                    return GenerationResponse(
+                        text=json.dumps(invalid, ensure_ascii=False),
+                        provider="scripted",
+                        model="scripted-v1",
+                        usage={},
+                    )
+                return super().generate(request)
+
+        provider = RepeatedInvalidStateProvider()
+        with self.assertRaisesRegex(UnitRunnerError, "知识状态不存在"):
+            run_unit(self.root, "demo-run", "unit-0001", provider)
+
+        self.assertEqual(provider.state_attempts, 3)
+        run = json.loads((self.run_dir / "run.json").read_text(encoding="utf-8"))
+        self.assertEqual(run["status"], "paused")
+        outlines = json.loads(
+            (self.run_dir / "planning/chapter-outlines.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        self.assertEqual(outlines[0]["status"], "state_failed")
+        self.assertEqual(outlines[0]["retry_counts"]["state_content"], 2)
+        self.assertEqual(outlines[1]["status"], "outline_ready")
 
     def test_retries_review_evidence_failure_inside_unit(self) -> None:
+        outline_path = self.run_dir / "planning/chapter-outlines.json"
+        outlines = json.loads(outline_path.read_text(encoding="utf-8"))
+        outlines[0]["required_outcomes"] = ["甲乙丙丁戊"]
+        outline_path.write_text(json.dumps(outlines, ensure_ascii=False), encoding="utf-8")
+
         class ReviewRetryProvider(ScriptedProvider):
             def __init__(self) -> None:
                 super().__init__()
@@ -280,13 +432,37 @@ class UnitRunnerTests(unittest.TestCase):
                     self.review_attempts += 1
                     if self.review_attempts == 1:
                         return GenerationResponse(
-                            text="不是 JSON",
+                            text=json.dumps(
+                                {
+                                    **REVIEW,
+                                    "required_outcomes": [
+                                        {
+                                            "index": 0,
+                                            "passed": True,
+                                            "source_evidence": "甲乙丁戊",
+                                        }
+                                    ],
+                                },
+                                ensure_ascii=False,
+                            ),
                             provider="scripted",
                             model="scripted-v1",
                             usage={},
                         )
                     return GenerationResponse(
-                        text=json.dumps(REVIEW, ensure_ascii=False),
+                        text=json.dumps(
+                            {
+                                **REVIEW,
+                                "required_outcomes": [
+                                    {
+                                        "index": 0,
+                                        "passed": True,
+                                        "source_evidence": "甲乙丙丁戊",
+                                    }
+                                ],
+                            },
+                            ensure_ascii=False,
+                        ),
                         provider="scripted",
                         model="scripted-v1",
                         usage={},
@@ -306,6 +482,59 @@ class UnitRunnerTests(unittest.TestCase):
         )
         self.assertEqual(outlines[0]["retry_counts"]["review_format"], 1)
         self.assertEqual(outlines[0]["status"], "committed")
+        retry_prompt = (
+            self.run_dir / "chapters/0001/review.prompt.v2.md"
+        ).read_text(encoding="utf-8")
+        self.assertIn('"verbatim_paragraph_catalog"', retry_prompt)
+        self.assertIn("甲乙丙丁戊", retry_prompt)
+
+    def test_repeated_review_evidence_failure_pauses_unit(self) -> None:
+        outline_path = self.run_dir / "planning/chapter-outlines.json"
+        outlines = json.loads(outline_path.read_text(encoding="utf-8"))
+        outlines[0]["required_outcomes"] = ["甲乙丙丁戊"]
+        outline_path.write_text(json.dumps(outlines, ensure_ascii=False), encoding="utf-8")
+
+        class RepeatedInvalidReviewProvider(ScriptedProvider):
+            def __init__(self) -> None:
+                super().__init__()
+                self.review_attempts = 0
+
+            def generate(self, request: GenerationRequest) -> GenerationResponse:
+                chapter = request.metadata.get("chapter")
+                if request.task == "review_chapter" and chapter == 1:
+                    self.calls.append(("review_chapter", 1))
+                    self.review_attempts += 1
+                    return GenerationResponse(
+                        text=json.dumps(
+                            {
+                                **REVIEW,
+                                "required_outcomes": [
+                                    {
+                                        "index": 0,
+                                        "passed": True,
+                                        "source_evidence": "甲乙丁戊",
+                                    }
+                                ],
+                            },
+                            ensure_ascii=False,
+                        ),
+                        provider="scripted",
+                        model="scripted-v1",
+                        usage={},
+                    )
+                return super().generate(request)
+
+        provider = RepeatedInvalidReviewProvider()
+        with self.assertRaisesRegex(UnitRunnerError, "证据不在正文"):
+            run_unit(self.root, "demo-run", "unit-0001", provider)
+
+        self.assertEqual(provider.review_attempts, 2)
+        run = json.loads((self.run_dir / "run.json").read_text(encoding="utf-8"))
+        self.assertEqual(run["status"], "paused")
+        outlines = json.loads(outline_path.read_text(encoding="utf-8"))
+        self.assertEqual(outlines[0]["status"], "draft_quality_pending")
+        self.assertEqual(outlines[0]["retry_counts"]["review_format"], 1)
+        self.assertEqual(outlines[1]["status"], "outline_ready")
 
     def test_failure_pauses_unit_and_does_not_advance_later_chapters(self) -> None:
         provider = ScriptedProvider(fail_chapter=5)

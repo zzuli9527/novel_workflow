@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "realms": [
+    {"stage": "炼气三层", "requirements": ["小周天稳定"], "boundaries": ["只能维护浅层镜纹，不能独立监考"]},
+    {"stage": "炼气四层", "requirements": ["能稳定辨认基础神识回声"], "boundaries": ["可在监督下操作问心镜阵，不能独自进入深层幻境"]},
+    {"stage": "炼气五层", "requirements": ["在随机幻境中维持完整神识回路", "校准三处回声节点", "支付明确资源和神识成本"], "boundaries": ["可同时维持主镜与一处回声节点，不能读取记忆或预知随机变化"]},
+    {"stage": "炼气六层", "requirements": ["完成考功堂正式复核"], "boundaries": ["本单元岑照不得达到此境界"]}
+  ],
+  "resources": [
+    {"resource_id": "low-grade-spirit-stone", "unit": "枚", "rules": ["获得与消耗必须更新同一余额", "突破消耗后不得返还"]},
+    {"resource_id": "clarity-talisman", "unit": "张", "rules": ["只能短时稳定神识回声，不能修复镜阵或替代突破前置"]},
+    {"resource_id": "exam-hall-reset-seal", "unit": "枚", "rules": ["属于考功堂公共资源", "启用后永久消耗并记录用途"]},
+    {"resource_id": "mirror-sand", "unit": "份", "rules": ["用于修补镜纹和节点", "每次使用必须记录去向和余额"]}
+  ],
+  "techniques": [
+    {"technique_id": "residual-mark-reading", "name": "照痕辨序", "effects": ["读取镜阵残留灵力划痕的方向和先后", "突破后可同时比较主镜与一处回声节点"], "limits": ["不能读取记忆", "不能判断动机", "不能识别谁传播草图", "左眼旧伤发作时会误判距离"]},
+    {"technique_id": "basic-echo-circulation", "name": "回声小周天", "effects": ["在低强度幻境中稳定神识回路"], "limits": ["强行观察高亮镜纹会加重左眼镜灼", "不能替代器物维修"]}
+  ],
+  "artifacts": [
+    {"artifact_id": "heart-mirror-array", "name": "问心镜阵", "limits": ["只生成预设与随机幻境", "不能自动识别作弊者或人的动机"]},
+    {"artifact_id": "calibration-side-mirror", "name": "校准副镜", "limits": ["特定角度会反射第一层安全纹路", "不能显示后续随机考题"]}
+  ],
+  "injury_rules": [
+    {"state_id": "left-eye-mirror-burn", "name": "左眼镜灼", "symptoms": ["左眼重影", "神识刺痛", "距离误判"], "recovery": ["停止观察高亮镜纹", "取出残留镜屑", "使用清神符稳定回声", "完成低强度观想并由复核官确认"], "hard_rule": "加重、部分恢复和解除必须复用同一 state_id；突破不能自动治愈"},
+    {"state_id": "post-breakthrough-echo-splitting", "name": "突破后回声分裂", "symptoms": ["长时间监考后出现双重回声", "深层幻境中神识定位延迟"], "recovery": ["三日内不得独自进入深层幻境", "每日只进行低强度节点复核"], "hard_rule": "本单元结尾保持为活动限制，不得立即解除"}
+  ],
+  "breakthrough_rules": [
+    {"from_stage": "炼气四层", "to_stage": "炼气五层", "prerequisites": ["完成三处回声节点校准", "旧伤在突破前按规则正式解除", "在随机幻境中维持完整神识回路"], "costs": ["2 枚下品灵石", "1 张清神符", "突破后回声分裂限制"], "new_limits": ["三日内不得独自进入深层幻境", "不能同时维持超过一处回声节点"]}
+  ],
+  "power_boundaries": [
+    "岑照只允许在第 9～10 章完成炼气四层到炼气五层突破",
+    "破局依靠座次、残痕、封签、镜面角度和角色协作，不靠读心或临时万能能力",
+    "突破不能修复镜阵、补回重置印或免除漏封副镜的责任"
+  ],
+  "exceptions": []
+}

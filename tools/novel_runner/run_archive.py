@@ -221,7 +221,22 @@ def archive_run(
     review_json = run_dir / f"reports/story-unit-review-{unit_id}.json"
     review_md = run_dir / f"reports/story-unit-review-{unit_id}.md"
     review = read_json(review_json)
-    if review.get("verdict") != "通过":
+    verdict = review.get("verdict")
+    metrics = review.get("metrics")
+    hard_failure_count = (
+        metrics.get("hard_failure_count") if isinstance(metrics, dict) else None
+    )
+    declared_hard_failure = (
+        isinstance(hard_failure_count, int)
+        and not isinstance(hard_failure_count, bool)
+        and hard_failure_count > 0
+    )
+    conditional_pass = (
+        verdict == "有条件通过"
+        and review.get("archivable") is True
+        and hard_failure_count == 0
+    )
+    if declared_hard_failure or (verdict != "通过" and not conditional_pass):
         raise RunArchiveError(f"故事单元评审未通过：{review.get('verdict')}")
 
     destination = root / "test/matrix-runs" / case_id

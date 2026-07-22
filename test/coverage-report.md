@@ -11,7 +11,7 @@
 | X05 | automated_flow_pass | `tests/test_structured_state.py::test_resource_balance_is_mechanically_projected`<br>`tests/test_chapter_service.py::test_continuity_failure_does_not_append_state_event` | 余额、来源去向和正文证据已机械核验；真实资源叙事仍需正文验证。 |
 | X06 | automated_flow_pass | `tests/test_outline_validation.py::test_rejects_three_identical_comedy_mechanisms`<br>`tests/test_plan_import.py::test_rejects_three_identical_comedy_mechanisms` | 真实笑点是否有效仍需正文评审。 |
 | X07 | automated_flow_pass | `tests/test_structured_state.py::test_knowledge_state_is_projected_per_character_across_chapters` | 已按角色和事实投影知识状态；复杂误会的文学合理性仍需正文验证。 |
-| X08 | partial | `tests/test_chapter_service.py::test_quality_review_blocks_indistinguishable_character_voices` | 已有独立质量闸门，角色声音是否真正鲜明仍需真实正文验证。 |
+| X08 | partial | `tests/test_chapter_service.py::test_quality_review_allows_soft_quality_warnings` | 已有独立软质量告警，角色声音是否真正鲜明仍需真实正文验证。 |
 | X09 | automated_flow_pass | `tests/test_plan_import.py::test_rejects_complete_unit_without_setback_mapping` | 章纲必须明确承载真实受挫；失败后果与追读动力仍需真实正文验证。 |
 | X10 | partial | `tests/test_chapter_service.py::test_quality_review_blocks_comedy_that_erases_consequence` | 需要严肃损失场景的独立正文样例。 |
 | X11 | partial | `tests/test_chapter_service.py::test_quality_review_blocks_disconnected_multi_line_plot` | 已有多线因果闸门，仍需真实多线交汇正文样例。 |

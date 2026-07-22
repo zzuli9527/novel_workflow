@@ -1,0 +1,1122 @@
+[
+  {
+    "number": 1,
+    "title": "警示牌被抄成押题",
+    "actual_length": 2822,
+    "status": "passed",
+    "hard_pass": true,
+    "requires_review": false,
+    "can_update_state": true,
+    "message": "长度闸门通过",
+    "chapter": 1,
+    "draft_version": 1,
+    "draft_path": "chapters/0001/draft.v1.md",
+    "quality": {
+      "required_outcomes": [
+        {
+          "index": 0,
+          "passed": true,
+          "source_evidence": "薛简抬手压下西侧阵枢。\n\n一声钟鸣穿透浅境，雾桥、泥沼与枯手同时凝住。\n\n“第一轮试炼中止。”他声音不高，却盖住了所有争辩，“所有考生原地闭目，依座次退出。不得交谈，不得交换纸笔，不得毁弃随身物。”"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "source_evidence": "“无人。我候场时看见廊下有反光，亮一阵，暗一阵，形状十分吉利，便照着画了。”"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "source_evidence": "“流程要求先核名册，再由正式监考复签。你提前启阵，没有复核签；随后与安全路线相似的图出现在候场考生手里。主镜封签未破，外人无法直接接触阵图。依现有记录，我有理由判断，你涉嫌向同乡考生泄露第一层路线。”"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "source_evidence": "刺痛猛地贯入眼底。\n\n镜纹骤然分成两层，近处的镜架向后错开数尺，远处封存台却像迎面压来。岑照下意识抬手，原想指向主镜右下角，指尖却落在旁边空处。"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "source_evidence": "安苇又看向岑照：“你的临时监考资格尚未冻结，但已进入风险复核。在结果出来前，不得单独操作镜阵，不得独自进入深层幻境。需要辨残痕，须由正式监考在场，并记录你所看角度与时长。”"
+        }
+      ],
+      "forbidden_outcomes": [
+        {
+          "index": 0,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 1,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 2,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 3,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 4,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 5,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 6,
+          "appeared": false,
+          "source_evidence": ""
+        }
+      ],
+      "summary_like": false,
+      "cultivation_consistent": true,
+      "comedy_causal": true,
+      "serious_consequences_preserved": true,
+      "chapter_hook_concrete": true,
+      "resource_continuity_consistent": true,
+      "knowledge_states_consistent": true,
+      "character_voices_distinct": true,
+      "multi_line_causality_preserved": true,
+      "warnings": [],
+      "contract_failures": [],
+      "quality_failures": []
+    },
+    "quality_status": "draft_passed"
+  },
+  {
+    "number": 2,
+    "title": "反光不是供词",
+    "actual_length": 2629,
+    "status": "passed",
+    "hard_pass": true,
+    "requires_review": false,
+    "can_update_state": true,
+    "message": "长度闸门通过",
+    "chapter": 2,
+    "draft_version": 1,
+    "draft_path": "chapters/0002/draft.v1.md",
+    "quality": {
+      "required_outcomes": [
+        {
+          "index": 0,
+          "passed": true,
+          "source_evidence": "一块块座次牌移到封存桌左侧。绕过开场落藤陷阱的十一名考生中，只有唐桥和另外一人来自临川郡，另有三人此前同岑照说过话，却只是进场时问过警示牌能不能抄。\n\n安苇逐项落笔：“同乡关系不能覆盖绕行人群。单凭同乡，不足以构成路线传播链。”\n\n薛简没有争辩，只把两枚临川籍考生的座次牌单独压在册页边：“不足，不等于不存在。唐桥的图最先在东三位出现，而岑照的阵法调用记录早于正式开场一刻钟。”"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "source_evidence": "“第一道，来自主镜内侧，向东南散，止于第一层边纹。”他语速很慢，“第二道从候场方向掠入，经副镜位，擦过主镜外缘。它更早。”\n\n薛简落笔：“早多少？”\n\n“只能分先后，不能定准时刻。第二道残痕已经散了两层。”\n\n“与考生入场相比？”\n\n岑照看向主镜下方的启阵时标。银纹重影晃了一下，他退开半步，重新对准：“早于第一批考生入场。部分第一层安全纹路，在他们进场前已经留下回照残痕。”\n\n薛简笔尖停住：“谁留下的？”\n\n“不知道。”\n\n“是维护弟子，还是看过图的人？”\n\n“不知道。”\n\n“能否认出唐桥的灵力？”\n\n“不能。纸上也没有他的灵力可供比照。照痕辨序只认划痕方向和先后，不认人。”"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "source_evidence": "一道极淡的银光从副镜边缘斜落下来，在纸上折出三段断续细线。它们拼不成完整路线，却恰好显出落藤区左侧的空隙、石壁转角和第一处安全落脚点。\n\n唐桥盯着纸面，神色难得认真：“我画的就是这三折。后面那一笔，是我觉得三折不够吉利，添的。”\n\n安苇把空纸压住：“反光能解释部分图形，不能解释图如何转手，也不能证明你是否知道它对应试炼路线。”"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "source_evidence": "安苇问：“副镜为何在这里？”\n\n“校准后暂放。”\n\n“何时开始暂放？”\n\n阮青抿了抿唇：“开考前。”\n\n“具体。”\n\n“辰时二刻左右。”\n\n“何时封存？”\n\n阮青没答。"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "source_evidence": "薛简检查镜架，随后看向岑照：“副镜第二道封镜检查，由临时监考执行。你的签押呢？”\n\n岑照看着封签册上空着的第二格：“没做。”\n\n“第一道是谁验的？”\n\n“阮青报校准完成，我验了镜面清洁和外框，没有到候场廊复验封存。”\n\n薛简又翻到阵法调用页，将那行朱字推到安苇面前：“辰时一刻，岑照启动过一次试场。正式监考复核栏为空。”\n\n安苇问：“你启动的？”\n\n“是。”\n\n“为何无复核？”\n\n“想在开考前确认第一层落藤触发。我以为只启浅层，不会牵动候场副镜。”\n\n“你以为什么，不替代复核。”\n\n安苇提笔，字迹一笔一画压在册页上：“岑照漏做候场副镜第二道封镜检查；无正式监考复核，提前启动试场。两项列入程序责任复核清单。”"
+        }
+      ],
+      "forbidden_outcomes": [
+        {
+          "index": 0,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 1,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 2,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 3,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 4,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 5,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 6,
+          "appeared": false,
+          "source_evidence": ""
+        }
+      ],
+      "summary_like": false,
+      "cultivation_consistent": true,
+      "comedy_causal": true,
+      "serious_consequences_preserved": true,
+      "chapter_hook_concrete": true,
+      "resource_continuity_consistent": true,
+      "knowledge_states_consistent": true,
+      "character_voices_distinct": true,
+      "multi_line_causality_preserved": true,
+      "warnings": [],
+      "contract_failures": [],
+      "quality_failures": []
+    },
+    "quality_status": "draft_passed"
+  },
+  {
+    "number": 3,
+    "title": "低限试场高限翻车",
+    "actual_length": 2974,
+    "status": "passed",
+    "hard_pass": true,
+    "requires_review": false,
+    "can_update_state": true,
+    "message": "长度闸门通过",
+    "chapter": 3,
+    "draft_version": 1,
+    "draft_path": "chapters/0003/draft.v1.md",
+    "quality": {
+      "required_outcomes": [
+        {
+          "index": 0,
+          "passed": true,
+          "source_evidence": "“低限复测，只开主镜一成，第一回声节点半开。所有考生停在第二线后，不得前进三步，不得触碰幻象，不得自行判断安全路线。”\n\n她转向薛简：“封签、调用记录归你。每放开一道镜纹，先报时刻，再验封签。”\n\n薛简将木匣放上监考台：“主镜封签丙七，完好。第一节点封签丙八，完好。其余两处节点不启用。”\n\n安苇又看向岑照：“你只做受限照痕辨序。只报方向、先后，不认人，不定动机。左眼若再出重影，立刻停。”"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "source_evidence": "两息之内，淡青光带向右偏了一寸，又缓缓归位。石刺没有归位，反而在原处留下半透明重影。\n\n主镜与节点，已经不在同一层上。"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "source_evidence": "安苇看向阮青：“校准副镜何时从维护架移入候场廊？”\n\n“辰时二刻前后。”\n\n“前，还是后？”\n\n阮青攥紧量绳：“应当是前。”\n\n薛简翻开维护簿：“辰时二刻，你在第一节点下签，记录为清理回声槽。副镜若在此前移走，是谁搬的？”\n\n“我搬的。也可能……下签之后才搬。”\n\n安苇只道：“两种时刻都记。今日不替你选。”"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "source_evidence": "“不对，是三丈半！”岑照抬手指向节点，眼中的两重边界终于短暂合一，“我报近了一丈！”\n\n神识刺痛随即穿入额角。他脚下明明离阵盘尚有半丈，伸手时却碰翻了旁边的记录架。\n\n薛简一把扶住阵盘：“主镜锁不住。第一节点在反卷！”"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "source_evidence": "临时复核桌被搬到熄灭的主镜旁。安苇当场展开资源簿，在重置印一栏写下：原有二枚，启用一枚，余一枚。用途为低限试场错层后的全场重置，不返还。"
+        },
+        {
+          "index": 5,
+          "passed": true,
+          "source_evidence": "薛简合上调用簿：“主镜封签未破，提前调用记录仍在。座次线索虽已削弱，现有证据也不能排除岑照借试场放出纹路的可能。我不撤销判断。”\n\n岑照道：“残痕只能证明先后。今日能证明的是主镜与节点错层，不是传播动机。”\n\n“这句我记。”薛简看了一眼已经熄黑的第一节点，“泄露路线另查。但镜阵安全必须先修。”"
+        }
+      ],
+      "forbidden_outcomes": [
+        {
+          "index": 0,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 1,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 2,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 3,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 4,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 5,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 6,
+          "appeared": false,
+          "source_evidence": ""
+        }
+      ],
+      "summary_like": false,
+      "cultivation_consistent": true,
+      "comedy_causal": true,
+      "serious_consequences_preserved": true,
+      "chapter_hook_concrete": true,
+      "resource_continuity_consistent": true,
+      "knowledge_states_consistent": true,
+      "character_voices_distinct": true,
+      "multi_line_causality_preserved": true,
+      "warnings": [],
+      "contract_failures": [],
+      "quality_failures": []
+    },
+    "quality_status": "draft_passed"
+  },
+  {
+    "number": 4,
+    "title": "冻结资格也要拧螺丝",
+    "actual_length": 2593,
+    "status": "passed",
+    "hard_pass": true,
+    "requires_review": false,
+    "can_update_state": true,
+    "message": "长度闸门通过",
+    "chapter": 4,
+    "draft_version": 1,
+    "draft_path": "chapters/0004/draft.v1.md",
+    "quality": {
+      "required_outcomes": [
+        {
+          "index": 0,
+          "passed": true,
+          "source_evidence": "安苇将禁用牌扣在阵枢上，声音平直：“修复期间，停用高亮镜纹。岑照不得触碰阵枢，不得单独下令，不得进入深层幻境。薛简先读封签与调用记录，岑照再辨残痕，所有结论由薛简复述确认。”"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "source_evidence": "安苇提笔登记：“镜砂一份，去向：主镜裂纹封补。考场镜砂由六份减至五份。主镜仅完成一处封补，不视为全阵修复。”"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "source_evidence": "薛简沿三道残痕逐一验过，眉头渐紧。他把调用簿放到一旁，沉声复述：“确认。主镜错层的最早扰动来自回声节点方向，不是考生入场方向。”\n\n他看向岑照：“这能否证明你没有借试场泄露路线？”\n\n“不能。”岑照答得很快，“残痕只记灵力怎么走、何时走。不记谁想做什么，也不认是谁把图传出去。”\n\n“那只能说明，我原先以为错层由入场路线触发，这一项不成立。”\n\n“只能削弱那一段推断。”"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "source_evidence": "薛简抽走记录，先看架号，再看出入刻印：“副镜于辰时一刻移出维护架。开考封存点是辰时二刻。你昨日先说封存后才移，后来又说记不清。”\n\n阮青盯着桌面：“我原本要清完镜边就送回去。”\n\n安苇问：“送回哪里？”\n\n“维护架。”\n\n“实际放在哪里？”\n\n“候场廊。”\n\n“为何？”\n\n阮青沉默片刻：“开考时间快到了。主镜还缺一轮校准，我想着副镜只是暂放，等主镜亮稳再封。”"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "source_evidence": "第三次转环后，节点的低鸣终于与主镜同拍。\n\n阮青刚要扣死外环，安苇伸手挡住：“临时校准。先留复核扣。”\n\n薛简补道：“还要与第二、第三节点连测。单点同拍，不等于全阵无错。”"
+        },
+        {
+          "index": 5,
+          "passed": true,
+          "source_evidence": "重影仍在，却不再像昨日那样一层压一层。神识中的刺痛从尖锐变成了迟钝的跳动。"
+        }
+      ],
+      "forbidden_outcomes": [
+        {
+          "index": 0,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 1,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 2,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 3,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 4,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 5,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 6,
+          "appeared": false,
+          "source_evidence": ""
+        }
+      ],
+      "summary_like": false,
+      "cultivation_consistent": true,
+      "comedy_causal": true,
+      "serious_consequences_preserved": true,
+      "chapter_hook_concrete": true,
+      "resource_continuity_consistent": true,
+      "knowledge_states_consistent": true,
+      "character_voices_distinct": true,
+      "multi_line_causality_preserved": true,
+      "warnings": [],
+      "contract_failures": [],
+      "quality_failures": []
+    },
+    "quality_status": "draft_passed"
+  },
+  {
+    "number": 5,
+    "title": "反光纸比口供诚实",
+    "actual_length": 2618,
+    "status": "passed",
+    "hard_pass": true,
+    "requires_review": false,
+    "can_update_state": true,
+    "message": "长度闸门通过",
+    "chapter": 5,
+    "draft_version": 1,
+    "draft_path": "chapters/0005/draft.v1.md",
+    "quality": {
+      "required_outcomes": [
+        {
+          "index": 0,
+          "passed": true,
+          "source_evidence": "薛简照原话写下，又补了一行：“第一节点为可复核临时校准，待第二节点三点连测后，再决定是否锁复核扣。”"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "source_evidence": "三张纸登记持有人、原位置、折法与可成角度，全部封存。"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "source_evidence": "唐桥沉默片刻：“给运气图当格尺。”\n\n薛简翻开封存的草图：“格尺？”\n\n“同样宽的纸，折三折，画出来的路才齐整。”"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "source_evidence": "薛简翻到维护架记录：“辰时一刻移出。辰时二刻为开考封存点。现在又有丙五座书箱、三折反光纸和镜面角度可以复原。你所说的‘一阵’，已经跨过封存时限。”"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "source_evidence": "岑照盯着纸上渐淡的光：“只能说明这个位置、折法和角度，能映出相近的第一层安全纹路。不能说明唐桥为何画，也不能说明他见过后续考题。”"
+        },
+        {
+          "index": 5,
+          "passed": true,
+          "source_evidence": "淡青镜纹随即熄灭。岑照左眼的刺痛没有加深，重影却仍停了片刻才散。他退到白线外，没有碰阵枢，也没有要求增加亮度。"
+        }
+      ],
+      "forbidden_outcomes": [
+        {
+          "index": 0,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 1,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 2,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 3,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 4,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 5,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 6,
+          "appeared": false,
+          "source_evidence": ""
+        }
+      ],
+      "summary_like": false,
+      "cultivation_consistent": true,
+      "comedy_causal": true,
+      "serious_consequences_preserved": true,
+      "chapter_hook_concrete": true,
+      "resource_continuity_consistent": true,
+      "knowledge_states_consistent": true,
+      "character_voices_distinct": true,
+      "multi_line_causality_preserved": true,
+      "warnings": [],
+      "contract_failures": [],
+      "quality_failures": []
+    },
+    "quality_status": "draft_passed"
+  },
+  {
+    "number": 6,
+    "title": "第二节点不认暂时二字",
+    "actual_length": 2687,
+    "status": "passed",
+    "hard_pass": true,
+    "requires_review": false,
+    "can_update_state": true,
+    "message": "长度闸门通过",
+    "chapter": 6,
+    "draft_version": 1,
+    "draft_path": "chapters/0006/draft.v1.md",
+    "quality": {
+      "required_outcomes": [
+        {
+          "index": 0,
+          "passed": true,
+          "source_evidence": "她推开砂匣：“补一份。”\n\n阮青取出一小瓶镜砂，倒入量槽。细砂泛起冷白光，正好一格。薛简验过瓶封，报：“消耗镜砂一份。考场镜砂余额五份降为四份。”"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "source_evidence": "主镜低亮起，第一节点随之回声。第二节点刚补过砂，光色比第一节点厚半分。岑照左眼一疲，第一节点的扣影像漂到第二节点旁边。他停了一息。\n\n薛简立刻道：“主镜灰痕先起，入第一节点；第一节点回声后半息接第二节点。第二节点无反跳。你只报先后。”\n\n岑照闭左眼听完：“主镜先，第一次之，第二后接。第一节点可扣复核扣。第二节点需等第三节点同线后再扣死。”\n\n薛简没有反驳，取出小铜扣，将第一节点封册上的复核扣压下。咔的一声，清脆得像案上多了一条规矩。\n\n“第一回声节点复核扣扣死。”薛简记录，“第二节点留待第三节点连测。”"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "source_evidence": "岑照刚要看向节点中线，左眼忽地分出两道灰痕，一道贴近封纹，一道斜到台外。他停住，闭了左眼，右手按在袖内，不碰阵枢。\n\n薛简看见他的动作，沉声道：“你报不报？”\n\n“停看高亮。”岑照道，“请薛师兄读低亮刻度。只读灰痕起止，不读推断。”"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "source_evidence": "薛简调出阵法调用记录。玉简一层层展开，辰时一刻到辰时三刻的刻线浮在案上。\n\n“辰时一刻，校准副镜移出维护架。”薛简念得很慢，“辰时二刻，开考封存点。辰时二刻又三分，岑照以临时监考牌提前启动低限试场。无正式监考复核。辰时二刻后，候场廊丙五、丁二、戊一位置登记反光纸。”"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "source_evidence": "阮青咬了咬唇：“若昨日先把砂给这里，主镜裂纹便压不住。主镜裂纹一亮，第一节点也接不上。我想着副镜封纹只是候场用，晚些补——”\n\n薛简笔尖一顿：“说清楚。第二节点临时封纹所需镜砂，被你优先留给主镜裂纹，所以副镜封纹没有及时补做？”\n\n阮青低头：“是。我没改考题，也没碰主镜封签。我只是赶修主镜和这里，觉得副镜……暂时不进阵。”\n\n“又是暂时。”安苇在封册上落笔，“记资源去向。阮青优先调镜砂用于主镜裂纹与第二节点临时封纹，副镜封纹未及时补做。此项为程序与资源责任，不等同修改正式考题。”"
+        },
+        {
+          "index": 5,
+          "passed": true,
+          "source_evidence": "他听见“三点连测”四字，眼睛一亮：“三点？我那运气图正好三折。主镜、第一、第二都接上了，是不是说明前三折得了节点背书？重开时开场陷阱我可按图免过？”\n\n岑照正在按眼角，闻言放下手：“不是。”\n\n唐桥不甘心：“可你们方才扣了第一节点。扣死，不就是认了？”\n\n“认的是第一节点低亮回声顺序。”岑照道，“不是认你的折痕。”\n\n“那第二节点留扣，岂不是我的第三折待认？”\n\n“第二节点待第三节点连测，不待你的第三折。”\n\n唐桥把告知单拿近些：“可反光图前三折与安全纹路相近，这是你们登记过的。”\n\n“相近，不等于考题。”岑照短句往下压，“反光角度只见第一层安全纹路。随机变化不在图上。心境关不按折痕开门。你按图冲，仍会撞幻象。”\n\n旁边一名考生小声问：“若撞的是已知陷阱，算不算聪明？”\n\n安苇抬笔：“不评聪明。评风险。凡见过、抄过、传过反光图者，签收此单：反光图不能替代随机幻境心境考验，不得以图纸要求免试、改座、避查。签完并入重开前检查。”"
+        },
+        {
+          "index": 6,
+          "passed": true,
+          "source_evidence": "薛简收起玉简，语气比前几日少了些硬刺，却仍稳：“路线相似不能再简单归因于考生入场方向泄题。回声方向、候场反光、纸位时间都要并列核查。但岑照提前调用试场、漏封副镜检查，记录仍成立。现有证据不足以撤销我的判断。”"
+        }
+      ],
+      "forbidden_outcomes": [
+        {
+          "index": 0,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 1,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 2,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 3,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 4,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 5,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 6,
+          "appeared": false,
+          "source_evidence": ""
+        }
+      ],
+      "summary_like": false,
+      "cultivation_consistent": true,
+      "comedy_causal": true,
+      "serious_consequences_preserved": true,
+      "chapter_hook_concrete": true,
+      "resource_continuity_consistent": true,
+      "knowledge_states_consistent": true,
+      "character_voices_distinct": true,
+      "multi_line_causality_preserved": true,
+      "warnings": [],
+      "contract_failures": [],
+      "quality_failures": []
+    },
+    "quality_status": "draft_passed"
+  },
+  {
+    "number": 7,
+    "title": "第三节点先扣人后扣镜",
+    "actual_length": 2991,
+    "status": "passed",
+    "hard_pass": true,
+    "requires_review": false,
+    "can_update_state": true,
+    "message": "长度闸门通过",
+    "chapter": 7,
+    "draft_version": 1,
+    "draft_path": "chapters/0007/draft.v1.md",
+    "quality": {
+      "required_outcomes": [
+        {
+          "index": 0,
+          "passed": true,
+          "source_evidence": "薛简立在阵枢边，手按记录简：“岑照，不得触阵枢，不得下令调镜，只报方向、先后。由我复述，阮青执行。”\n\n“明白。”岑照短声道，“第三节点外缘，残痕先自西北入，后折向主镜。第二道回痕在其后半息，向候场廊侧偏。”"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "source_evidence": "“一份。”阮青低声道，“补第三节点低亮裂缝。考场镜砂原余四份，用后一三——”\n\n薛简抬眼。\n\n阮青咬字：“余三份。”\n\n镜砂落入铜扣，细如星屑。阮青以浅层镜纹把它铺开，不敢越过薛简划出的阵枢线。第三节点的抖动慢慢止住，低亮光从主镜绕第一节点、第二节点，再经第三节点回环。"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "source_evidence": "薛简把第二回声节点复核扣压下，铜扣“咔”地扣死。阮青眼巴巴看向第三扣。\n\n“第三节点呢？”她问。\n\n低亮链路绕到第三节点时，忽又从候场廊方向拖出一缕灰痕，细得几乎像镜面没擦净。\n\n岑照左眼又一阵酸胀，鼻梁后刺了一下。他退了半步，正好踩在“别挪”那张红封纸边缘，纸被鞋尖掀起半角。\n\n安苇抬头：“不许再看高亮。低亮也到此为止。”\n\n岑照立刻收眼：“第三节点本体可连测。复核扣暂缓。副镜方向残痕未清，需与副镜封纹连测。”\n\n薛简照原话写下：“第三节点复核扣暂待候场副镜封纹连测后确认。”"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "source_evidence": "薛简把时间一条条排开：“辰时一刻，副镜移出维护架。辰时二刻，按规应封存。辰时二刻又三分，岑照提前调用低限试场，无正式监考复核。辰时二刻后，反光纸位置登记成形。第三节点残痕显示，安全纹路先自候场副镜反射方向入回声链。”\n\n他说到最后一句，语速慢了些。\n\n岑照站在封线外，没有靠近副镜。他只看薛简摊开的角度木尺：“反光路径曾成立。残痕能证明方向和先后，不能证明唐桥为何画，也不能证明谁让他画。”\n\n“也不能洗掉你的两项程序责任。”薛简接上。\n\n“不能。”岑照道。"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "source_evidence": "安苇指向阮青：“工具。”\n\n阮青双手奉上封纹刀和细砂匙：“都在。副镜那时只是……还没来得及归架。”\n\n安苇笔尖一顿：“‘未及时归架并未补做封纹’，记为维护责任。不要换词。”\n\n阮青耳根红了：“是。”"
+        },
+        {
+          "index": 5,
+          "passed": true,
+          "source_evidence": "安苇把副镜推到封线内侧，让薛简以低亮照边。镜边封纹槽有一道极细的缺口，缺口里卡着一点暗银色碎屑。它不亮，却在角度尺影子移动时闪了一下。\n\n薛简皱眉：“镜屑？”\n\n阮青脸色一白：“封纹刀边缘也沾过细屑。我以为是主镜补砂时带的。”\n\n安苇没有伸手取，只取一枚小封罩扣在副镜边缘：“疑似残留镜屑，定位封存。取出需明日连同封签、角度、残痕同测。今日不取。”"
+        },
+        {
+          "index": 6,
+          "passed": true,
+          "source_evidence": "薛简把时间一条条排开：“辰时一刻，副镜移出维护架。辰时二刻，按规应封存。辰时二刻又三分，岑照提前调用低限试场，无正式监考复核。辰时二刻后，反光纸位置登记成形。第三节点残痕显示，安全纹路先自候场副镜反射方向入回声链。”"
+        },
+        {
+          "index": 7,
+          "passed": true,
+          "source_evidence": "唐桥又挪了半步，刚好站到白线交叉处：“弟子只是核对自己没有站错。此处上承副镜，下避红封，左右皆不犯线，看着很顺。”\n\n薛简转头：“唐桥，退回灰绳后。”\n\n唐桥认真道：“若这是复原线，弟子站上去，岂不正好复原当时运气？”\n\n岑照看了他一眼：“你把取证角度当成求签了。”\n\n“不是求签。”唐桥辩解，“是尊重考场线。”\n\n他话音未落，副镜边缘那点暗银碎屑在他所站斜角上轻轻一闪，正把廊柱旁一张空白告知单照出一截浅纹。\n\n安苇终于抬头。\n\n唐桥立刻把脚收回去：“弟子方才没有看懂，只看见它很吉。”\n\n“记录。”安苇道，“唐桥主动移至可再次形成副镜反光的斜角，传播风险增加。候场分区线改为无反光斜角，所有考生退至廊柱阴面。”"
+        },
+        {
+          "index": 8,
+          "passed": true,
+          "source_evidence": "岑照左眼的酸胀还没退，眼前桌角短短分出两道影。他伸手按了按冷玉纱，却没有再看镜面。\n\n安苇注意到他的动作：“今日到此。高亮镜纹继续停用。取镜屑后，再安排低强度观想，届时我确认伤势流程。现在未解除。”"
+        }
+      ],
+      "forbidden_outcomes": [
+        {
+          "index": 0,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 1,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 2,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 3,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 4,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 5,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 6,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 7,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 8,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 9,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 10,
+          "appeared": false,
+          "source_evidence": ""
+        }
+      ],
+      "summary_like": false,
+      "cultivation_consistent": true,
+      "comedy_causal": true,
+      "serious_consequences_preserved": true,
+      "chapter_hook_concrete": true,
+      "resource_continuity_consistent": true,
+      "knowledge_states_consistent": true,
+      "character_voices_distinct": true,
+      "multi_line_causality_preserved": true,
+      "warnings": [],
+      "contract_failures": [],
+      "quality_failures": []
+    },
+    "quality_status": "draft_passed"
+  },
+  {
+    "number": 8,
+    "title": "副镜边缘不认运气",
+    "actual_length": 2513,
+    "status": "passed",
+    "hard_pass": true,
+    "requires_review": false,
+    "can_update_state": true,
+    "message": "长度闸门通过",
+    "chapter": 8,
+    "draft_version": 1,
+    "draft_path": "chapters/0008/draft.v1.md",
+    "quality": {
+      "required_outcomes": [
+        {
+          "index": 0,
+          "passed": true,
+          "source_evidence": "银色镜屑终于被挑出。阮青将它落入透明封样管，镜屑一面平滑，一面带着极细的斜擦纹。\n\n薛简把角度尺压到副镜边缘：“旧划在东偏南两格。受力痕由外向内。”\n\n“镜屑闪面再转半格。”岑照道。\n\n薛简复述，阮青依令微调封样管。低亮光从镜屑断面掠过，折向封物匣中的反光纸。纸上旧折角亮了一瞬，光线再落到第三回声节点的标尺边。\n\n薛简手中角度尺顿住。\n\n第三节点那道已经封存的入链残痕，正是同一方向。\n\n岑照闭了一下发酸的左眼，才道：“先副镜，后纸面，再入第三节点。只见先后，不见是谁摆的，也不见为何摆。”\n\n“记原话。”安苇道。\n\n薛简亲自落笔：“镜屑断面、封纹刀旧划、槽内受力痕、反光纸折角及第三节点低亮残痕，角度可互证。第一层安全纹路曾由候场副镜特定角度反射，经纸面入回声链。”\n\n镜屑被封样，封口再加两道灵印。\n\n复核桌随后搬到问心镜阵外圈。\n\n薛简把封签簿、座次册、调用日志、反光纸位置登记和镜屑封样依次排开。唐桥的运气图放在最末，纸角刚好压着“丙五座”三个字。\n\n他先翻封签簿。\n\n“辰时一刻，阮青将校准副镜移出维护架。辰时二刻，按规应归架封存，未封。”\n\n阮青低声道：“属实。”\n\n“辰时二刻又三分，岑照调用低限试场。调用簿有其灵印，无正式监考复核。”\n\n岑照道：“属实。”\n\n薛简再翻座次册：“丙五座在候场廊第三柱前。该位置与副镜反光线相交。辰时二刻后，反光纸位置登记成形，唐桥所绘路线与第一层安全纹路相似。”\n\n唐桥小声纠正：“原名运气图。”\n\n安苇看他一眼：“现名传播风险材料。”\n\n薛简将镜屑封样放到时间线中央。\n\n“第三节点残痕显示，安全纹路先自候场副镜方向入回声链。今日取屑同测，证明该反射路径在当时能够成立。也就是说，考生路线相似，不必以监考弟子主动传递为唯一解释。”\n\n桌边静了片刻。\n\n薛简合上调用簿，转身面向候场廊内尚未散去的执事、维护弟子与涉事考生。\n\n“我此前依据副镜封签缺失、丙五座位置、岑照提前调用记录，判断岑照可能主动泄露第一层安全路线。该判断有记录依据，但现有镜屑、残痕先后、封签时间与反光角度已组成新的可复核链条。”\n\n他声音清楚，没有含混。\n\n“现有证据不支持岑照主动泄露试炼路线。此前判断，撤回更正。”\n\n岑照没有立刻开口，只把扶在桌沿的手收回袖中。\n\n薛简又道：“但辰时二刻又三分的调用记录仍然有效。更正泄露判断，不等于抹去程序责任。”\n\n“正该分开。”安苇展开考功堂责任册，逐条念道，“阮青，留置未封校准副镜于候场廊，未及时归架，未补做封纹，记维护责任。”\n\n阮青垂首领记。\n\n“唐桥，将副镜反光形成的第一层安全纹路绘为运气图并传播。该图只能解释开场避障相似，不能作为正式考题证据，更不能证明其可通过后续心境关。记传播风险。”\n\n唐桥看了一眼自己的图：“那它还叫运气图吗？”\n\n“封样名称不按你的愿望写。”\n\n“明白。”\n\n安苇最后看向岑照：“漏做候场副镜第二道封镜检查，记程序违规。无正式监考复核，提前启动低限试场，另记程序违规。主动泄露嫌疑更正，不抵消这两项。”"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "source_evidence": "银色镜屑终于被挑出。阮青将它落入透明封样管，镜屑一面平滑，一面带着极细的斜擦纹。\n\n薛简把角度尺压到副镜边缘：“旧划在东偏南两格。受力痕由外向内。”\n\n“镜屑闪面再转半格。”岑照道。\n\n薛简复述，阮青依令微调封样管。低亮光从镜屑断面掠过，折向封物匣中的反光纸。纸上旧折角亮了一瞬，光线再落到第三回声节点的标尺边。\n\n薛简手中角度尺顿住。\n\n第三节点那道已经封存的入链残痕，正是同一方向。\n\n岑照闭了一下发酸的左眼，才道：“先副镜，后纸面，再入第三节点。只见先后，不见是谁摆的，也不见为何摆。”\n\n“记原话。”安苇道。\n\n薛简亲自落笔：“镜屑断面、封纹刀旧划、槽内受力痕、反光纸折角及第三节点低亮残痕，角度可互证。第一层安全纹路曾由候场副镜特定角度反射，经纸面入回声链。”\n\n镜屑被封样，封口再加两道灵印。"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "source_evidence": "“辰时一刻，阮青将校准副镜移出维护架。辰时二刻，按规应归架封存，未封。”\n\n阮青低声道：“属实。”\n\n“辰时二刻又三分，岑照调用低限试场。调用簿有其灵印，无正式监考复核。”\n\n岑照道：“属实。”\n\n薛简再翻座次册：“丙五座在候场廊第三柱前。该位置与副镜反光线相交。辰时二刻后，反光纸位置登记成形，唐桥所绘路线与第一层安全纹路相似。”\n\n唐桥小声纠正：“原名运气图。”\n\n安苇看他一眼：“现名传播风险材料。”\n\n薛简将镜屑封样放到时间线中央。\n\n“第三节点残痕显示，安全纹路先自候场副镜方向入回声链。今日取屑同测，证明该反射路径在当时能够成立。也就是说，考生路线相似，不必以监考弟子主动传递为唯一解释。”"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "source_evidence": "“我此前依据副镜封签缺失、丙五座位置、岑照提前调用记录，判断岑照可能主动泄露第一层安全路线。该判断有记录依据，但现有镜屑、残痕先后、封签时间与反光角度已组成新的可复核链条。”\n\n他声音清楚，没有含混。\n\n“现有证据不支持岑照主动泄露试炼路线。此前判断，撤回更正。”"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "source_evidence": "“正该分开。”安苇展开考功堂责任册，逐条念道，“阮青，留置未封校准副镜于候场廊，未及时归架，未补做封纹，记维护责任。”\n\n阮青垂首领记。\n\n“唐桥，将副镜反光形成的第一层安全纹路绘为运气图并传播。该图只能解释开场避障相似，不能作为正式考题证据，更不能证明其可通过后续心境关。记传播风险。”\n\n唐桥看了一眼自己的图：“那它还叫运气图吗？”\n\n“封样名称不按你的愿望写。”\n\n“明白。”\n\n安苇最后看向岑照：“漏做候场副镜第二道封镜检查，记程序违规。无正式监考复核，提前启动低限试场，另记程序违规。主动泄露嫌疑更正，不抵消这两项。”"
+        },
+        {
+          "index": 5,
+          "passed": true,
+          "source_evidence": "这一次，低亮残痕顺着封纹完整归环。第三节点复核扣发出一声清脆轻响，严丝合缝地扣死。\n\n主镜与三处回声节点的低亮回环同时稳定下来。\n\n安苇验过复核扣，又检查副镜封纹，才在校准册上落印：“主镜、第一、第二、第三回声节点，可复核校准完成。候场副镜封纹完成。镜砂余额两份。”"
+        },
+        {
+          "index": 6,
+          "passed": true,
+          "source_evidence": "阮青从资源匣中取出一份镜砂。安苇当面划去清单上的一格：“副镜封纹，耗镜砂一份。余额两份。”\n\n镜砂调成银灰色细浆，沿副镜封纹槽缓缓铺开。阮青这次没再说“暂放”，每补一寸，便报一寸刻度。"
+        },
+        {
+          "index": 7,
+          "passed": true,
+          "source_evidence": "岑照退开两步，左眼重影仍在，并未随镜阵稳定而消失。\n\n安苇收起校准册：“高亮镜纹继续停用。镜屑已经取出，下一步用清神符稳定回声，再做低强度观想。由我确认左眼镜灼是否解除。”\n\n“不是今日？”岑照问。\n\n“今日只到取屑与停亮。伤势不因证据齐了便痊愈。”"
+        },
+        {
+          "index": 8,
+          "passed": true,
+          "source_evidence": "唐桥站在廊柱阴面，踮脚看了两眼：“这光倒像它自己认路。”\n\n安苇头也没抬：“退回阴线。”\n\n唐桥老实退了一步，又忍不住道：“弟子只是申明，那日若也是镜子自己照过来，考生看懂了，是否算考场给勤快人的运气提示？”\n\n岑照的目光仍落在低亮尺上。\n\n“反光不是提示。能被带走，就是传播风险。”\n\n“可弟子没有带镜子。”\n\n“你带了纸。”\n\n唐桥低头看向封物匣里那张三折反光纸，没再出声。\n\n安苇提笔，在候场检查条目末尾添下一行：“考生携入之纸、金属、釉面器物，另设反光物签收项。重开前逐件验角。”\n\n唐桥张了张嘴。\n\n他这一番申诉，没替自己减掉半笔，倒替往后的考生多添了一道签收。"
+        }
+      ],
+      "forbidden_outcomes": [
+        {
+          "index": 0,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 1,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 2,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 3,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 4,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 5,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 6,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 7,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 8,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 9,
+          "appeared": false,
+          "source_evidence": ""
+        }
+      ],
+      "summary_like": false,
+      "cultivation_consistent": true,
+      "comedy_causal": true,
+      "serious_consequences_preserved": true,
+      "chapter_hook_concrete": true,
+      "resource_continuity_consistent": true,
+      "knowledge_states_consistent": true,
+      "character_voices_distinct": true,
+      "multi_line_causality_preserved": true,
+      "warnings": [],
+      "contract_failures": [],
+      "quality_failures": []
+    },
+    "quality_status": "draft_passed"
+  },
+  {
+    "number": 9,
+    "title": "随机幻境先查反光",
+    "actual_length": 2522,
+    "status": "passed",
+    "hard_pass": true,
+    "requires_review": false,
+    "can_update_state": true,
+    "message": "长度闸门通过",
+    "chapter": 9,
+    "draft_version": 1,
+    "draft_path": "chapters/0009/draft.v1.md",
+    "quality": {
+      "required_outcomes": [
+        {
+          "index": 0,
+          "passed": true,
+          "source_evidence": "“主镜。”\n\n薛简验过封签，亲自拨动低亮刻度。镜面浮起一层薄雾，雾中三道回声依次亮起，没有错层。\n\n“主镜封签完整，低亮回环闭合。”\n\n“第一、第二、第三回声节点。”\n\n阮青提着角度尺逐处贴线。三个复核扣都已扣死，她只敢隔着封纹报数。薛简逐一复验，岑照站在封线外，不碰阵枢，只盯着低亮残痕。\n\n“第一节点，回声先入后返。”\n\n“确认。”\n\n“第二节点慢半息，没有逆痕。”\n\n“确认，属封纹余滞。”\n\n“第三节点与副镜方向断开。”\n\n薛简看过调用记录，再道：“确认。”\n\n安苇每听一句便落一笔，既不催，也不省。随后查候场副镜封纹、廊柱阴面的无反光斜角分区，最后停在一张新挂出的木牌前。"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "source_evidence": "“既然特意写了三类物件，想来这三类之中必有一类与重开后的考题相合。我签收的是纸，应按纸类签收先后排座。若纸为首类，我也不求照顾，只求依规坐前排。”\n\n旁边两名抄过运气图的考生顿时把自己的签收条摸了出来。一人签的是铜扣，一人签的是釉面水囊，三人各执一类，眼看便要从木牌的字序争到座次的吉凶。\n\n岑照隔着封线道：“反射源不明，先复核携物。签收次序不构成考题凭据。”\n\n唐桥认真问：“那木牌为何把纸写在最前？”\n\n“纸最易折成斜角。”\n\n“所以斜角重要？”\n\n“所以你的纸要再查一遍。”\n\n唐桥张了张口。\n\n薛简已转向候场执事：“按反射源不明项追加复查。所有涉反光图考生，携物拆包验角，座次与签收条复核。原同组者分开，调入无反光斜角分区后再入场。每次调位记时、记座，不得口头换位。”"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "source_evidence": "岑照点头，双指夹起符纸。灵力沿符纹缓缓烧过，清凉之意沉入识海，将一前一后的杂乱回声压回同一节拍。\n\n薛简站在阵外，依照低亮刻度报数：“主镜一息，第一节点一息半，第二节点两息。只辨方向，不追高亮残痕。”\n\n岑照运转回声小周天。神识从主镜边缘掠过，不碰阵枢，也不探入深层。他先听见主镜回声向左，再听见第一节点折返。两道声音分得清楚，距离也不再忽远忽近。"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "source_evidence": "第三轮结束，清神符已化作一小撮灰白符烬。安苇先验左眼灵光，再查神识回声，最后翻到镜屑封样与高亮镜纹停用记录。\n\n“残留镜屑已取出，高亮镜纹持续停用，清神符已稳定回声，低强度观想完成。无重影，无神识刺痛加剧，无距离误判。”\n\n她在伤势栏落印。\n\n“left-eye-mirror-burn，左眼镜灼，现于突破前按流程正式解除。解除与突破无关。”"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "source_evidence": "薛简却没有递回临时监考牌。\n\n“伤势解除，不等于资格恢复。你可在正式监考复核下协助随机幻境重开；仍不得独自进入深层幻境，不得触阵枢，不得单独下令调镜。每次操作意见，由我复述确认。”"
+        },
+        {
+          "index": 5,
+          "passed": true,
+          "source_evidence": "第一批考生踏入镜门，廊下山石立刻化作一座雨夜渡口。河上没有唐桥图里的三折安全纹，只有三艘一模一样的旧舟。舟夫分别开口，要考生交出一件最不愿失去之物。\n\n唐桥摸出记熟的运气图，对着河岸比了两次。\n\n“图上这里应当有一道向右的亮纹。”\n\n舟夫问：“你交什么？”\n\n唐桥又看一眼图。\n\n图上没有答案。"
+        },
+        {
+          "index": 6,
+          "passed": true,
+          "source_evidence": "岑照取出两枚下品灵石，放进浅层回环边界的两处供能槽。方才使用的清神符虽已化烬，其清明余力仍留在神识回路中，依规并入此次突破成本，不再另耗一张。\n\n安苇落笔：“下品灵石四减二，余二枚。清神符三减一，余二张。用途：稳定旧伤回声并承接突破起始。不得返还。”\n\n灵石同时亮起。\n\n岑照的回声小周天骤然收紧。主镜的声音如潮涌来，第一节点则在潮后折返。他只维持这一处节点，不去牵第二、第三节点，也不越过浅层监看位。"
+        },
+        {
+          "index": 7,
+          "passed": true,
+          "source_evidence": "安苇落笔：“下品灵石四减二，余二枚。清神符三减一，余二张。用途：稳定旧伤回声并承接突破起始。不得返还。”"
+        },
+        {
+          "index": 8,
+          "passed": true,
+          "source_evidence": "镜门稳定下来，重置印封匣始终未动。"
+        },
+        {
+          "index": 9,
+          "passed": true,
+          "source_evidence": "镜砂无人动用，库册仍记两份。"
+        }
+      ],
+      "forbidden_outcomes": [
+        {
+          "index": 0,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 1,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 2,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 3,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 4,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 5,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 6,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 7,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 8,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 9,
+          "appeared": false,
+          "source_evidence": ""
+        }
+      ],
+      "summary_like": false,
+      "cultivation_consistent": true,
+      "comedy_causal": true,
+      "serious_consequences_preserved": true,
+      "chapter_hook_concrete": true,
+      "resource_continuity_consistent": true,
+      "knowledge_states_consistent": true,
+      "character_voices_distinct": true,
+      "multi_line_causality_preserved": true,
+      "warnings": [],
+      "contract_failures": [],
+      "quality_failures": []
+    },
+    "quality_status": "draft_passed"
+  },
+  {
+    "number": 10,
+    "title": "监考牌只认附加条款",
+    "actual_length": 2486,
+    "status": "passed",
+    "hard_pass": true,
+    "requires_review": false,
+    "can_update_state": true,
+    "message": "长度闸门通过",
+    "chapter": 10,
+    "draft_version": 1,
+    "draft_path": "chapters/0010/draft.v1.md",
+    "quality": {
+      "required_outcomes": [
+        {
+          "index": 0,
+          "passed": true,
+          "source_evidence": "他落下调镜指令，第一节点随之压低。岑照的神识回路一收一放，只牵住主镜与第一节点，任第二、第三节点由薛简统辖。"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "source_evidence": "安苇在监督册上记下：“岑照，炼气五层。突破后回声分裂。症状：双重回声、深层定位延迟。暂停高强度监考。”"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "source_evidence": "薛简接过全部调镜口令：“主镜稳位。第一节点由岑照维持，第二、第三节点归我。阮青，关闭第二节点外沿响应。”\n\n阮青当即落下隔纹扣。\n\n主镜中的雨街轻晃了一下，没有错层。独木桥仍在远处，长街也没有与山路重叠。"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "source_evidence": "其余涉反光图考生依次出关，有人通过，有人失分，结果全按随机心境关中的实际选择登记。那张草图只帮他们绕过了开场陷阱，遇上变换的山路、雨街与取舍问境，便再没有一笔可照着走。"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "source_evidence": "“候场副镜边缘镜屑已取出。座次与反光纸位置吻合；残痕先后显示安全纹路先由副镜反射方向进入回声链；封签时间晚于副镜移出；镜面角度可形成第一层安全纹路，但不能显示后续随机心境关。”\n\n薛简上前一步，声音传过整个复核席。\n\n“我先前依据封签缺口、座次重合与试场调用记录，判断岑照可能主动泄露路线。现有副镜角度、镜屑、残痕先后与封签时间已经构成新证据链。现有证据不支持岑照主动泄露试炼路线。原判断更正。”\n\n他停了一息，又道：“但岑照漏做候场副镜第二道封镜检查，并在无正式监考复核时提前启动试场，记录无误。”"
+        },
+        {
+          "index": 5,
+          "passed": true,
+          "source_evidence": "薛简上前一步，声音传过整个复核席。\n\n“我先前依据封签缺口、座次重合与试场调用记录，判断岑照可能主动泄露路线。现有副镜角度、镜屑、残痕先后与封签时间已经构成新证据链。现有证据不支持岑照主动泄露试炼路线。原判断更正。”\n\n他停了一息，又道：“但岑照漏做候场副镜第二道封镜检查，并在无正式监考复核时提前启动试场，记录无误。”\n\n安苇提笔：“两项程序违规，记过。救场与突破均不抵扣。”"
+        },
+        {
+          "index": 6,
+          "passed": true,
+          "source_evidence": "“阮青留置未封校准副镜于候场廊，维护责任入档。唐桥传播由反光形成的运气图草图，作为传播风险事实入档，不作正式考题泄露认定，也不作答题凭据。”"
+        },
+        {
+          "index": 7,
+          "passed": true,
+          "source_evidence": "她核对阵图：“主镜、三处回声节点及候场副镜，均完成可复核校准。随机幻境考试可在正式监考监督下继续运行。”"
+        },
+        {
+          "index": 8,
+          "passed": true,
+          "source_evidence": "“考场重置印原有二枚，已消耗一枚，余额一枚，不返还。镜砂原有六份，修补主镜、三处回声节点及副镜封纹后，余额二份。岑照下品灵石原有四枚，余额二枚；清神符原有三张，余额二张。所有消耗已定账。”"
+        },
+        {
+          "index": 9,
+          "passed": true,
+          "source_evidence": "“考场重置印原有二枚，已消耗一枚，余额一枚，不返还。镜砂原有六份，修补主镜、三处回声节点及副镜封纹后，余额二份。岑照下品灵石原有四枚，余额二枚；清神符原有三张，余额二张。所有消耗已定账。”"
+        },
+        {
+          "index": 10,
+          "passed": true,
+          "source_evidence": "她递给岑照：“临时监考牌。附加条件：违规记过保留；所有镜阵操作须经正式监考复核；候场反光物检查须由正式监考复核；三日内不得独自进入深层幻境；每日仅可进行低强度节点复核。”"
+        }
+      ],
+      "forbidden_outcomes": [
+        {
+          "index": 0,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 1,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 2,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 3,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 4,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 5,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 6,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 7,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 8,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 9,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 10,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 11,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 12,
+          "appeared": false,
+          "source_evidence": ""
+        }
+      ],
+      "summary_like": false,
+      "cultivation_consistent": true,
+      "comedy_causal": true,
+      "serious_consequences_preserved": true,
+      "chapter_hook_concrete": true,
+      "resource_continuity_consistent": true,
+      "knowledge_states_consistent": true,
+      "character_voices_distinct": true,
+      "multi_line_causality_preserved": true,
+      "warnings": [],
+      "contract_failures": [],
+      "quality_failures": []
+    },
+    "quality_status": "draft_passed"
+  }
+]

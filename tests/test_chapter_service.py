@@ -180,6 +180,17 @@ class ChapterServiceTests(unittest.TestCase):
         self.assertIn("当前章契约", state_prompt)
         self.assertIn('"closing_state"', state_prompt)
         self.assertNotIn('"scene_id"', state_prompt)
+        state_contract = state_prompt.split("# 当前章契约\n\n", 1)[1].split(
+            "\n\n# ", 1
+        )[0]
+        self.assertNotIn('"intent"', state_contract)
+        self.assertNotIn('"opening_state"', state_contract)
+        state_checks = state_prompt.split("# 本章检查结果\n\n", 1)[1].split(
+            "\n\n# ", 1
+        )[0]
+        self.assertIn('"quality_failures"', state_checks)
+        self.assertNotIn('"required_outcomes"', state_checks)
+        self.assertNotIn('"source_evidence"', state_checks)
 
     def test_short_draft_is_blocked(self) -> None:
         result = draft_chapter(
@@ -197,6 +208,33 @@ class ChapterServiceTests(unittest.TestCase):
                 1,
                 self._fixture("state.json", json.dumps(VALID_STATE_EVENT)),
             )
+
+    def test_slightly_short_draft_continues_to_quality_review(self) -> None:
+        result = draft_chapter(
+            self.root,
+            "demo-run",
+            1,
+            self._fixture("slightly-short.md", "# 第 1 章：测试章\n甲乙丙丁\n"),
+        )
+        self.assertEqual(result["outline"]["status"], "draft_quality_pending")
+        self.assertEqual(result["check"]["status"], "needs_expansion")
+        self.assertTrue(result["check"]["hard_pass"])
+        reviewed = self._pass_quality_review("slightly-short-review.json")
+        self.assertEqual(reviewed["outline"]["status"], "draft_passed")
+
+    def test_slightly_long_draft_continues_to_quality_review(self) -> None:
+        result = draft_chapter(
+            self.root,
+            "demo-run",
+            1,
+            self._fixture(
+                "slightly-long.md",
+                "# 第 1 章：测试章\n甲乙丙丁戊己庚辛\n",
+            ),
+        )
+        self.assertEqual(result["outline"]["status"], "draft_quality_pending")
+        self.assertEqual(result["check"]["status"], "needs_redundancy_review")
+        self.assertTrue(result["check"]["hard_pass"])
 
     def test_rejects_response_with_wrong_chapter_number(self) -> None:
         result = draft_chapter(
@@ -265,18 +303,18 @@ class ChapterServiceTests(unittest.TestCase):
     def test_quality_review_evidence_failure_retries_without_rewriting_draft(self) -> None:
         outline_path = self.run_dir / "planning/chapter-outlines.json"
         outlines = json.loads(outline_path.read_text(encoding="utf-8"))
-        outlines[0]["required_outcomes"] = ["角色取得令牌"]
+        outlines[0]["required_outcomes"] = ["角色记下令牌"]
         outline_path.write_text(json.dumps(outlines, ensure_ascii=False), encoding="utf-8")
         draft_chapter(
             self.root,
             "demo-run",
             1,
-            self._fixture("review-retry-draft.md", "# 第 1 章：测试章\n角色取得令牌。\n"),
+            self._fixture("review-retry-draft.md", "# 第 1 章：测试章\n角色记下令牌。\n"),
         )
         invalid = {
             **VALID_REVIEW,
             "required_outcomes": [
-                {"index": 0, "passed": True, "source_evidence": "角色拿到了令牌"}
+                {"index": 0, "passed": True, "source_evidence": "角色令牌"}
             ],
         }
         with self.assertRaisesRegex(ChapterServiceError, "证据不在正文"):
@@ -296,7 +334,7 @@ class ChapterServiceTests(unittest.TestCase):
         valid = {
             **VALID_REVIEW,
             "required_outcomes": [
-                {"index": 0, "passed": True, "source_evidence": "角色取得令牌"}
+                {"index": 0, "passed": True, "source_evidence": "角色记下令牌"}
             ],
         }
         result = review_chapter(
@@ -316,7 +354,40 @@ class ChapterServiceTests(unittest.TestCase):
             encoding="utf-8"
         )
         self.assertIn("上次质量评审失败修复信息", prompt)
-        self.assertIn("角色拿到了令牌", prompt)
+        self.assertIn('"verbatim_paragraph_catalog"', prompt)
+        self.assertIn("角色记下令牌。", prompt)
+        self.assertIn("角色令牌", prompt)
+
+    def test_quality_review_evidence_ignores_whitespace(self) -> None:
+        outline_path = self.run_dir / "planning/chapter-outlines.json"
+        outlines = json.loads(outline_path.read_text(encoding="utf-8"))
+        outlines[0]["required_outcomes"] = ["角色取得令牌"]
+        outline_path.write_text(json.dumps(outlines, ensure_ascii=False), encoding="utf-8")
+        draft_chapter(
+            self.root,
+            "demo-run",
+            1,
+            self._fixture(
+                "review-whitespace-draft.md",
+                "# 第 1 章：测试章\n角色 取得\n令牌。\n",
+            ),
+        )
+        review = {
+            **VALID_REVIEW,
+            "required_outcomes": [
+                {"index": 0, "passed": True, "source_evidence": "角色取得令牌"}
+            ],
+        }
+        result = review_chapter(
+            self.root,
+            "demo-run",
+            1,
+            self._fixture(
+                "review-whitespace.json",
+                json.dumps(review, ensure_ascii=False),
+            ),
+        )
+        self.assertEqual(result["outline"]["status"], "draft_passed")
 
     def test_quality_review_blocks_summary_like_draft(self) -> None:
         draft_chapter(
@@ -375,22 +446,63 @@ class ChapterServiceTests(unittest.TestCase):
             result["review"]["quality_failures"],
         )
 
-    def test_quality_review_blocks_indistinguishable_character_voices(self) -> None:
+    def test_quality_review_allows_soft_quality_warnings(self) -> None:
         draft_chapter(
             self.root,
             "demo-run",
             1,
             self._fixture("draft.md", "# 第 1 章：测试章\n甲乙丙丁戊\n"),
         )
-        review = {**VALID_REVIEW, "character_voices_distinct": False}
+        review = {
+            **VALID_REVIEW,
+            "comedy_causal": False,
+            "chapter_hook_concrete": False,
+            "character_voices_distinct": False,
+        }
         result = review_chapter(
             self.root,
             "demo-run",
             1,
             self._fixture("voices-review.json", json.dumps(review, ensure_ascii=False)),
         )
+        self.assertEqual(result["outline"]["status"], "draft_passed")
+        self.assertEqual(result["review"]["quality_failures"], [])
+        self.assertEqual(
+            result["review"]["soft_quality_warnings"],
+            [
+                "comedy_causal",
+                "chapter_hook_concrete",
+                "character_voices_distinct",
+            ],
+        )
+        self.assertTrue((self.run_dir / "chapters/0001/draft.final.md").is_file())
+
+    def test_hard_quality_failure_still_blocks_with_soft_warning(self) -> None:
+        draft_chapter(
+            self.root,
+            "demo-run",
+            1,
+            self._fixture("draft.md", "# 第 1 章：测试章\n甲乙丙丁戊\n"),
+        )
+        review = {
+            **VALID_REVIEW,
+            "serious_consequences_preserved": False,
+            "character_voices_distinct": False,
+        }
+        result = review_chapter(
+            self.root,
+            "demo-run",
+            1,
+            self._fixture("mixed-review.json", json.dumps(review, ensure_ascii=False)),
+        )
         self.assertEqual(result["outline"]["status"], "draft_failed_quality")
-        self.assertIn("character_voices_distinct", result["review"]["quality_failures"])
+        self.assertIn(
+            "serious_consequences_preserved", result["review"]["quality_failures"]
+        )
+        self.assertEqual(
+            result["review"]["soft_quality_warnings"],
+            ["character_voices_distinct"],
+        )
 
     def test_quality_review_blocks_disconnected_multi_line_plot(self) -> None:
         draft_chapter(
@@ -507,6 +619,59 @@ class ChapterServiceTests(unittest.TestCase):
         ]
         self.assertNotIn("accepted", [item.get("status") for item in state_records])
 
+    def test_state_prompt_lists_legal_changes_for_active_tracked_states(self) -> None:
+        initial_path = self.run_dir / "config/initial-state.json"
+        initial = json.loads(initial_path.read_text(encoding="utf-8"))
+        initial["cultivation"] = [
+            {
+                "subject_id": "protagonist",
+                "stage": "炼气一层",
+                "abilities": [
+                    {"state_id": "wind-sense", "description": "可感知风向"}
+                ],
+                "injuries": [
+                    {"state_id": "old-wound", "description": "旧伤仍在"}
+                ],
+                "limits": [
+                    {"state_id": "night-limit", "description": "夜间不能御舟"}
+                ],
+            }
+        ]
+        initial_path.write_text(
+            json.dumps(initial, ensure_ascii=False), encoding="utf-8"
+        )
+        self._draft_and_review()
+        extract_state(
+            self.root,
+            "demo-run",
+            1,
+            self._fixture("state.json", json.dumps(VALID_STATE_EVENT)),
+        )
+        prompt = (
+            self.run_dir / "chapters/0001/state.prompt.v1.md"
+        ).read_text(encoding="utf-8")
+        section = prompt.split("# 允许引用的活动状态 ID\n\n", 1)[1].split(
+            "\n\n# ", 1
+        )[0]
+        allowed = json.loads(section)
+        details = {
+            item["state_id"]: item
+            for item in allowed["active_tracked_states_by_subject"]["protagonist"]
+        }
+        self.assertEqual(
+            details["old-wound"]["allowed_changes"],
+            ["injury:set", "recovery:set", "recovery:resolve"],
+        )
+        self.assertEqual(
+            details["wind-sense"]["allowed_changes"],
+            ["ability:set", "ability:resolve"],
+        )
+        self.assertEqual(
+            details["night-limit"]["allowed_changes"],
+            ["restriction:set", "restriction:resolve"],
+        )
+        self.assertNotIn("resolved-old-wound", section)
+
     def test_unknown_superseded_fact_is_content_retry_with_allowed_ids(self) -> None:
         initial_path = self.run_dir / "config/initial-state.json"
         initial = json.loads(initial_path.read_text(encoding="utf-8"))
@@ -596,7 +761,14 @@ class ChapterServiceTests(unittest.TestCase):
         self.assertIn("要淘汰的知识状态不存在", retry_prompt)
         self.assertIn('"knowledge_fact_ids_by_character"', retry_prompt)
         self.assertIn('"known-fact"', retry_prompt)
-        self.assertIn("只能引用下方允许的活动知识 fact_id", retry_prompt)
+        self.assertIn("只能引用‘允许引用的活动状态 ID’区段", retry_prompt)
+        repair_context = retry_prompt.split(
+            "# 上次状态提取失败修复信息\n\n", 1
+        )[1].split("\n\n# ", 1)[0]
+        self.assertIn('"previous_output_without_source_evidence"', repair_context)
+        self.assertIn('"fact_id": "new-fact"', repair_context)
+        self.assertNotIn('"source_evidence"', repair_context)
+        self.assertEqual(retry_prompt.count('"knowledge_fact_ids_by_character"'), 1)
         outlines = json.loads(
             (self.run_dir / "planning/chapter-outlines.json").read_text(
                 encoding="utf-8"
@@ -740,12 +912,15 @@ class ChapterServiceTests(unittest.TestCase):
         self.assertEqual(result["action"], "incomplete_tasks_recovered")
         self.assertEqual(result["draft_chapters"], [1])
 
-    def test_targeted_repair_creates_new_version_and_passes(self) -> None:
+    def test_overlong_repair_uses_targeted_compression(self) -> None:
         first = draft_chapter(
             self.root,
             "demo-run",
             1,
-            self._fixture("short.md", "# 第 1 章：测试章\n甲乙丙丁\n"),
+            self._fixture(
+                "overlong.md",
+                "# 第 1 章：测试章\n甲乙丙丁戊己庚辛壬癸\n",
+            ),
         )
         self.assertEqual(first["outline"]["status"], "draft_failed_length")
 
@@ -761,9 +936,44 @@ class ChapterServiceTests(unittest.TestCase):
         repair_prompt = (
             self.run_dir / "chapters/0001/draft.prompt.v2.md"
         ).read_text(encoding="utf-8")
-        self.assertIn("targeted_expansion", repair_prompt)
+        self.assertIn("targeted_compression", repair_prompt)
+        self.assertIn("只处理失败字段对应的段落", repair_prompt)
+        self.assertIn("不改人物名、既有事实、章节结构", repair_prompt)
         reviewed = self._pass_quality_review("repair-review.json")
         self.assertEqual(reviewed["outline"]["status"], "draft_passed")
+
+    def test_quality_repair_prompt_is_limited_to_failed_fields(self) -> None:
+        draft_chapter(
+            self.root,
+            "demo-run",
+            1,
+            self._fixture("quality-draft.md", "# 第 1 章：测试章\n甲乙丙丁戊\n"),
+        )
+        review_chapter(
+            self.root,
+            "demo-run",
+            1,
+            self._fixture(
+                "quality-failure.json",
+                json.dumps(
+                    {**VALID_REVIEW, "cultivation_consistent": False},
+                    ensure_ascii=False,
+                ),
+            ),
+        )
+        repair_chapter(
+            self.root,
+            "demo-run",
+            1,
+            self._fixture("quality-repaired.md", "# 第 1 章：测试章\n甲乙丙丁戊\n"),
+        )
+        prompt = (self.run_dir / "chapters/0001/draft.prompt.v2.md").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("rewrite_quality", prompt)
+        self.assertIn("latest_checks.quality.quality_failures", prompt)
+        self.assertIn("cultivation_consistent", prompt)
+        self.assertIn("保持其他段落原文不变", prompt)
 
     def test_severely_short_draft_uses_rewrite_mode(self) -> None:
         draft_chapter(
@@ -814,6 +1024,8 @@ class ChapterServiceTests(unittest.TestCase):
 
     def test_invalid_state_can_be_retried_with_new_version(self) -> None:
         self._draft_and_review()
+        final_path = self.run_dir / "chapters/0001/draft.final.md"
+        final_before = final_path.read_text(encoding="utf-8")
         with self.assertRaises(ChapterServiceError):
             extract_state(
                 self.root,
@@ -829,18 +1041,50 @@ class ChapterServiceTests(unittest.TestCase):
         )
         self.assertEqual(event["chapter"], 1)
         self.assertTrue((self.run_dir / "chapters/0001/state.raw.v2.json").exists())
+        self.assertEqual(final_path.read_text(encoding="utf-8"), final_before)
+        self.assertFalse((self.run_dir / "chapters/0001/draft.v2.md").exists())
         retry_prompt = (
             self.run_dir / "chapters/0001/state.prompt.v2.md"
         ).read_text(encoding="utf-8")
         self.assertIn("上次状态提取失败修复信息", retry_prompt)
         self.assertIn("不是有效 JSON", retry_prompt)
-        self.assertIn('"previous_invalid_output": "bad"', retry_prompt)
+        self.assertIn('"invalid_json_excerpt": "bad"', retry_prompt)
+        self.assertIn('"verbatim_paragraph_catalog"', retry_prompt)
+        self.assertIn("甲乙丙丁戊", retry_prompt)
         outlines = json.loads(
             (self.run_dir / "planning/chapter-outlines.json").read_text(
                 encoding="utf-8"
             )
         )
         self.assertEqual(outlines[0]["retry_counts"]["state_format"], 1)
+
+    def test_long_invalid_state_json_uses_bounded_retry_excerpt(self) -> None:
+        self._draft_and_review()
+        invalid = "HEAD" + "x" * 5000 + "TAIL"
+        with self.assertRaisesRegex(ChapterServiceError, "有效 JSON"):
+            extract_state(
+                self.root,
+                "demo-run",
+                1,
+                self._fixture("long-invalid-state.txt", invalid),
+            )
+        extract_state(
+            self.root,
+            "demo-run",
+            1,
+            self._fixture("valid-state.json", json.dumps(VALID_STATE_EVENT)),
+        )
+        retry_prompt = (
+            self.run_dir / "chapters/0001/state.prompt.v2.md"
+        ).read_text(encoding="utf-8")
+        repair_context = retry_prompt.split(
+            "# 上次状态提取失败修复信息\n\n", 1
+        )[1].split("\n\n# ", 1)[0]
+        self.assertIn("HEAD", repair_context)
+        self.assertIn("TAIL", repair_context)
+        self.assertIn("...<truncated>...", repair_context)
+        self.assertIn('"original_character_count": 5008', repair_context)
+        self.assertNotIn("x" * 2001, repair_context)
 
     def test_state_provider_failure_is_retryable(self) -> None:
         class FailingProvider:
@@ -857,6 +1101,24 @@ class ChapterServiceTests(unittest.TestCase):
         )
         self.assertEqual(outlines[0]["status"], "state_failed")
         self.assertEqual(outlines[0]["state_failure_kind"], "transport")
+
+        extract_state(
+            self.root,
+            "demo-run",
+            1,
+            self._fixture("valid-after-transport.json", json.dumps(VALID_STATE_EVENT)),
+        )
+        retry_prompt = (
+            self.run_dir / "chapters/0001/state.prompt.v1.md"
+        ).read_text(encoding="utf-8")
+        self.assertNotIn("上次状态提取失败修复信息", retry_prompt)
+        self.assertNotIn('"verbatim_paragraph_catalog"', retry_prompt)
+        outlines = json.loads(
+            (self.run_dir / "planning/chapter-outlines.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        self.assertEqual(outlines[0]["retry_counts"]["state_transport"], 1)
 
     def test_resume_recovers_stranded_state_extraction(self) -> None:
         path = self.run_dir / "planning/chapter-outlines.json"

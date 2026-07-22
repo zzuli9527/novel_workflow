@@ -162,12 +162,21 @@ def _provider_from_args(args: argparse.Namespace) -> TextProvider:
                 route_timeout = int(
                     route.get("timeout_seconds", config.get("timeout_seconds", 120))
                 )
+                route_deadline_value = route.get(
+                    "deadline_seconds", config.get("deadline_seconds")
+                )
+                route_deadline = (
+                    int(route_deadline_value)
+                    if route_deadline_value is not None
+                    else None
+                )
                 reasoning_effort = route.get("reasoning_effort")
                 routed[role] = tuple(
                     OpenAIResponsesProvider(
                         model=model,
                         max_output_tokens=route_max,
                         timeout_seconds=route_timeout,
+                        deadline_seconds=route_deadline,
                         reasoning_effort=(
                             str(reasoning_effort) if reasoning_effort is not None else None
                         ),
@@ -186,6 +195,11 @@ def _provider_from_args(args: argparse.Namespace) -> TextProvider:
             model=model,
             max_output_tokens=config.get("max_output_tokens"),
             timeout_seconds=int(config.get("timeout_seconds", 120)),
+            deadline_seconds=(
+                int(config["deadline_seconds"])
+                if config.get("deadline_seconds") is not None
+                else None
+            ),
             **shared,
         )
     raise StorageError("未选择模型提供方")

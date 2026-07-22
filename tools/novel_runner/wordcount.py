@@ -261,10 +261,10 @@ def check_chapter(chapter: ChapterDraft, policy: LengthPolicy) -> ChapterCheck:
             title=chapter.title,
             actual_length=actual,
             status="needs_expansion",
-            hard_pass=False,
+            hard_pass=True,
             requires_review=False,
-            can_update_state=False,
-            message="正文轻微不足；应按场景缺口定向扩写",
+            can_update_state=True,
+            message="正文轻微不足；记录软告警并继续质量评审",
         )
     if actual <= policy.target_max:
         return ChapterCheck(
@@ -284,19 +284,19 @@ def check_chapter(chapter: ChapterDraft, policy: LengthPolicy) -> ChapterCheck:
             actual_length=actual,
             status="needs_redundancy_review",
             hard_pass=True,
-            requires_review=True,
-            can_update_state=False,
-            message="超过目标上限；完成冗余复查后才能放行",
+            requires_review=False,
+            can_update_state=True,
+            message="超过目标上限；记录软告警并继续质量评审",
         )
     return ChapterCheck(
         number=chapter.number,
         title=chapter.title,
         actual_length=actual,
         status="needs_compression_review",
-        hard_pass=True,
-        requires_review=True,
+        hard_pass=False,
+        requires_review=False,
         can_update_state=False,
-        message="正文明显超长；压缩复查后才能放行",
+        message="正文严重超长；必须定向压缩后才能放行",
     )
 
 

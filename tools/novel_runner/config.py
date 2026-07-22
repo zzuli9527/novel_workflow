@@ -70,6 +70,7 @@ def default_run_config(run_id: str) -> dict[str, Any]:
             "base_url_env": "MESHYCODE_BASE_URL",
             "user_agent_env": "MESHYCODE_USER_AGENT",
             "timeout_seconds": 120,
+            "deadline_seconds": 300,
             "max_output_tokens": 6000,
             "routes": {
                 "planner": {
@@ -77,6 +78,7 @@ def default_run_config(run_id: str) -> dict[str, Any]:
                     "fallback_model_envs": ["NOVEL_MODEL_REWRITER"],
                     "max_output_tokens": 6000,
                     "timeout_seconds": 600,
+                    "deadline_seconds": 300,
                     "reasoning_effort": "low",
                 },
                 "drafter": {
@@ -84,6 +86,7 @@ def default_run_config(run_id: str) -> dict[str, Any]:
                     "fallback_model_envs": ["NOVEL_MODEL_REVIEWER"],
                     "max_output_tokens": 4500,
                     "timeout_seconds": 600,
+                    "deadline_seconds": 300,
                     "reasoning_effort": "low",
                 },
                 "rewriter": {
@@ -91,6 +94,7 @@ def default_run_config(run_id: str) -> dict[str, Any]:
                     "fallback_model_envs": ["NOVEL_MODEL_DRAFTER"],
                     "max_output_tokens": 4500,
                     "timeout_seconds": 600,
+                    "deadline_seconds": 300,
                     "reasoning_effort": "low",
                 },
                 "reviewer": {
@@ -98,6 +102,7 @@ def default_run_config(run_id: str) -> dict[str, Any]:
                     "fallback_model_envs": ["NOVEL_MODEL_REWRITER"],
                     "max_output_tokens": 4000,
                     "timeout_seconds": 300,
+                    "deadline_seconds": 240,
                     "reasoning_effort": "low",
                 },
                 "state": {
@@ -105,6 +110,7 @@ def default_run_config(run_id: str) -> dict[str, Any]:
                     "fallback_model_envs": [],
                     "max_output_tokens": 5000,
                     "timeout_seconds": 300,
+                    "deadline_seconds": 240,
                     "reasoning_effort": "low",
                 },
             },
@@ -278,6 +284,17 @@ def _validate_run_json(data: Any, expected_run_id: str) -> list[ValidationIssue]
             issues.append(
                 ValidationIssue("run.provider.timeout_seconds", "应为正整数")
             )
+        deadline = provider.get("deadline_seconds")
+        if deadline is not None and (
+            not isinstance(deadline, int)
+            or isinstance(deadline, bool)
+            or deadline <= 0
+        ):
+            issues.append(
+                ValidationIssue(
+                    "run.provider.deadline_seconds", "应为正整数或 null"
+                )
+            )
         max_output = provider.get("max_output_tokens")
         if max_output is not None and (
             not isinstance(max_output, int) or isinstance(max_output, bool) or max_output <= 0
@@ -342,6 +359,18 @@ def _validate_run_json(data: Any, expected_run_id: str) -> list[ValidationIssue]
                         issues.append(
                             ValidationIssue(
                                 f"{path}.timeout_seconds",
+                                "应为正整数或 null",
+                            )
+                        )
+                    route_deadline = route.get("deadline_seconds")
+                    if route_deadline is not None and (
+                        not isinstance(route_deadline, int)
+                        or isinstance(route_deadline, bool)
+                        or route_deadline <= 0
+                    ):
+                        issues.append(
+                            ValidationIssue(
+                                f"{path}.deadline_seconds",
                                 "应为正整数或 null",
                             )
                         )

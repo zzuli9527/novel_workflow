@@ -329,11 +329,13 @@ def repair_chapter(
         if status == "draft_failed_length":
             actual = checks.get("actual_length", 0)
             expand_from = run_config["policies"]["length"]["expand_from"]
-            mode = (
-                "targeted_expansion"
-                if isinstance(actual, int) and actual >= expand_from
-                else "rewrite_short"
-            )
+            review_over = run_config["policies"]["length"]["review_over"]
+            if isinstance(actual, int) and actual > review_over:
+                mode = "targeted_compression"
+            elif isinstance(actual, int) and actual >= expand_from:
+                mode = "targeted_expansion"
+            else:
+                mode = "rewrite_short"
             retry_kind = "content"
         elif status in modes:
             mode, retry_kind = modes[status]
@@ -458,20 +460,27 @@ def _parse_quality_review(
         quality_failures.append("正文摘要化")
     for field in (
         "cultivation_consistent",
-        "comedy_causal",
         "serious_consequences_preserved",
-        "chapter_hook_concrete",
         "resource_continuity_consistent",
         "knowledge_states_consistent",
-        "character_voices_distinct",
         "multi_line_causality_preserved",
     ):
         if not data[field]:
             quality_failures.append(field)
+    soft_quality_warnings = [
+        field
+        for field in (
+            "comedy_causal",
+            "chapter_hook_concrete",
+            "character_voices_distinct",
+        )
+        if not data[field]
+    ]
     return {
         **data,
         "contract_failures": contract_failures,
         "quality_failures": quality_failures,
+        "soft_quality_warnings": soft_quality_warnings,
     }
 
 

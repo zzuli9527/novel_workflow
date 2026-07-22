@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "cultivation": [
+    {"subject_id": "cen-zhao", "stage": "炼气四层", "abilities": [{"state_id": "residual-mark-reading", "description": "照痕辨序只能读取镜阵残留灵力划痕的方向和先后，不能读取记忆、判断动机或识别传播者"}, "回声小周天", "基础问心镜阵操作"], "injuries": [{"state_id": "left-eye-mirror-burn", "description": "连续观察高亮镜纹会造成左眼重影、神识刺痛和距离误判"}], "limits": [{"state_id": "solo-deep-illusion-ban", "description": "left-eye-mirror-burn 解除前不得独自进入深层幻境校场"}, "临时监考操作必须由正式监考复核"]},
+    {"subject_id": "xue-jian", "stage": "炼气五层", "abilities": ["正式幻境监考", "封签复核", "镜阵调用日志审查"], "injuries": [], "limits": ["必须依据正式记录和可复核证据更正裁定"]},
+    {"subject_id": "an-wei", "stage": "炼气六层", "abilities": ["考功堂复核", "深层幻境安全裁定"], "injuries": [], "limits": ["不能因救场表现免除已确认的程序违规"]},
+    {"subject_id": "ruan-qing", "stage": "炼气三层", "abilities": ["副镜清洁", "浅层镜纹维护"], "injuries": [], "limits": ["无权修改正式考题、座次或监考记录"]},
+    {"subject_id": "tang-qiao", "stage": "炼气三层", "abilities": ["基础观想", "路径速记"], "injuries": [], "limits": ["不得接触监考封签或镜阵控制区"]}
+  ],
+  "resources": [
+    {"owner_id": "cen-zhao", "resource_id": "low-grade-spirit-stone", "amount": 4, "unit": "枚"},
+    {"owner_id": "cen-zhao", "resource_id": "clarity-talisman", "amount": 3, "unit": "张"},
+    {"owner_id": "exam-hall", "resource_id": "exam-hall-reset-seal", "amount": 2, "unit": "枚"},
+    {"owner_id": "exam-hall", "resource_id": "mirror-sand", "amount": 6, "unit": "份"}
+  ],
+  "knowledge": [
+    {"character_id": "xue-jian", "fact_id": "cen-leaked-exam-route", "state": "believes_false", "belief": "岑照为帮助同乡考生，主动泄露了问心镜阵第一层安全路线"},
+    {"character_id": "cen-zhao", "fact_id": "shared-route-origin", "state": "investigating", "belief": "考生共享路线与候场副镜反光和校准残痕有关，不等同于正式考题泄露"},
+    {"character_id": "an-wei", "fact_id": "temporary-proctor-qualification", "state": "investigating", "belief": "岑照的临时监考资格取决于考场安全、资源处置、伤势边界和程序责任"},
+    {"character_id": "ruan-qing", "fact_id": "unsealed-calibration-mirror", "state": "conceals", "belief": "自己为赶开考把校准副镜留在候场廊且未封存，必须让核查停在岑照漏做第二道检查上"},
+    {"character_id": "tang-qiao", "fact_id": "lucky-route-sketch-source", "state": "conceals", "belief": "自己根据候场廊反光画出路线草图并传给同组考生，但没有接触正式考题"}
+  ]
+}

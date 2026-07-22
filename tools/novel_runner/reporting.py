@@ -122,8 +122,12 @@ def _render_markdown(report: dict[str, Any]) -> str:
         f"- 章节范围：第 {report['chapter_range'][0]}～{report['chapter_range'][1]} 章",
         f"- 单元状态：{report['unit_status']}",
         f"- 自动结论：{report['verdict']}",
+        f"- 可用性：{report['usability']}",
+        f"- 硬失败：{metrics['hard_failure_count']}",
+        f"- 软告警：{metrics['soft_warning_count']}",
         f"- 正式提交：{metrics['committed_chapters']} / {metrics['planned_chapters']} 章",
         f"- 目标字数合格率：{metrics['length_target_pass_rate']:.2%}",
+        f"- 字数软告警：{metrics['length_soft_warning_count']}",
         f"- 首稿长度合格率：{metrics['initial_draft_length_pass_rate']:.2%}",
         f"- 正文总字符：{metrics['total_body_characters']}",
         f"- 返工章节：{metrics['reworked_chapters']}",
@@ -137,8 +141,10 @@ def _render_markdown(report: dict[str, Any]) -> str:
         f"- 严肃后果被取消：{metrics['serious_consequence_failures']}",
         f"- 资源连续性失败：{metrics['resource_continuity_failures']}",
         f"- 知识状态失败：{metrics['knowledge_state_failures']}",
-        f"- 角色语言区分失败：{metrics['character_voice_failures']}",
         f"- 多线因果失败：{metrics['multi_line_causality_failures']}",
+        f"- 喜剧因果软告警：{metrics['comedy_causal_warnings']}",
+        f"- 章末钩子软告警：{metrics['chapter_hook_warnings']}",
+        f"- 角色语言区分软告警：{metrics['character_voice_warnings']}",
         f"- 当前状态失败章节：{metrics['current_state_failures']}",
         f"- 状态事件：{metrics['state_event_count']}",
         f"- 喜剧机制相邻重复：{metrics['comedy_rotation']['adjacent_repeat_count']}",
@@ -206,6 +212,8 @@ def generate_unit_review(root: Path, run_id: str, unit_id: str) -> dict[str, Any
         review_over=length_config["review_over"],
     )
     committed = 0
+    target_pass_chapters: set[int] = set()
+    length_warning_chapters: set[int] = set()
     for outline in selected_outlines:
         chapter = outline["number"]
         if outline.get("status") in {"committed", "locked"}:
@@ -249,6 +257,11 @@ def generate_unit_review(root: Path, run_id: str, unit_id: str) -> dict[str, Any
             continue
         checks = read_json(checks_path)
         actual = checks.get("actual_length")
+        if checks.get("status") in {
+            "needs_expansion",
+            "needs_redundancy_review",
+        }:
+            length_warning_chapters.add(chapter)
         target = outline.get("target_length")
         if isinstance(actual, int):
             total_characters += actual
@@ -259,6 +272,7 @@ def generate_unit_review(root: Path, run_id: str, unit_id: str) -> dict[str, Any
                 and target["min"] <= actual <= target["max"]
             ):
                 target_passes += 1
+                target_pass_chapters.add(chapter)
             scenes = outline.get("scenes")
             if isinstance(scenes, list):
                 budget = sum(
@@ -351,7 +365,7 @@ def generate_unit_review(root: Path, run_id: str, unit_id: str) -> dict[str, Any
         ):
             recovery_count += 1
     planned = end - start + 1
-    quality_failures = {
+    hard_quality_failures = {
         "summary_like_chapters": sum(
             review.get("summary_like") is True for review in quality_reviews
         ),
@@ -370,30 +384,60 @@ def generate_unit_review(root: Path, run_id: str, unit_id: str) -> dict[str, Any
             review.get("knowledge_states_consistent") is False
             for review in quality_reviews
         ),
-        "character_voice_failures": sum(
-            review.get("character_voices_distinct") is False
-            for review in quality_reviews
-        ),
         "multi_line_causality_failures": sum(
             review.get("multi_line_causality_preserved") is False
             for review in quality_reviews
         ),
     }
+    soft_quality_warnings = {
+        "comedy_causal_warnings": sum(
+            review.get("comedy_causal") is False for review in quality_reviews
+        ),
+        "chapter_hook_warnings": sum(
+            review.get("chapter_hook_concrete") is False
+            for review in quality_reviews
+        ),
+        "character_voice_warnings": sum(
+            review.get("character_voices_distinct") is False
+            for review in quality_reviews
+        ),
+    }
+    average_context_characters = (
+        round(fmean(input_sizes), 2) if input_sizes else 0.0
+    )
+    comedy_rotation = _comedy_rotation(selected_outlines)
     critical_failure_count = (
         planned - committed
-        + sum(quality_failures.values())
+        + sum(hard_quality_failures.values())
         + current_state_failures
         + sum(size > ledger_limit for size in ledger_sizes)
     )
-    verdict = "通过" if critical_failure_count == 0 and target_passes == planned else "有条件通过"
-    if unit.get("status") == "paused" or critical_failure_count > 0:
+    target_length_deviation_count = planned - target_passes
+    length_warning_chapters.update(
+        set(range(start, end + 1)) - target_pass_chapters
+    )
+    length_soft_warning_count = len(length_warning_chapters)
+    soft_quality_warning_count = sum(soft_quality_warnings.values())
+    soft_warning_count = soft_quality_warning_count + length_soft_warning_count
+    archivable = unit.get("status") == "completed" and critical_failure_count == 0
+    if not archivable:
         verdict = "失败"
+        usability = "不可用"
+    elif soft_warning_count:
+        verdict = "有条件通过"
+        usability = "可用，待润色"
+    else:
+        verdict = "通过"
+        usability = "可用"
 
     metrics = {
         "planned_chapters": planned,
         "committed_chapters": committed,
+        "hard_failure_count": critical_failure_count,
         "length_target_pass_count": target_passes,
         "length_target_pass_rate": target_passes / planned,
+        "target_length_deviation_count": target_length_deviation_count,
+        "length_soft_warning_count": length_soft_warning_count,
         "initial_draft_length_pass_count": sum(
             item["passed"] is True for item in initial_draft_results
         ),
@@ -417,13 +461,19 @@ def generate_unit_review(root: Path, run_id: str, unit_id: str) -> dict[str, Any
             else 0.0,
             "chapters": deviations,
         },
-        **quality_failures,
+        **hard_quality_failures,
+        **soft_quality_warnings,
+        "character_voice_failures": soft_quality_warnings[
+            "character_voice_warnings"
+        ],
+        "soft_quality_warning_count": soft_quality_warning_count,
+        "soft_warning_count": soft_warning_count,
         "current_state_failures": current_state_failures,
         "state_event_count": len(events),
         "reworked_chapters": reworked_chapters,
         "chapters_with_any_retry": chapters_with_any_retry,
         "average_retries_per_chapter": round(fmean(retry_totals), 4),
-        "comedy_rotation": _comedy_rotation(selected_outlines),
+        "comedy_rotation": comedy_rotation,
         "ledger_compression": {
             "ledger_count": len(ledger_sizes),
             "must_read_item_counts": ledger_sizes,
@@ -432,9 +482,7 @@ def generate_unit_review(root: Path, run_id: str, unit_id: str) -> dict[str, Any
             "item_limit": ledger_limit,
         },
         "api": api_summary,
-        "average_context_characters": round(fmean(input_sizes), 2)
-        if input_sizes
-        else 0.0,
+        "average_context_characters": average_context_characters,
         "manual_intervention_count": manual_interventions,
         "breakpoint_recovery_count": recovery_count,
     }
@@ -445,6 +493,8 @@ def generate_unit_review(root: Path, run_id: str, unit_id: str) -> dict[str, Any
         "chapter_range": [start, end],
         "unit_status": unit.get("status"),
         "verdict": verdict,
+        "archivable": archivable,
+        "usability": usability,
         "metrics": metrics,
         "automated_gaps": [
             "结构化字段可以核对余额、境界和知识状态，但正文是否正确提取这些事实仍需独立评审。",

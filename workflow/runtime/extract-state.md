@@ -12,6 +12,9 @@
 - ability、injury、recovery、restriction 必须使用可跨章复用的 state_id 和 state_action。
   新增或更新活动状态使用 set；解除能力或限制使用 resolve；伤势解除必须写 recovery + resolve，
   部分恢复使用同一伤势 state_id 的 recovery + set。不得为同一伤势每章创建新 ID。
+- 更新或解除现有状态时，kind、state_id、state_action 的组合必须出现在“允许引用的活动状态 ID”
+  所列 allowed_changes 中。recovery 只能引用当前活动 injury ID；已解除、历史或未列出的伤势 ID
+  不得再次恢复。新建 ability、injury、restriction 可使用新的稳定 ID + set，但 recovery 不能新建 ID。
 - resource_changes 必须使用稳定 owner_id/resource_id/unit，数量和 resulting_balance 与上一状态机械一致。
 - 冻结、预扣、占用不是新的资源种类，不得为它们创建新的 resource_id。可用余额发生变化时，
   必须继续使用上一状态中的原 resource_id；仍被冻结或预扣的数量写入 new_constraints，

@@ -3,6 +3,8 @@ from __future__ import annotations
 import io
 import json
 import os
+from threading import Event
+import time
 from unittest.mock import patch
 import unittest
 
@@ -27,6 +29,24 @@ class FakeResponse:
 
     def read(self) -> bytes:
         return self.payload
+
+
+class BlockingResponse:
+    def __init__(self) -> None:
+        self.closed = Event()
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exc_type, exc, traceback):
+        return False
+
+    def read(self) -> bytes:
+        self.closed.wait(2)
+        raise OSError("response closed")
+
+    def close(self) -> None:
+        self.closed.set()
 
 
 class OpenAIResponsesProviderTests(unittest.TestCase):
@@ -155,6 +175,55 @@ class OpenAIResponsesProviderTests(unittest.TestCase):
             provider.generate(GenerationRequest(task="draft", prompt="prompt"))
         sent = json.loads(mocked.call_args.args[0].data.decode("utf-8"))
         self.assertEqual(sent["reasoning"], {"effort": "low"})
+
+    def test_deadline_allows_fast_response_and_caps_request_timeout(self) -> None:
+        provider = OpenAIResponsesProvider(
+            model="test-model",
+            timeout_seconds=10,
+            deadline_seconds=2,
+        )
+        fake = FakeResponse({"output_text": "ok"})
+        with patch.dict(os.environ, {"OPENAI_API_KEY": "secret"}), patch(
+            "tools.novel_runner.provider.urlopen", return_value=fake
+        ) as mocked:
+            response = provider.generate(
+                GenerationRequest(task="draft", prompt="prompt")
+            )
+        self.assertEqual(response.text, "ok")
+        self.assertEqual(mocked.call_args.kwargs["timeout"], 2)
+
+    def test_deadline_closes_blocked_response_and_allows_fallback(self) -> None:
+        provider = OpenAIResponsesProvider(
+            model="test-model",
+            timeout_seconds=10,
+            deadline_seconds=1,
+        )
+        fake = BlockingResponse()
+        started = time.monotonic()
+        with patch.dict(os.environ, {"OPENAI_API_KEY": "secret"}), patch(
+            "tools.novel_runner.provider.urlopen", return_value=fake
+        ):
+            with self.assertRaisesRegex(ProviderError, "绝对截止时间") as raised:
+                provider.generate(GenerationRequest(task="draft", prompt="prompt"))
+        elapsed = time.monotonic() - started
+        self.assertLess(elapsed, 1.5)
+        self.assertTrue(fake.closed.is_set())
+        self.assertEqual(raised.exception.error_code, "deadline_exceeded")
+        self.assertTrue(raised.exception.fallback_allowed)
+
+    def test_rejects_invalid_deadline(self) -> None:
+        for value in (0, -1, True, "5"):
+            with self.subTest(value=value), patch.dict(
+                os.environ, {"OPENAI_API_KEY": "secret"}
+            ):
+                provider = OpenAIResponsesProvider(
+                    model="test-model",
+                    deadline_seconds=value,
+                )
+                with self.assertRaisesRegex(ProviderError, "正整数"):
+                    provider.generate(
+                        GenerationRequest(task="draft", prompt="prompt")
+                    )
 
 
 class RecordingProvider:

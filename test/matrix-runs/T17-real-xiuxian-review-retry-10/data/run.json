@@ -1,0 +1,100 @@
+{
+  "schema_version": "1.0",
+  "run_id": "t17-real-xiuxian-review-retry-10",
+  "status": "ready",
+  "current_story_unit": "unit-0001",
+  "current_batch": null,
+  "last_committed_chapter": 10,
+  "provider": {
+    "kind": "openai_responses",
+    "model": "",
+    "api_key_env": "MESHYCODE_API_KEY",
+    "base_url": "",
+    "base_url_env": "MESHYCODE_BASE_URL",
+    "user_agent_env": "MESHYCODE_USER_AGENT",
+    "timeout_seconds": 120,
+    "max_output_tokens": 6000,
+    "routes": {
+      "planner": {
+        "model_env": "NOVEL_MODEL_PLANNER",
+        "fallback_model_envs": [
+          "NOVEL_MODEL_REWRITER"
+        ],
+        "max_output_tokens": 6000,
+        "timeout_seconds": 600,
+        "reasoning_effort": "low"
+      },
+      "drafter": {
+        "model_env": "NOVEL_MODEL_REWRITER",
+        "fallback_model_envs": [
+          "NOVEL_MODEL_REVIEWER"
+        ],
+        "max_output_tokens": 4500,
+        "timeout_seconds": 600,
+        "reasoning_effort": "low"
+      },
+      "rewriter": {
+        "model_env": "NOVEL_MODEL_REWRITER",
+        "fallback_model_envs": [
+          "NOVEL_MODEL_DRAFTER"
+        ],
+        "max_output_tokens": 4500,
+        "timeout_seconds": 600,
+        "reasoning_effort": "low"
+      },
+      "reviewer": {
+        "model_env": "NOVEL_MODEL_REVIEWER",
+        "fallback_model_envs": [
+          "NOVEL_MODEL_REWRITER"
+        ],
+        "max_output_tokens": 4000,
+        "timeout_seconds": 300,
+        "reasoning_effort": "low"
+      },
+      "state": {
+        "model_env": "NOVEL_MODEL_STATE",
+        "fallback_model_envs": [],
+        "max_output_tokens": 5000,
+        "timeout_seconds": 300,
+        "reasoning_effort": "low"
+      }
+    },
+    "pricing": {
+      "input_per_million": null,
+      "output_per_million": null
+    }
+  },
+  "policies": {
+    "length": {
+      "unit": "non_whitespace_character",
+      "target_min": 2000,
+      "target_max": 3000,
+      "preferred_min": 2200,
+      "preferred_max": 2500,
+      "expand_from": 1800,
+      "review_over": 3500
+    },
+    "batch": {
+      "story_unit_min": 10,
+      "story_unit_max": 20,
+      "outline_batch_size": 4,
+      "outline_request_chunk_size": 2,
+      "ledger_batch_size": 4,
+      "ledger_batch_min": 3,
+      "ledger_batch_max": 4,
+      "ledger_item_limit": 8
+    },
+    "retry": {
+      "transport": 2,
+      "format": 1,
+      "content": 2
+    },
+    "budget": {
+      "max_calls": 60,
+      "max_tokens": 750000,
+      "max_cost": null
+    }
+  },
+  "created_at": "2026-07-22T02:48:10.021090+00:00",
+  "updated_at": "2026-07-22T04:45:27.575929+00:00"
+}

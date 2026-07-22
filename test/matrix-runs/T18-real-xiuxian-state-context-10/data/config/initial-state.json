@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "cultivation": [
+    {"subject_id": "pei-zhaoye", "stage": "炼气五层", "abilities": [{"state_id": "thunder-mark-sequencing", "description": "雷痕辨序只能读取残留雷纹的方向和先后，不能读取记忆、判断动机、识别传播者或预知随机落雷"}, "接地小周天", "基础听雷塔登记"], "injuries": [{"state_id": "right-hand-thunder-numbness", "description": "连续接触高压雷纹会造成右手麻木、指节颤动和符笔落点偏移"}], "limits": [{"state_id": "solo-high-voltage-tower-ban", "description": "right-hand-thunder-numbness 解除前不得独自登上高压听雷塔"}, "临时雷时登记必须由正式巡雷使复核"]},
+    {"subject_id": "ji-lingce", "stage": "炼气六层", "abilities": ["正式巡雷", "封签复核", "雷时调用日志审查"], "injuries": [], "limits": ["必须依据正式记录和可复核证据更正裁定"]},
+    {"subject_id": "shen-luo", "stage": "炼气七层", "abilities": ["戒律堂安全复核", "高压雷塔停机裁定"], "injuries": [], "limits": ["不能因救场、修塔或突破免除已确认的程序违规"]},
+    {"subject_id": "cao-yu", "stage": "炼气四层", "abilities": ["校雷铜铃清洁", "浅层接地纹维护"], "injuries": [], "limits": ["无权修改正式雷时、封签或值守记录"]},
+    {"subject_id": "hu-shan", "stage": "炼气四层", "abilities": ["基础引气", "落雷时刻速记"], "injuries": [], "limits": ["不得接触巡雷封签、接地阵枢或高压塔区"]}
+  ],
+  "resources": [
+    {"owner_id": "pei-zhaoye", "resource_id": "low-grade-spirit-stone", "amount": 5, "unit": "枚"},
+    {"owner_id": "pei-zhaoye", "resource_id": "grounding-talisman", "amount": 3, "unit": "张"},
+    {"owner_id": "thunder-tower", "resource_id": "storm-reset-pin", "amount": 2, "unit": "枚"},
+    {"owner_id": "thunder-tower", "resource_id": "conductive-copper-strip", "amount": 6, "unit": "段"}
+  ],
+  "knowledge": [
+    {"character_id": "ji-lingce", "fact_id": "pei-leaked-strike-window", "state": "believes_false", "belief": "裴照野为帮助相熟弟子避开雷击，主动泄露了听雷塔的安全落雷时段"},
+    {"character_id": "pei-zhaoye", "fact_id": "shared-safe-window-origin", "state": "investigating", "belief": "多人掌握相同安全雷时与值守廊校雷铜铃回声和残留雷痕有关，不等同于正式雷时泄露"},
+    {"character_id": "shen-luo", "fact_id": "temporary-thunder-clerk-qualification", "state": "investigating", "belief": "裴照野的临时登记资格取决于雷塔安全、资源处置、伤势边界和程序责任"},
+    {"character_id": "cao-yu", "fact_id": "unsealed-calibration-chime", "state": "conceals", "belief": "自己为赶试雷把未封校雷铜铃挂在值守廊，必须让核查停在裴照野漏做第二道封签上"},
+    {"character_id": "hu-shan", "fact_id": "lucky-thunder-almanac-source", "state": "conceals", "belief": "自己根据值守廊铜铃回声抄出避雷黄历并传给同组弟子，但没有接触正式雷时簿"}
+  ]
+}

@@ -64,8 +64,8 @@ MATRIX_COVERAGE: tuple[dict[str, Any], ...] = (
     {
         "id": "X08",
         "status": "partial",
-        "evidence": [("tests/test_chapter_service.py", "test_quality_review_blocks_indistinguishable_character_voices")],
-        "remaining": "已有独立质量闸门，角色声音是否真正鲜明仍需真实正文验证。",
+        "evidence": [("tests/test_chapter_service.py", "test_quality_review_allows_soft_quality_warnings")],
+        "remaining": "已有独立软质量告警，角色声音是否真正鲜明仍需真实正文验证。",
     },
     {
         "id": "X09",

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-07-21T13:14:40.142561+00:00",
+  "generated_at": "2026-07-22T09:49:14.919427+00:00",
   "case_count": 15,
   "all_evidence_found": true,
   "status_counts": {
@@ -114,11 +114,11 @@
       "evidence": [
         {
           "path": "tests/test_chapter_service.py",
-          "test": "test_quality_review_blocks_indistinguishable_character_voices",
+          "test": "test_quality_review_allows_soft_quality_warnings",
           "found": true
         }
       ],
-      "remaining": "已有独立质量闸门，角色声音是否真正鲜明仍需真实正文验证。"
+      "remaining": "已有独立软质量告警，角色声音是否真正鲜明仍需真实正文验证。"
     },
     {
       "id": "X09",

@@ -1,0 +1,1092 @@
+[
+  {
+    "number": 1,
+    "title": "值守廊里不卖天机",
+    "actual_length": 2738,
+    "status": "passed",
+    "hard_pass": true,
+    "requires_review": false,
+    "can_update_state": true,
+    "message": "长度闸门通过",
+    "chapter": 1,
+    "draft_version": 1,
+    "draft_path": "chapters/0001/draft.v1.md",
+    "quality": {
+      "required_outcomes": [
+        {
+          "index": 0,
+          "passed": true,
+          "source_evidence": "纸边被汗浸软，上头写着歪歪扭扭的字：辰时三刻半，东风铃二响，西南柱阴影内可避；巳初一响后退三步；值守廊不得停留三息以上，三息后雷不认人。"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "source_evidence": "纪凌策合上簿册：“正式安全雷时不该出现在候场弟子手里。黄历所列时段与登记时段重合，调度记录显示当时可接触低限雷时的人中，你在值守廊登记墙前。”"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "source_evidence": "“黄历抄录顺序是西南先响、东柱后响。”他说，“墙上雷痕方向相反。东柱残纹在前，西南回纹在后。不是同一路正式雷时抄出。”"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "source_evidence": "曹雨立刻道：“只是暂挂。”\n\n“暂挂也是挂。”纪凌策翻开封签夹，“第一道清洁封签在昨夜亥时，第二道复位封签何在？”\n\n曹雨把铜铃换了个胳膊抱，像那铃忽然重了三倍：“当时赶低限校雷，想着先挂梁钩上避潮，随后便取下。第二道……许是补在工房。”\n\n纪凌策：“拿来。”\n\n曹雨低头翻袖袋，翻出一枚铜刷、一段旧绳、一张买灯油的欠条，唯独没有封签。他声音更低：“还未补。”"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "source_evidence": "胡善蔫了：“承认抄过铃声，也传给同组。弟子不知真实落雷时刻，只以为塔中告示藏得深。”"
+        },
+        {
+          "index": 5,
+          "passed": true,
+          "source_evidence": "纪凌策写下三项：铜铃曾暂挂值守廊西梁钩；第二道封签缺失；黄历节拍与低限校雷回声相似。他笔尖停了停，又另起一行：裴照野当班登记位置与黄历所列时段重合，泄露安全雷时嫌疑未排除。"
+        }
+      ],
+      "forbidden_outcomes": [
+        {
+          "index": 0,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 1,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 2,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 3,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 4,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 5,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 6,
+          "appeared": false,
+          "source_evidence": ""
+        }
+      ],
+      "summary_like": false,
+      "cultivation_consistent": true,
+      "comedy_causal": true,
+      "serious_consequences_preserved": true,
+      "chapter_hook_concrete": true,
+      "resource_continuity_consistent": true,
+      "knowledge_states_consistent": true,
+      "character_voices_distinct": true,
+      "multi_line_causality_preserved": true,
+      "warnings": [],
+      "contract_failures": [],
+      "quality_failures": []
+    },
+    "quality_status": "draft_passed"
+  },
+  {
+    "number": 2,
+    "title": "暂挂二字不能接地",
+    "actual_length": 2634,
+    "status": "passed",
+    "hard_pass": true,
+    "requires_review": false,
+    "can_update_state": true,
+    "message": "长度闸门通过",
+    "chapter": 2,
+    "draft_version": 1,
+    "draft_path": "chapters/0002/draft.v1.md",
+    "quality": {
+      "required_outcomes": [
+        {
+          "index": 0,
+          "passed": true,
+          "source_evidence": "沈络转向曹雨：“铜铃谁维护？”\n\n“我。”\n\n“第二道封签呢？”\n\n曹雨喉结一动：“当时只是暂挂，还没到正式复位——”\n\n“挂在哪里？”"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "source_evidence": "片刻后，曹雨指向偏东那根梁：“第三根梁下的旧钩。离东墙约四尺。”\n\n“为何挂那里？”\n\n“铃架漆未干，检修间又在搬铜料。我想着只挂半日。”"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "source_evidence": "裴照野道：“抄的是铃声。不是天雷。”\n\n沈络问胡善：“你知道后续落雷时刻吗？”\n\n“不知道。”\n\n“那两次避开，是偶合。你把校验节拍写成押时秘诀，诱使候场弟子按所谓吉位停留，增加聚集风险。记管理责任，人数待核。”"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "source_evidence": "纪凌策在核查单上添入“铜铃偏东梁钩”“铃口朝向”“候场区回声范围”三项，却没有划去裴照野名下的嫌疑。\n\n“时刻簿显示，黄历首批节拍出现时，裴照野正在当班。调度记录也没有第二条正式调用。曹雨所说的挂铃时刻，仍缺第二道封签佐证。”"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "source_evidence": "“东脊滞后。”他说。\n\n曹雨俯身去看链扣：“也可能是沟壁积水拖声。”\n\n裴照野移到西链，按同样次序查过四个刻度。西链第一道回声正常，第二道却与北链末响重叠，像有人把两页时刻簿错夹在一起。\n\n“西脊也滞后。一处半拍，一处至少一拍。仅凭残痕，不能定是链扣错位还是脊端错序。”"
+        },
+        {
+          "index": 5,
+          "passed": true,
+          "source_evidence": "沈络看过编号：“两枚，只能预备一枚待命。本次不得提前启用。若接地链失序，是否启用由纪凌策当场判断。重置钉入阵即永久消耗，不返还，不补记成暂借。”"
+        },
+        {
+          "index": 6,
+          "passed": true,
+          "source_evidence": "“导雷铜条六段，本章未用。重置钉两枚，本章未启用。裴照野下品灵石五枚、定雷符三张，均未消耗。”"
+        }
+      ],
+      "forbidden_outcomes": [
+        {
+          "index": 0,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 1,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 2,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 3,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 4,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 5,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 6,
+          "appeared": false,
+          "source_evidence": ""
+        }
+      ],
+      "summary_like": false,
+      "cultivation_consistent": true,
+      "comedy_causal": true,
+      "serious_consequences_preserved": true,
+      "chapter_hook_concrete": true,
+      "resource_continuity_consistent": true,
+      "knowledge_states_consistent": true,
+      "character_voices_distinct": true,
+      "multi_line_causality_preserved": true,
+      "warnings": [],
+      "contract_failures": [],
+      "quality_failures": []
+    },
+    "quality_status": "draft_passed"
+  },
+  {
+    "number": 3,
+    "title": "重置钉只认错序",
+    "actual_length": 2618,
+    "status": "passed",
+    "hard_pass": true,
+    "requires_review": false,
+    "can_update_state": true,
+    "message": "长度闸门通过",
+    "chapter": 3,
+    "draft_version": 1,
+    "draft_path": "chapters/0003/draft.v1.md",
+    "quality": {
+      "required_outcomes": [
+        {
+          "index": 0,
+          "passed": true,
+          "source_evidence": "“原有两枚，永久消耗一枚，余额一枚。”沈络当场记入安全复核簿，“用途：阻断低限试雷错序引发的接地链反卷。”\n\n纪凌策封闭试雷阵枢，又在时刻簿上补录：“本次试雷未提高强度。确认东、西两处接地脊先后倒置，并存在反卷牵连。主塔未修复，四脊未校准。”"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "source_evidence": "裴照野道：“西脊不是迟。先后倒置。”\n\n纪凌策迅速对照时刻簿：“报刻度。”\n\n“主链三。西脊七。东脊五。实际回声，东七，西五。”\n\n“确认？”\n\n裴照野右手指节忽然一颤，符笔在“五”字旁点出一粒偏斜墨痕。"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "source_evidence": "曹雨站在偏东梁钩下，低声道：“刚才反卷的第二道回声，也朝值守廊去了。”\n\n纪凌策抬眼看了看梁钩，又对照胡善抄本上的节拍间隔。\n\n“铜铃位置与回声角度继续核查。封签时间另查。错序雷痕另查。”他合上时刻簿，“目前证据不足以更正裴照野泄露安全雷时的判断。”"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "source_evidence": "沈络按住记录页，不让他继续：“右手雷麻加重。症状，指节颤动，符笔落点偏移。自此不得独自接触高压雷纹，只许低负荷抄录、口述方向与刻度。后续先处理伤势风险。”"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "source_evidence": "沈络则走到偏东梁下，抬头听完第三轮浅鸣。\n\n铜铃先接主链节拍，回声沿铃口朝向折入值守廊，恰与胡善抄本上最早几页的间隔相合。\n\n“位置成立。”沈络道，“角度成立到值守廊。封签时间仍待核。”"
+        }
+      ],
+      "forbidden_outcomes": [
+        {
+          "index": 0,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 1,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 2,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 3,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 4,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 5,
+          "appeared": false,
+          "source_evidence": ""
+        }
+      ],
+      "summary_like": false,
+      "cultivation_consistent": true,
+      "comedy_causal": true,
+      "serious_consequences_preserved": true,
+      "chapter_hook_concrete": true,
+      "resource_continuity_consistent": true,
+      "knowledge_states_consistent": true,
+      "character_voices_distinct": true,
+      "multi_line_causality_preserved": true,
+      "warnings": [],
+      "contract_failures": [],
+      "quality_failures": []
+    },
+    "quality_status": "draft_passed"
+  },
+  {
+    "number": 4,
+    "title": "申诉格式不避雷",
+    "actual_length": 2551,
+    "status": "passed",
+    "hard_pass": true,
+    "requires_review": false,
+    "can_update_state": true,
+    "message": "长度闸门通过",
+    "chapter": 4,
+    "draft_version": 1,
+    "draft_path": "chapters/0004/draft.v1.md",
+    "quality": {
+      "required_outcomes": [
+        {
+          "index": 0,
+          "passed": true,
+          "source_evidence": "“停止接触高压雷纹。”沈络道，“从现在起，只准低负荷抄录、口述方向与刻度。不得执符笔探痕，不得注灵复验。”"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "source_evidence": "纪凌策把时刻簿移到拓纸旁。簿上写的是东后西，雷痕却显示西脊先逆行，随后牵扯东脊。若只按调用时刻排列，接地链不该从西侧内扣开始焦裂，更不该让东脊留下二次拖痕。\n\n他没有立刻改字，而是在两栏之间画了一道竖线。\n\n“时刻簿记录调用顺序。”纪凌策道，“残痕记录实际导行顺序。两者不一致。”"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "source_evidence": "纪凌策写下这七字，又补记：未封校雷铜铃自申时一刻至酉时正，暂挂值守廊偏东东三梁钩。"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "source_evidence": "胡善小声道：“随机空响。”\n\n“能押后续随机雷？”\n\n“不能。”\n\n“黄历来源？”\n\n“铜铃回声。”"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "source_evidence": "裴照野铺开四脊简图，以左手压尺，逐处口述：“东脊第四扣，西脊第二扣，先隔离。两处都需导雷铜条修补。南、北两脊只做低压查验，未查明前不定用量。”\n\n纪凌策在东、西两脊上各画一道红线：“塔库现有导雷铜条六段，本章不领用。待断点确认后再登记去向。”"
+        }
+      ],
+      "forbidden_outcomes": [
+        {
+          "index": 0,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 1,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 2,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 3,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 4,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 5,
+          "appeared": false,
+          "source_evidence": ""
+        }
+      ],
+      "summary_like": false,
+      "cultivation_consistent": true,
+      "comedy_causal": true,
+      "serious_consequences_preserved": true,
+      "chapter_hook_concrete": true,
+      "resource_continuity_consistent": true,
+      "knowledge_states_consistent": true,
+      "character_voices_distinct": true,
+      "multi_line_causality_preserved": true,
+      "warnings": [],
+      "contract_failures": [],
+      "quality_failures": []
+    },
+    "quality_status": "draft_passed"
+  },
+  {
+    "number": 5,
+    "title": "西脊不按名册绷响",
+    "actual_length": 2755,
+    "status": "passed",
+    "hard_pass": true,
+    "requires_review": false,
+    "can_update_state": true,
+    "message": "长度闸门通过",
+    "chapter": 5,
+    "draft_version": 1,
+    "draft_path": "chapters/0005/draft.v1.md",
+    "quality": {
+      "required_outcomes": [
+        {
+          "index": 0,
+          "passed": true,
+          "source_evidence": "纪凌策先验主链闸牌，念道：“申时后主导雷链未封闭，现由正式巡雷使封链。听雷塔剩余重置钉一枚，只作全塔失控阻断，不得用于检修试错。”"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "source_evidence": "曹雨赶紧伏下，用量尺抵住扣缝，报数：“第二扣旧片外挤一格，顶住接地扣舌。不是新断，是被反卷挤出来的。”"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "source_evidence": "裴照野站在红线外，右手垂在袖中，指节仍有细颤。他没有靠近，只看沟壁残痕，道：“西入东。逆行二刻半。第二扣多一格。”\n\n纪凌策提笔代录：“裴照野口述：西入东、逆行二刻半、第二扣多一格。未触碰雷纹。”\n\n沈络补了一句：“未执笔，未注灵，未越线。”"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "source_evidence": "曹雨一笔一画写：“听雷塔导雷铜条，原余六段；裁用一段，去向：西脊第二扣导雷断点修补；现余五段。”"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "source_evidence": "纪凌策报：“西脊低压回路通过。反卷起点截断。”\n\n曹雨松了口气，随即被纪凌策把账册推到面前。\n\n“登记资源。”\n\n曹雨一笔一画写：“听雷塔导雷铜条，原余六段；裁用一段，去向：西脊第二扣导雷断点修补；现余五段。”\n\n沈络复核后按印：“重置钉仍余一枚，未动用。裴照野下品灵石五枚、定雷符三张，未消耗。”\n\n纪凌策收起低压盘，又把东脊标牌翻开：“东脊第四扣仍少半格。南、北两脊未低压查验。四处接地脊尚未完成校准。”"
+        },
+        {
+          "index": 5,
+          "passed": true,
+          "source_evidence": "纪凌策接过一看，右栏果然列着二十来个人名，每个名字后有原候场线、实际站位和听到铜铃回声的先后。有五人从中线挪到偏东，有三人越过了原定半步线，还有两人把“不得停留”告示抄成“不可久留，须快步向东”。"
+        },
+        {
+          "index": 6,
+          "passed": true,
+          "source_evidence": "纪凌策把西脊检修记录与站位表并放，沉声道：“西脊实际导行顺序，支持裴照野此前关于反卷从西入东、第二扣多一格的雷痕判断。回声角度也新增人员与位置对应。但东脊第四扣少半格尚未开验，封签时间尚未完成交叉复核。”\n\n他看向裴照野：“因此，本章不正式更正裴照野泄露安全雷时之判断。”"
+        },
+        {
+          "index": 7,
+          "passed": true,
+          "source_evidence": "沈络最后复核伤势限制：“西脊修补不等于右手恢复。裴照野仍只准低负荷抄录与口述，不得执符笔探痕，不得注灵复验。掌侧铜刺未查，定雷符未用。”"
+        }
+      ],
+      "forbidden_outcomes": [
+        {
+          "index": 0,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 1,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 2,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 3,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 4,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 5,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 6,
+          "appeared": false,
+          "source_evidence": ""
+        }
+      ],
+      "summary_like": false,
+      "cultivation_consistent": true,
+      "comedy_causal": true,
+      "serious_consequences_preserved": true,
+      "chapter_hook_concrete": true,
+      "resource_continuity_consistent": true,
+      "knowledge_states_consistent": true,
+      "character_voices_distinct": true,
+      "multi_line_causality_preserved": true,
+      "warnings": [],
+      "contract_failures": [],
+      "quality_failures": []
+    },
+    "quality_status": "draft_passed"
+  },
+  {
+    "number": 6,
+    "title": "半格不算主动泄露",
+    "actual_length": 2355,
+    "status": "passed",
+    "hard_pass": true,
+    "requires_review": false,
+    "can_update_state": true,
+    "message": "长度闸门通过",
+    "chapter": 6,
+    "draft_version": 1,
+    "draft_path": "chapters/0006/draft.v1.md",
+    "quality": {
+      "required_outcomes": [
+        {
+          "index": 0,
+          "passed": true,
+          "source_evidence": "灰下露出的铜面并非整齐断口，而是细长的拉伸纹，纹路先朝西偏，末端又被硬生生掀向主塔。"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "source_evidence": "纪凌策写道：“导雷铜条一段，用于东脊第四扣导雷缺口修补。原存五段，现余四段。”"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "source_evidence": "“东、西顺序复核通过。”他合上阵枢，“南、北未查。四脊校准未成，听雷塔仍不得恢复运行。”"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "source_evidence": "纪凌策将昨日站位表压在核查页旁，依次圈出东三梁钩、偏东候场线以及东、西两脊雷痕的先后：“铜铃位置、传播站位的回声角度、东脊先受牵引后反卷、西脊反卷起点，现可列在同一页。以上事实，实质削弱裴照野主动口头泄露安全雷时的旧判断。”"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "source_evidence": "“第二道封签的时间缺口尚无正式见证。器物何时失去封闭、谁在何时应当补签，尚未闭合。今日不作正式更正。”"
+        },
+        {
+          "index": 5,
+          "passed": true,
+          "source_evidence": "一枚细如碎屑的铜刺被夹了出来，落在白瓷盘中，发出轻得几乎听不见的一声。沈络将铜刺封入证物纸：“掌侧残留铜刺，已取出。全程无高压雷纹接触。接下来用定雷符，只稳经脉，不恢复铜条，不替代接地校准，也不保证你立刻能执笔。”"
+        },
+        {
+          "index": 6,
+          "passed": true,
+          "source_evidence": "纪凌策记道：“定雷符一张，用于右手雷麻恢复处理，已消耗，不得返还。原有三张，现余两张。下品灵石仍为五枚。”"
+        },
+        {
+          "index": 7,
+          "passed": true,
+          "source_evidence": "沈络用木片轻触裴照野四根手指：“症状。”\n\n“持续麻木转为间歇。指节颤动减轻。”"
+        },
+        {
+          "index": 8,
+          "passed": true,
+          "source_evidence": "纪凌策抽出一张新核查页：“曹雨，未封铜铃位于值守廊偏东东三梁钩，使低限试雷节拍进入候场区域，记器物传播路径。胡善，抄录回声并按名册传给他人，致传播范围扩大，记人为扩大范围。”"
+        },
+        {
+          "index": 9,
+          "passed": true,
+          "source_evidence": "纪凌策补上一句：“临时登记仍须正式巡雷使复核。”\n\n裴照野点头：“南、北读数，明日左手抄。”\n\n“低负荷。”沈络道，“写偏一格就停。”\n\n纪凌策将伤势页与程序责任页分别封好：“东、西脊修补通过，不抵提前试雷之责；伤势好转，也不抵漏封之责。”"
+        }
+      ],
+      "forbidden_outcomes": [
+        {
+          "index": 0,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 1,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 2,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 3,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 4,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 5,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 6,
+          "appeared": false,
+          "source_evidence": ""
+        }
+      ],
+      "summary_like": false,
+      "cultivation_consistent": true,
+      "comedy_causal": true,
+      "serious_consequences_preserved": true,
+      "chapter_hook_concrete": true,
+      "resource_continuity_consistent": true,
+      "knowledge_states_consistent": true,
+      "character_voices_distinct": true,
+      "multi_line_causality_preserved": true,
+      "warnings": [],
+      "contract_failures": [],
+      "quality_failures": []
+    },
+    "quality_status": "draft_passed"
+  },
+  {
+    "number": 7,
+    "title": "南北两脊不收黄历余响",
+    "actual_length": 2522,
+    "status": "passed",
+    "hard_pass": true,
+    "requires_review": false,
+    "can_update_state": true,
+    "message": "长度闸门通过",
+    "chapter": 7,
+    "draft_version": 1,
+    "draft_path": "chapters/0007/draft.v1.md",
+    "quality": {
+      "required_outcomes": [
+        {
+          "index": 0,
+          "passed": true,
+          "source_evidence": "裴照野盯着导行针。低压灵流从主链进入南脊，前两扣平稳，到了第三扣，针尖停住，半息后才越过刻线。\n\n“南三扣。慢半息。”\n\n纪凌策依言记下，又复接一次低压。针尖仍在同一处迟滞。\n\n曹雨撬开扣沿，里面一层发黑旧铜皮果然向上翘起，压住时尚能贴合，一松手便弹开细缝。"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "source_evidence": "曹雨没有再争，将一整段导雷铜条覆在扣座下方，重新压紧接地纹。第四次低压接入，针尖稳稳贴住零刻，沿北脊顺行到底，再回主链，没有飘针。\n\n纪凌策逐项复核：“北脊第一扣加固，消耗导雷铜条一段，余额由三段降至两段。北脊低压导行顺序通过。”"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "source_evidence": "“四脊现在什么状态？”沈络问。\n\n裴照野答：“修补完成。低压顺序通过。未逢真实雷雨，未作正式校准。听雷塔不可恢复运行。”"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "source_evidence": "纪凌策提笔，在那人名下添了一行：由西七位换至偏东五位，与东三梁钩第一折回声角度相符。\n\n弟子张了张嘴。\n\n沈络道：“你听一响还是两响，不改变你越过候场分线。今日起，名册内偏东四至六位另封一道线，不与未换位者混组。申诉可留，分组先改。”"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "source_evidence": "“第二道封签？”\n\n那弟子想了片刻：“酉时正前未见。第一道旧封在铃柄上，外层应加的第二道没有。酉时正换班时，我还提醒过曹师兄，说那铃风一吹便响。”\n\n曹雨低声道：“我当时说稍后补。”\n\n纪凌策没有接那句话，只让见证弟子在证言下按印。他把铜铃位置、铃口朝向、封签缺失时段，与胡善名册上的偏东换位记录并列，又将东、西脊雷痕先后附在后页。"
+        },
+        {
+          "index": 5,
+          "passed": true,
+          "source_evidence": "曹雨问：“那泄露雷时一项……”\n\n“旧推断方向应当推翻。”纪凌策说得清楚，“现有证据已不足以支持‘只凭裴照野口头泄露’。但原裁记需戒律堂复核签字，今日不作正式更正。”"
+        },
+        {
+          "index": 6,
+          "passed": true,
+          "source_evidence": "裴照野继续抄到北脊。最后一行落笔时，中指又慢了半拍。他放下墨笔，右手指节仍有轻微僵滞。\n\n沈络查过落点、颤动和腕侧经脉回响，在样页下写道：“可继续低负荷验证，未正式解除右手雷麻。”"
+        },
+        {
+          "index": 7,
+          "passed": true,
+          "source_evidence": "纪凌策则在资源账末逐项念明：“导雷铜条余额两段。重置钉余额一枚，本章未启用。裴照野下品灵石五枚，定雷符两张，均未消耗。”"
+        }
+      ],
+      "forbidden_outcomes": [
+        {
+          "index": 0,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 1,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 2,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 3,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 4,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 5,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 6,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 7,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 8,
+          "appeared": false,
+          "source_evidence": ""
+        }
+      ],
+      "summary_like": false,
+      "cultivation_consistent": true,
+      "comedy_causal": true,
+      "serious_consequences_preserved": true,
+      "chapter_hook_concrete": true,
+      "resource_continuity_consistent": true,
+      "knowledge_states_consistent": true,
+      "character_voices_distinct": true,
+      "multi_line_causality_preserved": true,
+      "warnings": [],
+      "contract_failures": [],
+      "quality_failures": []
+    },
+    "quality_status": "draft_passed"
+  },
+  {
+    "number": 8,
+    "title": "复核签字不听黄历余音",
+    "actual_length": 2371,
+    "status": "passed",
+    "hard_pass": true,
+    "requires_review": false,
+    "can_update_state": true,
+    "message": "长度闸门通过",
+    "chapter": 8,
+    "draft_version": 1,
+    "draft_path": "chapters/0008/draft.v1.md",
+    "quality": {
+      "required_outcomes": [
+        {
+          "index": 0,
+          "passed": true,
+          "source_evidence": "沈络先检查红签，再将三页空白复验纸推到裴照野面前。\n\n“只抄录，不探痕，不注灵，不越线。三类记录，缺一类，复验中止。”\n\n裴照野看向第一份时刻簿。\n\n纪凌策立在案台另一侧，手按原册：“第一类，四脊同步刻度。东脊四刻二格，西脊四刻二格，南脊慢半息修正后归四刻二格，北脊第一扣加固后归线。”"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "source_evidence": "沈络抽走三页复验纸，逐页对光。纸上没有灵气浸痕，说明裴照野未向墨笔注灵；鞋尖始终停在红签之外，右手的落点也没有再向右下偏移。"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "source_evidence": "“right-hand-thunder-numbness，右手雷麻，今日正式解除。依据四项：其一，停止接触高压雷纹；其二，掌侧残留铜刺已取出；其三，此前消耗一张定雷符稳定经脉；其四，完成低负荷抄录复验，食指、中指无落点偏移。”"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "source_evidence": "“伤势解除，不等于资格恢复。裴照野仍为炼气五层。临时雷时登记，须正式巡雷使复核；不得独自值守高压雷塔。”"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "source_evidence": "铜铃位置决定回声起点，铃口朝向决定折入候场廊的角度；封签时间说明该时段铜铃未完成封闭；东西脊雷痕先后与偏东换位名册相合。”他合上笔帽，“旧推断方向应当推翻。现将文本交戒律堂核记录连续性。”"
+        },
+        {
+          "index": 5,
+          "passed": true,
+          "source_evidence": "沈络从第一页查到末页，连见证人的抄录时刻也逐一对过，才盖下“受理”小印。\n\n“证言来源连续，四项证据可以进入正式更正流程。”\n\n曹雨抬头：“那原裁记——”\n\n“尚未更正。”沈络道，“受理不是裁记更改。复核签字未完，原裁记仍在。”"
+        },
+        {
+          "index": 6,
+          "passed": true,
+          "source_evidence": "榜上写的是：四处接地脊正式校准申请已受理，列入真实雷雨候测队列。校准时须正式巡雷使、戒律堂复核官同时在场。"
+        },
+        {
+          "index": 7,
+          "passed": true,
+          "source_evidence": "纪凌策核过资源册：“裴照野下品灵石五枚，定雷符二张；听雷塔重置钉一枚，导雷铜条二段。本章无消耗。”"
+        },
+        {
+          "index": 8,
+          "passed": true,
+          "source_evidence": "沈络展开新表：“偏东四至六位，单列一组。曾换位者，按换位时刻再列一组。未换位者，不得混签。每人写明听闻来源。胡善负责逐个指认自己说过几遍。”"
+        },
+        {
+          "index": 9,
+          "passed": true,
+          "source_evidence": "纪凌策逐项问：“未封校雷铜铃，是否曾挂在值守廊东三梁钩？”\n\n“是。”\n\n“铃口是否朝西南？”\n\n“是。”\n\n“酉时正前，第二道封签是否缺失？”\n\n曹雨声音低了些：“是。”\n\n沈络指向确认栏：“写。”\n\n曹雨只得逐字写下事实，又在末尾按了手印。“暂挂”二字没能落进正文，只被纪凌策留在旁注里，标作当事人最初陈述，不改变器物位置与封签状态。"
+        }
+      ],
+      "forbidden_outcomes": [
+        {
+          "index": 0,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 1,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 2,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 3,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 4,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 5,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 6,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 7,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 8,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 9,
+          "appeared": false,
+          "source_evidence": ""
+        }
+      ],
+      "summary_like": false,
+      "cultivation_consistent": true,
+      "comedy_causal": true,
+      "serious_consequences_preserved": true,
+      "chapter_hook_concrete": true,
+      "resource_continuity_consistent": true,
+      "knowledge_states_consistent": true,
+      "character_voices_distinct": true,
+      "multi_line_causality_preserved": true,
+      "warnings": [],
+      "contract_failures": [],
+      "quality_failures": []
+    },
+    "quality_status": "draft_passed"
+  },
+  {
+    "number": 9,
+    "title": "四脊雨校不押时",
+    "actual_length": 2536,
+    "status": "passed",
+    "hard_pass": true,
+    "requires_review": false,
+    "can_update_state": true,
+    "message": "长度闸门通过",
+    "chapter": 9,
+    "draft_version": 1,
+    "draft_path": "chapters/0009/draft.v1.md",
+    "quality": {
+      "required_outcomes": [
+        {
+          "index": 0,
+          "passed": true,
+          "source_evidence": "四组弟子依次散开，各守接地脊外侧标线。裴照野站在主塔基座内圈，纪凌策在他右后方持校准页，沈络守着资源封匣与总断纹。无人越线，塔门也没有合拢，正式巡雷使的复核印始终亮在阵心旁。"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "source_evidence": "东脊，一刻七。\n\n西脊，一刻七。\n\n南脊，一刻七。\n\n北脊，一刻七。\n\n他在末栏加盖巡雷复核印：“真实雷雨三次导行，四脊同步刻度入限。正式校准完成。”"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "source_evidence": "听雷塔的阵光渐渐收拢，却没有转入运行标识。塔门上仍悬着“待终签，不得高压独立值守”的戒律牌。"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "source_evidence": "“炼气五层关隘已现。未越。”\n\n沈络抬手切断他面前的低压引导纹：“停止加压。今日校准前置已足，不能借余雷强冲。”"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "source_evidence": "他逐行核过，才道：“旧裁记所依据的‘裴照野口头泄露安全雷时’，与现有事实链条不合。铜铃回声足以形成传播路径，雨中记录又补齐了四脊雷痕连续性。我的旧判断应在终签时正式更正。”\n\n沈络按住裁记末页，没有落印：“今日只确认记录连续。恢复运行签字、原裁记更正、责任拆分，等最终风险复核。”\n\n纪凌策道：“是。此刻仍未正式更正。”"
+        },
+        {
+          "index": 5,
+          "passed": true,
+          "source_evidence": "沈络把听训纸铺平，逐句划线：“‘风停三息，东位为吉’，改成‘风停期间不得擅自换位’。‘页留一格，逢雷宜避’，改成‘未录刻度前不得推定雷时’。你念一遍，偏东组逐人签收。”\n\n胡善看着自己的两句押时诀被改成两条禁令，沉默片刻，老实念了。\n\n偏东组重新退回隔离线，按新表排成两列。纪凌策在附页记下挪动时刻、听闻来源和重新签收的次序。"
+        },
+        {
+          "index": 6,
+          "passed": true,
+          "source_evidence": "沈络核完最后一遍封匣：“下品灵石五枚，定雷符两张，均未消耗。明日若风险复核通过，再按三枚灵石、一张定雷符的正式流程监督突破。塔的最终运行签字与裁记更正也在明日处理。”"
+        }
+      ],
+      "forbidden_outcomes": [
+        {
+          "index": 0,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 1,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 2,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 3,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 4,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 5,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 6,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 7,
+          "appeared": false,
+          "source_evidence": ""
+        }
+      ],
+      "summary_like": false,
+      "cultivation_consistent": true,
+      "comedy_causal": true,
+      "serious_consequences_preserved": true,
+      "chapter_hook_concrete": true,
+      "resource_continuity_consistent": true,
+      "knowledge_states_consistent": true,
+      "character_voices_distinct": true,
+      "multi_line_causality_preserved": true,
+      "warnings": [],
+      "contract_failures": [],
+      "quality_failures": []
+    },
+    "quality_status": "draft_passed"
+  },
+  {
+    "number": 10,
+    "title": "终签只恢复塔，不恢复运气",
+    "actual_length": 2529,
+    "status": "passed",
+    "hard_pass": true,
+    "requires_review": false,
+    "can_update_state": true,
+    "message": "长度闸门通过",
+    "chapter": 10,
+    "draft_version": 1,
+    "draft_path": "chapters/0010/draft.v1.md",
+    "quality": {
+      "required_outcomes": [
+        {
+          "index": 0,
+          "passed": true,
+          "source_evidence": "沈络逐项落印：“四脊已校准，旧伤已解除，真实雷雨中的完整接地回路已维持。准许裴照野在正式巡雷使监督下突破。只准守回路，不准接管高压雷时，不准独自登塔。”"
+        },
+        {
+          "index": 1,
+          "passed": true,
+          "source_evidence": "第三枚灵石投入阵槽时，主阵忽然向外一涨。裴照野胸口像被重锤压住，接地小周天几乎被雷压顶回经脉。他抽出一张定雷符，贴在心口下方。\n\n符纸燃起一道沉稳黄光，将乱窜的雷意压回周天。\n\n“下品灵石消耗三枚，余额二枚。”沈络声音不高，“定雷符消耗一张，余额一张。”\n\n裴照野闭住呼吸，将主塔与西脊一并维持。四脊雷光绕过汇流台，完整走完一周，再从北脊泄入地层。\n\n他体内那道卡了许久的关隘随之松开。\n\n灵力扩过主阵，又稳稳搭住西脊，没有牵动其余两处。炼气六层的气息在雷雨里展开，只比原先多承一线，并未替塔上任何铜扣归位，也未让时刻簿自己添上一笔。"
+        },
+        {
+          "index": 2,
+          "passed": true,
+          "source_evidence": "灵力扩过主阵，又稳稳搭住西脊，没有牵动其余两处。炼气六层的气息在雷雨里展开，只比原先多承一线，并未替塔上任何铜扣归位，也未让时刻簿自己添上一笔。\n\n沈络看了一眼阵纹：“境界确认，炼气六层。能力边界：可同时维持主塔与一处接地脊。器物仍按器物复核，责任仍按责任裁定。”"
+        },
+        {
+          "index": 3,
+          "passed": true,
+          "source_evidence": "雷声忽然停了一瞬。\n\n裴照野却仍听见两道。\n\n一道在云上，一道像贴着耳骨滚过，慢了半拍。\n\n他睁开眼：“停雷后有回响。双声。”\n\n纪凌策当即收起突破记录：“下一轮复核运行，我报时。你只报方向和回路。”"
+        },
+        {
+          "index": 4,
+          "passed": true,
+          "source_evidence": "沈络合上风险册：“复核运行通过。听雷塔具备恢复为可复核运行状态的条件。不得升级高压测试。”\n\n她另起一栏，写下“突破后雷声回响”。\n\n“症状：停雷后仍闻双重雷声，落雷时刻判断延迟。活动限制：三日内不得独自值守高压雷塔。每日仅准在正式巡雷使复核下进行低强度接地检查。”"
+        },
+        {
+          "index": 5,
+          "passed": true,
+          "source_evidence": "低强度雷流完整走过一周，四脊刻线均停在校准页允许范围内。\n\n沈络合上风险册：“复核运行通过。听雷塔具备恢复为可复核运行状态的条件。不得升级高压测试。”"
+        },
+        {
+          "index": 6,
+          "passed": true,
+          "source_evidence": "纪凌策先展开更正文书。\n\n“原裁记pei-leaked-strike-window，现依连续证据更正。”\n\n他逐项念道：“其一，未封校雷铜铃位于值守廊东三梁钩；其二，东西脊雷痕先后证明低限试雷节拍先入铜铃，再传值守廊；其三，第二道封签缺失时间早于黄历内容传播；其四，铃口朝西南，回声角度覆盖胡善所在偏东站位。”\n\n纪凌策落下正式巡雷使印。\n\n“以上证据足以证明所谓安全雷时来自铜铃回声传播，不是裴照野主动口头泄露。原判断正式更正。”"
+        },
+        {
+          "index": 7,
+          "passed": true,
+          "source_evidence": "他没有收起文书，又翻到下一栏。\n\n“同时保留裴照野两项程序责任：漏做校雷铜铃第二道封签；无正式巡雷使复核便提前进行低限试雷。修塔、维持回路与突破，均不抵扣记过。”"
+        },
+        {
+          "index": 8,
+          "passed": true,
+          "source_evidence": "曹雨顿了顿：“未封校雷铜铃，曾挂在值守廊东三梁钩，铃口朝西南。第二道封签当时没有补齐。”\n\n“管理责任进入处置流程。”沈络道，“恢复运行不改变封签缺失。”"
+        },
+        {
+          "index": 9,
+          "passed": true,
+          "source_evidence": "胡善听见“恢复运行”，立刻从袖中抽出一张排得密密麻麻的纸：“既然恢复了，我把新押雷班次也排好了。偏东组守戌初，西廊组押戌正——”\n\n裴照野接过纸，看了两眼。\n\n“运行等级，低强度。”\n\n胡善张了张口。\n\n“站位刻度，隔离线外三丈。”\n\n裴照野划掉“偏东押雷位”，改成“安全听训甲组”。\n\n“复核人，纪凌策。”\n\n他又划掉“戌正旺雷”，改成“戌正前完成签收”。\n\n“签收责任，胡善。”\n\n最后一笔落下，整张押雷班次变成了低强度安全听训排班。原黄历传播组全部编入甲组，由胡善带队退出高压值守区；未传播者编入乙组，在外廊学习接地告示。"
+        },
+        {
+          "index": 10,
+          "passed": true,
+          "source_evidence": "终签册最后一页，纪凌策逐笔登记：裴照野下品灵石二枚，定雷符一张；听雷塔重置钉一枚，导雷铜条二段。余额封存承接，不得返还已耗资源。"
+        }
+      ],
+      "forbidden_outcomes": [
+        {
+          "index": 0,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 1,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 2,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 3,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 4,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 5,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 6,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 7,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 8,
+          "appeared": false,
+          "source_evidence": ""
+        },
+        {
+          "index": 9,
+          "appeared": false,
+          "source_evidence": ""
+        }
+      ],
+      "summary_like": false,
+      "cultivation_consistent": true,
+      "comedy_causal": true,
+      "serious_consequences_preserved": true,
+      "chapter_hook_concrete": true,
+      "resource_continuity_consistent": true,
+      "knowledge_states_consistent": true,
+      "character_voices_distinct": true,
+      "multi_line_causality_preserved": true,
+      "warnings": [],
+      "contract_failures": [],
+      "quality_failures": []
+    },
+    "quality_status": "draft_passed"
+  }
+]

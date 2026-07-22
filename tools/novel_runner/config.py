@@ -53,9 +53,9 @@ def _utc_now() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
-def default_run_config(run_id: str) -> dict[str, Any]:
+def default_run_config(run_id: str, *, storage_version: str | None = None) -> dict[str, Any]:
     timestamp = _utc_now()
-    return {
+    config = {
         "schema_version": "1.0",
         "run_id": run_id,
         "status": "planning",
@@ -143,6 +143,9 @@ def default_run_config(run_id: str) -> dict[str, Any]:
         "created_at": timestamp,
         "updated_at": timestamp,
     }
+    if storage_version is not None:
+        config["storage_version"] = storage_version
+    return config
 
 
 def default_progression_config() -> dict[str, Any]:
@@ -174,25 +177,30 @@ def default_comedy_bible() -> dict[str, Any]:
     }
 
 
-def init_run(root: Path, run_id: str) -> Path:
+def init_run(
+    root: Path, run_id: str, *, storage_version: str | None = None
+) -> Path:
     validate_run_id(run_id)
     run_dir = resolve_run_dir(root, run_id)
     if run_dir.exists():
         raise StorageError(f"运行目录已存在：{run_dir}")
 
-    directories = (
+    v2 = storage_version == "2.0"
+    directories = [
         "config/prompt-patches",
         "planning",
         "chapters",
-        "state/snapshots",
         "ledgers",
         "logs",
         "reports",
-    )
+    ]
+    directories.extend(("state", "work", "artifacts") if v2 else ("state/snapshots",))
     for relative in directories:
         (run_dir / relative).mkdir(parents=True, exist_ok=False)
 
-    atomic_write_json(run_dir / "run.json", default_run_config(run_id))
+    atomic_write_json(
+        run_dir / "run.json", default_run_config(run_id, storage_version=storage_version)
+    )
     atomic_write_json(run_dir / "config/progression.json", default_progression_config())
     atomic_write_json(run_dir / "config/comedy-bible.json", default_comedy_bible())
     atomic_write_json(run_dir / "config/initial-state.json", default_initial_state())
@@ -209,7 +217,13 @@ def init_run(root: Path, run_id: str) -> Path:
     )
     atomic_write_text(run_dir / "logs/tasks.jsonl", "")
     atomic_write_text(run_dir / "logs/api-calls.jsonl", "")
-    atomic_write_text(run_dir / "logs/events.jsonl", "")
+    if v2:
+        atomic_write_text(run_dir / "state/events.jsonl", "")
+        atomic_write_text(run_dir / "state/checkpoints.jsonl", "")
+        atomic_write_text(run_dir / "ledgers/history.jsonl", "")
+        atomic_write_text(run_dir / "logs/runtime-events.jsonl", "")
+    else:
+        atomic_write_text(run_dir / "logs/events.jsonl", "")
     return run_dir
 
 
@@ -256,6 +270,11 @@ def _validate_run_json(data: Any, expected_run_id: str) -> list[ValidationIssue]
         issues.append(ValidationIssue("run.run_id", "与运行目录名称不一致"))
     if data.get("status") not in RUN_STATUSES:
         issues.append(ValidationIssue("run.status", "不是允许的运行状态"))
+    storage_version = data.get("storage_version")
+    if storage_version is not None and storage_version not in {"1.0", "2.0"}:
+        issues.append(
+            ValidationIssue("run.storage_version", "仅支持 1.0、2.0 或省略（v1）")
+        )
 
     provider = data.get("provider")
     if _expect_type(issues, "run.provider", provider, dict):

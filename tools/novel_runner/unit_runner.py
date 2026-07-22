@@ -28,9 +28,13 @@ from .outline_validation import (
 from .provider import ProviderError, TextProvider
 from .planning_service import PlanningServiceError, plan_chapter_batch
 from .reporting import ReportingError, generate_unit_review
+from .file_storage import (
+    append_checkpoint,
+    archive_completed_unit_debug,
+    record_runtime_event,
+)
 from .storage import (
     StorageError,
-    append_jsonl,
     atomic_write_json,
     read_json,
     resolve_run_dir,
@@ -278,8 +282,9 @@ def _set_unit_status(
         atomic_write_json(run_dir / "run.json", run_update)
         if previous_unit_status == "paused" and status == "running":
             next_chapter = run_config.get("last_committed_chapter", 0) + 1
-            append_jsonl(
-                run_dir / "logs/events.jsonl",
+            record_runtime_event(
+                run_dir,
+                run_config,
                 {
                     "timestamp": _utc_now(),
                     "action": "unit_resumed",
@@ -552,4 +557,28 @@ def run_unit(
     report["review_path"] = f"reports/story-unit-review-{unit_id}.json"
     report["verdict"] = review["verdict"]
     atomic_write_json(run_dir / f"reports/unit-{unit_id}.json", report)
+    completed_config = read_json(run_dir / "run.json")
+    append_checkpoint(
+        run_dir,
+        completed_config,
+        unit_id=unit_id,
+        chapter_range=[start, end],
+    )
+    artifact = archive_completed_unit_debug(
+        run_dir,
+        completed_config,
+        unit_id=unit_id,
+        chapter_range=[start, end],
+    )
+    if artifact is not None:
+        record_runtime_event(
+            run_dir,
+            completed_config,
+            {
+                "timestamp": _utc_now(),
+                "action": "unit_debug_archived",
+                "unit_id": unit_id,
+                "artifact": artifact.relative_to(run_dir).as_posix(),
+            },
+        )
     return report

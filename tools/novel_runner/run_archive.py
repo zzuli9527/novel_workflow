@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Any
 
 from .state_store import load_events
+from .file_storage import current_snapshot_path, events_path, is_v2
 from .storage import (
     StorageError,
     atomic_write_json,
@@ -210,14 +211,17 @@ def archive_run(
 
     events = [
         item
-        for item in load_events(run_dir / "state/events.jsonl")
+        for item in load_events(events_path(run_dir))
         if isinstance(item.get("chapter"), int) and start <= item["chapter"] <= end
     ]
     if [item.get("chapter") for item in events] != list(range(start, end + 1)):
         raise RunArchiveError("归档正式状态事件不连续")
-    final_snapshot = read_json(
-        run_dir / f"state/snapshots/chapter-{end:04d}.json"
+    final_snapshot_path = (
+        current_snapshot_path(run_dir)
+        if is_v2(run)
+        else run_dir / f"state/snapshots/chapter-{end:04d}.json"
     )
+    final_snapshot = read_json(final_snapshot_path)
     review_json = run_dir / f"reports/story-unit-review-{unit_id}.json"
     review_md = run_dir / f"reports/story-unit-review-{unit_id}.md"
     review = read_json(review_json)
@@ -278,10 +282,12 @@ def archive_run(
             run_dir / "planning/chapter-outlines.json",
             "planning/chapter-outlines.json",
         ),
-        (run_dir / "state/events.jsonl", "state/events.jsonl"),
+        (events_path(run_dir), "state/events.jsonl"),
         (
-            run_dir / f"state/snapshots/chapter-{end:04d}.json",
-            f"state/snapshots/chapter-{end:04d}.json",
+            final_snapshot_path,
+            "state/current.json"
+            if is_v2(run)
+            else f"state/snapshots/chapter-{end:04d}.json",
         ),
         (review_json, f"reports/{review_json.name}"),
         (run_dir / "logs/api-calls.jsonl", "logs/api-calls.jsonl"),
@@ -289,10 +295,25 @@ def archive_run(
         _copy_text(source, data / relative, secret)
     for ledger in sorted((run_dir / "ledgers").glob("batch-*.json")):
         _copy_text(ledger, data / "ledgers" / ledger.name, secret)
-    checks = [
-        read_json(run_dir / f"chapters/{chapter:04d}/checks.json")
-        for chapter in range(start, end + 1)
-    ]
+    by_number = {item.get("number"): item for item in selected}
+    checks = []
+    for chapter in range(start, end + 1):
+        path = run_dir / f"chapters/{chapter:04d}/checks.json"
+        if path.exists():
+            checks.append(read_json(path))
+            continue
+        outline = by_number[chapter]
+        checks.append(
+            {
+                **(
+                    outline.get("final_check")
+                    if isinstance(outline.get("final_check"), dict)
+                    else {}
+                ),
+                "chapter": chapter,
+                "quality": outline.get("quality_summary", {}),
+            }
+        )
     atomic_write_json(data / "chapter-checks.json", checks)
 
     return {

@@ -47,6 +47,7 @@ from .reporting import ReportingError, generate_unit_review
 from .revision import RevisionError, invalidate_from
 from .run_archive import RunArchiveError, archive_run
 from .state_rebuild import StateRebuildError, rebuild_state_snapshots
+from .storage_migration import StorageMigrationError, audit_storage_migration
 from .storage import (
     StorageError,
     atomic_write_json,
@@ -381,6 +382,16 @@ def _build_parser() -> argparse.ArgumentParser:
     rebuild_parser.add_argument("--root", type=Path, default=Path.cwd())
     rebuild_parser.add_argument("--json", action="store_true")
 
+    migrate_parser = subparsers.add_parser(
+        "migrate-storage", help="审计或迁移 v1 运行到 FileStorage v2"
+    )
+    migrate_parser.add_argument("--run", dest="run_id", required=True)
+    migrate_parser.add_argument(
+        "--apply", action="store_true", help="创建备份后执行原子切换；默认只 dry-run"
+    )
+    migrate_parser.add_argument("--root", type=Path, default=Path.cwd())
+    migrate_parser.add_argument("--json", action="store_true")
+
     archive_parser = subparsers.add_parser(
         "archive-run", help="把已完成故事单元归档到 test/matrix-runs"
     )
@@ -430,7 +441,7 @@ def _run_check_drafts(args: argparse.Namespace) -> int:
 
 def _run_init(args: argparse.Namespace) -> int:
     try:
-        run_dir = init_run(args.root, args.run_id)
+        run_dir = init_run(args.root, args.run_id, storage_version="2.0")
     except StorageError as exc:
         print(f"Error: {exc}", file=sys.stderr)
         return EXIT_INPUT_ERROR
@@ -767,6 +778,16 @@ def _run_rebuild_state(args: argparse.Namespace) -> int:
     return EXIT_PASSED
 
 
+def _run_migrate_storage(args: argparse.Namespace) -> int:
+    try:
+        result = audit_storage_migration(args.root, args.run_id, apply=args.apply)
+    except (StorageMigrationError, StorageError) as exc:
+        print(f"Error: {exc}", file=sys.stderr)
+        return EXIT_FAILED
+    _render_or_json(result, args.json)
+    return EXIT_PASSED
+
+
 def _run_archive(args: argparse.Namespace) -> int:
     try:
         result = archive_run(
@@ -832,6 +853,8 @@ def main(argv: Sequence[str] | None = None) -> int:
         return _run_review(args)
     if args.command == "rebuild-state":
         return _run_rebuild_state(args)
+    if args.command == "migrate-storage":
+        return _run_migrate_storage(args)
     if args.command == "archive-run":
         return _run_archive(args)
     if args.command == "coverage":

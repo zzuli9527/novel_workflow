@@ -31,9 +31,16 @@ from .state_store import (
     build_snapshot,
     ensure_event_compatible,
 )
+from .file_storage import (
+    events_path,
+    prepare_event,
+    read_current_snapshot,
+    record_runtime_event,
+    transaction_path,
+    write_snapshot,
+)
 from .storage import (
     StorageError,
-    append_jsonl,
     atomic_write_json,
     atomic_write_text,
     read_json,
@@ -80,8 +87,10 @@ def _utc_now() -> str:
 
 
 def _log_runtime_event(run_dir: Path, action: str, **data: Any) -> None:
-    append_jsonl(
-        run_dir / "logs/events.jsonl",
+    run_config = read_json(run_dir / "run.json")
+    record_runtime_event(
+        run_dir,
+        run_config,
         {"timestamp": _utc_now(), "action": action, **data},
     )
 
@@ -280,6 +289,12 @@ def _draft_chapter_unlocked(
         "draft_path": _relative_posix(draft_path, run_dir),
         "checks": {"length": check_data.get("status")},
     }
+    if version == 1:
+        outline["initial_draft"] = {
+            "actual_length": check_data.get("actual_length"),
+            "status": check_data.get("status"),
+            "passed": check_data.get("status") == "passed",
+        }
     outlines[index] = outline
     _save_outlines(run_dir, outlines)
     atomic_write_json(chapter_dir / "outline.json", outline)
@@ -565,6 +580,32 @@ def review_chapter(
             if key != "review_failure_reason"
         }
         checks = {**checks, "quality": review, "quality_status": outline["status"]}
+        outline["final_check"] = {
+            "actual_length": checks.get("actual_length"),
+            "status": checks.get("status"),
+            "hard_pass": checks.get("hard_pass"),
+            "quality_status": checks.get("quality_status"),
+        }
+        outline["quality_summary"] = {
+            key: review.get(key)
+            for key in (
+                "required_outcomes",
+                "forbidden_outcomes",
+                "summary_like",
+                "cultivation_consistent",
+                "comedy_causal",
+                "serious_consequences_preserved",
+                "chapter_hook_concrete",
+                "resource_continuity_consistent",
+                "knowledge_states_consistent",
+                "character_voices_distinct",
+                "multi_line_causality_preserved",
+                "warnings",
+                "contract_failures",
+                "quality_failures",
+                "soft_quality_warnings",
+            )
+        }
         atomic_write_json(chapter_dir / "checks.json", checks)
         outlines[index] = outline
         _save_outlines(run_dir, outlines)
@@ -737,9 +778,7 @@ def _extract_state_unlocked(
 
     try:
         previous_snapshot = (
-            read_json(
-                run_dir / f"state/snapshots/chapter-{chapter_number - 1:04d}.json"
-            )
+            read_current_snapshot(run_dir, run_config, chapter_number - 1)
             if chapter_number > 1
             else None
         )
@@ -749,7 +788,7 @@ def _extract_state_unlocked(
             else None
         )
         build_snapshot(event, previous_snapshot, initial_state=initial_state)
-        ensure_event_compatible(run_dir / "state/events.jsonl", event)
+        ensure_event_compatible(events_path(run_dir), event)
     except StateStoreError as exc:
         failure = ChapterServiceError(str(exc))
         outline = transition_record(outline, "state_failed")
@@ -789,8 +828,8 @@ def _extract_state_unlocked(
     return event
 
 
-def _commit_journal_path(run_dir: Path) -> Path:
-    return run_dir / "logs/commit-journal.json"
+def _commit_journal_path(run_dir: Path, run_config: dict[str, Any]) -> Path:
+    return transaction_path(run_dir, run_config)
 
 
 def _apply_commit_journal(
@@ -815,13 +854,11 @@ def _apply_commit_journal(
     if last_committed not in {chapter_number - 1, chapter_number}:
         raise ChapterServiceError("运行指针与提交事务不连续")
 
-    events_path = run_dir / "state/events.jsonl"
+    event_log_path = events_path(run_dir)
     chapter_dir = run_dir / f"chapters/{chapter_number:04d}"
     try:
         previous_snapshot = (
-            read_json(
-                run_dir / f"state/snapshots/chapter-{chapter_number - 1:04d}.json"
-            )
+            read_current_snapshot(run_dir, run_config, chapter_number - 1)
             if chapter_number > 1
             else None
         )
@@ -833,7 +870,7 @@ def _apply_commit_journal(
         snapshot = build_snapshot(
             event, previous_snapshot, initial_state=initial_state
         )
-        ensure_event_compatible(events_path, event)
+        ensure_event_compatible(event_log_path, event)
     except (StateStoreError, StorageError) as exc:
         if current_status in {"state_ready", "committing"}:
             outline = transition_record(outline, "state_failed")
@@ -848,7 +885,7 @@ def _apply_commit_journal(
             _save_outlines(run_dir, outlines)
             atomic_write_json(chapter_dir / "outline.json", outline)
         try:
-            _commit_journal_path(run_dir).unlink(missing_ok=True)
+            _commit_journal_path(run_dir, run_config).unlink(missing_ok=True)
         except OSError:
             pass
         raise ChapterServiceError(str(exc)) from exc
@@ -859,14 +896,16 @@ def _apply_commit_journal(
         _save_outlines(run_dir, outlines)
 
     try:
-        append_event_once(events_path, event)
+        append_event_once(event_log_path, event)
     except StateStoreError as exc:
         raise ChapterServiceError(str(exc)) from exc
 
-    snapshot["source"] = _relative_posix(chapter_dir / "state-event.json", run_dir)
-    atomic_write_json(
-        run_dir / f"state/snapshots/chapter-{chapter_number:04d}.json", snapshot
+    snapshot["source"] = (
+        "state/events.jsonl"
+        if run_config.get("storage_version") == "2.0"
+        else _relative_posix(chapter_dir / "state-event.json", run_dir)
     )
+    write_snapshot(run_dir, run_config, chapter_number, snapshot, event)
 
     run_config = {
         **{key: value for key, value in run_config.items() if key != "pause_reason"},
@@ -882,7 +921,7 @@ def _apply_commit_journal(
     _save_outlines(run_dir, outlines)
     atomic_write_json(chapter_dir / "outline.json", outline)
 
-    journal_path = _commit_journal_path(run_dir)
+    journal_path = _commit_journal_path(run_dir, run_config)
     try:
         journal_path.unlink(missing_ok=True)
     except OSError as exc:
@@ -901,13 +940,14 @@ def commit_chapter(root: Path, run_id: str, chapter_number: int) -> dict[str, An
 
         chapter_dir = run_dir / f"chapters/{chapter_number:04d}"
         event = read_json(chapter_dir / "state-event.json")
+        event = prepare_event(run_dir, run_config, event)
         journal = {
             "journal_version": "1.0",
             "chapter": chapter_number,
             "event": event,
             "created_at": _utc_now(),
         }
-        atomic_write_json(_commit_journal_path(run_dir), journal)
+        atomic_write_json(_commit_journal_path(run_dir, run_config), journal)
         return _apply_commit_journal(run_dir, run_config, outlines, journal)
 
 
@@ -927,9 +967,9 @@ def resume_run(root: Path, run_id: str) -> dict[str, Any]:
                 revision_id=manifest.get("revision_id"),
             )
             return {"action": "revision_recovered", "revision": manifest}
-        journal_path = _commit_journal_path(run_dir)
+        run_dir, run_config, outlines = _load_context(root, run_id)
+        journal_path = _commit_journal_path(run_dir, run_config)
         if not journal_path.exists():
-            run_dir, run_config, outlines = _load_context(root, run_id)
             recovered: list[int] = []
             recovered_states: list[int] = []
             for index, outline in enumerate(outlines):
@@ -971,7 +1011,6 @@ def resume_run(root: Path, run_id: str) -> dict[str, Any]:
                 "action": "none",
                 "last_committed_chapter": run_config.get("last_committed_chapter"),
             }
-        run_dir, run_config, outlines = _load_context(root, run_id)
         journal = read_json(journal_path)
         result = _apply_commit_journal(run_dir, run_config, outlines, journal)
         _log_runtime_event(
@@ -995,7 +1034,7 @@ def get_run_status(root: Path, run_id: str) -> dict[str, Any]:
         "current_story_unit": run_config.get("current_story_unit"),
         "current_batch": run_config.get("current_batch"),
         "chapter_status_counts": status_counts,
-        "commit_recovery_pending": _commit_journal_path(run_dir).exists(),
+        "commit_recovery_pending": _commit_journal_path(run_dir, run_config).exists(),
         "revision_recovery_pending": (
             run_dir / "logs/revision-journal.json"
         ).exists(),

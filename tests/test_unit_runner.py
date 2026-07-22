@@ -6,12 +6,14 @@ import tempfile
 import unittest
 
 from tools.novel_runner.config import init_run
+from tools.novel_runner.chapter_service import get_run_status, resume_run
 from tools.novel_runner.provider import (
     GenerationRequest,
     GenerationResponse,
     ProviderError,
     TextProvider,
 )
+from tools.novel_runner.run_archive import archive_run
 from tools.novel_runner.unit_runner import (
     UnitRunnerError,
     partition_chapters,
@@ -223,6 +225,80 @@ class UnitRunnerTests(unittest.TestCase):
         self.assertEqual(review["usability"], "可用")
         self.assertTrue(
             (self.run_dir / "reports/story-unit-review-unit-0001.md").is_file()
+        )
+
+    def test_v2_run_uses_fixed_state_and_ledger_files(self) -> None:
+        v2_dir = init_run(self.root, "v2-run", storage_version="2.0")
+        run_path = v2_dir / "run.json"
+        run = json.loads(run_path.read_text(encoding="utf-8"))
+        run["policies"]["length"].update(
+            {"expand_from": 3, "target_min": 5, "target_max": 7, "review_over": 9}
+        )
+        run_path.write_text(json.dumps(run, ensure_ascii=False), encoding="utf-8")
+        (v2_dir / "planning/story-units.json").write_text(
+            json.dumps(
+                [
+                    {
+                        "unit_id": "unit-0001",
+                        "chapter_range": [1, 10],
+                        "status": "planned",
+                    }
+                ],
+                ensure_ascii=False,
+            ),
+            encoding="utf-8",
+        )
+        (v2_dir / "planning/chapter-outlines.json").write_text(
+            json.dumps([make_outline(number) for number in range(1, 11)], ensure_ascii=False),
+            encoding="utf-8",
+        )
+
+        report = run_unit(self.root, "v2-run", "unit-0001", ScriptedProvider())
+
+        self.assertEqual(report["status"], "completed")
+        self.assertTrue((v2_dir / "state/events.jsonl").is_file())
+        self.assertTrue((v2_dir / "state/current.json").is_file())
+        self.assertTrue((v2_dir / "state/checkpoints.jsonl").is_file())
+        self.assertFalse((v2_dir / "state/snapshots").exists())
+        events = [
+            json.loads(line)
+            for line in (v2_dir / "state/events.jsonl").read_text(
+                encoding="utf-8"
+            ).splitlines()
+            if line.strip()
+        ]
+        self.assertEqual([event["sequence"] for event in events], list(range(1, 11)))
+        self.assertTrue(all(event.get("event_sha256") for event in events))
+        current = json.loads((v2_dir / "state/current.json").read_text(encoding="utf-8"))
+        self.assertEqual(current["after_chapter"], 10)
+        self.assertEqual(current["last_event_sequence"], 10)
+        checkpoints = (v2_dir / "state/checkpoints.jsonl").read_text(
+            encoding="utf-8"
+        ).splitlines()
+        self.assertEqual(len([line for line in checkpoints if line.strip()]), 1)
+        self.assertTrue((v2_dir / "ledgers/current.json").is_file())
+        history = (v2_dir / "ledgers/history.jsonl").read_text(encoding="utf-8")
+        self.assertEqual(len([line for line in history.splitlines() if line.strip()]), 3)
+        self.assertTrue((v2_dir / "artifacts/unit-0001.zip").is_file())
+        self.assertEqual(
+            [path.name for path in (v2_dir / "chapters/0001").iterdir()],
+            ["draft.final.md"],
+        )
+        self.assertFalse(any((v2_dir / "ledgers").glob("batch-*")))
+        archived = archive_run(
+            self.root, "v2-run", "unit-0001", "Xv2-storage-layout"
+        )
+        self.assertEqual(archived["verdict"], "通过")
+        self.assertTrue(
+            (
+                self.root
+                / "test/matrix-runs/Xv2-storage-layout/data/state/current.json"
+            ).is_file()
+        )
+        self.assertFalse(get_run_status(self.root, "v2-run")["commit_recovery_pending"])
+        self.assertEqual(
+            resume_run(self.root, "v2-run"),
+            {"action": "none", "last_committed_chapter": 10},
         )
 
     def test_retries_initial_draft_transport_failure_inside_unit(self) -> None:

@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any
 
 from .state_store import StateStoreError, build_snapshot, load_events
+from .file_storage import events_path, is_v2, current_snapshot_path, write_snapshot
 from .storage import (
     StorageError,
     atomic_write_json,
@@ -38,7 +39,7 @@ def rebuild_state_snapshots(root: Path, run_id: str) -> dict[str, Any]:
         try:
             run = read_json(run_dir / "run.json")
             initial_state = read_json(run_dir / "config/initial-state.json")
-            events = load_events(run_dir / "state/events.jsonl")
+            events = load_events(events_path(run_dir))
         except (StorageError, StateStoreError) as exc:
             raise StateRebuildError(str(exc)) from exc
 
@@ -85,9 +86,53 @@ def rebuild_state_snapshots(root: Path, run_id: str) -> dict[str, Any]:
                 raise StateRebuildError(
                     f"第 {chapter} 章快照重建失败：{exc}"
                 ) from exc
-            snapshot["source"] = f"chapters/{chapter:04d}/state-event.json"
+            snapshot["source"] = (
+                "state/events.jsonl"
+                if is_v2(run)
+                else f"chapters/{chapter:04d}/state-event.json"
+            )
             rebuilt.append((chapter, snapshot))
             previous = snapshot
+
+        if is_v2(run):
+            existing = (
+                read_json(current_snapshot_path(run_dir))
+                if current_snapshot_path(run_dir).exists()
+                else None
+            )
+            final_snapshot = rebuilt[-1][1] if rebuilt else None
+            comparable_existing = (
+                {
+                    key: value
+                    for key, value in existing.items()
+                    if key
+                    not in {"storage_version", "last_event_sequence", "last_event_sha256"}
+                }
+                if isinstance(existing, dict)
+                else None
+            )
+            changed = (
+                []
+                if comparable_existing == final_snapshot
+                else list(range(1, last_committed + 1))
+            )
+            unchanged = list(range(1, last_committed + 1)) if not changed else []
+            if final_snapshot is not None:
+                write_snapshot(
+                    run_dir,
+                    run,
+                    last_committed,
+                    final_snapshot,
+                    events[-1],
+                )
+            return {
+                "run_id": run_id,
+                "last_committed_chapter": last_committed,
+                "rebuilt_snapshots": len(rebuilt),
+                "changed_chapters": changed,
+                "unchanged_chapters": unchanged,
+                "source": "config/initial-state.json + state/events.jsonl",
+            }
 
         snapshots_dir = run_dir / "state/snapshots"
         existing_numbers: set[int] = set()

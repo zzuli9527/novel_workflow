@@ -333,10 +333,23 @@ def generate_unit_review(root: Path, run_id: str, unit_id: str) -> dict[str, Any
                         "passed": initial.status == "passed",
                     }
                 )
+        elif isinstance(outline.get("initial_draft"), dict):
+            initial_draft_results.append(
+                {"chapter": chapter, **outline["initial_draft"]}
+            )
         checks_path = run_dir / f"chapters/{chapter:04d}/checks.json"
-        if not checks_path.exists():
-            continue
-        checks = read_json(checks_path)
+        checks = (
+            read_json(checks_path)
+            if checks_path.exists()
+            else {
+                **(
+                    outline.get("final_check")
+                    if isinstance(outline.get("final_check"), dict)
+                    else {}
+                ),
+                "quality": outline.get("quality_summary", {}),
+            }
+        )
         actual = checks.get("actual_length")
         if checks.get("status") in {
             "needs_expansion",

@@ -12,6 +12,12 @@ from .config import validate_run_directory
 from .prompt_composer import compose_ledger_prompt
 from .provider import GenerationRequest, ProviderError, TextProvider
 from .state_store import load_events
+from .file_storage import (
+    events_path,
+    is_v2,
+    read_current_snapshot,
+    write_current_ledger,
+)
 from .storage import (
     StorageError,
     atomic_write_json,
@@ -237,15 +243,21 @@ def build_ledger(
         run_dir, run_config, outlines = _load_context(root, run_id)
         _validate_range(run_config, outlines, start_chapter, end_chapter)
 
-        snapshot_path = run_dir / f"state/snapshots/chapter-{end_chapter:04d}.json"
-        snapshot = read_json(snapshot_path)
+        if is_v2(run_config):
+            snapshot = read_current_snapshot(run_dir, run_config, end_chapter)
+            if snapshot is None:
+                raise LedgerError("v2 当前快照不存在")
+            snapshot_path = run_dir / "state/current.json"
+        else:
+            snapshot_path = run_dir / f"state/snapshots/chapter-{end_chapter:04d}.json"
+            snapshot = read_json(snapshot_path)
         event_ids = snapshot.get("event_ids")
         if not isinstance(event_ids, list):
             raise LedgerError("批次结束快照缺少 event_ids")
         wanted = {f"chapter-{chapter:04d}" for chapter in range(start_chapter, end_chapter + 1)}
         events = [
             item
-            for item in load_events(run_dir / "state/events.jsonl")
+            for item in load_events(events_path(run_dir))
             if item.get("event_id") in wanted
         ]
         if len(events) != end_chapter - start_chapter + 1:
@@ -304,4 +316,5 @@ def build_ledger(
         final_md = ledger_dir / f"{batch_id}.md"
         atomic_write_json(final_json, ledger)
         atomic_write_text(final_md, render_ledger_markdown(ledger))
+        write_current_ledger(run_dir, run_config, ledger)
         return ledger

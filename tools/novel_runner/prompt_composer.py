@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any
 
 from .storage import StorageError, read_json
+from .file_storage import is_v2, ledger_current_path, read_current_snapshot
 
 
 def _read_optional_json(path: Path, default: Any) -> Any:
@@ -27,6 +28,25 @@ def _read_optional_text(path: Path, default: str = "") -> str:
 def _latest_json(directory: Path, pattern: str) -> Any:
     candidates = sorted(directory.glob(pattern)) if directory.exists() else []
     return read_json(candidates[-1]) if candidates else None
+
+
+def _previous_snapshot(run_dir: Path, chapter: int) -> Any:
+    if chapter <= 0:
+        return None
+    run_config = read_json(run_dir / "run.json")
+    if is_v2(run_config):
+        return read_current_snapshot(run_dir, run_config, chapter)
+    return _read_optional_json(
+        run_dir / f"state/snapshots/chapter-{chapter:04d}.json", None
+    )
+
+
+def _latest_ledger(run_dir: Path) -> Any:
+    run_config = read_json(run_dir / "run.json")
+    if is_v2(run_config):
+        path = ledger_current_path(run_dir)
+        return _read_optional_json(path, None)
+    return _latest_json(run_dir / "ledgers", "batch-*.json")
 
 
 def _latest_state_raw(chapter_dir: Path) -> str:
@@ -386,12 +406,15 @@ def compose_story_unit_plan_prompt(
             "当前结构化状态",
             _json_block(
                 _compact_snapshot(
-                    _latest_json(run_dir / "state/snapshots", "chapter-*.json")
+                    _previous_snapshot(
+                        run_dir,
+                        int(read_json(run_dir / "run.json").get("last_committed_chapter", 0)),
+                    )
                 )
                 or read_json(run_dir / "config/initial-state.json")
             ),
         ),
-        ("最近批次账本", _json_block(_latest_json(run_dir / "ledgers", "batch-*.json"))),
+        ("最近批次账本", _json_block(_latest_ledger(run_dir))),
         ("固定章节范围", f"unit_id={unit_id}，第 {start_chapter}～{end_chapter} 章"),
         (
             "机器输出契约",
@@ -411,13 +434,7 @@ def compose_batch_outline_plan_prompt(
     existing_outlines: list[dict[str, Any]],
 ) -> str:
     runtime_prompt = _runtime_prompt(root, "plan-chapter-batch.md")
-    previous_snapshot = (
-        _read_optional_json(
-            run_dir / f"state/snapshots/chapter-{start_chapter - 1:04d}.json", None
-        )
-        if start_chapter > 1
-        else None
-    )
+    previous_snapshot = _previous_snapshot(run_dir, start_chapter - 1)
     contract = {
         "chapter_outlines": [
             {
@@ -488,7 +505,7 @@ def compose_batch_outline_plan_prompt(
         ("喜剧圣经", _json_block(read_json(run_dir / "config/comedy-bible.json"))),
         ("当前故事单元", _json_block(_compact_story_unit(unit))),
         ("上一批结束快照", _json_block(_compact_snapshot(previous_snapshot))),
-        ("最近批次账本", _json_block(_latest_json(run_dir / "ledgers", "batch-*.json"))),
+        ("最近批次账本", _json_block(_latest_ledger(run_dir))),
         ("前两章喜剧机制参考", _json_block(prior)),
         ("固定批次范围", f"第 {start_chapter}～{end_chapter} 章，共 {end_chapter - start_chapter + 1} 章"),
         (
@@ -517,13 +534,7 @@ def compose_draft_prompt(
     workflow = _runtime_prompt(root, "draft-chapter.md")
 
     chapter = int(outline["number"])
-    previous_snapshot = (
-        _read_optional_json(
-            run_dir / f"state/snapshots/chapter-{chapter - 1:04d}.json", None
-        )
-        if chapter > 1
-        else None
-    )
+    previous_snapshot = _previous_snapshot(run_dir, chapter - 1)
     story_units = _read_optional_json(run_dir / "planning/story-units.json", [])
     current_unit_id = outline.get("story_unit_id") or run_config.get("current_story_unit")
     current_unit = next(
@@ -576,7 +587,7 @@ def compose_draft_prompt(
         ("当前故事单元", _json_block(_compact_story_unit(current_unit))),
         ("当前章细纲", _json_block(outline)),
         ("上一章状态快照", _json_block(_compact_snapshot(previous_snapshot))),
-        ("最近批次账本", _json_block(_latest_json(run_dir / "ledgers", "batch-*.json"))),
+        ("最近批次账本", _json_block(_latest_ledger(run_dir))),
         ("运行策略", _json_block(run_config.get("policies", {}))),
         ]
     )
@@ -592,13 +603,7 @@ def compose_state_prompt(
 ) -> str:
     workflow = _runtime_prompt(root, "extract-state.md")
     chapter = int(outline["number"])
-    previous_snapshot = (
-        _read_optional_json(
-            run_dir / f"state/snapshots/chapter-{chapter - 1:04d}.json", None
-        )
-        if chapter > 1
-        else None
-    )
+    previous_snapshot = _previous_snapshot(run_dir, chapter - 1)
     output_contract = {
         "entity_changes": [{"change": "", "source_evidence": "正文中的连续原句"}],
         "relationship_changes": [{"change": "", "source_evidence": "正文中的连续原句"}],
@@ -822,7 +827,7 @@ def compose_ledger_prompt(
     item_limit: int,
 ) -> str:
     workflow = _runtime_prompt(root, "build-ledger.md")
-    previous_ledger = _latest_json(run_dir / "ledgers", "batch-*.json")
+    previous_ledger = _latest_ledger(run_dir)
     snapshot_context = {
         "after_chapter": snapshot.get("after_chapter"),
         "next_chapter_inputs": snapshot.get("next_chapter_inputs", []),

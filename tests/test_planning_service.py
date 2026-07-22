@@ -18,6 +18,7 @@ from tools.novel_runner.provider import (
     GenerationResponse,
     ProviderError,
 )
+from tools.novel_runner.storage import atomic_write_json
 
 
 def unit_payload() -> dict[str, object]:
@@ -322,6 +323,87 @@ class PlanningServiceTests(unittest.TestCase):
         )
 
         self.assertEqual([item["number"] for item in result], [1, 2, 3, 4])
+
+    def test_v2_future_planning_uses_last_committed_snapshot(self) -> None:
+        v2_dir = init_run(self.root, "planning-v2", storage_version="2.0")
+        run_path = v2_dir / "run.json"
+        run = json.loads(run_path.read_text(encoding="utf-8"))
+        run["last_committed_chapter"] = 4
+        atomic_write_json(run_path, run)
+        atomic_write_json(
+            v2_dir / "state/current.json",
+            {
+                "after_chapter": 4,
+                "event_ids": ["chapter-0004"],
+                "changes": {},
+                "structured_state": {},
+                "next_chapter_inputs": ["continue from chapter 4"],
+            },
+        )
+
+        prompt = compose_batch_outline_plan_prompt(
+            self.root,
+            v2_dir,
+            unit_payload(),
+            7,
+            7,
+            [outline(number) for number in range(1, 7)],
+        )
+
+        self.assertIn('"after_chapter": 4', prompt)
+
+    def test_v2_split_batch_plans_beyond_current_snapshot(self) -> None:
+        class RangeProvider:
+            def __init__(self) -> None:
+                self.ranges: list[tuple[int, int]] = []
+
+            def generate(self, request: GenerationRequest) -> GenerationResponse:
+                start = int(request.metadata["start_chapter"])
+                end = int(request.metadata["end_chapter"])
+                self.ranges.append((start, end))
+                return GenerationResponse(
+                    text=json.dumps(
+                        {"chapter_outlines": [outline(number) for number in range(start, end + 1)]},
+                        ensure_ascii=False,
+                    ),
+                    provider="range",
+                    model="range-v1",
+                )
+
+        v2_dir = init_run(self.root, "planning-v2-split", storage_version="2.0")
+        run_path = v2_dir / "run.json"
+        run = json.loads(run_path.read_text(encoding="utf-8"))
+        run["last_committed_chapter"] = 4
+        run["policies"]["batch"]["outline_request_chunk_size"] = 2
+        atomic_write_json(run_path, run)
+        atomic_write_json(
+            v2_dir / "state/current.json",
+            {
+                "after_chapter": 4,
+                "event_ids": ["chapter-0001", "chapter-0002", "chapter-0003", "chapter-0004"],
+                "changes": {},
+                "structured_state": {},
+                "next_chapter_inputs": [],
+            },
+        )
+        atomic_write_json(v2_dir / "planning/story-units.json", [unit_payload()])
+        atomic_write_json(
+            v2_dir / "planning/chapter-outlines.json",
+            [outline(number) for number in range(1, 5)],
+        )
+
+        provider = RangeProvider()
+        result = plan_chapter_batch(
+            self.root,
+            "planning-v2-split",
+            "unit-0001",
+            5,
+            7,
+            provider,
+        )
+
+        self.assertEqual([item["number"] for item in result], [5, 6, 7])
+        self.assertEqual(provider.ranges, [(5, 6), (7, 7)])
 
 
 if __name__ == "__main__":

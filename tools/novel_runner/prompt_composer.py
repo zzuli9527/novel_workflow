@@ -41,6 +41,25 @@ def _previous_snapshot(run_dir: Path, chapter: int) -> Any:
     )
 
 
+def _planning_snapshot(run_dir: Path, chapter: int) -> Any:
+    """Return the newest committed state available to a future-outline prompt.
+
+    A planning request can itself be split (for example chapters 5--6 followed
+    by chapter 7) before either planned chapter has a state snapshot. V2 keeps
+    only the current committed snapshot, so asking it for ``chapter - 1`` in
+    that situation is both impossible and incorrect. Use the run pointer as
+    the upper bound while draft/state prompts retain their exact-state rule.
+    """
+
+    if chapter <= 0:
+        return None
+    run_config = read_json(run_dir / "run.json")
+    last_committed = run_config.get("last_committed_chapter", 0)
+    if not isinstance(last_committed, int) or isinstance(last_committed, bool):
+        last_committed = 0
+    return _previous_snapshot(run_dir, min(chapter, max(0, last_committed)))
+
+
 def _latest_ledger(run_dir: Path) -> Any:
     run_config = read_json(run_dir / "run.json")
     if is_v2(run_config):
@@ -434,7 +453,7 @@ def compose_batch_outline_plan_prompt(
     existing_outlines: list[dict[str, Any]],
 ) -> str:
     runtime_prompt = _runtime_prompt(root, "plan-chapter-batch.md")
-    previous_snapshot = _previous_snapshot(run_dir, start_chapter - 1)
+    previous_snapshot = _planning_snapshot(run_dir, start_chapter - 1)
     contract = {
         "chapter_outlines": [
             {

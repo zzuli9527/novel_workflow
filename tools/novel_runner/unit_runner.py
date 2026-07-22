@@ -320,7 +320,7 @@ def _state_failure_has_retry_budget(
     if outline.get("status") != "state_failed":
         return False
     retry_kind = outline.get("state_failure_kind")
-    if retry_kind not in {"format", "content"}:
+    if retry_kind not in {"transport", "format", "content"}:
         return False
     retry_counts = outline.get("retry_counts", {})
     retry_counter_key = f"state_{retry_kind}"

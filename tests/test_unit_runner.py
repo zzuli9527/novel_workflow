@@ -441,6 +441,42 @@ class UnitRunnerTests(unittest.TestCase):
         self.assertNotIn('"source_evidence"', repair_context)
         self.assertEqual(retry_prompt.count('"knowledge_fact_ids_by_character"'), 1)
 
+    def test_retries_state_transport_failure_inside_unit(self) -> None:
+        class StateTransportRetryProvider(ScriptedProvider):
+            def __init__(self) -> None:
+                super().__init__()
+                self.state_attempts = 0
+
+            def generate(self, request: GenerationRequest) -> GenerationResponse:
+                chapter = request.metadata.get("chapter")
+                if request.task == "extract_state" and chapter == 1:
+                    self.calls.append(("extract_state", 1))
+                    self.state_attempts += 1
+                    if self.state_attempts == 1:
+                        raise ProviderError(
+                            "模拟瞬时状态传输失败", fallback_allowed=True
+                        )
+                    return GenerationResponse(
+                        text=json.dumps(EMPTY_STATE, ensure_ascii=False),
+                        provider="scripted",
+                        model="scripted-v1",
+                        usage={},
+                    )
+                return super().generate(request)
+
+        provider = StateTransportRetryProvider()
+        report = run_unit(self.root, "demo-run", "unit-0001", provider)
+
+        self.assertEqual(report["status"], "completed")
+        self.assertEqual(provider.state_attempts, 2)
+        outlines = json.loads(
+            (self.run_dir / "planning/chapter-outlines.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        self.assertEqual(outlines[0]["retry_counts"]["state_transport"], 1)
+        self.assertEqual(outlines[0]["status"], "committed")
+
     def test_repeated_state_content_failure_pauses_unit(self) -> None:
         class RepeatedInvalidStateProvider(ScriptedProvider):
             def __init__(self) -> None:

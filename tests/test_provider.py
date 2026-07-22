@@ -211,6 +211,35 @@ class OpenAIResponsesProviderTests(unittest.TestCase):
         self.assertEqual(raised.exception.error_code, "deadline_exceeded")
         self.assertTrue(raised.exception.fallback_allowed)
 
+    def test_deadline_returns_when_connection_setup_never_completes(self) -> None:
+        provider = OpenAIResponsesProvider(
+            model="test-model",
+            timeout_seconds=10,
+            deadline_seconds=1,
+        )
+        connection_started = Event()
+        release_connection = Event()
+
+        def blocked_urlopen(*args: object, **kwargs: object) -> FakeResponse:
+            connection_started.set()
+            release_connection.wait(5)
+            return FakeResponse({"output_text": "late"})
+
+        started = time.monotonic()
+        try:
+            with patch.dict(os.environ, {"OPENAI_API_KEY": "secret"}), patch(
+                "tools.novel_runner.provider.urlopen", side_effect=blocked_urlopen
+            ):
+                with self.assertRaisesRegex(ProviderError, "绝对截止时间") as raised:
+                    provider.generate(GenerationRequest(task="draft", prompt="prompt"))
+        finally:
+            release_connection.set()
+        elapsed = time.monotonic() - started
+        self.assertTrue(connection_started.is_set())
+        self.assertLess(elapsed, 1.5)
+        self.assertEqual(raised.exception.error_code, "deadline_exceeded")
+        self.assertTrue(raised.exception.fallback_allowed)
+
     def test_rejects_invalid_deadline(self) -> None:
         for value in (0, -1, True, "5"):
             with self.subTest(value=value), patch.dict(

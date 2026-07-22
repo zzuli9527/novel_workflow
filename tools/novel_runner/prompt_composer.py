@@ -537,7 +537,9 @@ def compose_batch_outline_plan_prompt(
         ),
         (
             "机器输出契约",
-            "只输出一个 JSON 对象，不要代码围栏。chapter_outlines 必须恰好覆盖固定批次范围：\n"
+            "只输出一个 JSON 对象，不要代码围栏。每一章的 writability 必须是对象，"
+            "并且 writability.is_writable 必须逐字输出为 JSON 布尔值 true；不得省略、"
+            "写成字符串或留给读者推断。chapter_outlines 必须恰好覆盖固定批次范围：\n"
             + _json_block(contract),
         ),
     )

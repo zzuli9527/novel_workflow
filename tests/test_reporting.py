@@ -109,11 +109,14 @@ class ReportingTests(unittest.TestCase):
         self.assertEqual(report["metrics"]["api"]["calls"], 100)
         self.assertEqual(report["metrics"]["api"]["total_tokens"], 10000000)
         self.assertEqual(report["metrics"]["average_context_characters"], 50000)
+        self.assertEqual(report["metrics"]["quality_rubric"]["total"], 17)
+        self.assertTrue(report["metrics"]["quality_rubric"]["passed"])
         self.assertNotIn("efficiency", report["metrics"])
         markdown = (
             self.run_dir / "reports/story-unit-review-unit-0001.md"
         ).read_text(encoding="utf-8")
         self.assertIn("调用次数：100", markdown)
+        self.assertIn("质量评分：17 / 18", markdown)
         self.assertNotIn("调用阈值", markdown)
         self.assertNotIn("效率分级", markdown)
 

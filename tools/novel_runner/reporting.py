@@ -92,6 +92,85 @@ def _comedy_rotation(outlines: list[dict[str, Any]]) -> dict[str, int]:
     }
 
 
+def _quality_rubric(
+    *,
+    planned: int,
+    committed: int,
+    target_passes: int,
+    hard_quality_failures: dict[str, int],
+    soft_quality_warnings: dict[str, int],
+    current_state_failures: int,
+    state_event_count: int,
+    comedy_rotation: dict[str, int],
+) -> dict[str, Any]:
+    """Project the documented nine-dimension 0–2 rubric from checked facts.
+
+    The report deliberately keeps this deterministic: a model review can flag
+    a problem, but it cannot award itself a passing score.  A hard failure is
+    still an independent release blocker and is never offset by this total.
+    """
+
+    dimensions = {
+        "现场与动作": 2 if hard_quality_failures["summary_like_chapters"] == 0 else 0,
+        "长度稳定": (
+            2
+            if target_passes == planned
+            else 1
+            if target_passes * 2 >= planned
+            else 0
+        ),
+        "修仙推进": (
+            2
+            if hard_quality_failures["cultivation_inconsistencies"] == 0
+            and hard_quality_failures["serious_consequence_failures"] == 0
+            else 0
+        ),
+        "搞笑质量": (
+            2
+            if soft_quality_warnings["comedy_causal_warnings"] == 0
+            and hard_quality_failures["serious_consequence_failures"] == 0
+            else 1
+            if hard_quality_failures["serious_consequence_failures"] == 0
+            else 0
+        ),
+        "角色区分": (
+            2
+            if soft_quality_warnings["character_voice_warnings"] == 0
+            else 1
+        ),
+        "章节兑现": 2 if committed == planned else 0,
+        "钩子承接": (
+            2 if soft_quality_warnings["chapter_hook_warnings"] == 0 else 1
+        ),
+        "状态回填": (
+            2
+            if current_state_failures == 0 and state_event_count >= committed
+            else 1
+            if current_state_failures == 0
+            else 0
+        ),
+        "长链路变化": (
+            2
+            if hard_quality_failures["multi_line_causality_failures"] == 0
+            and comedy_rotation["longest_same_mechanism_streak"] <= 2
+            and comedy_rotation["adjacent_repeat_count"] == 0
+            else 1
+            if hard_quality_failures["multi_line_causality_failures"] == 0
+            and comedy_rotation["longest_same_mechanism_streak"] <= 2
+            else 0
+        ),
+    }
+    total = sum(dimensions.values())
+    minimum = 12
+    return {
+        "scale": "0-2 per dimension",
+        "dimensions": dimensions,
+        "total": total,
+        "minimum": minimum,
+        "passed": total >= minimum,
+    }
+
+
 def _read_jsonl_objects(path: Path) -> list[dict[str, Any]]:
     if not path.exists():
         return []
@@ -125,6 +204,8 @@ def _render_markdown(report: dict[str, Any]) -> str:
         f"- 可用性：{report['usability']}",
         f"- 硬失败：{metrics['hard_failure_count']}",
         f"- 软告警：{metrics['soft_warning_count']}",
+        f"- 质量评分：{metrics['quality_rubric']['total']} / 18"
+        f"（通过线 {metrics['quality_rubric']['minimum']}）",
         f"- 正式提交：{metrics['committed_chapters']} / {metrics['planned_chapters']} 章",
         f"- 目标字数合格率：{metrics['length_target_pass_rate']:.2%}",
         f"- 字数软告警：{metrics['length_soft_warning_count']}",
@@ -405,7 +486,6 @@ def generate_unit_review(root: Path, run_id: str, unit_id: str) -> dict[str, Any
     average_context_characters = (
         round(fmean(input_sizes), 2) if input_sizes else 0.0
     )
-    comedy_rotation = _comedy_rotation(selected_outlines)
     critical_failure_count = (
         planned - committed
         + sum(hard_quality_failures.values())
@@ -419,7 +499,22 @@ def generate_unit_review(root: Path, run_id: str, unit_id: str) -> dict[str, Any
     length_soft_warning_count = len(length_warning_chapters)
     soft_quality_warning_count = sum(soft_quality_warnings.values())
     soft_warning_count = soft_quality_warning_count + length_soft_warning_count
-    archivable = unit.get("status") == "completed" and critical_failure_count == 0
+    comedy_rotation = _comedy_rotation(selected_outlines)
+    quality_rubric = _quality_rubric(
+        planned=planned,
+        committed=committed,
+        target_passes=target_passes,
+        hard_quality_failures=hard_quality_failures,
+        soft_quality_warnings=soft_quality_warnings,
+        current_state_failures=current_state_failures,
+        state_event_count=len(events),
+        comedy_rotation=comedy_rotation,
+    )
+    archivable = (
+        unit.get("status") == "completed"
+        and critical_failure_count == 0
+        and quality_rubric["passed"]
+    )
     if not archivable:
         verdict = "失败"
         usability = "不可用"
@@ -474,6 +569,7 @@ def generate_unit_review(root: Path, run_id: str, unit_id: str) -> dict[str, Any
         "chapters_with_any_retry": chapters_with_any_retry,
         "average_retries_per_chapter": round(fmean(retry_totals), 4),
         "comedy_rotation": comedy_rotation,
+        "quality_rubric": quality_rubric,
         "ledger_compression": {
             "ledger_count": len(ledger_sizes),
             "must_read_item_counts": ledger_sizes,

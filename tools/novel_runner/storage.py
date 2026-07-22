@@ -91,6 +91,27 @@ def append_jsonl(path: Path, data: Any) -> None:
 def _process_alive(pid: int) -> bool:
     if pid <= 0:
         return False
+    if os.name == "nt":
+        # ``os.kill(pid, 0)`` is a harmless liveness probe on POSIX, but
+        # Windows maps unsupported signals through TerminateProcess.  Opening
+        # a query-only handle is the equivalent probe and never signals the
+        # target process.
+        import ctypes
+
+        process_query_limited_information = 0x1000
+        synchronize = 0x00100000
+        access_denied = 5
+        kernel32 = ctypes.WinDLL("kernel32", use_last_error=True)
+        handle = kernel32.OpenProcess(
+            process_query_limited_information | synchronize,
+            False,
+            pid,
+        )
+        if handle:
+            kernel32.CloseHandle(handle)
+            return True
+        # A protected process can reject a query even though it is alive.
+        return ctypes.get_last_error() == access_denied
     try:
         os.kill(pid, 0)
     except OSError:

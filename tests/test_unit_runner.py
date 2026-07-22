@@ -9,6 +9,7 @@ from tools.novel_runner.config import init_run
 from tools.novel_runner.provider import (
     GenerationRequest,
     GenerationResponse,
+    ProviderError,
     TextProvider,
 )
 from tools.novel_runner.unit_runner import (
@@ -223,6 +224,81 @@ class UnitRunnerTests(unittest.TestCase):
         self.assertTrue(
             (self.run_dir / "reports/story-unit-review-unit-0001.md").is_file()
         )
+
+    def test_retries_initial_draft_transport_failure_inside_unit(self) -> None:
+        class TransientDraftProvider(ScriptedProvider):
+            def __init__(self) -> None:
+                super().__init__()
+                self.chapter_one_attempts = 0
+
+            def generate(self, request: GenerationRequest) -> GenerationResponse:
+                chapter = request.metadata.get("chapter")
+                if (
+                    request.task in {"draft_chapter", "repair_chapter"}
+                    and chapter == 1
+                ):
+                    self.calls.append((request.task, 1))
+                    self.chapter_one_attempts += 1
+                    if self.chapter_one_attempts == 1:
+                        raise ProviderError("模拟瞬时传输失败", fallback_allowed=True)
+                    return GenerationResponse(
+                        text="# 第 1 章：测试1\n甲乙丙丁戊\n",
+                        provider="scripted",
+                        model="scripted-v1",
+                        usage={},
+                    )
+                return super().generate(request)
+
+        provider = TransientDraftProvider()
+        report = run_unit(self.root, "demo-run", "unit-0001", provider)
+
+        self.assertEqual(report["status"], "completed")
+        self.assertEqual(
+            [call for call in provider.calls if call[1] == 1][:2],
+            [("draft_chapter", 1), ("repair_chapter", 1)],
+        )
+        outlines = json.loads(
+            (self.run_dir / "planning/chapter-outlines.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        self.assertEqual(outlines[0]["retry_counts"]["transport"], 1)
+        self.assertEqual(outlines[0]["status"], "committed")
+
+    def test_pauses_after_draft_transport_retry_budget_is_exhausted(self) -> None:
+        class FailingDraftProvider(ScriptedProvider):
+            def generate(self, request: GenerationRequest) -> GenerationResponse:
+                chapter = request.metadata.get("chapter")
+                if (
+                    request.task in {"draft_chapter", "repair_chapter"}
+                    and chapter == 1
+                ):
+                    self.calls.append((request.task, 1))
+                    raise ProviderError("模拟持续传输失败", fallback_allowed=True)
+                return super().generate(request)
+
+        provider = FailingDraftProvider()
+        with self.assertRaisesRegex(UnitRunnerError, "模拟持续传输失败"):
+            run_unit(self.root, "demo-run", "unit-0001", provider)
+
+        outlines = json.loads(
+            (self.run_dir / "planning/chapter-outlines.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        self.assertEqual(outlines[0]["status"], "draft_failed_provider")
+        self.assertEqual(outlines[0]["retry_counts"]["transport"], 2)
+        self.assertEqual(outlines[1]["status"], "outline_ready")
+        self.assertEqual(
+            [call for call in provider.calls if call[1] == 1],
+            [
+                ("draft_chapter", 1),
+                ("repair_chapter", 1),
+                ("repair_chapter", 1),
+            ],
+        )
+        run = json.loads((self.run_dir / "run.json").read_text(encoding="utf-8"))
+        self.assertEqual(run["status"], "paused")
 
     def test_soft_quality_warning_does_not_trigger_repair(self) -> None:
         class SoftWarningProvider(ScriptedProvider):

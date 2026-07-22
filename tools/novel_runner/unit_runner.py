@@ -356,6 +356,29 @@ def _review_failure_has_retry_budget(
     return current_count < maximum
 
 
+def _draft_transport_failure_has_retry_budget(
+    root: Path, run_id: str, outline: dict[str, Any]
+) -> bool:
+    """仅自动恢复正文模型的瞬时传输失败。
+
+    初次草稿或后续重写失败后，``repair_chapter`` 会使用 rewriter 路由并
+    增加 ``transport`` 重试计数。长度、契约或质量失败仍由原有定向修复
+    逻辑控制，不能因为这条恢复分支而被静默放行。
+    """
+
+    if outline.get("status") != "draft_failed_provider":
+        return False
+    retry_counts = outline.get("retry_counts", {})
+    current_count = (
+        retry_counts.get("transport", 0) if isinstance(retry_counts, dict) else 0
+    )
+    if not isinstance(current_count, int):
+        current_count = 0
+    run = read_json(resolve_run_dir(root, run_id) / "run.json")
+    maximum = run["policies"]["retry"]["transport"]
+    return current_count < maximum
+
+
 def _drive_chapter(
     root: Path,
     run_id: str,
@@ -368,7 +391,15 @@ def _drive_chapter(
         if status in {"committed", "locked"}:
             return str(status)
         if status == "outline_ready":
-            draft_chapter(root, run_id, chapter, provider)
+            try:
+                draft_chapter(root, run_id, chapter, provider)
+            except ChapterServiceError:
+                failed_outline = _current_outline(root, run_id, chapter)
+                if _draft_transport_failure_has_retry_budget(
+                    root, run_id, failed_outline
+                ):
+                    continue
+                raise
             continue
         if status in {
             "draft_failed_provider",
@@ -376,7 +407,15 @@ def _drive_chapter(
             "draft_failed_contract",
             "draft_failed_quality",
         }:
-            repair_chapter(root, run_id, chapter, provider)
+            try:
+                repair_chapter(root, run_id, chapter, provider)
+            except ChapterServiceError:
+                failed_outline = _current_outline(root, run_id, chapter)
+                if _draft_transport_failure_has_retry_budget(
+                    root, run_id, failed_outline
+                ):
+                    continue
+                raise
             continue
         if status == "draft_quality_pending":
             try:

@@ -24,6 +24,11 @@ from .config import init_run, validate_run_directory
 from .environment import EnvironmentError, load_project_environment
 from .ledger import LedgerError, build_ledger
 from .matrix_coverage import generate_coverage_report
+from .master_plan import (
+    MasterPlanError,
+    approve_master_plan,
+    validate_master_plan,
+)
 from .outline_validation import (
     OutlineValidationError,
     ensure_comedy_rotation,
@@ -237,6 +242,24 @@ def _build_parser() -> argparse.ArgumentParser:
     )
     validate_parser.add_argument("--json", action="store_true")
 
+    validate_master_parser = subparsers.add_parser(
+        "validate-master-plan", help="校验全书总纲是否达到人工审批条件"
+    )
+    validate_master_parser.add_argument("--run", dest="run_id", required=True)
+    validate_master_parser.add_argument(
+        "--root", type=Path, default=Path.cwd(), help="项目根目录，默认为当前目录"
+    )
+    validate_master_parser.add_argument("--json", action="store_true")
+
+    approve_master_parser = subparsers.add_parser(
+        "approve-master-plan", help="人工确认并批准当前全书总纲内容哈希"
+    )
+    approve_master_parser.add_argument("--run", dest="run_id", required=True)
+    approve_master_parser.add_argument(
+        "--root", type=Path, default=Path.cwd(), help="项目根目录，默认为当前目录"
+    )
+    approve_master_parser.add_argument("--json", action="store_true")
+
     validate_outline_parser = subparsers.add_parser(
         "validate-outline", help="校验单章细纲及其所在范围的喜剧机制轮换"
     )
@@ -262,7 +285,11 @@ def _build_parser() -> argparse.ArgumentParser:
         "plan-unit", help="依据项目资料生成一个 10～20 章故事单元"
     )
     plan_unit_parser.add_argument("--run", dest="run_id", required=True)
-    plan_unit_parser.add_argument("--chapters", type=int, required=True)
+    plan_unit_parser.add_argument(
+        "--chapters",
+        type=int,
+        help="兼容参数；如提供，必须与已批准总纲中的下一单元章数一致",
+    )
     _add_single_provider_args(plan_unit_parser)
     plan_unit_parser.add_argument("--root", type=Path, default=Path.cwd())
     plan_unit_parser.add_argument("--json", action="store_true")
@@ -474,6 +501,33 @@ def _run_validate_config(args: argparse.Namespace) -> int:
         for issue in report.issues:
             print(f"- {issue.path}: {issue.message}")
     return EXIT_PASSED if report.valid else EXIT_FAILED
+
+
+def _run_validate_master_plan(args: argparse.Namespace) -> int:
+    try:
+        report = validate_master_plan(args.root, args.run_id)
+    except StorageError as exc:
+        print(f"Error: {exc}", file=sys.stderr)
+        return EXIT_INPUT_ERROR
+    if args.json:
+        print(json.dumps(report.to_dict(), ensure_ascii=False, indent=2))
+    elif report.valid:
+        print(f"Master plan {report.run_id}: valid ({report.status})")
+    else:
+        print(f"Master plan {report.run_id}: invalid ({report.status})")
+        for issue in report.issues:
+            print(f"- {issue.path}: {issue.message}")
+    return EXIT_PASSED if report.valid else EXIT_FAILED
+
+
+def _run_approve_master_plan(args: argparse.Namespace) -> int:
+    try:
+        result = approve_master_plan(args.root, args.run_id)
+    except (MasterPlanError, StorageError) as exc:
+        print(f"Error: {exc}", file=sys.stderr)
+        return EXIT_FAILED
+    _render_or_json(result, args.json)
+    return EXIT_PASSED
 
 
 def _run_validate_outline(args: argparse.Namespace) -> int:
@@ -821,6 +875,10 @@ def main(argv: Sequence[str] | None = None) -> int:
         return _run_init(args)
     if args.command == "validate-config":
         return _run_validate_config(args)
+    if args.command == "validate-master-plan":
+        return _run_validate_master_plan(args)
+    if args.command == "approve-master-plan":
+        return _run_approve_master_plan(args)
     if args.command == "validate-outline":
         return _run_validate_outline(args)
     if args.command == "import-plan":

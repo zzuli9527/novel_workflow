@@ -19,6 +19,7 @@ from .chapter_service import (
 )
 from .config import validate_run_directory
 from .ledger import LedgerError, build_ledger
+from .master_plan import MasterPlanError, require_approved_master_plan
 from .outline_validation import (
     OutlineValidationError,
     ensure_comedy_rotation,
@@ -73,6 +74,10 @@ def partition_chapters(
 def _load_unit(
     root: Path, run_id: str, unit_id: str
 ) -> tuple[Path, dict[str, Any], list[dict[str, Any]], list[dict[str, Any]], int]:
+    try:
+        require_approved_master_plan(root, run_id)
+    except MasterPlanError as exc:
+        raise UnitRunnerError(str(exc)) from exc
     report = validate_run_directory(root, run_id)
     if not report.valid:
         details = "; ".join(f"{item.path}: {item.message}" for item in report.issues)

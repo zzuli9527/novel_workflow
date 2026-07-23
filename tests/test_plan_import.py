@@ -7,6 +7,7 @@ import unittest
 
 from tools.novel_runner.config import init_run
 from tools.novel_runner.plan_import import PlanImportError, import_plan
+from tests.master_plan_support import install_approved_master_plan
 
 
 def story_unit() -> dict[str, object]:
@@ -87,6 +88,11 @@ class PlanImportTests(unittest.TestCase):
             "story_units": [story_unit()],
             "chapter_outlines": [chapter_outline(number) for number in range(1, 11)],
         }
+        install_approved_master_plan(
+            self.root,
+            "import-run",
+            [("unit-0001", 1, 10)],
+        )
 
     def tearDown(self) -> None:
         self.temp.cleanup()
@@ -145,6 +151,45 @@ class PlanImportTests(unittest.TestCase):
         run = json.loads((self.run_dir / "run.json").read_text(encoding="utf-8"))
         self.assertEqual(run["status"], "planning")
         self.assertEqual(run["current_story_unit"], "unit-0001")
+
+    def test_rejects_story_unit_range_not_in_approved_master_plan(self) -> None:
+        self.payload["story_units"][0]["chapter_range"] = [1, 12]
+        source = self._source(json.dumps(self.payload, ensure_ascii=False))
+
+        with self.assertRaisesRegex(PlanImportError, "范围.*不一致"):
+            import_plan(self.root, "import-run", source)
+
+    def test_rejects_story_unit_id_not_in_approved_master_plan(self) -> None:
+        self.payload["story_units"][0]["unit_id"] = "unit-9999"
+        for outline in self.payload["chapter_outlines"]:
+            outline["story_unit_id"] = "unit-9999"
+        source = self._source(json.dumps(self.payload, ensure_ascii=False))
+
+        with self.assertRaisesRegex(PlanImportError, "不在已批准全书总纲"):
+            import_plan(self.root, "import-run", source)
+
+    def test_draft_master_plan_blocks_import_without_writing(self) -> None:
+        plan_path = self.run_dir / "config/master-plan.json"
+        plan = json.loads(plan_path.read_text(encoding="utf-8"))
+        plan["approval"] = {
+            "status": "draft",
+            "approved_at": None,
+            "content_sha256": None,
+        }
+        plan_path.write_text(json.dumps(plan, ensure_ascii=False), encoding="utf-8")
+        source = self._source(json.dumps(self.payload, ensure_ascii=False))
+
+        with self.assertRaisesRegex(PlanImportError, "人工执行 approve-master-plan"):
+            import_plan(self.root, "import-run", source)
+
+        self.assertEqual(
+            json.loads(
+                (self.run_dir / "planning/story-units.json").read_text(
+                    encoding="utf-8"
+                )
+            ),
+            [],
+        )
 
     def test_allows_complete_first_batch_for_dynamic_later_planning(self) -> None:
         self.payload["chapter_outlines"] = self.payload["chapter_outlines"][:4]

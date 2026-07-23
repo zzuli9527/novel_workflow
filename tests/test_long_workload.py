@@ -9,6 +9,7 @@ from tools.novel_runner.config import init_run
 from tools.novel_runner.provider import GenerationRequest, GenerationResponse
 from tools.novel_runner.state_store import load_events
 from tools.novel_runner.unit_runner import run_unit
+from tests.master_plan_support import install_approved_master_plan
 from tools.novel_runner.wordcount import count_body_characters
 
 
@@ -240,6 +241,12 @@ class LongWorkloadTests(unittest.TestCase):
             )
             (run_dir / "planning/chapter-outlines.json").write_text(
                 json.dumps(outlines, ensure_ascii=False), encoding="utf-8"
+            )
+            install_approved_master_plan(
+                root,
+                "long-run",
+                [("unit-long-001", 1, 12)],
+                protagonist_ids=("protagonist", "partner"),
             )
 
             provider = LongWorkloadProvider()

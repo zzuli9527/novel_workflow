@@ -18,6 +18,9 @@ from tools.novel_runner.chapter_service import (
 from tools.novel_runner.config import init_run
 from tools.novel_runner.provider import FixtureProvider
 from tools.novel_runner.provider import GenerationRequest, ProviderError
+from tools.novel_runner.master_plan import default_master_plan
+from tools.novel_runner.storage import atomic_write_json
+from tests.master_plan_support import install_approved_master_plan
 
 
 VALID_STATE_EVENT = {
@@ -109,6 +112,11 @@ class ChapterServiceTests(unittest.TestCase):
         (self.run_dir / "planning/chapter-outlines.json").write_text(
             json.dumps(outlines, ensure_ascii=False), encoding="utf-8"
         )
+        install_approved_master_plan(
+            self.root,
+            "demo-run",
+            [("unit-0001", 1, 10)],
+        )
 
     def tearDown(self) -> None:
         self.temp.cleanup()
@@ -134,6 +142,22 @@ class ChapterServiceTests(unittest.TestCase):
             self._fixture("draft.md", f"# 第 1 章：测试章\n{body}\n"),
         )
         self._pass_quality_review()
+
+    def test_draft_master_plan_blocks_direct_chapter_drafting(self) -> None:
+        atomic_write_json(
+            self.run_dir / "config/master-plan.json",
+            default_master_plan(),
+        )
+
+        with self.assertRaisesRegex(ChapterServiceError, "审批闸门"):
+            draft_chapter(
+                self.root,
+                "demo-run",
+                1,
+                self._fixture("blocked-draft.md", "# 第 1 章：测试章\n甲乙丙丁戊\n"),
+            )
+
+        self.assertFalse((self.run_dir / "chapters/0001").exists())
 
     def test_draft_requires_quality_review_before_creating_final(self) -> None:
         result = draft_chapter(

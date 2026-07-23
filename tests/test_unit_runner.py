@@ -19,6 +19,9 @@ from tools.novel_runner.unit_runner import (
     partition_chapters,
     run_unit,
 )
+from tests.master_plan_support import install_approved_master_plan
+from tools.novel_runner.master_plan import default_master_plan
+from tools.novel_runner.storage import atomic_write_json
 
 
 EMPTY_STATE = {
@@ -198,6 +201,11 @@ class UnitRunnerTests(unittest.TestCase):
         (self.run_dir / "planning/chapter-outlines.json").write_text(
             json.dumps(outlines, ensure_ascii=False), encoding="utf-8"
         )
+        install_approved_master_plan(
+            self.root,
+            "demo-run",
+            [("unit-0001", 1, 10)],
+        )
 
     def tearDown(self) -> None:
         self.temp.cleanup()
@@ -227,6 +235,18 @@ class UnitRunnerTests(unittest.TestCase):
             (self.run_dir / "reports/story-unit-review-unit-0001.md").is_file()
         )
 
+    def test_draft_master_plan_blocks_unit_before_provider_call(self) -> None:
+        atomic_write_json(
+            self.run_dir / "config/master-plan.json",
+            default_master_plan(),
+        )
+        provider = ScriptedProvider()
+
+        with self.assertRaisesRegex(UnitRunnerError, "审批闸门"):
+            run_unit(self.root, "demo-run", "unit-0001", provider)
+
+        self.assertEqual(provider.calls, [])
+
     def test_v2_run_uses_fixed_state_and_ledger_files(self) -> None:
         v2_dir = init_run(self.root, "v2-run", storage_version="2.0")
         run_path = v2_dir / "run.json"
@@ -251,6 +271,11 @@ class UnitRunnerTests(unittest.TestCase):
         (v2_dir / "planning/chapter-outlines.json").write_text(
             json.dumps([make_outline(number) for number in range(1, 11)], ensure_ascii=False),
             encoding="utf-8",
+        )
+        install_approved_master_plan(
+            self.root,
+            "v2-run",
+            [("unit-0001", 1, 10)],
         )
 
         report = run_unit(self.root, "v2-run", "unit-0001", ScriptedProvider())

@@ -10,6 +10,12 @@ from typing import Any
 from .api_runtime import invoke_provider, mark_task_accepted
 from .batching import BatchingError, partition_chapters
 from .config import validate_run_directory
+from .master_plan import (
+    MasterPlanError,
+    master_plan_slice,
+    next_rough_unit,
+    require_approved_master_plan,
+)
 from .outline_validation import (
     OutlineValidationError,
     ensure_comedy_rotation,
@@ -68,17 +74,6 @@ def _next_version(directory: Path, prefix: str, suffix: str) -> int:
     return max(versions, default=0) + 1
 
 
-def _next_unit_id(units: list[dict[str, Any]]) -> str:
-    numbers: list[int] = []
-    for unit in units:
-        value = unit.get("unit_id")
-        if isinstance(value, str) and value.startswith("unit-"):
-            suffix = value.removeprefix("unit-")
-            if suffix.isdigit():
-                numbers.append(int(suffix))
-    return f"unit-{max(numbers, default=0) + 1:04d}"
-
-
 def _parse_json_object(text: str, label: str) -> dict[str, Any]:
     stripped = text.lstrip("\ufeff \t\r\n")
     try:
@@ -98,20 +93,20 @@ def _parse_json_object(text: str, label: str) -> dict[str, Any]:
 def plan_story_unit(
     root: Path,
     run_id: str,
-    chapter_count: int,
+    chapter_count: int | None,
     provider: TextProvider,
 ) -> dict[str, Any]:
     run_dir = resolve_run_dir(root, run_id)
     with run_lock(run_dir):
         run_dir, run, units, _ = _load_context(root, run_id)
-        policy = run["policies"]["batch"]
-        if not isinstance(chapter_count, int) or isinstance(chapter_count, bool):
+        try:
+            master_plan = require_approved_master_plan(root, run_id)
+        except MasterPlanError as exc:
+            raise PlanningServiceError(str(exc)) from exc
+        if chapter_count is not None and (
+            not isinstance(chapter_count, int) or isinstance(chapter_count, bool)
+        ):
             raise PlanningServiceError("chapter_count 必须是整数")
-        if not policy["story_unit_min"] <= chapter_count <= policy["story_unit_max"]:
-            raise PlanningServiceError(
-                f"故事单元必须为 {policy['story_unit_min']}～"
-                f"{policy['story_unit_max']} 章"
-            )
         active = [
             unit
             for unit in units
@@ -121,10 +116,31 @@ def plan_story_unit(
             raise PlanningServiceError(
                 f"已有未完成故事单元：{active[0].get('unit_id')}"
             )
-        start = int(run.get("last_committed_chapter", 0)) + 1
-        end = start + chapter_count - 1
-        unit_id = _next_unit_id(units)
-        prompt = compose_story_unit_plan_prompt(root, run_dir, unit_id, start, end)
+        try:
+            rough_unit = next_rough_unit(master_plan, units)
+            context_slice = master_plan_slice(master_plan, rough_unit["unit_id"])
+        except MasterPlanError as exc:
+            raise PlanningServiceError(str(exc)) from exc
+        unit_id = rough_unit["unit_id"]
+        start, end = rough_unit["chapter_range"]
+        expected_start = int(run.get("last_committed_chapter", 0)) + 1
+        if start != expected_start:
+            raise PlanningServiceError(
+                f"全书总纲下一单元从第 {start} 章开始，但运行指针要求第 {expected_start} 章"
+            )
+        planned_count = end - start + 1
+        if chapter_count is not None and chapter_count != planned_count:
+            raise PlanningServiceError(
+                f"--chapters 必须与全书总纲中的 {unit_id} 一致：应为 {planned_count} 章"
+            )
+        prompt = compose_story_unit_plan_prompt(
+            root,
+            run_dir,
+            unit_id,
+            start,
+            end,
+            context_slice,
+        )
         planning_dir = run_dir / "planning/generated"
         prefix = f"story-unit-{unit_id}"
         version = _next_version(planning_dir, prefix, "json")
@@ -213,6 +229,10 @@ def plan_chapter_batch(
     run_dir = resolve_run_dir(root, run_id)
     with run_lock(run_dir):
         run_dir, run, units, outlines = _load_context(root, run_id)
+        try:
+            require_approved_master_plan(root, run_id)
+        except MasterPlanError as exc:
+            raise PlanningServiceError(str(exc)) from exc
         unit = _find_unit(units, unit_id)
         unit_range = unit.get("chapter_range")
         if not isinstance(unit_range, list) or len(unit_range) != 2:

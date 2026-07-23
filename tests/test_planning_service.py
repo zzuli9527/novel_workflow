@@ -19,6 +19,7 @@ from tools.novel_runner.provider import (
     ProviderError,
 )
 from tools.novel_runner.storage import atomic_write_json
+from tests.master_plan_support import install_approved_master_plan
 
 
 def unit_payload() -> dict[str, object]:
@@ -96,6 +97,11 @@ class PlanningServiceTests(unittest.TestCase):
         run = json.loads(run_path.read_text(encoding="utf-8"))
         run["policies"]["batch"]["outline_request_chunk_size"] = 4
         run_path.write_text(json.dumps(run, ensure_ascii=False), encoding="utf-8")
+        install_approved_master_plan(
+            self.root,
+            "planning-run",
+            [("unit-0001", 1, 10), ("unit-0002", 11, 20)],
+        )
 
     def tearDown(self) -> None:
         self.temp.cleanup()
@@ -110,7 +116,7 @@ class PlanningServiceTests(unittest.TestCase):
         result = plan_story_unit(
             self.root,
             "planning-run",
-            10,
+            None,
             self._fixture("unit.json", unit),
         )
 
@@ -121,7 +127,31 @@ class PlanningServiceTests(unittest.TestCase):
         )
         self.assertEqual(stored, [result])
         prompt = next((self.run_dir / "planning/generated").glob("story-unit-*.prompt.v1.md"))
-        self.assertIn("第 1～10 章", prompt.read_text(encoding="utf-8"))
+        prompt_text = prompt.read_text(encoding="utf-8")
+        self.assertIn("第 1～10 章", prompt_text)
+        self.assertIn("已批准全书总纲切片", prompt_text)
+        self.assertIn('"current_rough_unit"', prompt_text)
+        self.assertNotIn("unit-0002", prompt_text)
+
+    def test_rejects_chapter_count_that_disagrees_with_master_plan(self) -> None:
+        with self.assertRaisesRegex(PlanningServiceError, "应为 10 章"):
+            plan_story_unit(
+                self.root,
+                "planning-run",
+                12,
+                self._fixture("unused-unit.json", unit_payload()),
+            )
+
+    def test_draft_master_plan_blocks_story_unit_planning(self) -> None:
+        draft_dir = init_run(self.root, "draft-planning-run")
+        self.assertTrue((draft_dir / "config/master-plan.json").is_file())
+        with self.assertRaisesRegex(PlanningServiceError, "审批闸门"):
+            plan_story_unit(
+                self.root,
+                "draft-planning-run",
+                10,
+                self._fixture("unused-draft-unit.json", unit_payload()),
+            )
 
     def test_rejects_story_unit_that_changes_requested_range(self) -> None:
         unit = {**unit_payload(), "chapter_range": [1, 12]}
@@ -398,6 +428,11 @@ class PlanningServiceTests(unittest.TestCase):
         atomic_write_json(
             v2_dir / "planning/chapter-outlines.json",
             [outline(number) for number in range(1, 5)],
+        )
+        install_approved_master_plan(
+            self.root,
+            "planning-v2-split",
+            [("unit-0001", 1, 10)],
         )
 
         provider = RangeProvider()

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "master-plan.schema.json",
+  "title": "Approved full-book master plan",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "target_chapters",
+    "protagonist_paths",
+    "active_goal_phases",
+    "final_conflict",
+    "volumes",
+    "approval"
+  ],
+  "properties": {
+    "schema_version": {"type": "string"},
+    "target_chapters": {
+      "type": "object",
+      "required": ["start", "end"],
+      "properties": {
+        "start": {"type": "integer", "minimum": 1},
+        "end": {"type": ["integer", "null"]}
+      }
+    },
+    "protagonist_paths": {"type": "array", "items": {"type": "object"}},
+    "active_goal_phases": {"type": "array", "items": {"type": "object"}},
+    "final_conflict": {"type": "object"},
+    "volumes": {"type": "array", "items": {"type": "object"}},
+    "approval": {
+      "type": "object",
+      "required": ["status", "approved_at", "content_sha256"],
+      "properties": {
+        "status": {"enum": ["draft", "approved"]},
+        "approved_at": {"type": ["string", "null"]},
+        "content_sha256": {"type": ["string", "null"]}
+      }
+    }
+  },
+  "additionalProperties": true
+}

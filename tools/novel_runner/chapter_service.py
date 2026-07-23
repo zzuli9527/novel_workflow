@@ -11,6 +11,7 @@ from typing import Any
 
 from .api_runtime import invoke_provider, mark_task_accepted
 from .config import validate_run_directory
+from .master_plan import MasterPlanError, require_approved_master_plan
 from .prompt_composer import (
     compose_draft_prompt,
     compose_repair_prompt,
@@ -184,6 +185,10 @@ def _draft_chapter_unlocked(
     task: str = "draft_chapter",
     retry_kind: str | None = None,
 ) -> dict[str, Any]:
+    try:
+        require_approved_master_plan(root, run_id)
+    except MasterPlanError as exc:
+        raise ChapterServiceError(str(exc)) from exc
     run_dir, run_config, outlines = _load_context(root, run_id)
     index, outline = _find_outline(outlines, chapter_number)
     try:

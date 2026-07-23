@@ -11,6 +11,11 @@ from typing import Any
 
 from .batching import BatchingError, partition_chapters
 from .config import validate_run_directory
+from .master_plan import (
+    MasterPlanError,
+    ensure_story_units_match_master,
+    require_approved_master_plan,
+)
 from .outline_validation import (
     OutlineValidationError,
     ensure_comedy_rotation,
@@ -249,6 +254,10 @@ def import_plan(root: Path, run_id: str, source: Path) -> dict[str, Any]:
             )
             raise PlanImportError(f"运行配置无效：{details}")
         run = read_json(run_dir / "run.json")
+        try:
+            master_plan = require_approved_master_plan(root, run_id)
+        except MasterPlanError as exc:
+            raise PlanImportError(str(exc)) from exc
         existing_outlines = read_json(run_dir / "planning/chapter-outlines.json")
         if run.get("last_committed_chapter", 0) != 0:
             raise PlanImportError("已有正式提交章节，禁止整体重新导入计划")
@@ -260,6 +269,14 @@ def import_plan(root: Path, run_id: str, source: Path) -> dict[str, Any]:
             raise PlanImportError("现有章节已开始生成，禁止整体重新导入计划")
 
         units, ranges = validate_story_units(payload.get("story_units"), run)
+        try:
+            ensure_story_units_match_master(
+                master_plan,
+                units,
+                require_prefix=True,
+            )
+        except MasterPlanError as exc:
+            raise PlanImportError(str(exc)) from exc
         outlines = validate_chapter_outlines(
             payload.get("chapter_outlines"),
             ranges,

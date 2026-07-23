@@ -29,6 +29,7 @@ class RunInitializationTests(unittest.TestCase):
             self.assertTrue((run_dir / "config/progression.json").is_file())
             self.assertTrue((run_dir / "config/comedy-bible.json").is_file())
             self.assertTrue((run_dir / "config/initial-state.json").is_file())
+            self.assertTrue((run_dir / "config/master-plan.json").is_file())
             self.assertTrue((run_dir / "planning/story-units.json").is_file())
             self.assertTrue((run_dir / "planning/chapter-outlines.json").is_file())
             self.assertTrue((run_dir / "logs/tasks.jsonl").is_file())

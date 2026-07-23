@@ -1,6 +1,6 @@
 # 修仙搞笑长篇网文生成器
 
-第一版面向本地单作者：用工作流完成项目设定与 10～20 章故事单元章纲，再由 CLI 顺序调用模型，逐章执行长度、质量、状态来源和账本压缩闸门。
+第一版面向本地单作者：先完成并人工批准全书总纲，再逐个展开 10～20 章故事单元，由 CLI 顺序调用模型并执行长度、质量、状态来源和账本压缩闸门。
 
 ## 安装
 
@@ -28,15 +28,28 @@ novel init my-novel
 - `runs/my-novel/config/progression.json`
 - `runs/my-novel/config/comedy-bible.json`
 - `runs/my-novel/config/initial-state.json`
+- `runs/my-novel/config/master-plan.json`
 
 `initial-state.json` 使用稳定 ID 记录开篇时的角色境界、资源余额和知识状态。后续突破、消耗和误会变化都以它为机械计算起点；不要只把初始资源写在散文设定中。
 
-### 2. 用工作流完成章纲
+### 2. 完成并批准全书总纲
+
+先使用 `workflow/00-global.md` 补全 `config/master-plan.json`：目标章节、双主角独立成长路径、前中后期主动目标、最终对手与高潮规则、分卷骨架，以及每卷连续的 10～20 章粗故事单元。
+
+总纲默认是 `draft`，系统不会代替作者批准：
+
+```powershell
+novel validate-master-plan --run my-novel
+novel approve-master-plan --run my-novel
+```
+
+批准会记录内容哈希。批准后修改总纲会自动阻断后续规划和写作，直到重新校验、审核并批准。卷与粗单元必须连续覆盖全书目标章节，不能重叠或留空档。
+
+### 3. 展开当前故事单元
 
 依次使用：
 
 ```text
-workflow/00-global.md
 workflow/01-expand.md
 workflow/02-merge.md（按需）
 workflow/03-chapters.md
@@ -45,8 +58,10 @@ workflow/03-chapters.md
 可以让执行器先生成故事单元：
 
 ```powershell
-novel plan-unit --run my-novel --chapters 10 --openai
+novel plan-unit --run my-novel --openai
 ```
+
+执行器只会选择已批准总纲中的下一个固定 `unit_id` 和章节范围。兼容参数 `--chapters` 仍可使用，但数值必须与总纲一致。
 
 也可以把人工确认后的故事单元和章节细纲整理为一个机器计划 JSON。外层格式：
 
@@ -60,16 +75,16 @@ novel plan-unit --run my-novel --chapters 10 --openai
 
 字段定义见 `plan.md` 第 8 节。`chapter_outlines` 可以为空，也可以一次提供完整 10～20 章；不接受只覆盖半个标准批次的残缺导入。
 
-### 3. 校验并导入计划
+### 4. 校验并导入计划
 
 ```powershell
 novel import-plan --run my-novel --file path/to/import-plan.json
 novel validate-config --run my-novel
 ```
 
-导入会整体校验 10～20 章范围、章节归属、场景预算、可写性和喜剧机制轮换。任何一章失败都不会覆盖正式计划。只导入故事单元时，后续由执行器逐批规划章纲。
+导入会先检查总纲审批哈希，再校验故事单元 ID/范围是否与总纲一致，以及章节归属、场景预算、可写性和喜剧机制轮换。任何一项失败都不会覆盖正式计划。只导入故事单元时，后续由执行器逐批规划章纲。
 
-### 4. 设置网关、模型路由与预算
+### 5. 设置网关、模型路由与预算
 
 复制本地环境模板：
 
@@ -107,7 +122,7 @@ NOVEL_MODEL_STATE=gpt-5.5
 
 无返工时，一章通常需要正文、质量评审、状态提取3次调用；实际长文通常还会增加一次跨模型压缩。默认每3～4章生成账本，章纲逻辑批次也是3～4章，但API传输默认每次最多2章，遇到网关524会自动拆成单章重试。10章动态链路应为修订和传输失败预留调用空间。
 
-### 5. 启动整个故事单元
+### 6. 启动整个故事单元
 
 ```powershell
 novel run-unit --run my-novel --unit unit-0001 --openai
@@ -140,7 +155,7 @@ novel run-unit --run my-novel --unit unit-0001 --openai
 novel plan-batch --run my-novel --unit unit-0001 --range 1-4 --openai
 ```
 
-### 6. 查看、恢复和评审
+### 7. 查看、恢复和评审
 
 ```powershell
 novel status --run my-novel --json

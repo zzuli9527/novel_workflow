@@ -20,6 +20,7 @@ from .structured_state import (
     default_initial_state,
     validate_initial_state,
 )
+from .master_plan import default_master_plan, validate_master_plan_data
 from .wordcount import LengthPolicy
 
 
@@ -204,6 +205,7 @@ def init_run(
     atomic_write_json(run_dir / "config/progression.json", default_progression_config())
     atomic_write_json(run_dir / "config/comedy-bible.json", default_comedy_bible())
     atomic_write_json(run_dir / "config/initial-state.json", default_initial_state())
+    atomic_write_json(run_dir / "config/master-plan.json", default_master_plan())
     atomic_write_json(run_dir / "planning/story-units.json", [])
     atomic_write_json(run_dir / "planning/chapter-outlines.json", [])
     atomic_write_json(
@@ -724,6 +726,13 @@ def validate_run_directory(root: Path, run_id: str) -> ValidationReport:
         ("config/progression.json", _validate_progression),
         ("config/comedy-bible.json", _validate_comedy),
         ("config/initial-state.json", _validate_initial_state),
+        (
+            "config/master-plan.json",
+            lambda data: [
+                ValidationIssue(item.path, item.message)
+                for item in validate_master_plan_data(data, complete=False)
+            ],
+        ),
         ("planning/story-units.json", lambda data: _validate_list_file(data, "story_units")),
         (
             "planning/chapter-outlines.json",

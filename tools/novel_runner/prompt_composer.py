@@ -397,6 +397,7 @@ def compose_story_unit_plan_prompt(
     unit_id: str,
     start_chapter: int,
     end_chapter: int,
+    master_context: dict[str, Any],
 ) -> str:
     runtime_prompt = _runtime_prompt(root, "plan-story-unit.md")
     contract = {
@@ -421,6 +422,7 @@ def compose_story_unit_plan_prompt(
         ("项目资料", _read_optional_text(run_dir / "config/project.md")),
         ("修炼体系", _json_block(read_json(run_dir / "config/progression.json"))),
         ("喜剧圣经", _json_block(read_json(run_dir / "config/comedy-bible.json"))),
+        ("已批准全书总纲切片", _json_block(master_context)),
         (
             "当前结构化状态",
             _json_block(

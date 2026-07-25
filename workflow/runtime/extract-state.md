@@ -6,9 +6,11 @@
 - 只输出末尾 JSON 契约，不要解释或代码围栏；所有顶层数组必须存在，没有变化时使用空数组。
 - 每个正式变化的 source_evidence 必须逐字复制 final 正文中的一段连续原句，不能改写或拼接。
 - 同一事实不要在多个数组重复记录；纯气氛、瞬时动作、未被确认的猜测不进入正式状态。
-- cultivation_changes 只记录真实修炼进度、能力、伤势、恢复、限制或突破。非突破不得改变境界；
+- cultivation_changes 只记录真实修炼进度、能力、伤势、恢复、限制、突破或明确发生的载体切换。非突破、非载体切换不得改变境界；
   突破必须完整填写 from_stage、to_stage、prerequisites、costs、new_limits；new_limits
   优先使用带 state_id/description 的对象，后续更新或解除该限制必须复用同一 state_id。
+  只有正文明确写出魂穿、转生或进入既存身体时才可使用 kind=incarnation，且必须作为本章 cultivation_changes 的第一项，填写 from_stage、to_stage 和
+  transition_type（soul_transfer / reincarnation / body_replacement）。incarnation 不是修炼突破，不得用来跳过正常突破成本，也不得用于普通治疗、失忆或身份伪装。
 - ability、injury、recovery、restriction 必须使用可跨章复用的 state_id 和 state_action。
   新增或更新活动状态使用 set；解除能力或限制使用 resolve；伤势解除必须写 recovery + resolve，
   部分恢复使用同一伤势 state_id 的 recovery + set。不得为同一伤势每章创建新 ID。

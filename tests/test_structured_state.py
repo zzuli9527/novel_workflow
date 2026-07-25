@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from copy import deepcopy
 import unittest
 
 from tools.novel_runner.structured_state import (
@@ -136,6 +137,65 @@ class StructuredStateTests(unittest.TestCase):
         ]
         with self.assertRaisesRegex(StructuredStateError, "不是 breakthrough"):
             project_structured_state(event, None, self.initial)
+
+    def test_incarnation_changes_stage_without_breakthrough_costs(self) -> None:
+        initial = deepcopy(self.initial)
+        initial["cultivation"][0]["stage"] = "现代凡人"
+        event = empty_event()
+        event["cultivation_changes"] = [
+            {
+                "subject_id": "protagonist",
+                "kind": "incarnation",
+                "from_stage": "现代凡人",
+                "to_stage": "炼气二层",
+                "transition_type": "soul_transfer",
+                "change": "主角在死亡后进入炼气二层的既存身体",
+                "source_evidence": "主角在陌生身体中醒来，体内有练气二层灵力。",
+            }
+        ]
+
+        projected = project_structured_state(event, None, initial)
+        self.assertEqual(projected["cultivation"][0]["stage"], "炼气二层")
+
+    def test_incarnation_requires_a_supported_transition_type(self) -> None:
+        event = empty_event()
+        event["cultivation_changes"] = [
+            {
+                "subject_id": "protagonist",
+                "kind": "incarnation",
+                "from_stage": "炼气一层",
+                "to_stage": "炼气二层",
+                "transition_type": "unknown",
+                "change": "主角进入另一具身体",
+                "source_evidence": "主角进入另一具身体。",
+            }
+        ]
+
+        with self.assertRaisesRegex(StructuredStateError, "transition_type"):
+            validate_structured_event(event)
+
+    def test_incarnation_must_precede_other_cultivation_changes(self) -> None:
+        event = empty_event()
+        event["cultivation_changes"] = [
+            {
+                "subject_id": "protagonist",
+                "kind": "injury",
+                "change": "主角受伤",
+                "source_evidence": "主角受伤。",
+            },
+            {
+                "subject_id": "protagonist",
+                "kind": "incarnation",
+                "from_stage": "炼气一层",
+                "to_stage": "炼气二层",
+                "transition_type": "soul_transfer",
+                "change": "主角进入另一具身体",
+                "source_evidence": "主角进入另一具身体。",
+            },
+        ]
+
+        with self.assertRaisesRegex(StructuredStateError, "其他修炼变化之前"):
+            validate_structured_event(event)
 
     def test_resource_balance_is_mechanically_projected(self) -> None:
         event = empty_event()

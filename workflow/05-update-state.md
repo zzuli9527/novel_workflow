@@ -114,7 +114,8 @@
 
 - 每项使用稳定 `subject_id` 和 `kind`。
 - `kind=breakthrough` 时必须同时提供 `from_stage`、`to_stage`、非空 `prerequisites`、`costs` 和 `new_limits`。
-- 非突破事件不得改变境界名称。
+- 只有正文明确写出魂穿、转生或进入既存身体时可使用 `kind=incarnation`：必须提供 `from_stage`、`to_stage` 和 `transition_type`（`soul_transfer`、`reincarnation` 或 `body_replacement`），且不能省略为普通修炼突破。
+- 除 `breakthrough` 和 `incarnation` 外，其他事件不得改变境界名称。
 - 修炼主体必须已经存在于初始状态或上一章快照。
 
 ## 4. 资源变化

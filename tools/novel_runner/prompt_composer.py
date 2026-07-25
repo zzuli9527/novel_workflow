@@ -633,16 +633,22 @@ def compose_state_prompt(
         "cultivation_changes": [
             {
                 "subject_id": "角色稳定 ID",
-                "kind": "progress / insight / ability / injury / recovery / breakthrough / restriction",
+                "kind": (
+                    "progress / insight / ability / injury / recovery / breakthrough / "
+                    "restriction / incarnation"
+                ),
                 "change": "",
                 "state_id": "ability/injury/recovery/restriction 必填的稳定状态 ID",
                 "state_action": (
                     "上述四类必填：set / resolve；必须符合活动状态 ID 中的 allowed_changes，"
                     "recovery 只能引用当前活动 injury ID"
                 ),
-                "stage_after": "非突破时可选",
-                "from_stage": "突破时必填",
-                "to_stage": "突破时必填",
+                "stage_after": "非突破、非 incarnation 时可选",
+                "from_stage": "breakthrough / incarnation 时必填",
+                "to_stage": "breakthrough / incarnation 时必填",
+                "transition_type": (
+                    "仅 incarnation 必填：soul_transfer / reincarnation / body_replacement"
+                ),
                 "prerequisites": ["突破时必填"],
                 "costs": ["突破时必填"],
                 "new_limits": [

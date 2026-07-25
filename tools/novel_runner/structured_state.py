@@ -19,6 +19,12 @@ CULTIVATION_KINDS = {
     "recovery",
     "breakthrough",
     "restriction",
+    "incarnation",
+}
+INCARNATION_TRANSITION_TYPES = {
+    "soul_transfer",
+    "reincarnation",
+    "body_replacement",
 }
 RESOURCE_OPERATIONS = {
     "gain": 1,
@@ -148,12 +154,19 @@ def validate_structured_event(event: dict[str, Any]) -> None:
     resources = event.get("resource_changes", [])
     knowledge = event.get("knowledge_changes", [])
 
+    seen_non_incarnation_change = False
     for index, item in enumerate(cultivation):
         path = f"cultivation_changes[{index}]"
         subject_id = _text(item, "subject_id", path)
         kind = _text(item, "kind", path)
         if kind not in CULTIVATION_KINDS:
             raise StructuredStateError(f"{path}.kind 不是允许的修炼变化类型")
+        if kind == "incarnation" and seen_non_incarnation_change:
+            raise StructuredStateError(
+                f"{path}.kind=incarnation 必须位于本章其他修炼变化之前"
+            )
+        if kind != "incarnation":
+            seen_non_incarnation_change = True
         if kind == "breakthrough":
             from_stage = _text(item, "from_stage", path)
             to_stage = _text(item, "to_stage", path)
@@ -173,6 +186,22 @@ def validate_structured_event(event: dict[str, Any]) -> None:
                     )
                 _text(limit, "state_id", limit_path)
                 _text(limit, "description", limit_path)
+        elif kind == "incarnation":
+            from_stage = _text(item, "from_stage", path)
+            to_stage = _text(item, "to_stage", path)
+            if from_stage == to_stage:
+                raise StructuredStateError(f"{path} 载体切换前后境界不能相同")
+            transition_type = _text(item, "transition_type", path)
+            if transition_type not in INCARNATION_TRANSITION_TYPES:
+                allowed = " / ".join(sorted(INCARNATION_TRANSITION_TYPES))
+                raise StructuredStateError(
+                    f"{path}.transition_type 只允许 {allowed}"
+                )
+            stage_after = item.get("stage_after")
+            if stage_after is not None and stage_after != to_stage:
+                raise StructuredStateError(
+                    f"{path}.stage_after 必须与 incarnation.to_stage 一致"
+                )
         elif "stage_after" in item:
             _text(item, "stage_after", path)
         if strict_tracked_state and kind in TRACKED_CULTIVATION_KINDS:
@@ -366,30 +395,34 @@ def project_structured_state(
             raise StructuredStateError(
                 f"修炼主体 {subject_id} 不在初始状态或上一章快照中"
             )
-        if change["kind"] == "breakthrough":
+        if change["kind"] in {"breakthrough", "incarnation"}:
             if current.get("stage") != change["from_stage"]:
+                transition_label = (
+                    "突破" if change["kind"] == "breakthrough" else "载体切换"
+                )
                 raise StructuredStateError(
-                    f"{subject_id} 突破前境界不连续：快照为 {current.get('stage')}，"
+                    f"{subject_id} {transition_label}前境界不连续：快照为 {current.get('stage')}，"
                     f"事件声明为 {change['from_stage']}"
                 )
             current["stage"] = change["to_stage"]
-            for limit in change["new_limits"]:
-                if isinstance(limit, str):
-                    current["limits"] = [*current.get("limits", []), limit]
-                    continue
-                _apply_tracked_cultivation_change(
-                    current,
-                    {
-                        "kind": "restriction",
-                        "state_id": limit["state_id"],
-                        "state_action": "set",
-                        "change": limit["description"],
-                    },
-                )
+            if change["kind"] == "breakthrough":
+                for limit in change["new_limits"]:
+                    if isinstance(limit, str):
+                        current["limits"] = [*current.get("limits", []), limit]
+                        continue
+                    _apply_tracked_cultivation_change(
+                        current,
+                        {
+                            "kind": "restriction",
+                            "state_id": limit["state_id"],
+                            "state_action": "set",
+                            "change": limit["description"],
+                        },
+                    )
         elif isinstance(change.get("stage_after"), str):
             if current.get("stage") != change["stage_after"]:
                 raise StructuredStateError(
-                    f"{subject_id} 的境界发生变化但 kind 不是 breakthrough："
+                    f"{subject_id} 的境界发生变化但 kind 不是 breakthrough 或 incarnation："
                     f"{current.get('stage')} -> {change['stage_after']}"
                 )
         if (

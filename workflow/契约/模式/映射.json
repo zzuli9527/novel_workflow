@@ -1,0 +1,15 @@
+{
+  "schema_mapping_version": "1.0",
+  "artifacts": {
+    "run": "run.schema.json",
+    "progression": "progression.schema.json",
+    "comedy_bible": "comedy-bible.schema.json",
+    "initial_state": "initial-state.schema.json",
+    "master_plan": "master-plan.schema.json",
+    "story_units": "story-units.schema.json",
+    "chapter_outlines": "chapter-outlines.schema.json",
+    "checks": "checks.schema.json",
+    "ledger": "ledger.schema.json",
+    "state_event": "state-event.schema.json"
+  }
+}

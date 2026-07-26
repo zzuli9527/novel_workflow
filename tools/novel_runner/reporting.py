@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from datetime import datetime, timezone
 import json
 from pathlib import Path
 from statistics import fmean
@@ -12,14 +11,11 @@ from .api_runtime import load_api_call_records, summarize_api_calls
 from .state_store import load_events
 from .storage import atomic_write_json, atomic_write_text, read_json, resolve_run_dir
 from .wordcount import DraftParseError, LengthPolicy, check_drafts
+from .shared import utc_now
 
 
 class ReportingError(RuntimeError):
     """故事单元报告缺少必要输入。"""
-
-
-def _utc_now() -> str:
-    return datetime.now(timezone.utc).isoformat()
 
 
 def _find_unit(units: list[dict[str, Any]], unit_id: str) -> dict[str, Any]:
@@ -610,7 +606,7 @@ def generate_unit_review(root: Path, run_id: str, unit_id: str) -> dict[str, Any
             "角色语言区分与笑点实际效果仍需要人工或独立模型评审。",
             "API 用量只证明调用规模；未配置模型单价时，total_cost 不能作为真实费用结论。",
         ],
-        "generated_at": _utc_now(),
+        "generated_at": utc_now(),
     }
     report_dir = run_dir / "reports"
     json_path = report_dir / f"story-unit-review-{unit_id}.json"

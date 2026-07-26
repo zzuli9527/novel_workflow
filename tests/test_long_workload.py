@@ -8,8 +8,9 @@ import unittest
 from tools.novel_runner.config import init_run
 from tools.novel_runner.provider import GenerationRequest, GenerationResponse
 from tools.novel_runner.state_store import load_events
-from tools.novel_runner.unit_runner import run_unit
+from tools.novel_runner.units import run_unit
 from tests.master_plan_support import install_approved_master_plan
+from tests.workflow_support import install_minimal_workflow
 from tools.novel_runner.wordcount import count_body_characters
 
 
@@ -82,6 +83,7 @@ class LongWorkloadProvider:
                     "knowledge_states_consistent": True,
                     "character_voices_distinct": True,
                     "multi_line_causality_preserved": True,
+                    "opening_promise_delivered": True,
                     "warnings": [],
                 },
                 ensure_ascii=False,
@@ -159,10 +161,7 @@ class LongWorkloadTests(unittest.TestCase):
     def test_twelve_chapters_keep_real_length_and_state_chain(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
-            workflow = root / "workflow"
-            workflow.mkdir()
-            (workflow / "04-draft.md").write_text("# 正文规则\n", encoding="utf-8")
-            (workflow / "05-update-state.md").write_text("# 状态规则\n", encoding="utf-8")
+            install_minimal_workflow(root)
             run_dir = init_run(root, "long-run")
             (run_dir / "config/initial-state.json").write_text(
                 json.dumps(

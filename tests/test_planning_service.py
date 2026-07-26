@@ -11,7 +11,7 @@ from tools.novel_runner.planning_service import (
     plan_chapter_batch,
     plan_story_unit,
 )
-from tools.novel_runner.prompt_composer import compose_batch_outline_plan_prompt
+from tools.novel_runner.prompting import compose_batch_outline_plan_prompt
 from tools.novel_runner.provider import (
     FixtureProvider,
     GenerationRequest,
@@ -20,6 +20,7 @@ from tools.novel_runner.provider import (
 )
 from tools.novel_runner.storage import atomic_write_json
 from tests.master_plan_support import install_approved_master_plan
+from tests.workflow_support import install_minimal_workflow
 
 
 def unit_payload() -> dict[str, object]:
@@ -87,11 +88,7 @@ class PlanningServiceTests(unittest.TestCase):
     def setUp(self) -> None:
         self.temp = tempfile.TemporaryDirectory()
         self.root = Path(self.temp.name)
-        workflow = self.root / "workflow"
-        workflow.mkdir()
-        (workflow / "01-expand.md").write_text("# 单元规划\n", encoding="utf-8")
-        (workflow / "03-chapters.md").write_text("# 章纲规划\n", encoding="utf-8")
-        (workflow / "modules.md").write_text("# 模块库\n", encoding="utf-8")
+        install_minimal_workflow(self.root)
         self.run_dir = init_run(self.root, "planning-run")
         run_path = self.run_dir / "run.json"
         run = json.loads(run_path.read_text(encoding="utf-8"))
@@ -195,8 +192,8 @@ class PlanningServiceTests(unittest.TestCase):
         self.assertIn('writability.is_writable', prompt_text)
         self.assertIn('JSON 布尔值 true', prompt_text)
         self.assertIn(
-            'writability.is_writable` 必须是 JSON 布尔值 `true`',
-            (Path(__file__).resolve().parents[1] / "workflow/runtime/plan-chapter-batch.md").read_text(
+            "writability.is_writable 必须是 JSON 布尔值 true",
+        (Path(__file__).resolve().parents[1] / "workflow/规则/任务/章节细纲规划.md").read_text(
                 encoding="utf-8"
             ),
         )

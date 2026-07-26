@@ -9,6 +9,7 @@ from tools.novel_runner.config import init_run
 from tools.novel_runner.ledger import LedgerError, build_ledger
 from tools.novel_runner.provider import FixtureProvider
 from tools.novel_runner.state_store import append_event_once, build_snapshot
+from tests.workflow_support import install_minimal_workflow
 
 
 VALID_LEDGER = {
@@ -49,9 +50,7 @@ class LedgerTests(unittest.TestCase):
     def setUp(self) -> None:
         self.temp = tempfile.TemporaryDirectory()
         self.root = Path(self.temp.name)
-        workflow = self.root / "workflow"
-        workflow.mkdir()
-        (workflow / "05-update-state.md").write_text("# 账本规则\n", encoding="utf-8")
+        install_minimal_workflow(self.root)
         self.run_dir = init_run(self.root, "demo-run")
 
         outlines = [

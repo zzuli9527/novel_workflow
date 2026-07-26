@@ -1,4 +1,4 @@
-"""故事单元章节范围的确定性 3～5 章分批。"""
+"""按运行策略确定故事单元的章节批次；默认是 3～4 章。"""
 
 from __future__ import annotations
 
@@ -24,7 +24,7 @@ def partition_chapters(
     end: int,
     *,
     minimum: int = 3,
-    maximum: int = 5,
+    maximum: int = 4,
     preferred: int = 4,
 ) -> tuple[ChapterBatch, ...]:
     if start <= 0 or end < start:

@@ -7,12 +7,13 @@ import tempfile
 import unittest
 from unittest import mock
 
-from tools.novel_runner import chapter_service
-from tools.novel_runner.chapter_service import commit_chapter, resume_run
+from tools.novel_runner.chapters import commit as chapter_commit
+from tools.novel_runner.chapters import commit_chapter, resume_run
 from tools.novel_runner.config import init_run
 from tools.novel_runner.file_storage import enrich_v2_events, transaction_path
 from tools.novel_runner.state_rebuild import rebuild_state_snapshots
 from tools.novel_runner.storage import atomic_write_json, atomic_write_text, read_json
+from tests.workflow_support import install_minimal_workflow
 
 
 STATE_FIELDS = (
@@ -138,7 +139,7 @@ class FileStorageV2CommitRecoveryTests(unittest.TestCase):
     def _inject_once(self, run_dir: Path, phase: int) -> None:
         if phase == 0:
             with mock.patch.object(
-                chapter_service,
+                chapter_commit,
                 "_save_outlines",
                 side_effect=OSError("injected before event append"),
             ):
@@ -146,7 +147,7 @@ class FileStorageV2CommitRecoveryTests(unittest.TestCase):
                     commit_chapter(run_dir.parent.parent, run_dir.name, 1)
         elif phase == 1:
             with mock.patch.object(
-                chapter_service,
+                chapter_commit,
                 "append_event_once",
                 side_effect=OSError("injected event append interruption"),
             ):
@@ -154,21 +155,21 @@ class FileStorageV2CommitRecoveryTests(unittest.TestCase):
                     commit_chapter(run_dir.parent.parent, run_dir.name, 1)
         elif phase == 2:
             with mock.patch.object(
-                chapter_service,
+                chapter_commit,
                 "write_snapshot",
                 side_effect=OSError("injected snapshot interruption"),
             ):
                 with self.assertRaises(OSError):
                     commit_chapter(run_dir.parent.parent, run_dir.name, 1)
         elif phase == 3:
-            original = chapter_service.atomic_write_json
+            original = chapter_commit.atomic_write_json
 
             def fail_run_write(path: Path, value: object) -> None:
                 if path.name == "run.json":
                     raise OSError("injected run pointer interruption")
                 original(path, value)
 
-            with mock.patch.object(chapter_service, "atomic_write_json", fail_run_write):
+            with mock.patch.object(chapter_commit, "atomic_write_json", fail_run_write):
                 with self.assertRaises(OSError):
                     commit_chapter(run_dir.parent.parent, run_dir.name, 1)
         else:
@@ -187,6 +188,7 @@ class FileStorageV2CommitRecoveryTests(unittest.TestCase):
     def test_100_commit_phase_interruptions_recover_without_duplicate_event(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
+            install_minimal_workflow(root)
             for index in range(100):
                 run_dir = self._new_prepared_run(root, index)
                 self._inject_once(run_dir, index % 5)

@@ -3,13 +3,13 @@
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass
-from datetime import datetime, timezone
 import hashlib
 import json
 from pathlib import Path
 from typing import Any, Iterable
 
 from .storage import atomic_write_json, read_json, resolve_run_dir, run_lock
+from .shared import utc_now
 
 
 class MasterPlanError(RuntimeError):
@@ -41,10 +41,6 @@ class MasterPlanReport:
             "content_sha256": self.content_sha256,
             "issues": [issue.to_dict() for issue in self.issues],
         }
-
-
-def _utc_now() -> str:
-    return datetime.now(timezone.utc).isoformat()
 
 
 def default_master_plan() -> dict[str, Any]:
@@ -443,18 +439,20 @@ def _validate_volumes(
         _validate_contiguous_ranges(issues, "master_plan.volumes", volume_ranges, target)
 
 
+def _chapter_start(item: dict[str, Any]) -> int:
+    chapter_range = item.get("chapter_range")
+    if isinstance(chapter_range, list) and chapter_range and _is_int(chapter_range[0]):
+        return chapter_range[0]
+    return 0
+
+
 def _flatten_rough_units(data: dict[str, Any]) -> list[dict[str, Any]]:
     units: list[dict[str, Any]] = []
     for volume in data.get("volumes", []):
         if isinstance(volume, dict) and isinstance(volume.get("rough_units"), list):
             units.extend(item for item in volume["rough_units"] if isinstance(item, dict))
-    def start_chapter(item: dict[str, Any]) -> int:
-        chapter_range = item.get("chapter_range")
-        if isinstance(chapter_range, list) and chapter_range and _is_int(chapter_range[0]):
-            return chapter_range[0]
-        return 0
 
-    return sorted(units, key=start_chapter)
+    return sorted(units, key=_chapter_start)
 
 
 def _validate_existing_units(
@@ -686,7 +684,7 @@ def approve_master_plan(root: Path, run_id: str) -> dict[str, Any]:
         if issues:
             details = "; ".join(f"{item.path}: {item.message}" for item in issues)
             raise MasterPlanError(f"全书总纲不能批准：{details}")
-        approved_at = _utc_now()
+        approved_at = utc_now()
         content_hash = master_plan_content_hash(data)
         updated = {
             **data,
@@ -734,13 +732,7 @@ def ensure_story_units_match_master(
     expected = {
         item.get("unit_id"): item.get("chapter_range") for item in planned
     }
-    def start_chapter(item: dict[str, Any]) -> int:
-        chapter_range = item.get("chapter_range")
-        if isinstance(chapter_range, list) and chapter_range and _is_int(chapter_range[0]):
-            return chapter_range[0]
-        return 0
-
-    ordered_actual = sorted(story_units, key=start_chapter)
+    ordered_actual = sorted(story_units, key=_chapter_start)
     for item in ordered_actual:
         unit_id = item.get("unit_id")
         if unit_id not in expected:

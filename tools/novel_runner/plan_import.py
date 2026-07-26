@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from datetime import datetime, timezone
 import hashlib
 import json
 from pathlib import Path
@@ -29,6 +28,7 @@ from .storage import (
     resolve_run_dir,
     run_lock,
 )
+from .shared import utc_now
 
 
 class PlanImportError(RuntimeError):
@@ -36,10 +36,6 @@ class PlanImportError(RuntimeError):
 
 
 JSON_FENCE_RE = re.compile(r"```json\s*(.*?)```", re.IGNORECASE | re.DOTALL)
-
-
-def _utc_now() -> str:
-    return datetime.now(timezone.utc).isoformat()
 
 
 def _load_payload(source: Path) -> tuple[dict[str, Any], str]:
@@ -298,7 +294,7 @@ def import_plan(root: Path, run_id: str, source: Path) -> dict[str, Any]:
             "source_sha256": source_hash,
             "story_unit_count": len(units),
             "chapter_count": len(outlines),
-            "imported_at": _utc_now(),
+            "imported_at": utc_now(),
         }
         atomic_write_json(run_dir / "planning/import-plan.json", payload)
         atomic_write_text(run_dir / "planning/import-source.md", source_text)
@@ -309,7 +305,7 @@ def import_plan(root: Path, run_id: str, source: Path) -> dict[str, Any]:
             **run,
             "status": "ready" if outlines else "planning",
             "current_story_unit": first_unit["unit_id"],
-            "updated_at": _utc_now(),
+            "updated_at": utc_now(),
             "last_plan_import": import_record,
         }
         atomic_write_json(run_dir / "run.json", updated_run)

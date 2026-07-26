@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0",
+  "cultivation": [
+    {
+      "subject_id": "shen-yan",
+      "stage": "现代凡人",
+      "abilities": [
+        {
+          "state_id": "incident-investigation",
+          "description": "工程事故调查与现场取证；只适用于现代专业判断，不提供灵力或修仙能力"
+        }
+      ],
+      "injuries": [],
+      "limits": [
+        {
+          "state_id": "no-spiritual-power-before-transmigration",
+          "description": "第1章现代事故阶段没有灵力、神识或修仙资源；进入原身后的境界和旧伤必须由正文事件建立"
+        }
+      ]
+    },
+    {
+      "subject_id": "xie-tingyun",
+      "stage": "现代凡人",
+      "abilities": [
+        {
+          "state_id": "mountain-rescue",
+          "description": "山地救援、风险判断和互救行动；只适用于现代专业判断，不提供灵力或修仙能力"
+        }
+      ],
+      "injuries": [],
+      "limits": [
+        {
+          "state_id": "no-spiritual-power-before-transmigration",
+          "description": "第1章现代事故阶段没有灵力、神识或修仙资源；进入原身后的境界、记忆缺失和筑基压力必须由正文事件建立"
+        }
+      ]
+    }
+  ],
+  "resources": [],
+  "knowledge": [
+    {
+      "character_id": "shen-yan",
+      "fact_id": "fifteen-year-friendship",
+      "state": "knows",
+      "belief": "谢停云是与自己相识十五年的发小和死党；两人有共同的私下暗号、互损习惯和互救默契。"
+    },
+    {
+      "character_id": "xie-tingyun",
+      "fact_id": "fifteen-year-friendship",
+      "state": "knows",
+      "belief": "沈砚是与自己相识十五年的发小和死党；两人有共同的私下暗号、互损习惯和互救默契。"
+    },
+    {
+      "character_id": "shen-yan",
+      "fact_id": "mountain-site-secondary-collapse-risk",
+      "state": "suspects",
+      "belief": "山体事故现场可能存在二次坍塌风险，必须先核验并与救援人员协作。"
+    },
+    {
+      "character_id": "xie-tingyun",
+      "fact_id": "mountain-site-secondary-collapse-risk",
+      "state": "knows",
+      "belief": "山体事故现场存在二次坍塌风险，救援必须兼顾现场人员撤离与互救。"
+    }
+  ]
+}

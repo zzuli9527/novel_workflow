@@ -17,12 +17,14 @@ from tools.novel_runner.master_plan import (
 )
 from tools.novel_runner.storage import atomic_write_json
 from tests.master_plan_support import build_master_plan
+from tests.workflow_support import install_minimal_workflow
 
 
 class MasterPlanTests(unittest.TestCase):
     def setUp(self) -> None:
         self.temp = tempfile.TemporaryDirectory()
         self.root = Path(self.temp.name)
+        install_minimal_workflow(self.root)
         self.run_dir = init_run(self.root, "master-run")
 
     def tearDown(self) -> None:

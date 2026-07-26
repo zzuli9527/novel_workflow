@@ -8,6 +8,7 @@ import unittest
 from tools.novel_runner.config import init_run
 from tools.novel_runner.plan_import import PlanImportError, import_plan
 from tests.master_plan_support import install_approved_master_plan
+from tests.workflow_support import install_minimal_workflow
 
 
 def story_unit() -> dict[str, object]:
@@ -82,6 +83,7 @@ class PlanImportTests(unittest.TestCase):
     def setUp(self) -> None:
         self.temp = tempfile.TemporaryDirectory()
         self.root = Path(self.temp.name)
+        install_minimal_workflow(self.root)
         self.run_dir = init_run(self.root, "import-run")
         self.payload = {
             "schema_version": "1.0",

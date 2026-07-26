@@ -1,0 +1,7 @@
+{
+  "contract_version": "4.0",
+  "task_id": "build_ledger",
+  "input_artifacts": ["batch_end_state", "batch_events", "previous_ledger", "style_bible"],
+  "output": {"format": "json_object", "model_instruction": "只输出一个 JSON 对象。must_read_next 不得超过当前运行给定的上限；active_progression、active_resources、active_knowledge_gaps 必须保持为空数组。"},
+  "output_template": {"must_read_next": [], "active_progression": [], "active_resources": [], "active_relationships": [], "active_knowledge_gaps": [], "active_threads": [], "comedy_callbacks": [], "avoid_repeating": [], "archived": [], "next_batch_adjustments": []}
+}

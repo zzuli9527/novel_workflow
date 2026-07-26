@@ -1,0 +1,93 @@
+{
+  "workflow_version": "4.0",
+  "steps": [
+    {"id": "project_setup", "kind": "human_gate", "scope": "project", "requires": [], "produces": ["project_profile", "project_material", "initial_state"]},
+    {"id": "master_plan_approval", "kind": "human_gate", "scope": "project", "requires": ["project_profile", "project_material", "initial_state"], "produces": ["approved_master_plan"]},
+    {"id": "plan_story_unit", "kind": "model", "scope": "unit", "requires": ["approved_master_plan", "project_profile", "state_context"], "produces": ["story_unit"]},
+    {"id": "plan_chapter_batch", "kind": "model", "scope": "batch", "requires": ["story_unit", "state_context"], "optional_inputs": ["ledger"], "produces": ["chapter_outlines"]},
+    {"id": "draft_chapter", "kind": "model", "scope": "chapter", "requires": ["chapter_outline", "state_context"], "produces": ["draft_candidate"], "success_statuses": ["draft_quality_pending"]},
+    {"id": "repair_chapter", "kind": "model", "scope": "chapter", "requires": ["chapter_outline", "state_context", "failed_attempt"], "produces": ["draft_candidate"], "success_statuses": ["draft_quality_pending"]},
+    {"id": "review_chapter", "kind": "model", "scope": "chapter", "requires": ["chapter_outline", "state_context", "draft_candidate"], "produces": ["review", "approved_draft"], "success_statuses": ["draft_passed"]},
+    {"id": "extract_state", "kind": "model", "scope": "chapter", "requires": ["chapter_outline", "state_context", "approved_draft"], "produces": ["state_event"], "success_statuses": ["state_ready"]},
+    {"id": "commit_chapter", "kind": "tool_gate", "scope": "chapter", "requires": ["state_event"], "produces": ["committed_chapter", "state_context"], "success_statuses": ["committed"]},
+    {"id": "resume_chapter", "kind": "tool_gate", "scope": "chapter", "requires": [], "produces": ["recovered_chapter"]},
+    {"id": "build_ledger", "kind": "model", "scope": "batch", "requires": ["committed_batch", "batch_end_state"], "produces": ["ledger"]},
+    {"id": "review_unit", "kind": "tool_gate", "scope": "unit", "requires": ["committed_unit", "ledger"], "produces": ["unit_review"]},
+    {"id": "rebuild_state", "kind": "tool_gate", "scope": "unit", "requires": ["unit_review"], "produces": ["rebuilt_state"]},
+    {"id": "archive_run", "kind": "tool_gate", "scope": "release", "execution": "manual", "requires": ["rebuilt_state"], "produces": ["published_archive"]},
+    {"id": "invalidate_from", "kind": "tool_gate", "scope": "revision", "requires": ["committed_chapter"], "produces": ["revision", "pending_revalidation"]}
+  ],
+  "chapter_terminal_statuses": ["committed", "locked"],
+  "chapter_max_steps": 20,
+  "chapter_routes": {
+    "outline_ready": "draft_chapter",
+    "draft_failed_provider": "repair_chapter",
+    "draft_failed_length": "repair_chapter",
+    "draft_failed_contract": "repair_chapter",
+    "draft_failed_quality": "repair_chapter",
+    "draft_quality_pending": "review_chapter",
+    "draft_passed": "extract_state",
+    "state_failed": "extract_state",
+    "state_ready": "commit_chapter",
+    "drafting": "resume_chapter",
+    "state_extracting": "resume_chapter",
+    "committing": "resume_chapter"
+  },
+  "chapter_retry_policies": [
+    {
+      "id": "draft_transport",
+      "when": {"status": "draft_failed_provider"},
+      "counter": "transport",
+      "budget": "transport",
+      "on_exhausted": "transport_retry_exhausted"
+    },
+    {
+      "id": "draft_length_content",
+      "when": {"status": "draft_failed_length"},
+      "counter": "content",
+      "budget": "content",
+      "on_exhausted": "content_retry_exhausted"
+    },
+    {
+      "id": "draft_contract_content",
+      "when": {"status": "draft_failed_contract"},
+      "counter": "content",
+      "budget": "content",
+      "on_exhausted": "content_retry_exhausted"
+    },
+    {
+      "id": "draft_quality_content",
+      "when": {"status": "draft_failed_quality"},
+      "counter": "content",
+      "budget": "content",
+      "on_exhausted": "content_retry_exhausted"
+    },
+    {
+      "id": "review_format",
+      "when": {"status": "draft_quality_pending", "non_empty_field": "review_failure_reason"},
+      "counter": "review_format",
+      "budget": "format",
+      "on_exhausted": "review_retry_exhausted"
+    },
+    {
+      "id": "state_retry",
+      "when": {"status": "state_failed", "value_field": "state_failure_kind", "allowed_values": ["transport", "format", "content"]},
+      "counter_template": "state_{value}",
+      "budget_from_value": true,
+      "on_exhausted": "state_retry_exhausted"
+    }
+  ],
+  "unit_lifecycle": {
+    "missing_batch_outlines": "plan_chapter_batch",
+    "completed_batch": "build_ledger",
+    "after_unit": ["review_unit", "rebuild_state"],
+    "release": ["archive_run"]
+  },
+  "terminal_routes": {
+    "transport_retry_exhausted": "pause",
+    "content_retry_exhausted": "pause",
+    "review_retry_exhausted": "pause",
+    "state_retry_exhausted": "pause",
+    "unit_review_failed": "pause"
+  }
+}

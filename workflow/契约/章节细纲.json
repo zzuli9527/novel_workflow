@@ -1,0 +1,30 @@
+{
+  "contract_version": "4.0",
+  "task_id": "plan_chapter_batch",
+  "input_artifacts": ["story_unit", "project_material", "current_state", "ledger", "recent_outline_summary"],
+  "output": {"format": "json_object", "model_instruction": "只输出一个 JSON 对象，不要代码围栏。chapter_outlines 必须恰好覆盖固定批次范围；每一章的 writability.is_writable 必须是 JSON 布尔值 true。"},
+  "output_template": {"chapter_outlines": "{{chapter_outlines}}"},
+  "item_template": {
+    "chapter_id": "{{chapter_id}}",
+    "number": "{{chapter_number}}",
+    "title": "",
+    "story_unit_id": "{{story_unit_id}}",
+    "status": "outline_ready",
+    "target_length": {"min": "{{target_min}}", "max": "{{target_max}}"},
+    "intent": "",
+    "opening_state": [],
+    "required_outcomes": [],
+    "forbidden_outcomes": [],
+    "progression_payoff": "",
+    "comedy_mechanism": "",
+    "comedy_payoff": "",
+    "cost_or_aftereffect": "",
+    "closing_state": ["本章结束后的明确状态"],
+    "next_chapter_input": ["下一章可以直接承接的动作或问题"],
+    "scenes": [
+      {"scene_id": "{{chapter_id}}-scene-1", "intent": "本场景要完成的具体叙事任务", "location": "地点", "participants": ["参与角色稳定 ID 或姓名"], "action_conflict": "动作、阻碍与选择", "exit_result": "场景结束时形成的可见结果", "target_length": 1000, "required_outcomes": ["本场必须发生的章级结果"]},
+      {"scene_id": "{{chapter_id}}-scene-2", "intent": "第二个有效场景的具体任务", "location": "地点", "participants": ["参与角色"], "action_conflict": "动作、阻碍与选择", "exit_result": "场景结束结果", "target_length": 1150, "required_outcomes": []}
+    ],
+    "writability": {"estimated_length": 0, "is_writable": true, "risks": []}
+  }
+}

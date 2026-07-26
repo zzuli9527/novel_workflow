@@ -6,7 +6,7 @@ import tempfile
 import unittest
 
 from tools.novel_runner.config import init_run
-from tools.novel_runner.chapter_service import get_run_status, resume_run
+from tools.novel_runner.chapters import get_run_status, resume_run
 from tools.novel_runner.provider import (
     GenerationRequest,
     GenerationResponse,
@@ -14,7 +14,7 @@ from tools.novel_runner.provider import (
     TextProvider,
 )
 from tools.novel_runner.run_archive import archive_run
-from tools.novel_runner.unit_runner import (
+from tools.novel_runner.units import (
     UnitRunnerError,
     partition_chapters,
     run_unit,
@@ -22,6 +22,7 @@ from tools.novel_runner.unit_runner import (
 from tests.master_plan_support import install_approved_master_plan
 from tools.novel_runner.master_plan import default_master_plan
 from tools.novel_runner.storage import atomic_write_json
+from tests.workflow_support import install_minimal_workflow
 
 
 EMPTY_STATE = {
@@ -63,6 +64,7 @@ REVIEW = {
     "knowledge_states_consistent": True,
     "character_voices_distinct": True,
     "multi_line_causality_preserved": True,
+    "opening_promise_delivered": True,
     "warnings": [],
 }
 
@@ -156,11 +158,11 @@ class ScriptedProvider:
 
 
 class PartitionTests(unittest.TestCase):
-    def test_all_supported_unit_sizes_partition_into_three_to_five(self) -> None:
+    def test_all_supported_unit_sizes_partition_into_three_to_four(self) -> None:
         for total in range(10, 21):
             batches = partition_chapters(1, total)
             self.assertEqual(sum(batch.size for batch in batches), total)
-            self.assertTrue(all(3 <= batch.size <= 5 for batch in batches))
+            self.assertTrue(all(3 <= batch.size <= 4 for batch in batches))
             self.assertEqual(batches[0].start, 1)
             self.assertEqual(batches[-1].end, total)
 
@@ -173,11 +175,7 @@ class UnitRunnerTests(unittest.TestCase):
     def setUp(self) -> None:
         self.temp = tempfile.TemporaryDirectory()
         self.root = Path(self.temp.name)
-        workflow = self.root / "workflow"
-        workflow.mkdir()
-        (workflow / "03-chapters.md").write_text("# 章纲规则\n", encoding="utf-8")
-        (workflow / "04-draft.md").write_text("# 正文规则\n", encoding="utf-8")
-        (workflow / "05-update-state.md").write_text("# 状态规则\n", encoding="utf-8")
+        install_minimal_workflow(self.root)
         self.run_dir = init_run(self.root, "demo-run")
 
         run_path = self.run_dir / "run.json"
@@ -216,10 +214,11 @@ class UnitRunnerTests(unittest.TestCase):
 
         self.assertEqual(report["status"], "completed")
         self.assertEqual(report["committed_chapters"], list(range(1, 11)))
-        self.assertTrue(all(3 <= end - start + 1 <= 5 for start, end in report["batches"]))
+        self.assertTrue(all(3 <= end - start + 1 <= 4 for start, end in report["batches"]))
         run = json.loads((self.run_dir / "run.json").read_text(encoding="utf-8"))
         self.assertEqual(run["last_committed_chapter"], 10)
         self.assertIsNone(run["current_batch"])
+        self.assertEqual(report["state_rebuild"]["rebuilt_snapshots"], 10)
         units = json.loads(
             (self.run_dir / "planning/story-units.json").read_text(encoding="utf-8")
         )
@@ -234,6 +233,31 @@ class UnitRunnerTests(unittest.TestCase):
         self.assertTrue(
             (self.run_dir / "reports/story-unit-review-unit-0001.md").is_file()
         )
+
+    def test_chapter_route_is_controlled_by_workflow_not_hard_coded(self) -> None:
+        flow_path = self.root / "workflow/编排/流程.json"
+        flow = json.loads(flow_path.read_text(encoding="utf-8"))
+        flow["chapter_routes"]["outline_ready"] = "commit_chapter"
+        flow_path.write_text(json.dumps(flow, ensure_ascii=False), encoding="utf-8")
+        provider = ScriptedProvider()
+
+        with self.assertRaisesRegex(UnitRunnerError, "state_event"):
+            run_unit(self.root, "demo-run", "unit-0001", provider)
+
+        self.assertEqual(provider.calls, [])
+
+    def test_declared_step_output_is_enforced(self) -> None:
+        flow_path = self.root / "workflow/编排/流程.json"
+        flow = json.loads(flow_path.read_text(encoding="utf-8"))
+        draft_step = next(item for item in flow["steps"] if item["id"] == "draft_chapter")
+        draft_step["produces"].append("missing_artifact")
+        flow_path.write_text(json.dumps(flow, ensure_ascii=False), encoding="utf-8")
+        provider = ScriptedProvider()
+
+        with self.assertRaisesRegex(UnitRunnerError, "未产生声明产物.*missing_artifact"):
+            run_unit(self.root, "demo-run", "unit-0001", provider)
+
+        self.assertEqual(provider.calls, [("draft_chapter", 1)])
 
     def test_draft_master_plan_blocks_unit_before_provider_call(self) -> None:
         atomic_write_json(
@@ -317,7 +341,7 @@ class UnitRunnerTests(unittest.TestCase):
         self.assertTrue(
             (
                 self.root
-                / "test/matrix-runs/Xv2-storage-layout/data/state/current.json"
+                / "tests/证据/矩阵运行/Xv2-storage-layout/data/state/current.json"
             ).is_file()
         )
         self.assertFalse(get_run_status(self.root, "v2-run")["commit_recovery_pending"])
@@ -400,6 +424,48 @@ class UnitRunnerTests(unittest.TestCase):
         )
         run = json.loads((self.run_dir / "run.json").read_text(encoding="utf-8"))
         self.assertEqual(run["status"], "paused")
+
+    def test_terminal_route_can_mark_exhausted_run_failed(self) -> None:
+        flow_path = self.root / "workflow/编排/流程.json"
+        flow = json.loads(flow_path.read_text(encoding="utf-8"))
+        flow["terminal_routes"]["transport_retry_exhausted"] = "fail"
+        flow_path.write_text(json.dumps(flow, ensure_ascii=False), encoding="utf-8")
+
+        class FailingDraftProvider(ScriptedProvider):
+            def generate(self, request: GenerationRequest) -> GenerationResponse:
+                chapter = request.metadata.get("chapter")
+                if request.task in {"draft_chapter", "repair_chapter"} and chapter == 1:
+                    self.calls.append((request.task, 1))
+                    raise ProviderError("持续传输失败", fallback_allowed=True)
+                return super().generate(request)
+
+        with self.assertRaisesRegex(UnitRunnerError, "持续传输失败"):
+            run_unit(self.root, "demo-run", "unit-0001", FailingDraftProvider())
+
+        run = json.loads((self.run_dir / "run.json").read_text(encoding="utf-8"))
+        units = json.loads(
+            (self.run_dir / "planning/story-units.json").read_text(encoding="utf-8")
+        )
+        self.assertEqual(run["status"], "failed")
+        self.assertEqual(units[0]["status"], "failed")
+
+    def test_batch_requires_are_enforced_before_provider_call(self) -> None:
+        flow_path = self.root / "workflow/编排/流程.json"
+        flow = json.loads(flow_path.read_text(encoding="utf-8"))
+        step = next(
+            item for item in flow["steps"] if item["id"] == "plan_chapter_batch"
+        )
+        step["requires"].append("missing_batch_artifact")
+        flow_path.write_text(json.dumps(flow, ensure_ascii=False), encoding="utf-8")
+        (self.run_dir / "planning/chapter-outlines.json").write_text(
+            "[]", encoding="utf-8"
+        )
+        provider = ScriptedProvider()
+
+        with self.assertRaisesRegex(UnitRunnerError, "missing_batch_artifact"):
+            run_unit(self.root, "demo-run", "unit-0001", provider)
+
+        self.assertEqual(provider.calls, [])
 
     def test_soft_quality_warning_does_not_trigger_repair(self) -> None:
         class SoftWarningProvider(ScriptedProvider):

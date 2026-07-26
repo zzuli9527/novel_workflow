@@ -32,12 +32,12 @@ dist/
 *.egg-info/
 
 # Local novel runs contain prompts, drafts, API logs and active locks.
-# Completed, sanitized regression evidence belongs in test/matrix-runs/ and is committed.
+# Completed, sanitized regression evidence belongs in tests/证据/矩阵运行/ and is committed.
 /runs/
 
 # Raw provider/task logs can contain deployment metadata and are not needed for
 # published regression evidence; aggregated review metrics remain committed.
-/test/matrix-runs/*/data/logs/
+/tests/证据/矩阵运行/*/data/logs/
 
 # Local agent/editor state
 /.agents/

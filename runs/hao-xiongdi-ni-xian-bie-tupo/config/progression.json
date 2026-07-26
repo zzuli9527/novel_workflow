@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "realms": [
+    {"stage": "现代凡人", "requirements": ["无灵力基础"], "boundaries": ["没有灵力、神识或修仙法器，不得使用修仙能力"]},
+    {"stage": "炼气二层", "requirements": ["完成引气入体和基础循环"], "boundaries": ["只能使用基础吐纳与低阶术法；不能越阶处理筑基阵或高阶神识"]},
+    {"stage": "炼气三层", "requirements": ["第一条主经脉修复并稳定循环"], "boundaries": ["仍须依赖资源、记录和他人协作，不能通过同命印复制谢停云修为"]},
+    {"stage": "炼气四层", "requirements": ["第二条主经脉完成循环"], "boundaries": ["可承担基础验伤与调查任务，不得单独承受筑基级反噬"]},
+    {"stage": "炼气九层", "requirements": ["九层灵力循环完整"], "boundaries": ["可以准备筑基，但筑基前须满足资源、方案和真实代价条件"]},
+    {"stage": "筑基", "requirements": ["完成筑基方案、资源消耗与风险承担"], "boundaries": ["筑基不触发真正天劫；不得把突破代价写成无后果"]},
+    {"stage": "金丹", "requirements": ["完成结丹前置、资源结算与代价记录"], "boundaries": ["不得无代价越阶；同命印不能消除真实反噬"]},
+    {"stage": "元婴", "requirements": ["完成元婴前置、资源结算与代价记录"], "boundaries": ["不得以串感代替神魂修炼或稳定共享高阶神识"]},
+    {"stage": "化神", "requirements": ["完成化神前置、资源结算与代价记录"], "boundaries": ["引劫仍属极少数传承，不得变成公开职业或常规手段"]},
+    {"stage": "炼虚", "requirements": ["完成炼虚前置、资源结算与代价记录"], "boundaries": ["不得提前掌控完整天劫或跨界转移网络"]},
+    {"stage": "合道", "requirements": ["两位主角分别完成个人道途并取得明确授权"], "boundaries": ["只有此阶段首次接触真正天劫；仍必须承担真实损耗"]},
+    {"stage": "渡劫", "requirements": ["完成合道后的天地检验与终局前置"], "boundaries": ["不得把天劫转移给无辜者；只能回归真实制造或受益主体"]}
+  ],
+  "resources": [
+    {"resource_id": "healing-resource", "unit": "份", "rules": ["疗伤资源必须记录获得、消耗和余额，不能无来源恢复重伤"]},
+    {"resource_id": "spirit-stone", "unit": "枚", "rules": ["灵石获得、消耗和余额必须可追溯"]},
+    {"resource_id": "foundation-material", "unit": "份", "rules": ["筑基材料必须有明确来源和实际消耗，不能重复使用"]},
+    {"resource_id": "sect-merit", "unit": "点", "rules": ["宗门功勋只能通过可见任务、记录或奖励获得"]},
+    {"resource_id": "medicine-debt", "unit": "枚", "rules": ["药债以应偿数量追踪；新增债务与偿还必须有正文证据和准确余额"]}
+  ],
+  "techniques": [
+    {"technique_id": "basic-breathing", "name": "基础吐纳", "effects": ["稳定低阶灵力循环"], "limits": ["不能瞬间修复重伤或替代资源"]},
+    {"technique_id": "qingya-sword-art", "name": "青崖剑诀", "effects": ["谢停云的基础剑修战斗手段"], "limits": ["不能绕过修为、伤势、场地和资源限制"]},
+    {"technique_id": "causal-seal-path", "name": "归因封路道", "effects": ["后期追查真实因果、封闭错误转移路径"], "limits": ["前期不可用；不能凭空指定代价归属"]},
+    {"technique_id": "burden-opening-path", "name": "承劫开路道", "effects": ["后期在高压环境中开路和撤离"], "limits": ["前期不可用；救援不等于无代价牺牲"]}
+  ],
+  "artifacts": [
+    {"artifact_id": "same-fate-mark", "name": "同命印", "limits": ["前期只会被动转移重大突破负面症状并随机串感", "不读心、不复制修为、不消除真实代价", "连续恶意突破会触发双向加倍反噬"]}
+  ],
+  "injury_rules": [
+    {"state_id": "shen-yan-meridian-injury", "name": "沈砚原身经脉旧损", "symptoms": ["灵力循环不稳", "承受反噬能力低"], "recovery": ["疗伤资源", "逐条经脉修复", "稳定修炼与实际休养"], "hard_rule": "恢复必须使用同一 state_id 分段记录，不得无事件消失"},
+    {"state_id": "foundation-backlash", "name": "筑基级反噬", "symptoms": ["经脉、道基或神魂损伤"], "recovery": ["明确方案、资源、休养和后续代价"], "hard_rule": "不能用笑点、串感或一次治疗取消真实后果"}
+  ],
+  "breakthrough_rules": [
+    {"rule_id": "breakthrough-evidence", "rules": ["每次突破必须记录前置条件、实际成本、新限制和正文证据"]},
+    {"rule_id": "same-fate-boundary", "rules": ["同命印转移的是负面症状，不转移修为", "转移不消除代价，失败可同时反噬双方", "中期后只可向存在真实因果的制造者或受益者转症"]},
+    {"rule_id": "true-tribulation-boundary", "rules": ["合道前不得出现真正天劫", "引劫传承极少且需要高阶条件、阵法和代价"]}
+  ],
+  "power_boundaries": [
+    "开篇现代事故段中两人均为现代凡人；魂穿和醒来必须按章节事件发生。",
+    "低阶角色接到高阶神识只能承受未经处理的信息，不能永久获得高阶范围、判断速度或修为。",
+    "任何资源、伤势、能力、知识或关系变化都必须有正文证据和可追溯事件。"
+  ],
+  "exceptions": []
+}

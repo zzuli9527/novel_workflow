@@ -1,0 +1,30 @@
+{
+  "contract_version": "4.0",
+  "task_id": "review_chapter",
+  "input_artifacts": ["candidate_draft", "chapter_outline", "length_checks", "previous_state"],
+  "output": {"format": "json_object", "model_instruction": "只输出一个 JSON 对象，不要 Markdown 代码围栏。必做与禁止结果必须提供正文连续原句证据。"},
+  "output_template": {
+    "required_outcomes": "{{required_outcomes}}",
+    "forbidden_outcomes": "{{forbidden_outcomes}}",
+    "summary_like": false,
+    "cultivation_consistent": true,
+    "comedy_causal": true,
+    "serious_consequences_preserved": true,
+    "chapter_hook_concrete": true,
+    "resource_continuity_consistent": true,
+    "knowledge_states_consistent": true,
+    "character_voices_distinct": true,
+    "multi_line_causality_preserved": true,
+    "opening_promise_delivered": true,
+    "warnings": []
+  },
+  "required_outcome_template": {"index": "{{index}}", "passed": true, "source_evidence": "正文连续原句"},
+  "forbidden_outcome_template": {"index": "{{index}}", "appeared": false, "source_evidence": ""},
+  "quality_policy": {
+    "failure_when_true": ["summary_like"],
+    "failure_when_false": ["cultivation_consistent", "serious_consequences_preserved", "resource_continuity_consistent", "knowledge_states_consistent", "multi_line_causality_preserved"],
+    "opening_failure_when_false": "opening_promise_delivered",
+    "opening_chapter_max": 3,
+    "soft_failure_when_false": ["comedy_causal", "chapter_hook_concrete", "character_voices_distinct"]
+  }
+}

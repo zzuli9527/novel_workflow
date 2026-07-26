@@ -7,7 +7,7 @@ name = "novel-workflow-runner"
 version = "0.1.0"
 description = "修仙搞笑长篇网文工作流执行器"
 requires-python = ">=3.11"
-dependencies = []
+dependencies = ["jsonschema>=4.23,<5"]
 
 [project.scripts]
 novel = "novel_runner.cli:main"
@@ -17,6 +17,3 @@ package-dir = {"" = "tools"}
 
 [tool.setuptools.packages.find]
 where = ["tools"]
-
-[tool.setuptools.package-data]
-novel_runner = ["schemas/*.json"]

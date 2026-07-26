@@ -8,7 +8,7 @@ import tempfile
 from unittest.mock import patch
 import unittest
 
-from tools.novel_runner.chapter_service import resume_run
+from tools.novel_runner.chapters import resume_run
 from tools.novel_runner.cli import main
 from tools.novel_runner.config import init_run
 from tools.novel_runner.revision import RevisionError, invalidate_from

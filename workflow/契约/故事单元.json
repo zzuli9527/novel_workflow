@@ -1,0 +1,23 @@
+{
+  "contract_version": "4.0",
+  "task_id": "plan_story_unit",
+  "input_artifacts": ["approved_master_plan_slice", "project_material", "progression", "style_bible", "current_state", "ledger"],
+  "output": {"format": "json_object", "model_instruction": "只输出一个 JSON 对象，不要代码围栏。unit_id 和 chapter_range 必须完全一致。"},
+  "output_template": {
+    "unit_id": "{{unit_id}}",
+    "chapter_range": "{{chapter_range}}",
+    "goal": "",
+    "entry_state": [],
+    "closing_state": ["故事单元结束后的可见状态"],
+    "main_obstacle": "",
+    "progression_change": ["本单元成长变化"],
+    "resource_change": [],
+    "relationship_change": [],
+    "comedy_plan": ["按批次轮换的风格机制"],
+    "required_setback": "",
+    "required_payoff": "",
+    "must_not_resolve": ["必须保留到后续的长期问题"],
+    "beats": ["因果连续的故事点"],
+    "status": "planned"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "contract_version": "4.0",
+  "task_ids": ["draft_chapter", "repair_chapter"],
+  "input_artifacts": ["chapter_outline", "project_material", "style_rules", "previous_state", "ledger"],
+  "output": {"format": "markdown_chapter", "model_instruction": "第一行必须是 `# 第 N 章：标题`，N 与章纲编号一致；其后只写正文。不要输出自检、说明、提纲、状态表、代码围栏或下一章正文。"}
+}

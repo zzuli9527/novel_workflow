@@ -5,7 +5,7 @@ from pathlib import Path
 import tempfile
 import unittest
 
-from tools.novel_runner.chapter_service import (
+from tools.novel_runner.chapters import (
     ChapterServiceError,
     commit_chapter,
     draft_chapter,
@@ -21,6 +21,7 @@ from tools.novel_runner.provider import GenerationRequest, ProviderError
 from tools.novel_runner.master_plan import default_master_plan
 from tools.novel_runner.storage import atomic_write_json
 from tests.master_plan_support import install_approved_master_plan
+from tests.workflow_support import install_minimal_workflow
 
 
 VALID_STATE_EVENT = {
@@ -49,6 +50,7 @@ VALID_REVIEW = {
     "knowledge_states_consistent": True,
     "character_voices_distinct": True,
     "multi_line_causality_preserved": True,
+    "opening_promise_delivered": True,
     "warnings": [],
 }
 
@@ -57,10 +59,7 @@ class ChapterServiceTests(unittest.TestCase):
     def setUp(self) -> None:
         self.temp = tempfile.TemporaryDirectory()
         self.root = Path(self.temp.name)
-        workflow = self.root / "workflow"
-        workflow.mkdir()
-        (workflow / "04-draft.md").write_text("# 正文规则\n", encoding="utf-8")
-        (workflow / "05-update-state.md").write_text("# 状态规则\n", encoding="utf-8")
+        install_minimal_workflow(self.root)
         self.run_dir = init_run(self.root, "demo-run")
 
         run_path = self.run_dir / "run.json"
@@ -160,6 +159,14 @@ class ChapterServiceTests(unittest.TestCase):
         self.assertFalse((self.run_dir / "chapters/0001").exists())
 
     def test_draft_requires_quality_review_before_creating_final(self) -> None:
+        (self.run_dir / "config/project.md").write_text(
+            "# 项目资料\n\n- 目标平台：番茄小说（男频向长篇连载）\n",
+            encoding="utf-8",
+        )
+        (self.run_dir / "config/project-profile.json").write_text(
+            json.dumps({"platform": "fanqie", "channel": "male"}),
+            encoding="utf-8",
+        )
         result = draft_chapter(
             self.root,
             "demo-run",
@@ -178,6 +185,8 @@ class ChapterServiceTests(unittest.TestCase):
         self.assertIn('"preferred_range": [', prompt)
         self.assertIn('"preferred_range": [\n    5,\n    6\n  ]', prompt)
         self.assertIn('"hard_range": [', prompt)
+        self.assertIn("番茄小说男频正文要求", prompt)
+        self.assertIn("不能只让人物互相拌嘴或原地解释设定", prompt)
 
         reviewed = self._pass_quality_review()
         self.assertEqual(reviewed["outline"]["status"], "draft_passed")
@@ -428,6 +437,27 @@ class ChapterServiceTests(unittest.TestCase):
             self._fixture("summary-review.json", json.dumps(review, ensure_ascii=False)),
         )
         self.assertEqual(result["outline"]["status"], "draft_failed_quality")
+
+    def test_quality_review_blocks_opening_without_promised_setup(self) -> None:
+        draft_chapter(
+            self.root,
+            "demo-run",
+            1,
+            self._fixture("draft.md", "# 第 1 章：测试章\n甲乙丙丁戊\n"),
+        )
+        review = {**VALID_REVIEW, "opening_promise_delivered": False}
+        result = review_chapter(
+            self.root,
+            "demo-run",
+            1,
+            self._fixture(
+                "opening-review.json", json.dumps(review, ensure_ascii=False)
+            ),
+        )
+        self.assertEqual(result["outline"]["status"], "draft_failed_quality")
+        self.assertIn(
+            "opening_promise_delivered", result["review"]["quality_failures"]
+        )
 
     def test_quality_review_blocks_cultivation_inconsistency(self) -> None:
         draft_chapter(

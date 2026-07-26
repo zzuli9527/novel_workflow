@@ -1,8 +1,7 @@
-"""故事单元与 3～5 章细纲批次的模型规划闭环。"""
+"""故事单元与默认 3～4 章细纲批次的模型规划闭环。"""
 
 from __future__ import annotations
 
-from datetime import datetime, timezone
 import json
 from pathlib import Path
 from typing import Any
@@ -26,7 +25,7 @@ from .plan_import import (
     validate_chapter_outlines,
     validate_story_units,
 )
-from .prompt_composer import (
+from .prompting import (
     compose_batch_outline_plan_prompt,
     compose_story_unit_plan_prompt,
 )
@@ -39,14 +38,20 @@ from .storage import (
     resolve_run_dir,
     run_lock,
 )
+from .workflow_runtime import (
+    WorkflowLoadError,
+    ensure_step_inputs,
+    ensure_step_outputs,
+    load_workflow_step,
+    workflow_source_manifest,
+)
+from .project_profile import load_project_profile
+from .schema_validation import WorkflowSchemaError, ensure_artifact_schema
+from .shared import utc_now
 
 
 class PlanningServiceError(RuntimeError):
     """故事单元或章纲批次不能进入正式运行数据。"""
-
-
-def _utc_now() -> str:
-    return datetime.now(timezone.utc).isoformat()
 
 
 def _load_context(
@@ -103,6 +108,15 @@ def plan_story_unit(
             master_plan = require_approved_master_plan(root, run_id)
         except MasterPlanError as exc:
             raise PlanningServiceError(str(exc)) from exc
+        try:
+            step = load_workflow_step(root, "plan_story_unit")
+            load_project_profile(run_dir)
+            ensure_step_inputs(
+                step,
+                {"approved_master_plan", "project_profile", "state_context"},
+            )
+        except (WorkflowLoadError, StorageError) as exc:
+            raise PlanningServiceError(str(exc)) from exc
         if chapter_count is not None and (
             not isinstance(chapter_count, int) or isinstance(chapter_count, bool)
         ):
@@ -147,6 +161,14 @@ def plan_story_unit(
         prompt_path = planning_dir / f"{prefix}.prompt.v{version}.md"
         raw_path = planning_dir / f"{prefix}.v{version}.json"
         atomic_write_text(prompt_path, prompt)
+        atomic_write_json(
+            planning_dir / f"{prefix}.workflow.v{version}.json",
+            workflow_source_manifest(
+                root,
+                "plan_story_unit",
+                rule_context=load_project_profile(run_dir),
+            ),
+        )
         request = GenerationRequest(
             task="plan_story_unit",
             prompt=prompt,
@@ -185,6 +207,11 @@ def plan_story_unit(
                 raise PlanningServiceError("新故事单元与已有章节范围重叠")
         mark_task_accepted(run_dir, request, response, raw_path)
         units.append(unit)
+        try:
+            ensure_artifact_schema(root, "story_units", units)
+            ensure_step_outputs(step, {"story_unit"})
+        except (WorkflowSchemaError, WorkflowLoadError) as exc:
+            raise PlanningServiceError(str(exc)) from exc
         atomic_write_json(run_dir / "planning/story-units.json", units)
         atomic_write_json(planning_dir / f"{prefix}.final.json", unit)
         atomic_write_json(
@@ -193,7 +220,7 @@ def plan_story_unit(
                 **run,
                 "status": "planning",
                 "current_story_unit": unit_id,
-                "updated_at": _utc_now(),
+                "updated_at": utc_now(),
             },
         )
         return unit
@@ -234,6 +261,20 @@ def plan_chapter_batch(
         except MasterPlanError as exc:
             raise PlanningServiceError(str(exc)) from exc
         unit = _find_unit(units, unit_id)
+        try:
+            step = load_workflow_step(root, "plan_chapter_batch")
+            available = {"story_unit"}
+            last_committed = run.get("last_committed_chapter", 0)
+            if start_chapter == 1 or (
+                isinstance(last_committed, int)
+                and last_committed >= start_chapter - 1
+            ):
+                available.add("state_context")
+            if _latest_ledger := list((run_dir / "ledgers").glob("batch-*.json")):
+                available.add("ledger")
+            ensure_step_inputs(step, available)
+        except WorkflowLoadError as exc:
+            raise PlanningServiceError(str(exc)) from exc
         unit_range = unit.get("chapter_range")
         if not isinstance(unit_range, list) or len(unit_range) != 2:
             raise PlanningServiceError("故事单元 chapter_range 无效")
@@ -271,6 +312,14 @@ def plan_chapter_batch(
         )
         atomic_write_text(
             planning_dir / f"{prefix}.prompt.v{version}.md", logical_prompt
+        )
+        atomic_write_json(
+            planning_dir / f"{prefix}.workflow.v{version}.json",
+            workflow_source_manifest(
+                root,
+                "plan_chapter_batch",
+                rule_context=load_project_profile(run_dir),
+            ),
         )
         chunk_size = int(policy.get("outline_request_chunk_size", end_chapter - start_chapter + 1))
         batch_outlines: list[dict[str, Any]] = []
@@ -372,6 +421,11 @@ def plan_chapter_batch(
             raise PlanningServiceError(str(exc)) from exc
         for request, response, raw_path in accepted_parts:
             mark_task_accepted(run_dir, request, response, raw_path)
+        try:
+            ensure_artifact_schema(root, "chapter_outlines", combined)
+            ensure_step_outputs(step, {"chapter_outlines"})
+        except (WorkflowSchemaError, WorkflowLoadError) as exc:
+            raise PlanningServiceError(str(exc)) from exc
         atomic_write_json(run_dir / "planning/chapter-outlines.json", combined)
         atomic_write_json(
             planning_dir / f"{prefix}.final.json",
@@ -379,7 +433,7 @@ def plan_chapter_batch(
                 "unit_id": unit_id,
                 "chapter_range": [start_chapter, end_chapter],
                 "chapter_outlines": normalized,
-                "created_at": _utc_now(),
+                "created_at": utc_now(),
             },
         )
         return normalized

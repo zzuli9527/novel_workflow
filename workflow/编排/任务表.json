@@ -1,0 +1,106 @@
+{
+  "workflow_version": "4.0",
+  "flow": "编排/流程.json",
+  "tasks": {
+    "plan_story_unit": {
+      "kind": "model",
+      "prompt": "提示词/规划故事单元.md",
+      "rules": ["规则/任务/故事单元规划.md"],
+      "conditional_rules": [
+        {"when": {"genre": "xianxia"}, "rules": ["规则/题材/修仙.md"]},
+        {"when": {"style": "comedy"}, "rules": ["规则/风格/喜剧.md"]}
+      ],
+      "context_sources": [
+        {"artifact": "project_material", "section": "项目资料", "path": "config/project.md", "format": "text"},
+        {"artifact": "progression", "section": "修炼体系", "path": "config/progression.json", "format": "json", "when": {"genre": "xianxia"}},
+        {"artifact": "comedy_bible", "section": "喜剧圣经", "path": "config/comedy-bible.json", "format": "json", "when": {"style": "comedy"}}
+      ],
+      "contracts": ["契约/故事单元.json"]
+    },
+    "plan_chapter_batch": {
+      "kind": "model",
+      "prompt": "提示词/规划章节细纲.md",
+      "rules": ["规则/任务/章节细纲规划.md", "规则/通用/开篇质量.md"],
+      "conditional_rules": [
+        {"when": {"genre": "xianxia"}, "rules": ["规则/题材/修仙.md"]},
+        {"when": {"style": "comedy"}, "rules": ["规则/风格/喜剧.md"]}
+      ],
+      "context_sources": [
+        {"artifact": "project_material", "section": "项目资料", "path": "config/project.md", "format": "text"},
+        {"artifact": "progression", "section": "修炼体系", "path": "config/progression.json", "format": "json", "when": {"genre": "xianxia"}},
+        {"artifact": "comedy_bible", "section": "喜剧圣经", "path": "config/comedy-bible.json", "format": "json", "when": {"style": "comedy"}}
+      ],
+      "contracts": ["契约/章节细纲.json"]
+    },
+    "draft_chapter": {
+      "kind": "model",
+      "prompt": "提示词/生成正文.md",
+      "rules": ["规则/通用/正文叙事.md", "规则/通用/开篇质量.md"],
+      "conditional_rules": [
+        {"when": {"genre": "xianxia"}, "rules": ["规则/题材/修仙.md"]},
+        {"when": {"style": "comedy"}, "rules": ["规则/风格/喜剧.md", "规则/风格/笑点落地.md"]},
+        {"when": {"platform": "fanqie", "channel": "male"}, "rules": ["规则/平台/番茄男频.md"]}
+      ],
+      "context_sources": [
+        {"artifact": "project_material", "section": "项目资料", "path": "config/project.md", "format": "text"},
+        {"artifact": "progression", "section": "修炼体系", "path": "config/progression.json", "format": "json", "when": {"genre": "xianxia"}},
+        {"artifact": "comedy_bible", "section": "喜剧圣经", "path": "config/comedy-bible.json", "format": "json", "when": {"style": "comedy"}}
+      ],
+      "contracts": ["契约/正文.json"]
+    },
+    "repair_chapter": {
+      "kind": "model",
+      "prompt": "提示词/修复正文.md",
+      "rules": ["规则/通用/正文叙事.md", "规则/通用/开篇质量.md", "规则/任务/正文修复.md"],
+      "conditional_rules": [
+        {"when": {"genre": "xianxia"}, "rules": ["规则/题材/修仙.md"]},
+        {"when": {"style": "comedy"}, "rules": ["规则/风格/喜剧.md", "规则/风格/笑点落地.md"]},
+        {"when": {"platform": "fanqie", "channel": "male"}, "rules": ["规则/平台/番茄男频.md"]}
+      ],
+      "context_sources": [
+        {"artifact": "project_material", "section": "项目资料", "path": "config/project.md", "format": "text"},
+        {"artifact": "progression", "section": "修炼体系", "path": "config/progression.json", "format": "json", "when": {"genre": "xianxia"}},
+        {"artifact": "comedy_bible", "section": "喜剧圣经", "path": "config/comedy-bible.json", "format": "json", "when": {"style": "comedy"}}
+      ],
+      "contracts": ["契约/正文.json"]
+    },
+    "review_chapter": {
+      "kind": "model",
+      "prompt": "提示词/审核正文.md",
+      "rules": ["规则/任务/正文审核.md"],
+      "conditional_rules": [
+        {"when": {"genre": "xianxia"}, "rules": ["规则/题材/修仙.md"]},
+        {"when": {"style": "comedy"}, "rules": ["规则/风格/喜剧.md"]}
+      ],
+      "context_sources": [
+        {"artifact": "progression", "section": "修炼体系", "path": "config/progression.json", "format": "json", "when": {"genre": "xianxia"}},
+        {"artifact": "comedy_bible", "section": "喜剧圣经", "path": "config/comedy-bible.json", "format": "json", "when": {"style": "comedy"}}
+      ],
+      "contracts": ["契约/正文审核.json"]
+    },
+    "extract_state": {
+      "kind": "model",
+      "prompt": "提示词/提取状态.md",
+      "rules": ["规则/任务/状态提取.md"],
+      "conditional_rules": [
+        {"when": {"genre": "xianxia"}, "rules": ["规则/题材/修仙.md"]}
+      ],
+      "context_sources": [
+        {"artifact": "progression", "section": "修炼体系", "path": "config/progression.json", "format": "json", "when": {"genre": "xianxia"}}
+      ],
+      "contracts": ["契约/状态事件.json"]
+    },
+    "build_ledger": {
+      "kind": "model",
+      "prompt": "提示词/生成账本.md",
+      "rules": ["规则/任务/批次账本.md"],
+      "conditional_rules": [
+        {"when": {"style": "comedy"}, "rules": ["规则/风格/喜剧.md"]}
+      ],
+      "context_sources": [
+        {"artifact": "comedy_bible", "section": "喜剧圣经", "path": "config/comedy-bible.json", "format": "json", "when": {"style": "comedy"}}
+      ],
+      "contracts": ["契约/批次账本.json"]
+    }
+  }
+}

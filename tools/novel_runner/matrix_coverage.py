@@ -184,7 +184,7 @@ def generate_coverage_report(
         },
         "cases": cases,
     }
-    destination = output_dir or (root / "test")
+    destination = output_dir or (root / "tests/证据")
     atomic_write_json(destination / "coverage-report.json", report)
     atomic_write_text(destination / "coverage-report.md", _render_markdown(report))
     return report

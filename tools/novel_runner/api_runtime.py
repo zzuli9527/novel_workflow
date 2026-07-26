@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from datetime import datetime, timezone
 import hashlib
 import json
 import math
@@ -11,15 +10,12 @@ from time import monotonic
 from typing import Any
 
 from .provider import GenerationRequest, GenerationResponse, ProviderError, TextProvider
+from .shared import utc_now
 from .storage import append_jsonl, atomic_write_json, atomic_write_text, read_json
 
 
 class BudgetExceededError(ProviderError):
     """运行预算已经耗尽，禁止发起新的模型调用。"""
-
-
-def _utc_now() -> str:
-    return datetime.now(timezone.utc).isoformat()
 
 
 def _number(value: Any) -> float:
@@ -137,7 +133,7 @@ def ensure_budget_available(run_dir: Path) -> dict[str, Any]:
                 **run,
                 "status": "paused",
                 "pause_reason": reason,
-                "updated_at": _utc_now(),
+                "updated_at": utc_now(),
             },
         )
         raise BudgetExceededError(reason)
@@ -181,7 +177,7 @@ def _log_task(
     append_jsonl(
         run_dir / "logs/tasks.jsonl",
         {
-            "timestamp": _utc_now(),
+            "timestamp": utc_now(),
             "task_key": task_key,
             "task": request.task,
             "metadata": request.metadata,
@@ -286,7 +282,7 @@ def invoke_provider(
     )
     started = monotonic()
     base_record: dict[str, Any] = {
-        "timestamp": _utc_now(),
+        "timestamp": utc_now(),
         "task": request.task,
         "provider": "unknown",
         "model": "unknown",

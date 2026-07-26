@@ -1,15 +1,14 @@
-"""3～5 章批次账本生成、校验和渲染。"""
+"""默认 3～4 章批次的账本生成、校验和渲染。"""
 
 from __future__ import annotations
 
-from datetime import datetime, timezone
 import json
 from pathlib import Path
 from typing import Any
 
 from .api_runtime import invoke_provider, mark_task_accepted
 from .config import validate_run_directory
-from .prompt_composer import compose_ledger_prompt
+from .prompting import compose_ledger_prompt
 from .provider import GenerationRequest, ProviderError, TextProvider
 from .state_store import load_events
 from .file_storage import (
@@ -26,6 +25,16 @@ from .storage import (
     resolve_run_dir,
     run_lock,
 )
+from .workflow_runtime import (
+    WorkflowLoadError,
+    ensure_step_inputs,
+    ensure_step_outputs,
+    load_workflow_step,
+    workflow_source_manifest,
+)
+from .project_profile import load_project_profile
+from .schema_validation import WorkflowSchemaError, ensure_artifact_schema
+from .shared import utc_now
 
 
 LEDGER_LIST_FIELDS = (
@@ -44,10 +53,6 @@ LEDGER_LIST_FIELDS = (
 
 class LedgerError(RuntimeError):
     """批次账本输入或模型输出不合格。"""
-
-
-def _utc_now() -> str:
-    return datetime.now(timezone.utc).isoformat()
 
 
 def _load_context(
@@ -187,7 +192,7 @@ def _parse_ledger(
         **{field: data[field] for field in LEDGER_LIST_FIELDS},
         "source_snapshot": snapshot_path,
         "source_event_ids": event_ids,
-        "created_at": _utc_now(),
+        "created_at": utc_now(),
     }
 
 
@@ -242,6 +247,11 @@ def build_ledger(
     with run_lock(run_dir):
         run_dir, run_config, outlines = _load_context(root, run_id)
         _validate_range(run_config, outlines, start_chapter, end_chapter)
+        try:
+            step = load_workflow_step(root, "build_ledger")
+            ensure_step_inputs(step, {"committed_batch", "batch_end_state"})
+        except WorkflowLoadError as exc:
+            raise LedgerError(str(exc)) from exc
 
         if is_v2(run_config):
             snapshot = read_current_snapshot(run_dir, run_config, end_chapter)
@@ -279,6 +289,14 @@ def build_ledger(
         prompt_path = ledger_dir / f"{batch_id}.prompt.v{version}.md"
         atomic_write_text(prompt_path, prompt)
         atomic_write_text(ledger_dir / f"{batch_id}.prompt.md", prompt)
+        atomic_write_json(
+            ledger_dir / f"{batch_id}.workflow.v{version}.json",
+            workflow_source_manifest(
+                root,
+                "build_ledger",
+                rule_context=load_project_profile(run_dir),
+            ),
+        )
 
         raw_path = ledger_dir / f"{batch_id}.raw.v{version}.json"
         request = GenerationRequest(
@@ -311,6 +329,11 @@ def build_ledger(
             event_ids=[item["event_id"] for item in events],
             snapshot=snapshot,
         )
+        try:
+            ensure_artifact_schema(root, "ledger", ledger)
+            ensure_step_outputs(step, {"ledger"})
+        except (WorkflowSchemaError, WorkflowLoadError) as exc:
+            raise LedgerError(str(exc)) from exc
         mark_task_accepted(run_dir, request, response, raw_path)
         final_json = ledger_dir / f"{batch_id}.json"
         final_md = ledger_dir / f"{batch_id}.md"

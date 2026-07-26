@@ -1,214 +1,106 @@
-# 修仙搞笑长篇网文生成器
+# 小说工作流
 
-第一版面向本地单作者：先完成并人工批准全书总纲，再逐个展开 10～20 章故事单元，由 CLI 顺序调用模型并执行长度、质量、状态来源和账本压缩闸门。
+这是一个本地运行的长篇网文生产工具。当前工作流面向番茄小说男频：先把项目设定和完整故事计划固定下来，再按“细纲 → 正文 → 审核 → 状态 → 提交”的顺序逐章生成。
 
-## 安装
+## 目录边界
+
+```text
+workflow/                  流程顺序、Prompt、规则与输入/输出契约
+  编排/                    主流程和任务表
+  提示词/                  六类模型任务的角色指令
+  规则/                    可复用的创作、审核和状态规则
+  契约/                    模型任务的输入/输出说明
+tools/novel_runner/        CLI、模型调用、重试、校验、事务和文件读写
+runs/<运行名>/             一部小说的设定、细纲、正文、状态、账本和修订记录
+tests/                     自动化流程、工具、迁移和回归测试
+  证据/矩阵运行/           已脱敏的真实/回归运行归档
+```
+
+不要把小说人物、宗门、境界、剧情或密钥写进 `workflow/` 和 `tools/`。它们属于某一次运行，只能放在 `runs/<运行名>/`。`.env` 和活动 `runs/` 已被 Git 忽略。
+
+## 工作流顺序
+
+```text
+填写项目设定
+  → 校验并人工批准全书总纲
+  → 规划故事单元（10～20 章）
+  → 每批规划 3～4 章细纲
+  → 生成一章正文
+  → 审核正文
+  → 提取已发生的状态
+  → 正文和状态原子提交
+  → 生成账本
+  → 单元评审、状态重建
+  → 全书完成后人工归档
+```
+
+上一章未提交时，工具不会生成下一章。长度、细纲契约、质量或状态连续性失败都会停在当前章；只有可恢复的模型传输错误会在预算内自动重试。
+
+`workflow/编排/流程.json` 定义完整步骤和失败去向，`任务表.json` 定义模型任务、规则包和契约。运行时会记录实际装配的 Prompt、规则和契约哈希，便于复现某次生成所用的工作流版本；不存在旧流程回退。
+
+## 首次运行
 
 ```powershell
 python -m pip install -e .
+Copy-Item .env.example .env
+novel init --run my-novel
 ```
 
-也可以不安装，直接使用：
+在 `.env` 中填写网关、密钥和各角色模型。然后编辑 `runs/my-novel/config/`：
+
+- `project.md`：题材、目标平台、主角、开篇承诺和长期目标；番茄项目应写明“目标平台：番茄小说”。
+- `project-profile.json`：结构化规则档案；当前项目填写 `{"platform":"fanqie","channel":"male","genre":"xianxia","style":"comedy"}`。
+- `progression.json`：修仙题材启用时装配的境界、资源、能力、伤势与突破边界。
+- `comedy-bible.json`：喜剧风格启用时装配的角色反差、可用/禁用笑点和严肃场景限制。
+- `initial-state.json`：第 0 章可继承状态。
+- `master-plan.json`：全书分卷、粗故事单元、双主角成长线和终局。
+
+校验并人工批准总纲：
 
 ```powershell
-python -m tools.novel_runner --help
-```
-
-## 最短可执行流程
-
-### 1. 初始化一本小说
-
-```powershell
-novel init my-novel
-```
-
-填写：
-
-- `runs/my-novel/config/project.md`
-- `runs/my-novel/config/progression.json`
-- `runs/my-novel/config/comedy-bible.json`
-- `runs/my-novel/config/initial-state.json`
-- `runs/my-novel/config/master-plan.json`
-
-`initial-state.json` 使用稳定 ID 记录开篇时的角色境界、资源余额和知识状态。后续突破、消耗和误会变化都以它为机械计算起点；不要只把初始资源写在散文设定中。
-
-### 2. 完成并批准全书总纲
-
-先使用 `workflow/00-global.md` 补全 `config/master-plan.json`：目标章节、双主角独立成长路径、前中后期主动目标、最终对手与高潮规则、分卷骨架，以及每卷连续的 10～20 章粗故事单元。
-
-总纲默认是 `draft`，系统不会代替作者批准：
-
-```powershell
+novel validate-config --run my-novel
 novel validate-master-plan --run my-novel
 novel approve-master-plan --run my-novel
 ```
 
-批准会记录内容哈希。批准后修改总纲会自动阻断后续规划和写作，直到重新校验、审核并批准。卷与粗单元必须连续覆盖全书目标章节，不能重叠或留空档。
-
-### 3. 展开当前故事单元
-
-依次使用：
-
-```text
-workflow/01-expand.md
-workflow/02-merge.md（按需）
-workflow/03-chapters.md
-```
-
-可以让执行器先生成故事单元：
-
-```powershell
-novel plan-unit --run my-novel --openai
-```
-
-执行器只会选择已批准总纲中的下一个固定 `unit_id` 和章节范围。兼容参数 `--chapters` 仍可使用，但数值必须与总纲一致。
-
-也可以把人工确认后的故事单元和章节细纲整理为一个机器计划 JSON。外层格式：
-
-```json
-{
-  "schema_version": "1.0",
-  "story_units": [],
-  "chapter_outlines": []
-}
-```
-
-字段定义见 `plan.md` 第 8 节。`chapter_outlines` 可以为空，也可以一次提供完整 10～20 章；不接受只覆盖半个标准批次的残缺导入。
-
-### 4. 校验并导入计划
-
-```powershell
-novel import-plan --run my-novel --file path/to/import-plan.json
-novel validate-config --run my-novel
-```
-
-导入会先检查总纲审批哈希，再校验故事单元 ID/范围是否与总纲一致，以及章节归属、场景预算、可写性和喜剧机制轮换。任何一项失败都不会覆盖正式计划。只导入故事单元时，后续由执行器逐批规划章纲。
-
-### 5. 设置网关、模型路由与预算
-
-复制本地环境模板：
-
-```powershell
-Copy-Item .env.example .env
-```
-
-在 `.env` 中填写网关和模型路由。`.env` 已被 Git 忽略，不会提交到仓库：
-
-```dotenv
-MESHYCODE_BASE_URL=https://your-openai-compatible-gateway.example/v1
-MESHYCODE_API_KEY=
-NOVEL_MODEL_PLANNER=gpt-5.5
-NOVEL_MODEL_DRAFTER=gpt-5.5
-NOVEL_MODEL_REWRITER=gpt-5.6-sol
-NOVEL_MODEL_REVIEWER=gpt-5.5
-NOVEL_MODEL_STATE=gpt-5.5
-```
-
-进程环境变量优先于 `.env`。不要把真实密钥写入 `run.json`、Prompt、日志或提交文件。
-
-`runs/my-novel/run.json` 只保存环境变量名称和运行策略：
-
-- `provider.routes`：规划、初稿、重写、评审和状态任务的模型环境变量及回退链。
-- `provider.base_url_env` / `api_key_env`：网关 URL 与密钥的环境变量名。
-- `provider.deadline_seconds`：整笔网络请求的绝对墙钟截止时间；各路由可单独覆盖，截止后允许按既定回退链切换模型。
-- `provider.max_output_tokens`：应为完整单章和格式输出留足空间。
-- `provider.pricing.input_per_million` / `output_per_million`：可选的当前模型单价，用于本地估算费用；两项必须同时填写，不在代码中硬编码价格。
-- `policies.budget.max_calls`：可选最大调用次数，默认 `null`，不限制。
-- `policies.budget.max_tokens`：可选最大累计 Token，默认 `null`；提供方返回用量时生效。
-- `policies.budget.max_cost`：可选最大累计费用，默认 `null`；提供方返回费用时生效。
-
-调用次数、Token、平均输入上下文和耗时始终写入评审报告，但默认不设置效率警告线或硬限，
-也不影响质量结论。绝对请求超时和单步骤重试次数仍用于防止请求或修复循环无限等待。
-
-无返工时，一章通常需要正文、质量评审、状态提取3次调用；实际长文通常还会增加一次跨模型压缩。默认每3～4章生成账本，章纲逻辑批次也是3～4章，但API传输默认每次最多2章，遇到网关524会自动拆成单章重试。10章动态链路应为修订和传输失败预留调用空间。
-
-### 6. 启动整个故事单元
+批准后，执行一个已规划故事单元：
 
 ```powershell
 novel run-unit --run my-novel --unit unit-0001 --openai
 ```
 
-面向用户是一次启动 10～20 章；内部仍按单章执行：
-
-```text
-正文 → 机械字数 → 独立质量评审 → 状态来源校验 → 原子提交
-```
-
-必做/禁止剧情契约、摘要化、修炼与伤势、严肃后果、资源、知识状态和多线因果仍是硬闸门。喜剧因果、章末钩子和人物声线作为软质量告警记录，可在正式提交后由作者二次润色，不单独触发整章重写。
-
-正文少于 1800 字符或超过 3500 字符仍是硬失败；1800～1999 与 3001～3500 只记录字数软告警，继续进入独立质量评审。硬失败修复优先定点修改失败字段对应段落，状态提取错误只重试状态 JSON。硬失败为零时，即使存在软告警，也会标记为“可用，待润色”并允许归档。
-
-默认每3～4章生成一次压缩账本。任一硬失败重试耗尽，或显式配置的预算耗尽时会暂停，不会正式推进后续章节。
-
-如果当前批次章纲不存在，内部顺序为：
-
-```text
-规划 3～4 章逻辑细纲批次（内部按1～2章请求）
-→ 逐章生成与提交
-→ 生成批次账本
-→ 用新账本规划下一批
-```
-
-也可以单独规划一个标准批次：
+也可逐步执行：
 
 ```powershell
+novel plan-unit --run my-novel --openai
 novel plan-batch --run my-novel --unit unit-0001 --range 1-4 --openai
+novel draft --run my-novel --chapter 1 --openai
+novel review-draft --run my-novel --chapter 1 --openai
+novel extract-state --run my-novel --chapter 1 --openai
+novel commit --run my-novel --chapter 1
 ```
 
-### 7. 查看、恢复和评审
+## 日常操作
 
 ```powershell
 novel status --run my-novel --json
 novel resume --run my-novel --json
+novel rebuild-state --run my-novel --json
 novel review --run my-novel --unit unit-0001 --json
-```
-
-故事单元报告位于 `runs/my-novel/reports/`。
-
-## 修订已提交章节
-
-不要直接覆盖 `draft.final.md`。先执行：
-
-```powershell
 novel invalidate-from --run my-novel --chapter 12 --reason "重写关键选择"
+novel migrate-storage --run my-novel             # 默认只审计
+novel migrate-storage --run my-novel --apply     # 备份后原子迁移到 v2
+novel archive-run --run my-novel --unit unit-0001 --case T01
 ```
 
-系统会：
+归档只接受通过评审且脱敏检查通过的运行，输出到 `tests/证据/矩阵运行/`。它不是活动小说目录，也不会成为下一章的上下文。
 
-- 归档第 12 章及其后续快照、账本、报告和活跃正文别名。
-- 保留所有版本化历史草稿。
-- 把正式提交指针回退到第 11 章。
-- 把受影响章纲标为 `revalidation_status=pending`。
-
-修改或复核章纲后逐章接受：
+## 验证
 
 ```powershell
-novel validate-outline --run my-novel --chapter 12 --accept-revision
-```
-
-存在任何待重验章纲时，`run-unit` 会阻断。修订过程意外中断时使用 `novel resume`。
-
-模型任务以任务类型、元数据和 Prompt 哈希生成幂等键。只有已经通过调用方格式与内容校验的 `accepted` 产物才可复用；传输成功但长度、JSON 或连续性失败的结果不会进入缓存。
-
-## 离线验证
-
-```powershell
-$env:PYTHONUTF8 = "1"
-python -m unittest discover -s tests -v
+python -m unittest discover -s tests -t .
 python -m compileall -q tools tests
 git diff --check
 ```
 
-专项覆盖映射：
-
-```powershell
-novel coverage --root .
-
-# 校验正文哈希，并从初始状态与正式事件原子重建全部快照
-novel rebuild-state --run my-novel --root .
-
-# 将完成且评审通过的故事单元归档为固定测试产物
-novel archive-run --run my-novel --unit unit-0001 --case T12-real-run --root .
-```
-
-当前离线测试只证明执行器、长度和状态链路稳定，不等价于真实模型生成的小说内容质量已经通过。
+正文风格、开篇冲突和番茄男频要求维护在 `workflow/规则/`；执行器不内置某个项目的人名或剧情。具体可编辑文件及其组合方式见 [workflow/README.md](workflow/README.md)。

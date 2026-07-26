@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from datetime import datetime, timezone
 import json
 from pathlib import Path
 import shutil
@@ -21,14 +20,11 @@ from .file_storage import (
 )
 from .state_store import load_events
 from .storage import StorageError, append_jsonl, atomic_write_json, atomic_write_text, read_json, resolve_run_dir, run_lock
+from .shared import utc_now
 
 
 class StorageMigrationError(RuntimeError):
     """Migration audit or atomic switch failed."""
-
-
-def _utc_now() -> str:
-    return datetime.now(timezone.utc).isoformat()
 
 
 def _backup_path(run_dir: Path) -> Path:
@@ -143,11 +139,11 @@ def audit_storage_migration(
         atomic_write_text(runtime_events_path(run_dir, {"storage_version": V2_STORAGE_VERSION}), "")
         append_jsonl(
             runtime_events_path(run_dir, {"storage_version": V2_STORAGE_VERSION}),
-            {"timestamp": _utc_now(), "action": "storage_migrated", "from": current_version, "to": V2_STORAGE_VERSION},
+            {"timestamp": utc_now(), "action": "storage_migrated", "from": current_version, "to": V2_STORAGE_VERSION},
         )
         atomic_write_json(
             run_dir / "run.json",
-            {**run, "storage_version": V2_STORAGE_VERSION, "updated_at": _utc_now()},
+            {**run, "storage_version": V2_STORAGE_VERSION, "updated_at": utc_now()},
         )
         # The backup is now durable and run.json advertises the new layout, so
         # the v1 per-chapter snapshots are redundant.  Keeping them would make

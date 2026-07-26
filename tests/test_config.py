@@ -17,17 +17,29 @@ from tools.novel_runner.state_machine import (
     transition_record,
 )
 from tools.novel_runner.storage import StorageError
+from tests.workflow_support import install_minimal_workflow
+
+
+def project_root(directory: str) -> Path:
+    root = Path(directory)
+    install_minimal_workflow(root)
+    return root
 
 
 class RunInitializationTests(unittest.TestCase):
     def test_init_run_creates_minimum_structure(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
-            root = Path(directory)
+            root = project_root(directory)
             run_dir = init_run(root, "demo-run")
 
             self.assertTrue((run_dir / "run.json").is_file())
             self.assertTrue((run_dir / "config/progression.json").is_file())
             self.assertTrue((run_dir / "config/comedy-bible.json").is_file())
+            profile = json.loads(
+                (run_dir / "config/project-profile.json").read_text(encoding="utf-8")
+            )
+            self.assertEqual(profile["genre"], "xianxia")
+            self.assertEqual(profile["style"], "comedy")
             self.assertTrue((run_dir / "config/initial-state.json").is_file())
             self.assertTrue((run_dir / "config/master-plan.json").is_file())
             self.assertTrue((run_dir / "planning/story-units.json").is_file())
@@ -40,7 +52,7 @@ class RunInitializationTests(unittest.TestCase):
 
     def test_init_run_does_not_overwrite_existing_directory(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
-            root = Path(directory)
+            root = project_root(directory)
             init_run(root, "demo-run")
             with self.assertRaisesRegex(StorageError, "已存在"):
                 init_run(root, "demo-run")
@@ -52,7 +64,7 @@ class RunInitializationTests(unittest.TestCase):
 
     def test_validation_detects_invalid_length_order(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
-            root = Path(directory)
+            root = project_root(directory)
             run_dir = init_run(root, "demo-run")
             path = run_dir / "run.json"
             data = json.loads(path.read_text(encoding="utf-8"))
@@ -67,7 +79,7 @@ class RunInitializationTests(unittest.TestCase):
 
     def test_validation_accepts_preferred_length_range_inside_hard_range(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
-            root = Path(directory)
+            root = project_root(directory)
             run_dir = init_run(root, "demo-run")
             path = run_dir / "run.json"
             data = json.loads(path.read_text(encoding="utf-8"))
@@ -81,7 +93,7 @@ class RunInitializationTests(unittest.TestCase):
 
     def test_validation_rejects_preferred_length_range_outside_hard_range(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
-            root = Path(directory)
+            root = project_root(directory)
             run_dir = init_run(root, "demo-run")
             path = run_dir / "run.json"
             data = json.loads(path.read_text(encoding="utf-8"))
@@ -98,7 +110,7 @@ class RunInitializationTests(unittest.TestCase):
 
     def test_validation_detects_run_id_mismatch(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
-            root = Path(directory)
+            root = project_root(directory)
             run_dir = init_run(root, "demo-run")
             path = run_dir / "run.json"
             data = json.loads(path.read_text(encoding="utf-8"))
@@ -136,6 +148,7 @@ class StateMachineTests(unittest.TestCase):
 class ConfigCliTests(unittest.TestCase):
     def test_cli_init_and_validate(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
+            install_minimal_workflow(Path(directory))
             stdout = io.StringIO()
             stderr = io.StringIO()
             with redirect_stdout(stdout), redirect_stderr(stderr):
@@ -151,7 +164,7 @@ class ConfigCliTests(unittest.TestCase):
 
     def test_openai_command_preflights_routed_model_before_chapter_mutation(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
-            root = Path(directory)
+            root = project_root(directory)
             run_dir = init_run(root, "demo-run")
             stderr = io.StringIO()
             with patch.dict(
@@ -181,7 +194,7 @@ class ConfigCliTests(unittest.TestCase):
 
     def test_default_config_keeps_gateway_and_models_in_environment(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
-            root = Path(directory)
+            root = project_root(directory)
             run_dir = init_run(root, "demo-run")
             data = json.loads((run_dir / "run.json").read_text(encoding="utf-8"))
             provider = data["provider"]
@@ -211,10 +224,21 @@ class ConfigCliTests(unittest.TestCase):
                 data["policies"]["budget"],
                 {"max_calls": None, "max_tokens": None, "max_cost": None},
             )
+            self.assertEqual(
+                json.loads(
+                    (run_dir / "config/project-profile.json").read_text(encoding="utf-8")
+                ),
+                {
+                    "platform": "",
+                    "channel": "",
+                    "genre": "xianxia",
+                    "style": "comedy",
+                },
+            )
 
     def test_validation_accepts_positive_or_null_deadlines(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
-            root = Path(directory)
+            root = project_root(directory)
             run_dir = init_run(root, "demo-run")
             path = run_dir / "run.json"
             data = json.loads(path.read_text(encoding="utf-8"))
@@ -227,7 +251,7 @@ class ConfigCliTests(unittest.TestCase):
     def test_validation_rejects_invalid_deadlines(self) -> None:
         for value in (0, -1, True, "300"):
             with self.subTest(value=value), tempfile.TemporaryDirectory() as directory:
-                root = Path(directory)
+                root = project_root(directory)
                 run_dir = init_run(root, "demo-run")
                 path = run_dir / "run.json"
                 data = json.loads(path.read_text(encoding="utf-8"))
@@ -245,7 +269,7 @@ class ConfigCliTests(unittest.TestCase):
 
     def test_validation_ignores_legacy_efficiency_thresholds(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
-            root = Path(directory)
+            root = project_root(directory)
             run_dir = init_run(root, "demo-run")
             path = run_dir / "run.json"
             data = json.loads(path.read_text(encoding="utf-8"))
@@ -259,7 +283,7 @@ class ConfigCliTests(unittest.TestCase):
 
     def test_cli_validate_outline_returns_structured_failure(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
-            root = Path(directory)
+            root = project_root(directory)
             run_dir = init_run(root, "demo-run")
             (run_dir / "planning/chapter-outlines.json").write_text(
                 json.dumps(

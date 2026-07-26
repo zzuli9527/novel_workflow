@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from datetime import datetime, timezone
 import json
 import os
 from pathlib import Path
@@ -17,6 +16,7 @@ from .storage import (
     resolve_run_dir,
     run_lock,
 )
+from .shared import utc_now
 
 
 class RevisionError(RuntimeError):
@@ -36,10 +36,6 @@ ACTIVE_CHAPTER_FILES = (
     "review.prompt.md",
     "state.prompt.md",
 )
-
-
-def _utc_now() -> str:
-    return datetime.now(timezone.utc).isoformat()
 
 
 def _revision_id(run: dict[str, Any]) -> str:
@@ -231,7 +227,7 @@ def invalidate_from(
             "pause_reason",
         }
         affected_chapters: list[int] = []
-        invalidated_at = _utc_now()
+        invalidated_at = utc_now()
         for index, outline in enumerate(outlines):
             number = outline.get("number")
             if not isinstance(number, int) or number < chapter:

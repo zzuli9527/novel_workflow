@@ -243,7 +243,7 @@ def archive_run(
     if declared_hard_failure or (verdict != "通过" and not conditional_pass):
         raise RunArchiveError(f"故事单元评审未通过：{review.get('verdict')}")
 
-    destination = root / "test/matrix-runs" / case_id
+    destination = root / "tests/证据/矩阵运行" / case_id
     data = destination / "data"
     secret = _secret_value(run)
     _safe_write_text(

@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -21,6 +20,10 @@ from .structured_state import (
     validate_initial_state,
 )
 from .master_plan import default_master_plan, validate_master_plan_data
+from .project_profile import default_project_profile, validate_project_profile
+from .schema_validation import WorkflowSchemaError, artifact_schema_issues
+from .shared import utc_now
+from .workflow_runtime import WORKFLOW_VERSION
 from .wordcount import LengthPolicy
 
 
@@ -50,14 +53,11 @@ class ValidationReport:
         }
 
 
-def _utc_now() -> str:
-    return datetime.now(timezone.utc).isoformat()
-
-
 def default_run_config(run_id: str, *, storage_version: str | None = None) -> dict[str, Any]:
-    timestamp = _utc_now()
+    timestamp = utc_now()
     config = {
         "schema_version": "1.0",
+        "workflow_version": WORKFLOW_VERSION,
         "run_id": run_id,
         "status": "planning",
         "current_story_unit": None,
@@ -204,6 +204,7 @@ def init_run(
     )
     atomic_write_json(run_dir / "config/progression.json", default_progression_config())
     atomic_write_json(run_dir / "config/comedy-bible.json", default_comedy_bible())
+    atomic_write_json(run_dir / "config/project-profile.json", default_project_profile())
     atomic_write_json(run_dir / "config/initial-state.json", default_initial_state())
     atomic_write_json(run_dir / "config/master-plan.json", default_master_plan())
     atomic_write_json(run_dir / "planning/story-units.json", [])
@@ -261,6 +262,7 @@ def _validate_run_json(data: Any, expected_run_id: str) -> list[ValidationIssue]
         data,
         (
             "schema_version",
+            "workflow_version",
             "run_id",
             "status",
             "last_committed_chapter",
@@ -270,6 +272,13 @@ def _validate_run_json(data: Any, expected_run_id: str) -> list[ValidationIssue]
     )
     if data.get("run_id") != expected_run_id:
         issues.append(ValidationIssue("run.run_id", "与运行目录名称不一致"))
+    if data.get("workflow_version") != WORKFLOW_VERSION:
+        issues.append(
+            ValidationIssue(
+                "run.workflow_version",
+                f"必须是 {WORKFLOW_VERSION}；旧运行只能作为归档证据",
+            )
+        )
     if data.get("status") not in RUN_STATUSES:
         issues.append(ValidationIssue("run.status", "不是允许的运行状态"))
     storage_version = data.get("storage_version")
@@ -719,12 +728,20 @@ def _validate_list_file(data: Any, name: str) -> list[ValidationIssue]:
     return issues
 
 
+def _validate_project_profile(data: Any) -> list[ValidationIssue]:
+    return [
+        ValidationIssue(f"project_profile.{message.split(' ', 1)[0]}", message)
+        for message in validate_project_profile(data)
+    ]
+
+
 def validate_run_directory(root: Path, run_id: str) -> ValidationReport:
     run_dir = resolve_run_dir(root, run_id)
     files: tuple[tuple[str, Any], ...] = (
         ("run.json", lambda data: _validate_run_json(data, run_id)),
         ("config/progression.json", _validate_progression),
         ("config/comedy-bible.json", _validate_comedy),
+        ("config/project-profile.json", _validate_project_profile),
         ("config/initial-state.json", _validate_initial_state),
         (
             "config/master-plan.json",
@@ -742,6 +759,16 @@ def validate_run_directory(root: Path, run_id: str) -> ValidationReport:
     )
 
     issues: list[ValidationIssue] = []
+    schema_artifacts = {
+        "run.json": "run",
+        "config/progression.json": "progression",
+        "config/comedy-bible.json": "comedy_bible",
+        "config/initial-state.json": "initial_state",
+        "config/master-plan.json": "master_plan",
+        "planning/story-units.json": "story_units",
+        "planning/chapter-outlines.json": "chapter_outlines",
+        "checks.json": "checks",
+    }
     for relative, validator in files:
         path = run_dir / relative
         try:
@@ -749,5 +776,16 @@ def validate_run_directory(root: Path, run_id: str) -> ValidationReport:
         except StorageError as exc:
             issues.append(ValidationIssue(relative, str(exc)))
             continue
+        schema_artifact = schema_artifacts.get(relative)
+        if schema_artifact is not None:
+            try:
+                issues.extend(
+                    ValidationIssue(f"{relative}.schema", message)
+                    for message in artifact_schema_issues(
+                        root, schema_artifact, data
+                    )
+                )
+            except WorkflowSchemaError as exc:
+                issues.append(ValidationIssue(f"{relative}.schema", str(exc)))
         issues.extend(validator(data))
     return ValidationReport(run_id, not issues, tuple(issues))

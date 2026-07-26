@@ -1,0 +1,19 @@
+{
+  "contract_version": "4.0",
+  "task_id": "extract_state",
+  "input_artifacts": ["approved_draft", "chapter_outline", "checks", "previous_state", "progression"],
+  "output": {"format": "json_object", "model_instruction": "只输出一个 JSON 对象，不要 Markdown 代码围栏。所有正式变化的 source_evidence 必须逐字复制 final 正文中的连续原句，不得改写。"},
+  "output_template": {
+    "entity_changes": [{"change": "", "source_evidence": "正文中的连续原句"}],
+    "relationship_changes": [{"change": "", "source_evidence": "正文中的连续原句"}],
+    "cultivation_changes": [{"subject_id": "角色稳定 ID", "kind": "progress / insight / ability / injury / recovery / breakthrough / restriction / incarnation", "change": "", "state_id": "ability/injury/recovery/restriction 必填的稳定状态 ID", "state_action": "上述四类必填：set / resolve；必须符合活动状态 ID 中的 allowed_changes，recovery 只能引用当前活动 injury ID", "stage_after": "非突破、非 incarnation 时可选", "from_stage": "breakthrough / incarnation 时必填", "to_stage": "breakthrough / incarnation 时必填", "transition_type": "仅 incarnation 必填：soul_transfer / reincarnation / body_replacement", "prerequisites": ["突破时必填"], "costs": ["突破时必填"], "new_limits": [{"state_id": "突破后限制的稳定 ID", "description": "突破后限制或后遗症"}], "source_evidence": "正文中的连续原句"}],
+    "resource_changes": [{"owner_id": "持有者稳定 ID", "resource_id": "资源稳定 ID", "operation": "gain / consume / transfer_in / transfer_out / damage / restore", "amount": 1, "unit": "枚", "resulting_balance": 0, "source_or_destination": "来源或去向", "change": "", "source_evidence": "正文中的连续原句"}],
+    "knowledge_changes": [{"character_id": "角色稳定 ID", "fact_id": "事实稳定 ID", "state": "knows / believes_false / suspects / investigating / conceals", "belief": "该角色当前实际相信的内容", "supersedes_fact_ids": ["本变化明确淘汰的旧 fact_id；没有则为空数组"], "change": "", "source_evidence": "正文中的连续原句"}],
+    "thread_changes": [{"change": "", "source_evidence": "正文中的连续原句"}],
+    "comedy_changes": [{"change": "", "source_evidence": "正文中的连续原句"}],
+    "new_constraints": [{"change": "", "source_evidence": "正文中的连续原句"}],
+    "resolved_constraints": [{"change": "", "source_evidence": "正文中的连续原句"}],
+    "next_chapter_inputs": [],
+    "deviations": []
+  }
+}

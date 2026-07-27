@@ -37,6 +37,14 @@ class WorkflowLoaderTests(unittest.TestCase):
         self.assertIn("# 输出契约", text)
         self.assertIn("第一行必须是", text)
 
+    def test_repair_prompt_separates_manual_advice_from_machine_repair(self) -> None:
+        text = load_task_instructions(self.root, "repair_chapter")
+
+        self.assertIn("候选片段（未写入文件）", text)
+        self.assertIn("未经用户另行明确授权", text)
+        self.assertIn("获得信息 → 判断处境 → 比较选择 → 采取行动 → 承担后果", text)
+        self.assertIn("谁可能背责", text)
+
     def test_missing_new_workflow_does_not_fall_back_to_legacy_files(self) -> None:
         registry = self.root / "workflow/编排/任务表.json"
         registry.unlink()

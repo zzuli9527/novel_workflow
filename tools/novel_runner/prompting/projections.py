@@ -275,8 +275,8 @@ def _compact_state_chapter_contract(outline: Any) -> Any:
 
 
 def _preferred_length_range(length: dict[str, Any]) -> tuple[int, int]:
-    target_min = int(length.get("target_min", 2000))
-    target_max = int(length.get("target_max", 3000))
+    target_min = int(length.get("target_min", 1800))
+    target_max = int(length.get("target_max", 3200))
     span = max(0, target_max - target_min)
     default_min = target_min + min(200, span // 5)
     default_max = min(target_max, default_min + min(300, max(1, span // 3)))

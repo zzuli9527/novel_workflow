@@ -77,8 +77,8 @@ def compose_batch_outline_plan_prompt(
         root, "plan_chapter_batch", rule_context=profile
     )
     length_policy = read_json(run_dir / "run.json").get("policies", {}).get("length", {})
-    target_min = int(length_policy.get("target_min", 2000))
-    target_max = int(length_policy.get("target_max", 3000))
+    target_min = int(length_policy.get("target_min", 1800))
+    target_max = int(length_policy.get("target_max", 3200))
     previous_snapshot = _planning_snapshot(run_dir, start_chapter - 1)
     example_chapter_id = f"chapter-{start_chapter:04d}"
     outline_example = render_contract_template(

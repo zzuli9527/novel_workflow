@@ -123,9 +123,9 @@ def default_run_config(run_id: str, *, storage_version: str | None = None) -> di
         "policies": {
             "length": {
                 "unit": "non_whitespace_character",
-                "target_min": 2000,
-                "target_max": 3000,
-                "expand_from": 1800,
+                "target_min": 1800,
+                "target_max": 3200,
+                "expand_from": 1600,
                 "review_over": 3500,
             },
             "batch": {

@@ -46,6 +46,17 @@ class RunInitializationTests(unittest.TestCase):
             self.assertTrue((run_dir / "planning/chapter-outlines.json").is_file())
             self.assertTrue((run_dir / "logs/tasks.jsonl").is_file())
             self.assertTrue((run_dir / "state/snapshots").is_dir())
+            run = json.loads((run_dir / "run.json").read_text(encoding="utf-8"))
+            self.assertEqual(
+                run["policies"]["length"],
+                {
+                    "unit": "non_whitespace_character",
+                    "target_min": 1800,
+                    "target_max": 3200,
+                    "expand_from": 1600,
+                    "review_over": 3500,
+                },
+            )
 
             report = validate_run_directory(root, "demo-run")
             self.assertTrue(report.valid, report.issues)
@@ -68,7 +79,7 @@ class RunInitializationTests(unittest.TestCase):
             run_dir = init_run(root, "demo-run")
             path = run_dir / "run.json"
             data = json.loads(path.read_text(encoding="utf-8"))
-            data["policies"]["length"]["target_min"] = 3100
+            data["policies"]["length"]["target_min"] = 3300
             path.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
 
             report = validate_run_directory(root, "demo-run")
@@ -98,7 +109,7 @@ class RunInitializationTests(unittest.TestCase):
             path = run_dir / "run.json"
             data = json.loads(path.read_text(encoding="utf-8"))
             data["policies"]["length"].update(
-                {"preferred_min": 1900, "preferred_max": 2250}
+                {"preferred_min": 1700, "preferred_max": 2250}
             )
             path.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
 

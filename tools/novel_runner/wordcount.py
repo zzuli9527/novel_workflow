@@ -38,9 +38,9 @@ class DraftParseError(ValueError):
 class LengthPolicy:
     """单章正文长度策略。"""
 
-    target_min: int = 2000
-    target_max: int = 3000
-    expand_from: int = 1800
+    target_min: int = 1800
+    target_max: int = 3200
+    expand_from: int = 1600
     review_over: int = 3500
 
     def __post_init__(self) -> None:

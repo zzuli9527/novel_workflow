@@ -154,12 +154,12 @@ class LengthGateTests(unittest.TestCase):
     def test_default_policy_boundaries(self) -> None:
         policy = LengthPolicy()
         cases = (
-            (1799, "failed_too_short", False),
-            (1800, "needs_expansion", True),
-            (1999, "needs_expansion", True),
-            (2000, "passed", True),
-            (3000, "passed", True),
-            (3001, "needs_redundancy_review", True),
+            (1599, "failed_too_short", False),
+            (1600, "needs_expansion", True),
+            (1799, "needs_expansion", True),
+            (1800, "passed", True),
+            (3200, "passed", True),
+            (3201, "needs_redundancy_review", True),
             (3500, "needs_redundancy_review", True),
             (3501, "needs_compression_review", False),
         )

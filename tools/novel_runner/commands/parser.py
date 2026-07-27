@@ -24,9 +24,9 @@ def build_parser() -> argparse.ArgumentParser:
         "check-drafts", help="拆分 Markdown 章节并执行机械长度闸门"
     )
     check_parser.add_argument("path", type=Path, help="包含一章或多章的 Markdown 文件")
-    check_parser.add_argument("--min", dest="target_min", type=int, default=2000)
-    check_parser.add_argument("--max", dest="target_max", type=int, default=3000)
-    check_parser.add_argument("--expand-from", type=int, default=1800)
+    check_parser.add_argument("--min", dest="target_min", type=int, default=1800)
+    check_parser.add_argument("--max", dest="target_max", type=int, default=3200)
+    check_parser.add_argument("--expand-from", type=int, default=1600)
     check_parser.add_argument("--review-over", type=int, default=3500)
     check_parser.add_argument(
         "--json", action="store_true", help="以 JSON 输出逐章检查结果"

@@ -46,8 +46,8 @@ def compose_draft_prompt(
         (item for item in story_units if item.get("unit_id") == current_unit_id), None
     )
     length = run_config.get("policies", {}).get("length", {})
-    target_min = int(length.get("target_min", 2000))
-    target_max = int(length.get("target_max", 3000))
+    target_min = int(length.get("target_min", 1800))
+    target_max = int(length.get("target_max", 3200))
     preferred_min, preferred_max = _preferred_length_range(length)
     scene_budget = sum(
         scene.get("target_length", 0)

@@ -1,13 +1,13 @@
 {
   "number": 1,
   "title": "活着，账就对不上",
-  "actual_length": 2355,
+  "actual_length": 2050,
   "status": "passed",
   "hard_pass": true,
   "requires_review": false,
   "can_update_state": true,
   "message": "长度闸门通过",
   "chapter": 1,
-  "draft_version": 6,
-  "draft_path": "chapters/0001/draft.v6.md"
+  "draft_version": 7,
+  "draft_path": "chapters/0001/draft.v7.md"
 }

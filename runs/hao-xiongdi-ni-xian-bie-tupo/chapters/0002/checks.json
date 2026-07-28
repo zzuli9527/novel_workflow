@@ -1,0 +1,13 @@
+{
+  "number": 2,
+  "title": "绝对安全",
+  "actual_length": 2279,
+  "status": "passed",
+  "hard_pass": true,
+  "requires_review": false,
+  "can_update_state": true,
+  "message": "长度闸门通过",
+  "chapter": 2,
+  "draft_version": 1,
+  "draft_path": "chapters/0002/draft.v1.md"
+}
